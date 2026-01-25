@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors - Base Palette */
+  /* Primary: #006BCF (207° 100% 41%) */
+  /* Primary Light: #329EF8 (207° 93% 58%) */
+  /* Accent Red: #FF0000 (0° 100% 50%) */
+  /* Background: #FFFFFF (0° 0% 100%) */
+  
+  /* Base colors */
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 207 20% 10%; /* Dark blue-gray, readable on white */
+  
+  /* Primary brand colors - Blue (#006BCF) */
+  --primary: 207 100% 41%; /* #006BCF - Your main brand color */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+  --primary-light: 207 93% 58%; /* #329EF8 - For hover states */
+  
+  /* Secondary colors - Muted blue (same hue, lower saturation) */
+  --secondary: 207 50% 70%; /* Muted blue, lighter */
+  --secondary-foreground: 207 20% 15%; /* Dark text on secondary */
+  
+  /* Accent colors - Red (#FF0000) for highlighting */
+  --accent: 0 100% 50%; /* #FF0000 - Solid red for highlights */
+  --accent-foreground: 0 0% 100%; /* White text on accent */
+  --accent-muted: 0 50% 65%; /* Muted red for thin accents/borders */
+  
+  /* Muted colors - Subtle variations */
+  --muted: 207 30% 96%; /* Very light muted blue */
+  --muted-foreground: 207 15% 45%; /* Medium gray-blue for muted text */
+  
+  /* Border and input - Grayish/blueish for dividers */
+  --border: 207 20% 85%; /* Grayish-blue for borders/dividers */
+  --input: 207 30% 95%; /* Light blue-gray for inputs */
+  --ring: 207 100% 41%; /* Primary blue for focus rings */
+  
+  /* Footer background */
+  --footer-background: 207 30% 96%; /* Same as muted for light mode */
+  
+  /* Status colors - Desaturated red for errors */
+  --destructive: 0 70% 55%; /* Desaturated red for error states */
+  --destructive-foreground: 0 0% 100%; /* White text on destructive */
+  
+  /* Radius - Sharp design, minimal rounding */
+  --radius: 0.25rem;
+  
+  /* Shadows for depth */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode - Neutral dark that blends with primary blue */
+    --background: 207 15% 8%; /* Dark blue-gray, blends with primary */
+    --foreground: 0 0% 95%; /* Light text for readability */
+    
+    /* Primary - Use lighter version for better visibility */
+    --primary: 207 93% 58%; /* #329EF8 - Lighter blue, more visible on dark */
+    --primary-foreground: 207 15% 8%; /* Dark text on primary */
+    --primary-light: 207 93% 70%; /* Even lighter for hover states */
+    
+    /* Secondary - Muted blue, darker */
+    --secondary: 207 30% 25%; /* Darker muted blue */
+    --secondary-foreground: 0 0% 95%; /* Light text on secondary */
+    
+    /* Accent - Slightly lighter red for visibility */
+    --accent: 0 100% 60%; /* Lighter red for better contrast on dark */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --accent-muted: 0 50% 70%; /* Muted red for thin accents in dark mode */
+    
+    /* Muted colors */
+    --muted: 207 20% 18%; /* Dark muted blue */
+    --muted-foreground: 207 15% 65%; /* Lighter gray-blue for muted text */
+    
+    /* Border and input - Grayish/blueish for dividers */
+    --border: 207 15% 30%; /* Dark grayish-blue for borders/dividers */
+    --input: 207 25% 20%; /* Dark blue-gray for inputs */
+    --ring: 207 93% 58%; /* Primary light for focus rings */
+    
+    /* Footer background - Dark color */
+    --footer-background: 207 20% 12%; /* Dark blue-gray for footer */
+    
+    /* Status colors */
+    --destructive: 0 70% 65%; /* Lighter desaturated red for errors */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive */
+  }
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-light: hsl(var(--primary-light));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-muted: hsl(var(--accent-muted));
+  --color-muted: hsl(var(--muted));
+  --color-footer-background: hsl(var(--footer-background));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius: var(--radius);
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-weight: 500; /* Slightly bolder for more confidence */
+  letter-spacing: -0.01em; /* Tighter letter spacing for sharpness */
+}
+
+/* Sharp, confident typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Section base class - Full viewport height with responsive overflow */
+.section {
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
