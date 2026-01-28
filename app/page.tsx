@@ -3,16 +3,32 @@ import { Features } from "@/components/sections/features/features";
 import { ProductGrid } from "@/components/sections/product-grid/product-grid";
 import { Testimonials } from "@/components/sections/testimonials/testimonials";
 import { CTA } from "@/components/sections/cta/cta";
+import { Metadata } from "next";
+import { generateMetadataFromConfig, generateStructuredData } from "@/lib/seo-metadata";
+
+export const metadata: Metadata = generateMetadataFromConfig('/');
+
 
 export default function Home() {
+
+  const structuredData = generateStructuredData('/');
+
+
   return (
-    <main>
+    <>
+    {structuredData.map((script) => (
+        <script
+          key={script.id}
+          type={script.type}
+          dangerouslySetInnerHTML={{ __html: script.children }}
+          />
+      ))}
       <Hero
-        title="Soluciones Profesionales en Gas y Energía"
+        title="Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales."
         subtitle="Confianza y Calidad"
-        description="Comprometidos con la excelencia en el suministro de gas y energía para hogares y empresas. Seguridad, confiabilidad y servicio de primera clase."
+        description="Más de 53 años desarrollando soluciones técnicas con marcas líderes como Emerson, Corken, Cavagna y Liquid Controls, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha."
         primaryAction={{
-          label: "Contactar",
+          label: "Solicitar visita técnica especializada",
           href: "/contacto",
         }}
         secondaryAction={{
@@ -24,6 +40,7 @@ export default function Home() {
       <ProductGrid />
       <Testimonials />
       <CTA />
-    </main>
+    </>
+
   );
 }

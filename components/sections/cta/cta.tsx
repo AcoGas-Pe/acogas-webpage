@@ -54,20 +54,20 @@ export function CTA({
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             {primaryAction && (
               <Button 
-                asChild 
+                href={primaryAction.href}
                 size="lg"
                 variant={variant === "primary" || variant === "accent" ? "secondary" : "default"}
               >
-                <a href={primaryAction.href}>{primaryAction.label}</a>
+                {primaryAction.label}
               </Button>
             )}
             {secondaryAction && (
               <Button 
-                asChild 
+                href={secondaryAction.href}
                 variant={variant === "primary" || variant === "accent" ? "outline" : "outline"}
                 size="lg"
               >
-                <a href={secondaryAction.href}>{secondaryAction.label}</a>
+                {secondaryAction.label}
               </Button>
             )}
           </div>

@@ -15,7 +15,7 @@ sections/
   cta/
     cta.tsx              # Call-to-action section
   product-grid/
-    product-grid.tsx     # Grid de productos/servicios
+    product-grid.tsx     # Grid de productos
 ```
 
 ## Clase CSS Global

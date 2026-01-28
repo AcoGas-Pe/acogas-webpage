@@ -53,13 +53,13 @@ export function Hero({
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             {primaryAction && (
-              <Button asChild size="lg">
-                <a href={primaryAction.href}>{primaryAction.label}</a>
+              <Button href={primaryAction.href} size="lg">
+                {primaryAction.label}
               </Button>
             )}
             {secondaryAction && (
-              <Button asChild variant="outline" size="lg">
-                <a href={secondaryAction.href}>{secondaryAction.label}</a>
+              <Button href={secondaryAction.href} variant="outline" size="lg">
+                {secondaryAction.label}
               </Button>
             )}
           </div>

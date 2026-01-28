@@ -37,15 +37,15 @@ const defaultProducts: Product[] = [
     features: ["Calidad certificada", "Instalación profesional", "Garantía incluida"],
   },
   {
-    title: "Servicios",
-    description: "Servicios de mantenimiento, instalación y consultoría especializada.",
-    href: "/productos/servicios",
+    title: "Productos",
+    description: "Productos para la Industria, Gas y Energía.",
+    href: "/productos/",
     features: ["Mantenimiento preventivo", "Emergencias 24/7", "Asesoría técnica"],
   },
 ];
 
 export function ProductGrid({
-  title = "Nuestros Productos y Servicios",
+  title = "Nuestros Productos",
   subtitle = "Soluciones",
   products = defaultProducts,
   className,
