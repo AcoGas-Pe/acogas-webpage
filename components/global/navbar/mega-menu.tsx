@@ -17,7 +17,7 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
     return (
       <div className={cn("space-y-4", hideTitle && "pt-8")}>
         {!hideTitle && (
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider border-b border-border">
+          <p className="text-xs font-semibold text-primary uppercase tracking-wider pb-2 border-b border-border">
             {column.title}
           </p>
         )}
