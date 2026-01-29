@@ -168,6 +168,13 @@ export const NAV_MENUS = {
   } satisfies NavMenuConfig,
 
   contacto: {
+    image: {
+      src: "/assets/config/placeholder-image.png",
+      alt: "Contacto",
+      title: "Contacto",
+      description: "Contacta con nosotros para obtener más información",
+      href: "/contacto/",
+    },
     columns: [
       {
         title: "Contacto",

@@ -15,13 +15,13 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
 
   if (hasCategories) {
     return (
-      <div className={cn("space-y-4", hideTitle && "pt-8")}>
+      <div className={cn("space-y-4 min-w-0", hideTitle && "pt-8")}>
         {!hideTitle && (
           <p className="text-xs font-semibold text-primary uppercase tracking-wider pb-2 border-b border-border">
             {column.title}
           </p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 h-full min-w-0">
           {column.categories!.map((cat, i) => (
             <CategoryBlock key={i} category={cat} />
           ))}
@@ -72,17 +72,20 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
 
 function CategoryBlock({ category }: { category: NavMenuCategory }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 min-w-0">
       <Link
         href={category.href}
-        className="text-sm font-semibold text-foreground hover:text-primary hover:bg-primary/10 rounded-md px-1 block"
+        className="text-sm font-semibold text-foreground hover:text-primary hover:bg-primary/10 rounded-md px-1 block break-words"
       >
         {category.label}
       </Link>
       <div className="space-y-1.5 pl-0 flex flex-col gap-0.1">
         {category.sections.map((sec, i) => (
-          
-          <Link href={`${category.href}/${sec.title.toLowerCase().replace(/ /g, '-')}`} key={i} className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary hover:bg-primary/10 rounded-md p-0.5 px-1">
+          <Link
+            href={`${category.href}/${sec.title.toLowerCase().replace(/ /g, "-")}`}
+            key={i}
+            className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
+          >
             {sec.title}
           </Link>
         ))}
@@ -103,17 +106,17 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
 
   const isLargeMenu = stacked ? true : columnCount >= 3 || (hasImage && columnCount >= 2);
   const menuWidth = stacked
-    ? "w-[min(720px,calc(100vw-2rem))]"
+    ? "w-[min(720px,calc(100vw-1.5rem))] max-w-[calc(100vw-1.5rem)]"
     : isLargeMenu
-      ? "w-[min(700px,calc(100vw-2rem))]"
+      ? "w-[min(700px,calc(100vw-1.5rem))] max-w-[calc(100vw-1.5rem)]"
       : hasImage
-        ? "w-[min(520px,calc(100vw-2rem))]"
-        : "w-[min(320px,calc(100vw-2rem))]";
+        ? "w-[min(520px,calc(100vw-1.5rem))] max-w-[calc(100vw-1.5rem)]"
+        : "w-[min(320px,calc(100vw-1.5rem))] max-w-[calc(100vw-1.5rem)]";
 
   return (
     <div
       className={cn(
-        "absolute top-full left-0 bg-navbar-background border border-border rounded-lg shadow-xl",
+        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-navbar-background border border-border rounded-lg shadow-xl",
         "transition-all duration-200 ease-out",
         isOpen
           ? "opacity-100 visible translate-y-0"
@@ -121,25 +124,27 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
         menuWidth
       )}
     >
-      <div className="p-5 max-h-[70vh] overflow-y-auto">
+      <div className="p-4 md:p-5 max-h-[min(70vh,calc(100svh-5rem))] overflow-y-auto overscroll-contain">
         {stacked ? (
           /* Option B: no image, stacked Marcas+Industrias | single col Tipo productos */
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.5fr] gap-6">
-            <div className="space-y-1">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-6 min-w-0">
+            <div className="space-y-1 min-w-0">
               {leftColumns.map((col, i) => (
                 <ColumnBlock key={i} column={col} />
               ))}
             </div>
             {productsColumn && (
-              <ColumnBlock column={productsColumn} />
+              <div className="min-w-0">
+                <ColumnBlock column={productsColumn} />
+              </div>
             )}
           </div>
         ) : (
-          <div className={cn("grid gap-6", hasImage ? "grid-cols-1 sm:grid-cols-[200px_1fr]" : "grid-cols-1")}>
+          <div className={cn("grid gap-4 md:gap-6", hasImage ? "grid-cols-1 md:grid-cols-[200px_1fr]" : "grid-cols-1")}>
             {config.image && (
               <Link
                 href={config.image.href}
-                className="group relative bg-muted overflow-hidden rounded-lg aspect-[3/4] hidden sm:flex flex-col justify-end"
+                className="group relative bg-muted overflow-hidden rounded-lg  hidden md:flex flex-col justify-end"
               >
                 <Image
                   src={config.image.src}
@@ -158,10 +163,10 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
             )}
             <div
               className={cn(
-                "grid gap-6",
+                "grid gap-4 md:gap-6 min-w-0",
                 columnCount === 1 && "grid-cols-1",
-                columnCount === 2 && "grid-cols-1 sm:grid-cols-2",
-                columnCount >= 3 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                columnCount === 2 && "grid-cols-1 md:grid-cols-2",
+                columnCount >= 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
               )}
             >
               {config.columns.map((col, i) => (
@@ -172,7 +177,7 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
         )}
 
         {config.mainLink && (
-          <div className="mt-4 pt-3 border-t border-border">
+          <div className="mt-4 pt-3 border-t border-border shrink-0">
             <Link
               href={config.mainLink.href}
               className="inline-flex items-center text-sm text-primary font-semibold"
