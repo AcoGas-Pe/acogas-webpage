@@ -35,7 +35,8 @@
   --ring: 207 100% 41%; /* Primary blue for focus rings */
   
   /* Footer background */
-  --footer-background: 207 30% 96%; /* Same as muted for light mode */
+  --footer-background: 207 1% 90%; /* Same as muted for light mode */
+  --navbar-background: 207 30% 96%; /* Same as muted for light mode */
   
   /* Status colors - Desaturated red for errors */
   --destructive: 0 70% 55%; /* Desaturated red for error states */
@@ -82,8 +83,8 @@
     --ring: 207 93% 58%; /* Primary light for focus rings */
     
     /* Footer background - Dark color */
-    --footer-background: 207 20% 12%; /* Dark blue-gray for footer */
-    
+    --footer-background: 207 50% 15%; /* Dark blue-gray for footer */
+    --navbar-background: 207 1% 15%; /* Dark blue-gray for navbar */
     /* Status colors */
     --destructive: 0 70% 65%; /* Lighter desaturated red for errors */
     --destructive-foreground: 0 0% 100%; /* White text on destructive */
@@ -103,6 +104,7 @@
   --color-accent-muted: hsl(var(--accent-muted));
   --color-muted: hsl(var(--muted));
   --color-footer-background: hsl(var(--footer-background));
+  --color-navbar-background: hsl(var(--navbar-background));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));

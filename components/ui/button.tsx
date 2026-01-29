@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
@@ -19,6 +20,10 @@ const buttonVariants = cva(
           "hover:bg-muted hover:text-foreground hover:shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)]",
         link: 
           "text-primary underline-offset-4 hover:text-[hsl(var(--primary-light))] hover:underline normal-case tracking-normal",
+        nav:
+          "text-foreground font-medium normal-case tracking-normal hover:text-primary transition-colors bg-transparent",
+        navTrigger:
+          "text-foreground font-medium normal-case tracking-normal hover:text-primary transition-colors bg-transparent gap-1",
       },
       size: {
         default: "h-10 px-6 py-2",
@@ -38,17 +43,32 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  href?: string
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, href, children, ...props }, ref) => {
+    const classes = cn(buttonVariants({ variant, size, className }));
+    
+    // If href is provided, render as Link
+    if (href) {
+      return (
+        <Link href={href} className={classes}>
+          {children}
+        </Link>
+      );
+    }
+    
+    // Otherwise render as button
     return (
       <button
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={classes}
         ref={ref}
         {...props}
-      />
-    )
+      >
+        {children}
+      </button>
+    );
   }
 )
 Button.displayName = "Button"

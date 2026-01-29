@@ -30,7 +30,7 @@ export function Hero({
   return (
     <section className={cn("section flex items-center justify-center bg-background", className)}>
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <div className="max-w-7xl mx-auto text-center space-y-6">
           {/* Subtitle */}
           {subtitle && (
             <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">
@@ -39,7 +39,7 @@ export function Hero({
           )}
           
           {/* Main Title */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
             {title}
           </h1>
           
