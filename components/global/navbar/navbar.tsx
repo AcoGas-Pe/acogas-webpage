@@ -4,18 +4,21 @@ import { useEffect, useMemo, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingCart, MessageCircle, UserPlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NavTrigger } from "./nav-trigger";
 import { NavItem } from "./nav-item";
 import { MegaMenu } from "./mega-menu";
 import { NAV_ITEMS, NAV_MENUS, type NavItem as NavItemType, type NavMenuConfig } from "./nav-config";
 
+const SCROLL_THRESHOLD = 10;
+
 export function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileVisible, setMobileVisible] = useState(false);
   const [mobileSections, setMobileSections] = useState<Record<string, boolean>>({});
+  const [isAtTop, setIsAtTop] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback((menuKey: string) => {
@@ -48,6 +51,15 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY < SCROLL_THRESHOLD);
+    };
+    handleScroll(); // initial check (SSR)
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     if (!mobileOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -73,7 +85,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className="bg-navbar-background w-full fixed top-0 left-0 right-0 z-50 border-b border-border">
+    <div
+      className={cn(
+        "w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+        isAtTop ? "bg-transparent border-transparent" : "bg-navbar-background border-b border-border"
+      )}
+    >
       <div className="px-4 py-3 w-full flex items-center justify-center">
         <nav className="flex flex-row items-center justify-between w-full max-w-7xl">
           {/* Logo */}
@@ -122,10 +139,17 @@ export function Navbar() {
           </ul>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button href="/contacto/" size="sm">
-              Cotizar
-            </Button>
+          <div className="hidden md:flex flex-row gap-2">
+          <Button variant="ghost" href="/contacto/" className="w-full capitalize px-2 gap-2">
+          <MessageCircle className="w-4 h-4" />
+                Contactanos
+              </Button>
+              <Button variant="ghost" href="/registro/" className="w-full capitalize px-2 gap-2">
+                Unete
+              </Button>
+              <Button variant="secondary" href="/carrito/" className="w-full !p-2">
+                <ShoppingCart className="w-6 h-6" />
+              </Button>
           </div>
 
           {/* Mobile trigger */}
@@ -215,7 +239,7 @@ export function Navbar() {
                           <Link
                             href={item.href}
                             onClick={closeMobile}
-                            className="block px-3 py-2 rounded-md bg-muted/60 hover:bg-muted text-sm font-semibold text-primary"
+                            className="block px-3 py-2 rounded-md bg-muted/60 hover:bg-muted text-sm font-semibold text-primary-light"
                           >
                             {item.label}
                           </Link>
@@ -243,7 +267,7 @@ export function Navbar() {
                           {/* Columns */}
                           {menu.columns.map((col, idx) => (
                             <div key={idx}>
-                              <div className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
+                              <div className="text-xs font-semibold uppercase tracking-wider text-primary-light mb-2">
                                 {col.title}
                               </div>
                               <div className="space-y-4">
@@ -253,7 +277,7 @@ export function Navbar() {
                                       <Link
                                         href={cat.href}
                                         onClick={closeMobile}
-                                        className="block text-sm font-semibold text-primary hover:underline"
+                                        className="block text-sm font-semibold text-primary-light hover:underline"
                                       >
                                         {cat.label}
                                       </Link>
@@ -288,7 +312,7 @@ export function Navbar() {
                             <Link
                               href={menu.mainLink.href}
                               onClick={closeMobile}
-                              className="inline-flex items-center text-sm text-primary font-semibold hover:underline"
+                              className="inline-flex items-center text-sm text-primary-light font-semibold hover:underline"
                             >
                               {menu.mainLink.label}
                             </Link>
@@ -301,9 +325,18 @@ export function Navbar() {
               })}
             </div>
 
-            <div className="p-4 border-t border-border">
-              <Button href="/contacto/" className="w-full">
-                Cotizar
+            <div className="p-4 border-t border-border flex flex-col gap-2">
+            <Button variant="secondary" href="/contacto/" className="w-full capitalize px-2 gap-2">
+          <MessageCircle className="w-4 h-4" />
+                Contactanos
+              </Button>
+              <Button variant="secondary" href="/registro/" className="w-full capitalize px-2 gap-2">
+              <UserPlus className="w-4 h-4" />
+                Unete
+              </Button>
+              <Button variant="secondary" href="/carrito/" className="w-full !p-2 gap-2 capitalize">
+                <ShoppingCart className="w-6 h-6" />
+                Carrito
               </Button>
             </div>
           </div>

@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/global/navbar/navbar";
 import { Footer } from "@/components/global/footer/footer";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const heroFont = localFont({
+  src: [
+    { path: "../public/fonts/aBlackLives.ttf", weight: "400", style: "normal" },
+    { path: "../public/fonts/aBlackLives.otf", weight: "400", style: "italic" },
+  ],
+  display: "swap",
+  variable: "--font-hero",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${heroFont.variable} antialiased`}
       >
         <Navbar />
         {children}

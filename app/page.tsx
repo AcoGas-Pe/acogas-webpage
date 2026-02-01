@@ -28,7 +28,7 @@ export default function Home() {
         subtitle="Confianza y Calidad"
         description="Más de 53 años desarrollando soluciones técnicas con marcas líderes como Emerson, Corken, Cavagna y Liquid Controls, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha."
         primaryAction={{
-          label: "Solicitar visita técnica especializada",
+          label: "Solicitar visita técnica",
           href: "/contacto",
         }}
         secondaryAction={{

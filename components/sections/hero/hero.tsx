@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { Slideshow } from "./slideshow";
 
 interface HeroProps {
   title?: string;
@@ -14,6 +16,7 @@ interface HeroProps {
     href: string;
   };
   className?: string;
+  image?: string;
 }
 
 export function Hero({
@@ -26,32 +29,41 @@ export function Hero({
   },
   secondaryAction,
   className,
+  image = "/assets/images/refinery.webp",
 }: HeroProps) {
   return (
     <section className={cn("section flex items-center justify-center bg-background", className)}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto text-center space-y-6">
+      {/* Background image + overlay */}
+      {image && (
+        <div className="absolute inset-0 w-full h-full">
+          <Slideshow />
+          {/* overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/70 to-black/20" aria-hidden />
+        </div>
+      )}
+      <div className="container mx-auto px-4 py-16 z-10">
+        <div className="max-w-7xl mx-auto text-left">
           {/* Subtitle */}
           {subtitle && (
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">
+            <p className="text-sm font-semibold uppercase tracking-[1rem] text-primary mb-4">
               {subtitle}
             </p>
           )}
           
-          {/* Main Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+          {/* Main Title - Black Lives display font */}
+          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-semibold text-foreground !tracking-wide [font-family:var(--font-hero)]">
             {title}
           </h1>
           
           {/* Description */}
           {description && (
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
               {description}
             </p>
           )}
           
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-left items-center pt-8">
             {primaryAction && (
               <Button href={primaryAction.href} size="lg">
                 {primaryAction.label}

@@ -16,8 +16,8 @@ export function NavTrigger({ label, isActive, onMouseEnter }: NavTriggerProps) {
       onMouseEnter={onMouseEnter}
       className={cn(
         "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors",
-        "hover:text-primary focus:outline-none",
-        isActive ? "text-primary" : "text-foreground"
+        "hover:text-primary-light focus:outline-none",
+        isActive ? "text-primary-light" : "text-foreground"
       )}
     >
       {label}

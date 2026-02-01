@@ -17,7 +17,7 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
     return (
       <div className={cn("space-y-4 min-w-0", hideTitle && "pt-8")}>
         {!hideTitle && (
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider pb-2 border-b border-border">
+          <p className="text-xs font-semibold text-primary-light uppercase tracking-wider pb-2 border-b border-border">
             {column.title}
           </p>
         )}
@@ -35,7 +35,7 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
     <div className={cn("space-y-1", hideTitle && "pt-1")}>
       {!hideTitle && (
         <Link href={column.href ?? ""} className="flex pb-2 border-b border-border">
-          <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+          <span className="text-xs font-semibold text-primary-light uppercase tracking-wider">
           {column.title}
           </span>
         </Link>
@@ -75,7 +75,7 @@ function CategoryBlock({ category }: { category: NavMenuCategory }) {
     <div className="space-y-1 min-w-0">
       <Link
         href={category.href}
-        className="text-sm font-semibold text-foreground hover:text-primary hover:bg-primary/10 rounded-md px-1 block break-words"
+        className="text-sm font-semibold text-foreground hover:text-primary-light hover:bg-primary/10 rounded-md px-1 block break-words"
       >
         {category.label}
       </Link>
@@ -84,7 +84,7 @@ function CategoryBlock({ category }: { category: NavMenuCategory }) {
           <Link
             href={`${category.href}/${sec.title.toLowerCase().replace(/ /g, "-")}`}
             key={i}
-            className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
+            className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary-light hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
           >
             {sec.title}
           </Link>
@@ -180,7 +180,7 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
           <div className="mt-4 pt-3 border-t border-border shrink-0">
             <Link
               href={config.mainLink.href}
-              className="inline-flex items-center text-sm text-primary font-semibold"
+              className="inline-flex items-center text-sm text-primary-light font-semibold"
             >
               {config.mainLink.label}
               <svg className="ml-1.5 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
