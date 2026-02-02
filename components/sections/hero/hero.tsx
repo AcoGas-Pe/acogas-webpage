@@ -32,7 +32,7 @@ export function Hero({
   image = "/assets/images/refinery.webp",
 }: HeroProps) {
   return (
-    <section className={cn("section flex items-center justify-center bg-background", className)}>
+    <section className={cn("h-screen flex items-center justify-center bg-background", className)}>
       {/* Background image + overlay */}
       {image && (
         <div className="absolute inset-0 w-full h-full">
@@ -41,8 +41,8 @@ export function Hero({
           <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/70 to-black/20" aria-hidden />
         </div>
       )}
-      <div className="container mx-auto px-4 py-16 z-10">
-        <div className="max-w-7xl mx-auto text-left">
+      <div className="container max-w-7xl mx-auto flex items-start justify-start mx-auto px-4 py-16 z-10">
+        <div className=" text-left">
           {/* Subtitle */}
           {subtitle && (
             <p className="text-sm font-semibold uppercase tracking-[1rem] text-primary mb-4">

@@ -142,7 +142,7 @@ export const NAV_MENUS = {
       alt: "Quienes Somos",
       title: "Quiénes Somos",
       description: "Más de 53 años desarrollando soluciones técnicas con marcas líderes",
-      href: "/nosotros#quienes-somos/",
+      href: "/nosotros#quienes-somos",
     },
     columns: [
       {
@@ -150,8 +150,8 @@ export const NAV_MENUS = {
         href: "/nosotros/",
         items: [
           { label: "Nosotros", href: "/nosotros/", description: "Conócenos en detalle" },
-          { label: "Trayectoria", href: "/nosotros#trayectoria/", description: "Nuestro recorrido a lo largo de los años" },
-          { label: "Propuesta de Valor", href: "/nosotros#propuesta-de-valor/", description: "Nuestras fortalezas y beneficios" },
+          { label: "Trayectoria", href: "/nosotros#trayectoria", description: "Nuestro recorrido a lo largo de los años" },
+          { label: "Propuesta de Valor", href: "/nosotros#propuesta-valor", description: "Nuestras fortalezas y beneficios" },
         ],
       },
       {

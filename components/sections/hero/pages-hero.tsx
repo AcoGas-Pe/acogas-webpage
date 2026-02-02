@@ -53,7 +53,7 @@ export function PagesHero({
             priority
           />
           {/* overlay */}
-          <div className="absolute inset-0 bg-black/50" aria-hidden />
+          <div className="absolute inset-0 bg-black/70" aria-hidden />
         </div>
       )}
       <div className="container mx-auto px-4 py-16 z-10">
@@ -62,7 +62,7 @@ export function PagesHero({
 
           
           {/* Main Title - Black Lives display font */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-light [font-family:var(--font-hero)] [word-spacing:0.35em] ![letter-spacing:0.1em]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold [font-family:var(--font-hero)] [word-spacing:0.35em] ![letter-spacing:0.1em]">
             {title}
           </h1>
 {/* Subtitle */}
@@ -74,7 +74,7 @@ export function PagesHero({
 {/* Breadcrumbs */}
           {breadcrumbs && (
             <div
-              className="flex flex-wrap justify-center items-center gap-2 text-sm text-foreground mb-4"
+              className="flex flex-wrap justify-center items-center gap-2 mb-4"
               aria-label="Breadcrumb"
             >
               <ol className="inline-flex items-center space-x-1">
@@ -82,7 +82,11 @@ export function PagesHero({
                   <li key={breadcrumb.href} className="inline-flex items-center">
                     <Link
                       href={breadcrumb.href}
-                      className={`hover:underline ${i === breadcrumbs.length - 1 ? "font-light text-foreground-primary" : ""}`}
+                      className={
+                        i === breadcrumbs.length - 1
+                          ? "font-light text-primary-light opacity-80 hover:opacity-100 transition-all duration-200"
+                          : " text-muted-foreground opacity-90 hover:text-primary-light hover:opacity-100 transition-all duration-200"
+                      }
                       aria-current={i === breadcrumbs.length - 1 ? "page" : undefined}
                     >
                       {breadcrumb.label}

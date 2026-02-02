@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${heroFont.variable} antialiased`}
+        className={`${montserrat.variable} ${heroFont.variable} antialiased flex flex-col`}
       >
         <Navbar />
         {children}

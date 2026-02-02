@@ -26,7 +26,7 @@ export default function Home() {
       <Hero
         title="Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales."
         subtitle="Confianza y Calidad"
-        description="Más de 53 años desarrollando soluciones técnicas con marcas líderes como Emerson, Corken, Cavagna y Liquid Controls, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha."
+        description="Más de 53 años desarrollando soluciones técnicas seguras, eficientes y normativamente confiables para la industria peruana, integrando tecnología de clase mundial con acompañamiento real en campo."
         primaryAction={{
           label: "Solicitar visita técnica",
           href: "/contacto",

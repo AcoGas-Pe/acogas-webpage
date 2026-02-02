@@ -4,8 +4,10 @@
 /* Ready for brand color updates */
 :root {
   /* Base colors - Dark theme */
-  --background: 212 15% 8%; /* Dark blue-gray, blends with primary */
+  --background: 212 85% 15%; /* Dark blue-gray, blends with primary */
   --foreground: 212 20% 90%; /* Light text for readability */
+  --light-foreground: 212 10% 10%; /* Dark text for readability */
+  --background-light: 212 0% 90%; /* Light blue-gray, blends with primary */
   
   /* Primary brand colors - Blue (#329EF8 lighter for dark bg) */
   --primary: 212 100% 32%; /* #329EF8 - Lighter blue, visible on dark */
@@ -24,6 +26,7 @@
   /* Muted colors - Subtle variations */
   --muted: 212 30% 53%; /* Very light muted blue */
   --muted-foreground: 212 10% 73%; /* Medium gray-blue for muted text */
+  --muted-light: 212 15% 85%; /* Very light muted blue */
   
   /* Border and input */
   --border: 212 15% 30%; /* Dark grayish-blue for borders/dividers */
@@ -61,6 +64,8 @@
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-accent-muted: hsl(var(--accent-muted));
   --color-muted: hsl(var(--muted));
+  --color-muted-light: hsl(var(--muted-light));
+  --color-light-foreground: hsl(var(--light-foreground));
   --color-footer-background: hsl(var(--footer-background));
   --color-navbar-background: hsl(var(--navbar-background));
   --color-muted-foreground: hsl(var(--muted-foreground));
@@ -71,6 +76,12 @@
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
   --radius: var(--radius);
+  --color-background-light: hsl(var(--background-light));
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
@@ -90,7 +101,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Section base class - Full viewport height with responsive overflow */
 .section {
-  min-height: 100vh;
+  height: 80dvh;
   overflow-x: hidden;
   width: 100%;
+}
+
+.height-screen {
+  height: 100dvh;
+}
+
+.container {
+  padding: 2rem;
 }

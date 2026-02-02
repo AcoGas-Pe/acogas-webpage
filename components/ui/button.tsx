@@ -13,7 +13,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:bg-destructive/90 hover:shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),0_4px_6px_-4px_rgb(0_0_0_/_0.1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)]",
         outline:
-          "border-2 border-accent bg-background shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)] hover:bg-accent hover:text-accent-foreground hover:shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)]",
+          "border-2 border-accent bg-transparent shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)] hover:bg-accent hover:text-accent-foreground hover:shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)]",
         secondary:
           "bg-secondary text-secondary-foreground shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)] hover:bg-secondary/80 hover:shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_1px_2px_0_rgb(0_0_0_/_0.05)]",
         ghost: 
