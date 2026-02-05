@@ -28,7 +28,7 @@ export function CTA({
   className,
 }: CTAProps) {
   const variantStyles = {
-    default: "bg-muted",
+    default: "bg-background",
     primary: "bg-primary text-primary-foreground",
     accent: "bg-accent text-accent-foreground",
   };
@@ -38,7 +38,7 @@ export function CTA({
     : "text-foreground";
 
   return (
-    <section className={cn("section flex items-center justify-center", variantStyles[variant], className)}>
+    <section className={cn("section !min-h-[60dvh] !h-[60dvh] flex items-center justify-center", variantStyles[variant], className)}>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h2 className={cn("text-4xl md:text-5xl font-bold", textColor)}>

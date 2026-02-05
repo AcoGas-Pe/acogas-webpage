@@ -2,6 +2,7 @@ import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { QuienesSomos } from "@/components/sections/nosotros/quienes-somos";
 import { PropuestaValor } from "@/components/sections/nosotros/propuesta-valor";
 import { Trayectoria } from "@/components/sections/nosotros/trayectoria";
+import { CTA } from "@/components/sections/cta/cta";
 
 export default function NosotrosPage() {
   return (
@@ -15,6 +16,11 @@ export default function NosotrosPage() {
       <QuienesSomos />
       <PropuestaValor />
       <Trayectoria />
+      <CTA
+        title="¿Listo para comenzar?"
+        description="Contáctanos hoy y descubre cómo podemos ayudarte con tus necesidades de gas y energía."
+        primaryAction={{ label: "Contactar", href: "/contacto" }}
+      />
     </>
   )
 }

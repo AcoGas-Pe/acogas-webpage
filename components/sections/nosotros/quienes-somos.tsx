@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function QuienesSomos() {
   return (
-    <section id="quienes-somos" className="section mx-auto bg-background-light text-light-foreground text-center">
+    <section id="quienes-somos" className="section !h-[95dvh] mx-auto bg-background-light text-light-foreground text-center">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-4">
@@ -11,9 +11,9 @@ export function QuienesSomos() {
           <div className="flex flex-row items-start text-left justify-start p-4 gap-4 ">
             <div className="flex flex-col items-start justify-start gap-3 w-1/2">
             <p className="text-lg text-light-foreground opacity-60">
-              Con más de <span className="font-bold">53 años</span> de experiencia, en 
-              <a href="/" className="text-primary hover:text-primary-light transition-colors font-bold"> ACOGAS INDUSTRIAL S.A.C. </a>
-              nos hemos consolidado como un socio estratégico en el sector energético e industrial.
+              Con más de <span className="font-bold">53 años</span> de experiencia en  
+              <a href="/" className="text-primary hover:text-primary-light transition-colors font-bold"> ACOGAS INDUSTRIAL S.A.C.</a>, 
+              nos hemos dedicado a impulsar el desarrollo de la industria peruana. Nuestra misión es ser aliados estratégicos de nuestros clientes para que operen de manera más eficiente y segura, brindando experiencia, criterio técnico y un compromiso genuino en cada proyecto.
             </p>
             <p className="text-lg text-light-foreground opacity-60">
             Comercializamos y representamos marcas líderes a nivel mundial como Emerson (Fisher, Tartarini, Spence, Cash, Corken, Liquid Controls y Cavagna), garantizando seguridad, eficiencia operativa, precisión, cumplimiento normativo y confiabilidad en cada proyecto, desde la selección del equipo hasta su correcta aplicación en campo.
