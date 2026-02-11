@@ -45,54 +45,52 @@ export function Testimonials({
   className,
 }: TestimonialsProps) {
   return (
-    <section className={cn("section flex items-center justify-center bg-background", className)}>
+    <section className={cn("section min-h-[80dvh] mx-auto bg-background", className)}>
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16 space-y-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
             {subtitle && (
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-                {subtitle}
-              </p>
+              <p className="text-muted-foreground/80 text-sm mb-2">{subtitle}</p>
             )}
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              {title}
-            </h2>
+            <h2 className="text-4xl font-bold text-foreground">{title}</h2>
           </div>
 
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-muted p-8 shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),0_4px_6px_-4px_rgb(0_0_0_/_0.1)] transition-all duration-200 hover:-translate-y-1"
-              >
-                {/* Rating */}
-                {testimonial.rating && (
-                  <div className="mb-4 text-accent text-lg">
-                    {"★".repeat(testimonial.rating)}
-                  </div>
-                )}
-                
-                {/* Content */}
-                <p className="text-foreground mb-6 leading-relaxed italic">
-                  "{testimonial.content}"
-                </p>
-                
-                {/* Author */}
-                <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">
-                    {testimonial.name}
-                  </p>
-                  {testimonial.role && (
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.role}
-                      {testimonial.company && `, ${testimonial.company}`}
-                    </p>
+          {/* Bento-style testimonials: first large, next two side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
+            {testimonials.map((t, index) => {
+              const isFeatured = index === 0;
+              return (
+                <div
+                  key={index}
+                  className={cn(
+                    "flex flex-col p-6 rounded-md bg-card-background/50 border border-border hover:border-primary/30 transition-all duration-300",
+                    isFeatured && "md:row-span-2 md:flex md:justify-center md:py-8"
                   )}
+                >
+                  {t.rating != null && (
+                    <div className="mb-4 text-primary text-lg">
+                      {"★".repeat(t.rating)}
+                    </div>
+                  )}
+                  <p
+                    className={cn(
+                      "text-foreground leading-relaxed italic flex-1",
+                      isFeatured ? "text-lg" : "text-base"
+                    )}
+                  >
+                    "{t.content}"
+                  </p>
+                  <div className="border-t border-border pt-4 mt-4">
+                    <p className="font-bold text-primary">{t.name}</p>
+                    {(t.role || t.company) && (
+                      <p className="text-sm text-muted-foreground">
+                        {[t.role, t.company].filter(Boolean).join(", ")}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

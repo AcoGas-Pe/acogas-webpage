@@ -1,13 +1,17 @@
-  import {
-    ShieldCheck,
-    Lightbulb,
-    Scale,
-    Sparkles,
-    Award,
-    Users,
-  } from "lucide-react";
-  
-  export function PropuestaValor() {
+"use client";
+
+import {
+  ShieldCheck,
+  Lightbulb,
+  Scale,
+  Sparkles,
+  Award,
+  Users,
+} from "lucide-react";
+import { InfiniteCarousel, InfiniteCarouselItem } from "@/components/ui/infinite-carousel";
+import Image from "next/image";
+
+export function PropuestaValor() {
 
   const values = [
     {
@@ -88,21 +92,28 @@
                     );
                   })}
                 </div>
-                <div className="flex flex-row items-start justify-start p-4 gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground">Nuestros socios</h3>
-                    <div className="flex flex-row items-start justify-start p-4 gap-4">
-                      {partners.map((partner) => {
-                        return (
-                          <div key={partner.name} className="flex flex-col items-center justify-between p-4 gap-4">
-                            <img src={partner.image} alt={partner.name} className="w-20 h-20" />
-                            <h4 className="text-lg font-bold text-primary">{partner.name}</h4>
-                            <p className="text-foreground/80 font-semibold">{partner.description}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+                <div className="w-full">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">Nuestros socios</h3>
+                  <InfiniteCarousel speed={35} gap="gap-8" className="py-4">
+                    {partners.map((partner) => (
+                      <InfiniteCarouselItem
+                        key={partner.name}
+                        className="min-w-[280px] max-w-[320px] flex flex-col items-center justify-between p-4 gap-4 rounded-md bg-card-background/50 border border-border"
+                      >
+                        <Image
+                          src={partner.image}
+                          alt={partner.name}
+                          width={100}
+                          height={100}
+                          className="w-20 h-20 object-contain"
+                        />
+                        <h4 className="text-lg font-bold text-primary">{partner.name}</h4>
+                        <p className="text-foreground/80 font-semibold text-sm text-center">
+                          {partner.description}
+                        </p>
+                      </InfiniteCarouselItem>
+                    ))}
+                  </InfiniteCarousel>
                 </div>
             </div>
         </div>

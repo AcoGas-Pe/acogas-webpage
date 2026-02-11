@@ -20,7 +20,7 @@ interface ProductGridProps {
 const defaultProducts: Product[] = [
   {
     title: "Gas Natural",
-    description: "Suministro de gas natural para uso residencial e industrial.",
+    description: "Suministro de gas natural para uso residencial e industrial. Soluciones con tecnología de clase mundial y respaldo técnico.",
     href: "/productos/gas-natural",
     features: ["Suministro continuo", "Tarifas competitivas", "Instalación profesional"],
   },
@@ -38,11 +38,14 @@ const defaultProducts: Product[] = [
   },
   {
     title: "Productos",
-    description: "Productos para la Industria, Gas y Energía.",
+    description: "Productos para la Industria, Gas y Energía. Asesoría técnica y cumplimiento normativo.",
     href: "/productos/",
     features: ["Mantenimiento preventivo", "Emergencias 24/7", "Asesoría técnica"],
   },
 ];
+
+const cardBase =
+  "group flex flex-col bg-card-background rounded-md border border-border overflow-hidden hover:border-primary/40 hover:bg-card-background/90 transition-all duration-500";
 
 export function ProductGrid({
   title = "Nuestros Productos",
@@ -50,71 +53,116 @@ export function ProductGrid({
   products = defaultProducts,
   className,
 }: ProductGridProps) {
+  const [featured, ...rest] = products;
+
   return (
-    <section className={cn("section flex items-center justify-center bg-background", className)}>
+    <section className={cn("section min-h-[90dvh] mx-auto bg-background-light text-light-foreground", className)}>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-12">
             {subtitle && (
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-                {subtitle}
-              </p>
+              <p className="text-muted-foreground/80 text-sm mb-2">{subtitle}</p>
             )}
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              {title}
-            </h2>
+            <h2 className="text-4xl font-bold text-light-foreground">{title}</h2>
           </div>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product, index) => (
+          {/* Bento grid: 1 large (2x2), 3 smaller cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
+            {/* Featured product - spans 2 cols, 2 rows */}
+            <Link
+              href={featured.href}
+              className={cn(cardBase, "md:col-span-2 md:row-span-2 min-h-[260px] p-6 md:p-8")}
+            >
+              {featured.image ? (
+                <div className="mb-4 aspect-video w-full max-w-md rounded-md overflow-hidden bg-primary/10">
+                  <img
+                    src={featured.image}
+                    alt={featured.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="mb-4 aspect-video w-full max-w-md rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                  <span className="text-5xl text-primary/50">⚡</span>
+                </div>
+              )}
+              <h3 className="text-xl font-bold text-primary mb-2 group-hover:opacity-90">
+                {featured.title}
+              </h3>
+              <p className="text-foreground/80 font-semibold text-sm mb-4 flex-1">
+                {featured.description}
+              </p>
+              {featured.features && featured.features.length > 0 && (
+                <ul className="space-y-1 mb-4">
+                  {featured.features.slice(0, 3).map((f, idx) => (
+                    <li key={idx} className="text-sm text-foreground/70 flex items-center gap-2">
+                      <span className="text-accent">▸</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <Button variant="outline" size="sm" className="w-fit border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                Ver más →
+              </Button>
+            </Link>
+
+            {/* Small cards - col 3 row 1 and 2 */}
+            {rest.slice(0, 2).map((product, index) => (
               <Link
                 key={index}
                 href={product.href}
-                className="group block bg-muted p-6 shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),0_2px_4px_-2px_rgb(0_0_0_/_0.1)] hover:shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),0_4px_6px_-4px_rgb(0_0_0_/_0.1)] transition-all duration-200 hover:-translate-y-1"
+                className={cn(cardBase, "p-5 justify-between")}
               >
-                {/* Image placeholder */}
-                {product.image ? (
-                  <div className="mb-4 aspect-video bg-primary/10 flex items-center justify-center">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="mb-4 aspect-video bg-primary/10 flex items-center justify-center border-2 border-border">
-                    <span className="text-4xl text-primary/50">⚡</span>
-                  </div>
-                )}
-
-                {/* Content */}
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {product.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {product.description}
-                </p>
-
-                {/* Features */}
-                {product.features && product.features.length > 0 && (
-                  <ul className="space-y-2 mb-4">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
-                        <span className="text-accent">▸</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {/* CTA */}
-                <Button variant="ghost" size="sm" className="w-full mt-4">
+                <div>
+                  {product.image ? (
+                    <div className="mb-3 aspect-video rounded-md overflow-hidden bg-primary/10">
+                      <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="mb-3 aspect-video rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                      <span className="text-3xl text-primary/50">⚡</span>
+                    </div>
+                  )}
+                  <h3 className="text-lg font-bold text-primary mb-1 group-hover:opacity-90">
+                    {product.title}
+                  </h3>
+                  <p className="text-foreground/80 font-semibold text-xs line-clamp-2">
+                    {product.description}
+                  </p>
+                </div>
+                <Button variant="ghost" size="sm" className="w-full mt-2 text-primary hover:bg-primary/20">
                   Ver más →
                 </Button>
               </Link>
             ))}
+
+            {/* Bottom card - spans 2 cols */}
+            {rest[2] && (
+              <Link
+                href={rest[2].href}
+                className={cn(cardBase, "md:col-span-2 p-5 flex flex-col md:flex-row md:items-center gap-4")}
+              >
+                {rest[2].image ? (
+                  <div className="shrink-0 w-24 h-24 rounded-md overflow-hidden bg-primary/10">
+                    <img src={rest[2].image} alt={rest[2].title} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="shrink-0 w-24 h-24 rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                    <span className="text-2xl text-primary/50">⚡</span>
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-primary mb-1">{rest[2].title}</h3>
+                  <p className="text-foreground/80 font-semibold text-sm">
+                    {rest[2].description}
+                  </p>
+                </div>
+                <Button variant="outline" size="sm" className="shrink-0 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  Ver más →
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export function QuienesSomos() {
           <h2 className="text-4xl font-bold mb-4">
             Experiencia, Confianza y Trayectoria en Soluciones Industriales
           </h2>
-          <div className="flex flex-row items-start text-left justify-start p-4 gap-4 ">
+          <div className="flex  sm:flex-row flex-col items-start text-left justify-start p-4 gap-4 ">
             <div className="flex flex-col items-start justify-start gap-3 w-1/2">
             <p className="text-lg text-light-foreground opacity-60">
               Con más de <span className="font-bold">53 años</span> de experiencia en  

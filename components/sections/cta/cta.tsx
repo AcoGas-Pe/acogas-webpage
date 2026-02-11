@@ -27,45 +27,52 @@ export function CTA({
   variant = "default",
   className,
 }: CTAProps) {
-  const variantStyles = {
-    default: "bg-background",
-    primary: "bg-primary text-primary-foreground",
-    accent: "bg-accent text-accent-foreground",
-  };
+  const isLight = variant === "default";
+  const sectionClass = isLight
+    ? "bg-background-light text-light-foreground"
+    : variant === "primary"
+      ? "bg-primary text-primary-foreground"
+      : "bg-accent text-accent-foreground";
 
-  const textColor = variant === "primary" || variant === "accent" 
-    ? "text-white" 
-    : "text-foreground";
+  const textColor = isLight ? "text-light-foreground" : "text-white";
+  const mutedColor = isLight ? "text-light-foreground/80" : "text-white/90";
 
   return (
-    <section className={cn("section !min-h-[60dvh] !h-[60dvh] flex items-center justify-center", variantStyles[variant], className)}>
+    <section
+      className={cn(
+        "section min-h-[60dvh] flex items-center justify-center",
+        sectionClass,
+        className
+      )}
+    >
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className={cn("text-4xl md:text-5xl font-bold", textColor)}>
-            {title}
-          </h2>
-          
+          <h2 className={cn("text-4xl font-bold", textColor)}>{title}</h2>
           {description && (
-            <p className={cn("text-lg md:text-xl leading-relaxed", variant === "primary" || variant === "accent" ? "text-white/90" : "text-muted-foreground")}>
+            <p className={cn("text-lg leading-relaxed", mutedColor)}>
               {description}
             </p>
           )}
-          
+          <p className="italic font-semibold text-primary text-center text-xl">
+            “Liderar la industria con tecnología, criterio y responsabilidad.”
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             {primaryAction && (
-              <Button 
+              <Button
                 href={primaryAction.href}
                 size="lg"
-                variant={variant === "primary" || variant === "accent" ? "secondary" : "default"}
+                variant={isLight ? "default" : "secondary"}
+                className={isLight ? "bg-primary text-primary-foreground hover:bg-primary-light" : ""}
               >
                 {primaryAction.label}
               </Button>
             )}
             {secondaryAction && (
-              <Button 
+              <Button
                 href={secondaryAction.href}
-                variant={variant === "primary" || variant === "accent" ? "outline" : "outline"}
+                variant="outline"
                 size="lg"
+                className={isLight ? "border-primary text-primary hover:bg-primary/10" : "border-white text-white hover:bg-white/10"}
               >
                 {secondaryAction.label}
               </Button>

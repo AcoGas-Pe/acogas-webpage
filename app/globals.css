@@ -119,3 +119,13 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   padding: 2rem;
 }
+
+/* Infinite carousel: move by 50% so the duplicated content loops seamlessly */
+@keyframes infinite-carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
