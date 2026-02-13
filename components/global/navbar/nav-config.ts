@@ -187,6 +187,35 @@ export const NAV_MENUS = {
     ],
   } satisfies NavMenuConfig,
 
+  coberturaIndustrial: {
+        image: {
+      src: "/assets/config/placeholder-image.png",
+      alt: "Cobertura Industrial",
+      title: "Cobertura Industrial",
+      description: "Nuestra presencia en Lima, Trujillo y Arequipa",
+      href: "/cobertura-industrial/",
+    },
+    columns: [
+      {
+        title: "Lima",
+        href: "/cobertura-industrial/lima/",
+        items: [
+          { label: "Lurín", href: "/cobertura-industrial/lima/lurin", description: "Ver ubicaciones en Lurín" },
+          { label: "Callao", href: "/cobertura-industrial/lima/callao", description: "Ver ubicaciones en Callao" },
+          { label: "Santiago de Surco", href: "/cobertura-industrial/lima/santiago-de-surco", description: "Ver ubicaciones en Santiago de Surco" },
+        ],
+      },
+      {
+        title: "Otras ciudades",
+        href: "/cobertura-industrial/",
+        items: [
+          { label: "Trujillo", href: "/cobertura-industrial/trujillo/", description: "Ver ubicaciones en Trujillo" },
+          { label: "Arequipa", href: "/cobertura-industrial/arequipa/", description: "Ver ubicaciones en Arequipa" },
+        ],
+      },
+    ],
+  } satisfies NavMenuConfig,
+
   servicios: {
     mainLink: {
       label: "Ver todos los servicios",
@@ -211,6 +240,7 @@ export const NAV_MENUS = {
 // Main Navigation Items (desktop triggers)
 export const NAV_ITEMS: NavItem[] = [
   { label: "Nosotros", href: "/nosotros/", type: "trigger", menuKey: "nosotros" },
+  { label: "Cobertura Industrial", href: "/cobertura-industrial/", type: "trigger", menuKey: "coberturaIndustrial" },
   { label: "Productos", href: "/productos/", type: "trigger", menuKey: "productos" },
   { label: "Servicios", href: "/servicios/", type: "trigger", menuKey: "servicios" },
   { label: "Contacto", href: "/contacto/", type: "trigger", menuKey: "contacto" },
