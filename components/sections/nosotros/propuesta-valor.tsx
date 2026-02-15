@@ -79,13 +79,13 @@ export function PropuestaValor() {
                   {values.map((value) => {
                     const Icon = value.icon;
                     return (
-                      <div key={value.title} className="cursor-default flex justify-center flex-col bg-card-foreground relative items-center justify-start p-4 w-100 h-50 rounded-md group hover:bg-primary-light/20 transition-all duration-600">
+                      <div key={value.title} className="card-base cursor-default flex justify-center flex-col relative items-center justify-start p-4 w-100 h-50 group">
                         <span className="absolute text-primary text-4xl opacity-10 group-hover:opacity-100 transition-all duration-300">
                           <Icon size={150} strokeWidth={2.2} />
                         </span>
-                        <div className="group-hover:opacity-0 transition-all duration-600 mt-10 flex flex-col items-center justify-start">
+                        <div className="mt-10 flex flex-col items-center justify-start relative z-10">
                           <h3 className="text-lg font-bold text-primary">{value.title}</h3>
-                        <p className="text-background/80 font-semibold">{value.description}</p>
+                        <p className="text-foreground/80 font-semibold">{value.description}</p>
                         </div>
                  
                       </div>
@@ -98,7 +98,7 @@ export function PropuestaValor() {
                     {partners.map((partner) => (
                       <InfiniteCarouselItem
                         key={partner.name}
-                        className="min-w-[280px] max-w-[320px] flex flex-col items-center justify-between p-4 gap-4 rounded-md bg-card-background/50 border border-border"
+                        className="card-base min-w-[280px] max-w-[320px] flex flex-col items-center justify-between p-4 gap-4"
                       >
                         <Image
                           src={partner.image}

@@ -45,7 +45,7 @@ const defaultProducts: Product[] = [
 ];
 
 const cardBase =
-  "group flex flex-col bg-card-background rounded-md border border-border overflow-hidden hover:border-primary/40 hover:bg-card-background/90 transition-all duration-500";
+  "card-base group flex flex-col overflow-hidden";
 
 export function ProductGrid({
   title = "Nuestros Productos",
@@ -56,14 +56,14 @@ export function ProductGrid({
   const [featured, ...rest] = products;
 
   return (
-    <section className={cn("section min-h-[90dvh] mx-auto bg-background-light text-light-foreground", className)}>
+    <section className={cn("section min-h-[75dvh] mx-auto bg-background", className)}>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             {subtitle && (
               <p className="text-muted-foreground/80 text-sm mb-2">{subtitle}</p>
             )}
-            <h2 className="text-4xl font-bold text-light-foreground">{title}</h2>
+            <h2 className="text-4xl font-bold text-foreground">{title}</h2>
           </div>
 
           {/* Bento grid: 1 large (2x2), 3 smaller cards */}

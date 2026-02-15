@@ -56,7 +56,7 @@ export function Features({
   className,
 }: FeaturesProps) {
   return (
-    <section className={cn("section min-h-[90dvh] mx-auto bg-background", className)}>
+    <section className={cn("section min-h-[75dvh] mx-auto bg-background", className)}>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -75,8 +75,8 @@ export function Features({
                 <div
                   key={index}
                   className={cn(
-                    "cursor-default flex flex-col bg-card-foreground relative items-center justify-center p-6 rounded-md group hover:bg-primary-light/20 transition-all duration-500 overflow-hidden",
-                    isLarge && "md:col-span-2 md:row-span-2 min-h-[280px]"
+                    "card-base cursor-default flex flex-col relative items-center justify-center p-6 group overflow-hidden",
+                    isLarge && "md:col-span-2 md:row-span-2 min-h-[260px]"
                   )}
                 >
                   {Icon && (
@@ -84,11 +84,11 @@ export function Features({
                       <Icon size={isLarge ? 180 : 120} strokeWidth={2.2} />
                     </span>
                   )}
-                  <div className="relative z-10 flex flex-col items-center justify-center text-center group-hover:opacity-100 transition-all duration-500">
+                  <div className="relative z-10 flex flex-col items-center justify-center text-center">
                     <h3 className="text-lg font-bold text-primary mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-background/80 font-semibold text-sm max-w-md">
+                    <p className="text-foreground/80 font-semibold text-sm max-w-md">
                       {feature.description}
                     </p>
                   </div>

@@ -30,7 +30,10 @@
 
   --card-background: 212 10% 10%;
   --card-foreground: 212 10% 90%;
-  
+
+  /* Standardized card: one surface for dark and light sections (elevated dark) */
+  --card: 212 12% 14%;
+
   /* Border and input */
   --border: 212 15% 30%; /* Dark grayish-blue for borders/dividers */
   --input: 212 25% 20%; /* Dark blue-gray for inputs */
@@ -63,6 +66,7 @@
   --color-primary-light: hsl(var(--primary-light));
   --color-card-background: hsl(var(--card-background));
   --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: hsl(var(--card));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-accent: hsl(var(--accent));
@@ -112,12 +116,38 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+/* Standardized card: works on both dark and light section backgrounds */
+.card-base {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  color: hsl(var(--foreground));
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.card-base:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  background-color: hsl(var(--card) / 0.95);
+}
+
 .height-screen {
   height: 100dvh;
 }
 
 .container {
   padding: 2rem;
+}
+
+/* Standardized card: works on both dark and light section backgrounds */
+.card-base {
+  background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-base:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.1);
 }
 
 /* Infinite carousel: move by 50% so the duplicated content loops seamlessly */

@@ -45,7 +45,7 @@ export function Testimonials({
   className,
 }: TestimonialsProps) {
   return (
-    <section className={cn("section min-h-[80dvh] mx-auto bg-background", className)}>
+    <section className={cn("section min-h-[75dvh] mx-auto bg-background", className)}>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -63,7 +63,7 @@ export function Testimonials({
                 <div
                   key={index}
                   className={cn(
-                    "flex flex-col p-6 rounded-md bg-card-background/50 border border-border hover:border-primary/30 transition-all duration-300",
+                    "card-base flex flex-col p-6",
                     isFeatured && "md:row-span-2 md:flex md:justify-center md:py-8"
                   )}
                 >

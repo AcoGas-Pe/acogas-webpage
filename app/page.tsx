@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero/hero";
+import { StatsBar } from "@/components/sections/stats-bar/stats-bar";
 import { Features } from "@/components/sections/features/features";
 import { ProductGrid } from "@/components/sections/product-grid/product-grid";
 import { Testimonials } from "@/components/sections/testimonials/testimonials";
@@ -36,6 +37,7 @@ export default function Home() {
           href: "/productos",
         }}
       />
+      <StatsBar />
       <Features />
       <ProductGrid />
       <Testimonials />
