@@ -1,20 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ClipboardCheck } from "lucide-react";
 import Image from "next/image";
 import { Slideshow } from "./slideshow";
+
+interface HeroAction {
+  label: string;
+  href: string;
+}
 
 interface HeroProps {
   title?: string;
   subtitle?: string;
   description?: string;
-  primaryAction?: {
-    label: string;
-    href: string;
-  };
-  secondaryAction?: {
-    label: string;
-    href: string;
-  };
+  primaryAction?: HeroAction;
+  secondaryAction?: HeroAction;
+  tertiaryAction?: HeroAction;
   className?: string;
   image?: string;
 }
@@ -24,10 +25,14 @@ export function Hero({
   subtitle = "Confianza y Calidad",
   description = "Comprometidos con la excelencia en el suministro de gas y energía para hogares y empresas. Seguridad, confiabilidad y servicio de primera clase.",
   primaryAction = {
-    label: "Contactar",
-    href: "/contacto",
+    label: "Solicitar Visita Técnica",
+    href: "/contacto?tipo=visita",
   },
-  secondaryAction,
+  secondaryAction = {
+    label: "Solicitar Diagnóstico",
+    href: "/contacto?tipo=diagnostico",
+  },
+  tertiaryAction,
   className,
   image = "/assets/images/refinery.webp",
 }: HeroProps) {
@@ -62,16 +67,22 @@ export function Hero({
             </p>
           )}
           
-          {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-left items-center pt-8">
+          {/* Actions - Dual CTA Strategy */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-left items-stretch sm:items-center pt-8">
             {primaryAction && (
               <Button href={primaryAction.href} size="lg">
                 {primaryAction.label}
               </Button>
             )}
             {secondaryAction && (
-              <Button href={secondaryAction.href} variant="outline" size="lg">
+              <Button href={secondaryAction.href} variant="secondary" size="lg">
+                <ClipboardCheck className="mr-2 w-4 h-4" />
                 {secondaryAction.label}
+              </Button>
+            )}
+            {tertiaryAction && (
+              <Button href={tertiaryAction.href} variant="outline" size="lg">
+                {tertiaryAction.label}
               </Button>
             )}
           </div>

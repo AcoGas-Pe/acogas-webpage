@@ -1,12 +1,20 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ShieldCheck, Zap, Users, Award, Wrench, FileCheck } from "lucide-react";
+import {
+  Award,
+  BadgeCheck,
+  Headphones,
+  Factory,
+  Compass,
+  FileCheck,
+} from "lucide-react";
 
 interface Feature {
   title: string;
   description: string;
-  icon?: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  icon: React.ComponentType<{ className?: string }>;
+  highlight?: string;
 }
 
 interface FeaturesProps {
@@ -18,84 +26,101 @@ interface FeaturesProps {
 
 const defaultFeatures: Feature[] = [
   {
-    title: "Seguridad Garantizada",
-    description: "Cumplimos con los más altos estándares de seguridad en el manejo y distribución de gas.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Servicio Confiable",
-    description: "Suministro continuo y confiable para hogares y empresas las 24 horas del día.",
-    icon: Zap,
-  },
-  {
-    title: "Atención Personalizada",
-    description: "Equipo profesional dedicado a brindar el mejor servicio y atención al cliente.",
-    icon: Users,
-  },
-  {
-    title: "Experiencia Técnica",
-    description: "Más de 53 años desarrollando soluciones con criterio ingenieril y respaldo de marca.",
+    title: "+53 Años de Experiencia",
+    description:
+      "Más de cinco décadas desarrollando soluciones técnicas seguras y eficientes para la industria peruana.",
     icon: Award,
+    highlight: "Desde 1971",
   },
   {
-    title: "Soluciones Integrales",
-    description: "Desde selección de equipo hasta correcta aplicación en campo, con acompañamiento real.",
-    icon: Wrench,
+    title: "Marcas Líderes Mundiales",
+    description:
+      "Representantes autorizados de Emerson, Corken, Cavagna y Liquid Controls con respaldo técnico directo.",
+    icon: BadgeCheck,
+    highlight: "4 marcas",
+  },
+  {
+    title: "Soporte Técnico Real",
+    description:
+      "Acompañamiento pre y post venta con ingenieros especializados. Soporte 24/7 para operaciones críticas.",
+    icon: Headphones,
+    highlight: "24/7",
+  },
+  {
+    title: "Enfoque por Industria",
+    description:
+      "Soluciones específicas para cada sector: no vendemos productos, resolvemos problemas de proceso.",
+    icon: Factory,
+    highlight: "6 sectores",
+  },
+  {
+    title: "Diagnóstico y Dimensionamiento",
+    description:
+      "Capacidad técnica para evaluar, dimensionar y acompañar desde el diseño hasta la puesta en marcha.",
+    icon: Compass,
+    highlight: "Ingeniería",
   },
   {
     title: "Cumplimiento Normativo",
-    description: "Normas nacionales e internacionales para proteger personas, instalaciones y procesos.",
+    description:
+      "Productos y soluciones que cumplen con OSINERGMIN, MINAM y normativas internacionales aplicables.",
     icon: FileCheck,
+    highlight: "Certificado",
   },
 ];
 
 export function Features({
-  title = "Por Qué Elegirnos",
-  subtitle = "Nuestras Ventajas",
+  title = "Nuestra Propuesta de Valor",
+  subtitle = "Por Qué Elegirnos",
   features = defaultFeatures,
   className,
 }: FeaturesProps) {
   return (
-    <section className={cn("section min-h-[75dvh] mx-auto bg-background", className)}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            {subtitle && (
-              <p className="text-muted-foreground/80 text-sm mb-2">{subtitle}</p>
-            )}
-            <h2 className="text-4xl font-bold text-foreground">{title}</h2>
-          </div>
+    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
+      <div className="container">
+        <div className="text-center mb-10 sm:mb-14">
+          {subtitle && (
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+              {subtitle}
+            </p>
+          )}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+            {title}
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            Desarrollamos soluciones industriales seguras, eficientes y normativamente confiables, integrando tecnología de clase mundial con acompañamiento técnico real en campo.
+          </p>
+        </div>
 
-          {/* Bento grid: 3 cols, mixed sizes - one large (2x2), rest standard */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              const isLarge = index === 0;
-              return (
-                <div
-                  key={index}
-                  className={cn(
-                    "card-base cursor-default flex flex-col relative items-center justify-center p-6 group overflow-hidden",
-                    isLarge && "md:col-span-2 md:row-span-2 min-h-[260px]"
-                  )}
-                >
-                  {Icon && (
-                    <span className="absolute text-primary text-4xl opacity-10 group-hover:opacity-100 transition-all duration-500">
-                      <Icon size={isLarge ? 180 : 120} strokeWidth={2.2} />
-                    </span>
-                  )}
-                  <div className="relative z-10 flex flex-col items-center justify-center text-center">
-                    <h3 className="text-lg font-bold text-primary mb-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={index}
+                className="card-base card-accent group p-5 sm:p-6 flex items-start gap-4 hover:-translate-y-0.5"
+              >
+                <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-sm sm:text-base font-bold text-foreground">
                       {feature.title}
                     </h3>
-                    <p className="text-foreground/80 font-semibold text-sm max-w-md">
-                      {feature.description}
-                    </p>
+                    {feature.highlight && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-semibold">
+                        {feature.highlight}
+                      </span>
+                    )}
                   </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

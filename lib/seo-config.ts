@@ -62,7 +62,7 @@ export interface SiteConfig {
     facebook?: string;
     facebookAppId?: string;
     twitter?: string;
-    twitterHandle?: string; // Just the handle without @
+    twitterHandle?: string;
     instagram?: string;
     linkedin?: string;
     youtube?: string;
@@ -88,6 +88,9 @@ export interface SiteConfig {
   coordinates?: {
     latitude: string;
     longitude: string;
+  };
+  verification?: {
+    google?: string;
   };
 }
 
@@ -130,6 +133,9 @@ export const siteConfig: SiteConfig = {
   coordinates: {
     latitude: GOOGLE_MAPS.latitude,
     longitude: GOOGLE_MAPS.longitude
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   }
 };
 

@@ -80,12 +80,19 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
         },
       },
 
+      // Google Search Console verification
+      ...(siteConfig.verification?.google && {
+        verification: {
+          google: siteConfig.verification.google,
+        },
+      }),
+
       // Additional metadata for local SEO and explicit meta title
       other: {
         'meta:title': seo.title || siteConfig.name,
-        'geo.region': seo.geoRegion || 'US-TX',
-        'geo.position': seo.geoPosition || '30.2672;-97.7431',
-        'geo.placename': seo.geoPlacename || 'Austin, TX',
+        'geo.region': seo.geoRegion || 'PE-LIM',
+        'geo.position': seo.geoPosition || '-12.1022;-76.9706',
+        'geo.placename': seo.geoPlacename || 'Lima, Peru',
       },
 
       // LinkedIn specific fields

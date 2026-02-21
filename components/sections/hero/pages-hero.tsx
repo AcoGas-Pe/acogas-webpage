@@ -7,25 +7,16 @@ interface PagesHeroProps {
   title?: string;
   subtitle?: string;
   description?: string;
-  primaryAction?: {
-    label: string;
-    href: string;
-  };
-  secondaryAction?: {
-    label: string;
-    href: string;
-  };
+  primaryAction?: { label: string; href: string };
+  secondaryAction?: { label: string; href: string };
   className?: string;
   image?: string;
-  breadcrumbs?: {
-    label: string;
-    href: string;
-  }[];
+  breadcrumbs?: { label: string; href: string }[];
 }
 
 export function PagesHero({
   title = "Acogas",
-  subtitle = "Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales.",
+  subtitle,
   description,
   className,
   image,
@@ -36,92 +27,80 @@ export function PagesHero({
   return (
     <section
       className={cn(
-        "section flex items-center justify-center bg-background relative overflow-hidden",
+        "relative flex items-end overflow-hidden min-h-[50dvh] sm:min-h-[55dvh]",
         className
       )}
-      style={{ minHeight: "30rem" }}
     >
-      {/* Background image + overlay */}
       {image && (
         <div className="absolute inset-0 w-full h-full">
           <Image
             src={image}
             alt={title}
             fill
-            style={{ objectFit: "cover" }}
-            className="w-full h-full object-cover"
+            className="object-cover"
             priority
+            sizes="100vw"
           />
-          {/* overlay */}
-          <div className="absolute inset-0 bg-black/70" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" aria-hidden />
         </div>
       )}
-      <div className="container mx-auto px-4 py-16 z-10">
-        <div className="max-w-7xl mx-auto text-center space-y-6">
-          
+      {!image && (
+        <div className="absolute inset-0 bg-gradient-to-br from-background-alt to-background" aria-hidden />
+      )}
 
-          
-          {/* Main Title - Black Lives display font */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold [font-family:var(--font-hero)] [word-spacing:0.35em] ![letter-spacing:0.1em]">
-            {title}
-          </h1>
-{/* Subtitle */}
-          {subtitle && (
-            <p className="text-sm uppercase tracking-wider text-secondary-foreground mb-4">
-              {subtitle}
-            </p>
-          )}
-{/* Breadcrumbs */}
-          {breadcrumbs && (
-            <div
-              className="flex flex-wrap justify-center items-center gap-2 mb-4"
-              aria-label="Breadcrumb"
-            >
-              <ol className="inline-flex items-center space-x-1">
-                {breadcrumbs.map((breadcrumb, i) => (
-                  <li key={breadcrumb.href} className="inline-flex items-center">
-                    <Link
-                      href={breadcrumb.href}
-                      className={
-                        i === breadcrumbs.length - 1
-                          ? "font-light text-primary-light opacity-80 hover:opacity-100 transition-all duration-200"
-                          : " text-muted-foreground opacity-90 hover:text-primary-light hover:opacity-100 transition-all duration-200"
-                      }
-                      aria-current={i === breadcrumbs.length - 1 ? "page" : undefined}
-                    >
-                      {breadcrumb.label}
-                    </Link>
-                    {i < breadcrumbs.length - 1 && (
-                      <span className="mx-2">/</span>
+      <div className="container relative z-10 pb-10 sm:pb-14 pt-28 sm:pt-32">
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <nav aria-label="Breadcrumb" className="mb-4">
+            <ol className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
+              {breadcrumbs.map((bc, i) => (
+                <li key={bc.href} className="flex items-center gap-1.5">
+                  {i > 0 && <span className="text-border">/</span>}
+                  <Link
+                    href={bc.href}
+                    className={cn(
+                      "transition-colors hover:text-primary",
+                      i === breadcrumbs.length - 1 && "text-primary font-medium"
                     )}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-          {/* Description */}
-          {description && (
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              {description}
-            </p>
-          )}
+                    aria-current={i === breadcrumbs.length - 1 ? "page" : undefined}
+                  >
+                    {bc.label}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
 
-          {/* Actions */}
-          {(primaryAction || secondaryAction) && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              {primaryAction && (
-                <Button href={primaryAction.href} size="lg">
-                  {primaryAction.label}
-                </Button>
-              )}
-              {secondaryAction && (
-                <Button href={secondaryAction.href} variant="outline" size="lg">
-                  {secondaryAction.label}
-                </Button>
-              )}
-            </div>
-          )}
-        </div>
+        {subtitle && (
+          <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-3">
+            {subtitle}
+          </span>
+        )}
+
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]">
+          {title}
+        </h1>
+
+        {description && (
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+            {description}
+          </p>
+        )}
+
+        {(primaryAction || secondaryAction) && (
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6 sm:pt-8">
+            {primaryAction && (
+              <Button href={primaryAction.href} size="lg" className="w-full sm:w-auto min-h-12">
+                {primaryAction.label}
+              </Button>
+            )}
+            {secondaryAction && (
+              <Button href={secondaryAction.href} variant="outline" size="lg" className="w-full sm:w-auto min-h-12">
+                {secondaryAction.label}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

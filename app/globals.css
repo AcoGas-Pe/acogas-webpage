@@ -1,72 +1,74 @@
 @import "tailwindcss";
 
-/* Consolidated dark-mode-only palette - Brand image priority */
-/* Ready for brand color updates */
 :root {
   /* Base colors - Dark theme */
-  --background: 212 85% 15%; /* Dark blue-gray, blends with primary */
-  --foreground: 212 20% 90%; /* Light text for readability */
-  --light-foreground: 212 10% 10%; /* Dark text for readability */
-  --background-light: 212 0% 90%; /* Light blue-gray, blends with primary */
-  
-  /* Primary brand colors - Blue (#329EF8 lighter for dark bg) */
-  --primary: 212 100% 32%; /* #329EF8 - Lighter blue, visible on dark */
-  --primary-foreground: 212 15% 8%; /* Dark text on primary */
-  --primary-light: 212 100% 50%; /* Even lighter for hover states */
-  
+  --background: 215 50% 10%;
+  --background-alt: 215 40% 13%;
+  --foreground: 210 20% 92%;
+  --light-foreground: 210 10% 12%;
+  --background-light: 210 10% 92%;
+
+  /* Primary brand - Blue, tuned for contrast on dark and in cards */
+  --primary: 207 90% 54%;
+  --primary-foreground: 0 0% 100%;
+  --primary-light: 207 90% 62%;
+  --primary-muted: 207 40% 30%;
+
   /* Secondary - Muted blue */
-  --secondary: 212 30% 25%; /* Darker muted blue */
-  --secondary-foreground: 0 0% 95%; /* Light text on secondary */
-  
-  /* Accent - Red for highlights */
-  --accent: 0 100% 50%; /* Lighter red for better contrast on dark */
-  --accent-foreground: 0 0% 100%; /* White text on accent */
-  --accent-muted: 0 50% 70%; /* Muted red for thin accents */
-  
-  /* Muted colors - Subtle variations */
-  --muted: 212 30% 53%; /* Very light muted blue */
-  --muted-foreground: 212 10% 73%; /* Medium gray-blue for muted text */
-  --muted-light: 212 15% 85%; /* Very light muted blue */
+  --secondary: 215 30% 22%;
+  --secondary-foreground: 0 0% 95%;
 
-  --card-background: 212 10% 10%;
-  --card-foreground: 212 10% 90%;
+  /* Accent - Warm amber for highlights and bullets */
+  --accent: 38 92% 50%;
+  --accent-foreground: 0 0% 100%;
+  --accent-muted: 38 60% 55%;
 
-  /* Standardized card: one surface for dark and light sections (elevated dark) */
-  --card: 212 12% 14%;
+  /* Muted - Readable body text */
+  --muted: 215 20% 35%;
+  --muted-foreground: 215 15% 62%;
+  --muted-light: 215 15% 85%;
 
-  /* Border and input */
-  --border: 212 15% 30%; /* Dark grayish-blue for borders/dividers */
-  --input: 212 25% 20%; /* Dark blue-gray for inputs */
-  --ring: 212 93% 58%; /* Primary light for focus rings */
-  
-  /* Footer and navbar backgrounds */
-  --footer-background: 212 50% 15%; /* Dark blue-gray for footer */
-  --navbar-background: 212 1% 15%; /* Dark blue-gray for navbar */
-  
-  /* Status colors */
-  --destructive: 0 70% 65%; /* Lighter desaturated red for errors */
-  --destructive-foreground: 212 20% 90%; /* White text on destructive */
-  
-  /* Radius - Sharp design, minimal rounding */
-  --radius: 0.25rem;
-  
-  /* Shadows for depth (subtle on dark) */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.2);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.2);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.35), 0 8px 10px -6px rgb(0 0 0 / 0.25);
+  /* Card surface - elevated from background */
+  --card: 215 35% 14%;
+  --card-hover: 215 35% 17%;
+  --card-background: 215 10% 10%;
+  --card-foreground: 210 20% 92%;
+
+  /* Border */
+  --border: 215 20% 22%;
+  --border-muted: 215 15% 18%;
+  --input: 215 25% 18%;
+  --ring: 207 90% 58%;
+
+  /* Footer and navbar */
+  --footer-background: 215 50% 8%;
+  --navbar-background: 215 40% 8%;
+
+  /* Status */
+  --destructive: 0 70% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 0.375rem;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.15);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.15);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.15);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.2);
 }
 
 @theme inline {
   --color-background: hsl(var(--background));
+  --color-background-alt: hsl(var(--background-alt));
   --color-foreground: hsl(var(--foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-light: hsl(var(--primary-light));
+  --color-primary-muted: hsl(var(--primary-muted));
   --color-card-background: hsl(var(--card-background));
   --color-card-foreground: hsl(var(--card-foreground));
   --color-card: hsl(var(--card));
+  --color-card-hover: hsl(var(--card-hover));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-accent: hsl(var(--accent));
@@ -79,13 +81,14 @@
   --color-navbar-background: hsl(var(--navbar-background));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-border: hsl(var(--border));
+  --color-border-muted: hsl(var(--border-muted));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-background-light: hsl(var(--background-light));
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
   --radius: var(--radius);
-  --color-background-light: hsl(var(--background-light));
 }
 
 html {
@@ -97,65 +100,183 @@ body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 500; /* Slightly bolder for more confidence */
-  letter-spacing: -0.01em; /* Tighter letter spacing for sharpness */
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* Sharp, confident typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
-/* Section base class - Full viewport height with responsive overflow */
 .section {
-  min-height: 80dvh;
-  flex: 1;
   overflow-x: hidden;
   width: 100%;
 }
 
-/* Standardized card: works on both dark and light section backgrounds */
+/* Standardized card */
 .card-base {
   background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
-  color: hsl(var(--foreground));
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 .card-base:hover {
   border-color: hsl(var(--primary) / 0.4);
-  background-color: hsl(var(--card) / 0.95);
+  background-color: hsl(var(--card-hover));
 }
 
-.height-screen {
-  height: 100dvh;
+/* Card with left accent */
+.card-accent {
+  border-left: 3px solid hsl(var(--primary));
 }
 
 .container {
-  padding: 2rem;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 2rem);
 }
 
-/* Standardized card: works on both dark and light section backgrounds */
-.card-base {
-  background-color: hsl(var(--card));
-  color: hsl(var(--foreground));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.card-base:hover {
-  border-color: hsl(var(--primary) / 0.4);
-  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.1);
-}
-
-/* Infinite carousel: move by 50% so the duplicated content loops seamlessly */
 @keyframes infinite-carousel-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* HubSpot Form Styling */
+.hubspot-form-container .hs-form {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+.hubspot-form-container .hs-form-field {
+  margin-bottom: 1rem;
+}
+
+.hubspot-form-container .hs-form-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.375rem;
+}
+
+.hubspot-form-container .hs-form-field label .hs-form-required {
+  color: hsl(var(--accent));
+  margin-left: 0.125rem;
+}
+
+.hubspot-form-container .hs-input,
+.hubspot-form-container input[type="text"],
+.hubspot-form-container input[type="email"],
+.hubspot-form-container input[type="tel"],
+.hubspot-form-container input[type="number"],
+.hubspot-form-container select,
+.hubspot-form-container textarea {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius);
+  background-color: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.hubspot-form-container textarea {
+  height: auto;
+  min-height: 6rem;
+  padding: 0.625rem 0.75rem;
+  resize: vertical;
+}
+
+.hubspot-form-container .hs-input:focus,
+.hubspot-form-container input:focus,
+.hubspot-form-container select:focus,
+.hubspot-form-container textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring));
+  border-color: hsl(var(--ring));
+}
+
+.hubspot-form-container .hs-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.hubspot-form-container .hs-submit {
+  margin-top: 1.25rem;
+}
+
+.hubspot-form-container .hs-button,
+.hubspot-form-container input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 2rem;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.hubspot-form-container .hs-button:hover,
+.hubspot-form-container input[type="submit"]:hover {
+  background-color: hsl(var(--primary-light));
+}
+
+.hubspot-form-container .hs-error-msgs {
+  list-style: none;
+  padding: 0;
+  margin: 0.375rem 0 0;
+}
+
+.hubspot-form-container .hs-error-msgs li {
+  font-size: 0.75rem;
+  color: hsl(var(--destructive));
+}
+
+.hubspot-form-container .hs-richtext {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.5;
+}
+
+.hubspot-form-container .hs-richtext a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.hubspot-form-container .submitted-message {
+  padding: 1.5rem;
+  background-color: hsl(var(--primary) / 0.1);
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-radius: var(--radius);
+  color: hsl(var(--foreground));
+  text-align: center;
+}
+
+.hubspot-form-container .legal-consent-container {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.hubspot-form-container .legal-consent-container .hs-form-booleancheckbox-display {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.hubspot-form-container .legal-consent-container input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.125rem;
+  accent-color: hsl(var(--primary));
 }

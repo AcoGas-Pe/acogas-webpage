@@ -1,70 +1,85 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ArrowRight, ClipboardCheck, Phone } from "lucide-react";
+
+interface CTAAction {
+  label: string;
+  href: string;
+  icon?: "arrow" | "clipboard" | "phone";
+}
 
 interface CTAProps {
   title?: string;
   description?: string;
-  primaryAction?: {
-    label: string;
-    href: string;
-  };
-  secondaryAction?: {
-    label: string;
-    href: string;
-  };
-  variant?: "default" | "primary" | "accent";
+  primaryAction?: CTAAction;
+  secondaryAction?: CTAAction;
+  tertiaryAction?: CTAAction;
   className?: string;
 }
 
 export function CTA({
-  title = "¿Listo para Comenzar?",
-  description = "Contáctanos hoy y descubre cómo podemos ayudarte con tus necesidades de gas y energía.",
+  title = "¿Listo para optimizar su operación?",
+  description = "Solicite una visita técnica o diagnóstico sin compromiso. Nuestro equipo evaluará sus necesidades y le propondrá la solución más segura y eficiente.",
   primaryAction = {
-    label: "Contactar Ahora",
-    href: "/contacto",
+    label: "Solicitar Visita Técnica",
+    href: "/contacto?tipo=visita",
+    icon: "arrow",
   },
-  secondaryAction,
-  variant = "default",
+  secondaryAction = {
+    label: "Solicitar Diagnóstico",
+    href: "/contacto?tipo=diagnostico",
+    icon: "clipboard",
+  },
+  tertiaryAction = {
+    label: "Llamar Ahora",
+    href: "tel:+51998345895",
+    icon: "phone",
+  },
   className,
 }: CTAProps) {
-  const isLight = variant === "default";
-  const sectionClass = isLight
-    ? "bg-background-light text-light-foreground"
-    : variant === "primary"
-      ? "bg-primary text-primary-foreground"
-      : "bg-accent text-accent-foreground";
-
-  const textColor = isLight ? "text-light-foreground" : "text-white";
-  const mutedColor = isLight ? "text-light-foreground/80" : "text-white/90";
-
+  const getIcon = (iconType?: string) => {
+    switch (iconType) {
+      case "clipboard":
+        return <ClipboardCheck className="mr-2 w-4 h-4" />;
+      case "phone":
+        return <Phone className="mr-2 w-4 h-4" />;
+      default:
+        return <ArrowRight className="ml-2 w-4 h-4" />;
+    }
+  };
   return (
     <section
       className={cn(
-        "section min-h-[60dvh] flex items-center justify-center",
-        sectionClass,
+        "relative overflow-hidden py-16 sm:py-20 md:py-24",
         className
       )}
     >
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className={cn("text-4xl font-bold", textColor)}>{title}</h2>
+      {/* Gradient background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-primary via-primary-muted to-background"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary-light)/0.2),transparent_70%)]" aria-hidden />
+
+      <div className="container relative z-10">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight">
+            {title}
+          </h2>
           {description && (
-            <p className={cn("text-lg leading-relaxed", mutedColor)}>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-primary-foreground/80 leading-relaxed max-w-xl mx-auto">
               {description}
             </p>
           )}
-          <p className="italic font-semibold text-primary text-center text-xl">
-            “Liderar la industria con tecnología, criterio y responsabilidad.”
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center pt-8 sm:pt-10">
             {primaryAction && (
               <Button
                 href={primaryAction.href}
                 size="lg"
-                variant={isLight ? "default" : "secondary"}
-                className={isLight ? "bg-primary text-primary-foreground hover:bg-primary-light" : ""}
+                className="min-h-12 w-full sm:w-auto bg-white text-primary-muted font-bold hover:bg-white/90 hover:text-primary shadow-lg"
               >
                 {primaryAction.label}
+                {primaryAction.icon === "arrow" && <ArrowRight className="ml-2 w-4 h-4" />}
               </Button>
             )}
             {secondaryAction && (
@@ -72,9 +87,21 @@ export function CTA({
                 href={secondaryAction.href}
                 variant="outline"
                 size="lg"
-                className={isLight ? "border-primary text-primary hover:bg-primary/10" : "border-white text-white hover:bg-white/10"}
+                className="min-h-12 w-full sm:w-auto border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
               >
+                {secondaryAction.icon !== "arrow" && getIcon(secondaryAction.icon)}
                 {secondaryAction.label}
+              </Button>
+            )}
+            {tertiaryAction && (
+              <Button
+                href={tertiaryAction.href}
+                variant="ghost"
+                size="lg"
+                className="min-h-12 w-full sm:w-auto text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                {tertiaryAction.icon !== "arrow" && getIcon(tertiaryAction.icon)}
+                {tertiaryAction.label}
               </Button>
             )}
           </div>

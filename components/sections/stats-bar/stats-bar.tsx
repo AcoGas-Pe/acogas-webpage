@@ -12,35 +12,33 @@ interface StatsBarProps {
 
 const defaultStats: Stat[] = [
   { value: "53+", label: "Años de experiencia" },
-  { value: "Emerson", label: "Marcas líderes" },
-  { value: "GLP · GN · Vapor", label: "Soluciones integrales" },
+  { value: "6", label: "Marcas líderes mundiales" },
+  { value: "100+", label: "Proyectos industriales" },
+  { value: "24/7", label: "Soporte técnico" },
 ];
 
-export function StatsBar({
-  stats = defaultStats,
-  className,
-}: StatsBarProps) {
+export function StatsBar({ stats = defaultStats, className }: StatsBarProps) {
   return (
     <section
-      className={cn(
-        "w-full border-y border-border bg-background/95 backdrop-blur-sm py-4",
-        className
-      )}
+      className={cn("relative z-10 bg-card border-y border-border", className)}
       aria-label="Datos destacados"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-4 md:gap-8">
+      <div className="container py-6 sm:py-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="card-base flex flex-col md:flex-row items-center justify-center gap-2 px-6 py-3 min-w-[140px]"
+              className={cn(
+                "text-center",
+                index < stats.length - 1 && "md:border-r md:border-border"
+              )}
             >
-              <span className="text-xl md:text-2xl font-bold text-primary">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary tabular-nums">
                 {stat.value}
-              </span>
-              <span className="text-sm text-foreground/80 font-semibold">
+              </p>
+              <p className="text-xs sm:text-sm text-muted-foreground font-medium mt-1">
                 {stat.label}
-              </span>
+              </p>
             </div>
           ))}
         </div>

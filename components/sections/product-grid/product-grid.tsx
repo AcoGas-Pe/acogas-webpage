@@ -57,113 +57,103 @@ export function ProductGrid({
 
   return (
     <section className={cn("section min-h-[75dvh] mx-auto bg-background", className)}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            {subtitle && (
-              <p className="text-muted-foreground/80 text-sm mb-2">{subtitle}</p>
-            )}
-            <h2 className="text-4xl font-bold text-foreground">{title}</h2>
-          </div>
+      <div className="container max-w-7xl">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          {subtitle && (
+            <p className="text-muted-foreground text-sm sm:text-base mb-1.5">{subtitle}</p>
+          )}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">{title}</h2>
+        </div>
 
-          {/* Bento grid: 1 large (2x2), 3 smaller cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr">
-            {/* Featured product - spans 2 cols, 2 rows */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 auto-rows-fr">
+          <Link
+            href={featured.href}
+            className={cn(cardBase, "md:col-span-2 md:row-span-2 min-h-[220px] sm:min-h-[260px] p-4 sm:p-6 md:p-8")}
+          >
+            {featured.image ? (
+              <div className="mb-3 sm:mb-4 aspect-video w-full max-w-md rounded-md overflow-hidden bg-primary/10 border border-border">
+                <img src={featured.image} alt={featured.title} className="w-full h-full object-cover" />
+              </div>
+            ) : (
+              <div className="mb-3 sm:mb-4 aspect-video w-full max-w-md rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                <span className="text-4xl sm:text-5xl text-primary/40" aria-hidden>⚡</span>
+              </div>
+            )}
+            <h3 className="text-lg sm:text-xl font-bold text-primary mb-1.5 sm:mb-2 group-hover:opacity-90">
+              {featured.title}
+            </h3>
+            <p className="text-foreground/85 text-xs sm:text-sm font-medium mb-3 sm:mb-4 flex-1 line-clamp-2 sm:line-clamp-none">
+              {featured.description}
+            </p>
+            {featured.features && featured.features.length > 0 && (
+              <ul className="space-y-1 mb-3 sm:mb-4">
+                {featured.features.slice(0, 3).map((f, idx) => (
+                  <li key={idx} className="text-xs sm:text-sm text-foreground/75 flex items-center gap-2">
+                    <span className="text-accent font-bold">▸</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <Button variant="outline" size="sm" className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              Ver más →
+            </Button>
+          </Link>
+
+          {rest.slice(0, 2).map((product, index) => (
             <Link
-              href={featured.href}
-              className={cn(cardBase, "md:col-span-2 md:row-span-2 min-h-[260px] p-6 md:p-8")}
+              key={index}
+              href={product.href}
+              className={cn(cardBase, "p-4 sm:p-5 justify-between min-h-[180px]")}
             >
-              {featured.image ? (
-                <div className="mb-4 aspect-video w-full max-w-md rounded-md overflow-hidden bg-primary/10">
-                  <img
-                    src={featured.image}
-                    alt={featured.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="mb-4 aspect-video w-full max-w-md rounded-md bg-primary/10 border border-border flex items-center justify-center">
-                  <span className="text-5xl text-primary/50">⚡</span>
-                </div>
-              )}
-              <h3 className="text-xl font-bold text-primary mb-2 group-hover:opacity-90">
-                {featured.title}
-              </h3>
-              <p className="text-foreground/80 font-semibold text-sm mb-4 flex-1">
-                {featured.description}
-              </p>
-              {featured.features && featured.features.length > 0 && (
-                <ul className="space-y-1 mb-4">
-                  {featured.features.slice(0, 3).map((f, idx) => (
-                    <li key={idx} className="text-sm text-foreground/70 flex items-center gap-2">
-                      <span className="text-accent">▸</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <Button variant="outline" size="sm" className="w-fit border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <div className="min-w-0">
+                {product.image ? (
+                  <div className="mb-2 sm:mb-3 aspect-video rounded-md overflow-hidden bg-primary/10 border border-border">
+                    <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="mb-2 sm:mb-3 aspect-video rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                    <span className="text-2xl sm:text-3xl text-primary/40" aria-hidden>⚡</span>
+                  </div>
+                )}
+                <h3 className="text-base sm:text-lg font-bold text-primary mb-0.5 group-hover:opacity-90">
+                  {product.title}
+                </h3>
+                <p className="text-foreground/85 text-xs font-medium line-clamp-2">
+                  {product.description}
+                </p>
+              </div>
+              <Button variant="ghost" size="sm" className="w-full mt-2 min-h-9 text-primary hover:bg-primary/15">
                 Ver más →
               </Button>
             </Link>
+          ))}
 
-            {/* Small cards - col 3 row 1 and 2 */}
-            {rest.slice(0, 2).map((product, index) => (
-              <Link
-                key={index}
-                href={product.href}
-                className={cn(cardBase, "p-5 justify-between")}
-              >
-                <div>
-                  {product.image ? (
-                    <div className="mb-3 aspect-video rounded-md overflow-hidden bg-primary/10">
-                      <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
-                    </div>
-                  ) : (
-                    <div className="mb-3 aspect-video rounded-md bg-primary/10 border border-border flex items-center justify-center">
-                      <span className="text-3xl text-primary/50">⚡</span>
-                    </div>
-                  )}
-                  <h3 className="text-lg font-bold text-primary mb-1 group-hover:opacity-90">
-                    {product.title}
-                  </h3>
-                  <p className="text-foreground/80 font-semibold text-xs line-clamp-2">
-                    {product.description}
-                  </p>
+          {rest[2] && (
+            <Link
+              href={rest[2].href}
+              className={cn(cardBase, "md:col-span-2 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 min-h-[120px]")}
+            >
+              {rest[2].image ? (
+                <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md overflow-hidden bg-primary/10 border border-border">
+                  <img src={rest[2].image} alt={rest[2].title} className="w-full h-full object-cover" />
                 </div>
-                <Button variant="ghost" size="sm" className="w-full mt-2 text-primary hover:bg-primary/20">
-                  Ver más →
-                </Button>
-              </Link>
-            ))}
-
-            {/* Bottom card - spans 2 cols */}
-            {rest[2] && (
-              <Link
-                href={rest[2].href}
-                className={cn(cardBase, "md:col-span-2 p-5 flex flex-col md:flex-row md:items-center gap-4")}
-              >
-                {rest[2].image ? (
-                  <div className="shrink-0 w-24 h-24 rounded-md overflow-hidden bg-primary/10">
-                    <img src={rest[2].image} alt={rest[2].title} className="w-full h-full object-cover" />
-                  </div>
-                ) : (
-                  <div className="shrink-0 w-24 h-24 rounded-md bg-primary/10 border border-border flex items-center justify-center">
-                    <span className="text-2xl text-primary/50">⚡</span>
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-primary mb-1">{rest[2].title}</h3>
-                  <p className="text-foreground/80 font-semibold text-sm">
-                    {rest[2].description}
-                  </p>
+              ) : (
+                <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-md bg-primary/10 border border-border flex items-center justify-center">
+                  <span className="text-xl sm:text-2xl text-primary/40" aria-hidden>⚡</span>
                 </div>
-                <Button variant="outline" size="sm" className="shrink-0 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  Ver más →
-                </Button>
-              </Link>
-            )}
-          </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base sm:text-lg font-bold text-primary mb-0.5">{rest[2].title}</h3>
+                <p className="text-foreground/85 text-xs sm:text-sm font-medium line-clamp-2">
+                  {rest[2].description}
+                </p>
+              </div>
+              <Button variant="outline" size="sm" className="shrink-0 w-full sm:w-auto min-h-9 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                Ver más →
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </section>
