@@ -36,7 +36,7 @@ export function PropuestaValor() {
     },
     {
       title: "Experiencia y Respaldo",
-      description: "Con más de 53 años en el sector, anticipamos riesgos y acompañamos decisiones clave.",
+      description: "Con más de 50 años en el sector, anticipamos riesgos y acompañamos decisiones clave.",
       icon: Award, // Icon Component
     },
     {

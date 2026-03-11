@@ -177,7 +177,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
 
   "/nosotros/": {
     title: `Nosotros | ${BUSINESS_INFO.name}`,
-    description: `Conoce a ${BUSINESS_INFO.name}. Más de 53 años desarrollando soluciones técnicas con marcas líderes, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha.`,
+    description: `Conoce a ${BUSINESS_INFO.name}. Más de 50 años desarrollando soluciones técnicas con marcas líderes, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha.`,
     keywords: ["nosotros", BUSINESS_INFO.name.toLowerCase(), "acogas", "soluciones industriales", "ingeniería", "soporte técnico"],
     canonical: `${siteConfig.url}/nosotros/`,
     ogImage: "/assets/config/og.png",

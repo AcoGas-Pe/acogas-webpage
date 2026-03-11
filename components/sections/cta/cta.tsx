@@ -31,7 +31,7 @@ export function CTA({
     icon: "clipboard",
   },
   tertiaryAction = {
-    label: "Llamar Ahora",
+    label: "Cotiza Ahora",
     href: "tel:+51998345895",
     icon: "phone",
   },

@@ -8,6 +8,17 @@ interface ContactFormProps {
   className?: string;
 }
 
+/** HubSpot portal (from Tracking Code / Forms) */
+const HUBSPOT_PORTAL_ID = "50826545";
+const HUBSPOT_REGION = "na1";
+
+/** Contact form - from Forms script: hbspt.forms.create({ portalId, formId, region }) */
+const CONTACT_FORM_ID = "c2e45d2b-814d-4871-9c28-35cef611b42b";
+
+/** Set NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID in .env.local for testing the registration form */
+const REGISTER_FORM_ID =
+  process.env.NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID ?? "";
+
 const contactInfo = [
   {
     icon: Phone,
@@ -84,12 +95,45 @@ export function ContactForm({ className }: ContactFormProps) {
           {/* HubSpot Form */}
           <div className="lg:col-span-3">
             <div className="card-base p-5 sm:p-6 md:p-8">
+              <p className="text-xs text-muted-foreground mb-4">Formulario de contacto (pruebas)</p>
               <HubSpotForm
-                portalId="50826545"
-                formId="c2e45d2b-814d-4871-9c28-35cef611b42b"
-                region="na1"
+                portalId={HUBSPOT_PORTAL_ID}
+                formId={CONTACT_FORM_ID}
+                region={HUBSPOT_REGION}
               />
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Registering form - for testing (set NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID in .env.local) */}
+      <div className="container mt-16">
+        <div className="max-w-2xl mx-auto">
+          <div className="card-base p-5 sm:p-6 md:p-8">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+              Pruebas
+            </p>
+            <h3 className="text-xl font-bold text-foreground mb-4">
+              Formulario de registro
+            </h3>
+            {REGISTER_FORM_ID ? (
+              <HubSpotForm
+                portalId={HUBSPOT_PORTAL_ID}
+                formId={REGISTER_FORM_ID}
+                region={HUBSPOT_REGION}
+              />
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                Para probar el formulario de registro, agregue en{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
+                  .env.local
+                </code>
+                :{" "}
+                <code className="text-xs bg-muted px-1.5 py-0.5 rounded break-all">
+                  NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID=su-form-id-de-hubspot
+                </code>
+              </p>
+            )}
           </div>
         </div>
       </div>

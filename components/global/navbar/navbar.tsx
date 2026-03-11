@@ -10,6 +10,7 @@ import { NavTrigger } from "./nav-trigger";
 import { NavItem } from "./nav-item";
 import { MegaMenu } from "./mega-menu";
 import { NAV_ITEMS, NAV_MENUS, type NavItem as NavItemType, type NavMenuConfig } from "./nav-config";
+import { useContactPopup } from "@/contexts/contact-popup-context";
 
 const SCROLL_THRESHOLD = 10;
 
@@ -20,6 +21,7 @@ export function Navbar() {
   const [mobileSections, setMobileSections] = useState<Record<string, boolean>>({});
   const [isAtTop, setIsAtTop] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const contactPopup = useContactPopup();
 
   const handleMouseEnter = useCallback((menuKey: string) => {
     if (timeoutRef.current) {
@@ -140,13 +142,17 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex flex-row gap-2">
-          <Button variant="ghost" href="/contacto/" className="w-full capitalize px-2 gap-2">
-          <MessageCircle className="w-4 h-4" />
+          {contactPopup ? (
+              <Button variant="ghost" className="w-full capitalize px-2 gap-2" onClick={() => contactPopup.open()}>
+                <MessageCircle className="w-4 h-4" />
                 Contactanos
               </Button>
-              <Button variant="ghost" href="/registro/" className="w-full capitalize px-2 gap-2">
-                Unete
+            ) : (
+              <Button variant="ghost" href="/contacto/" className="w-full capitalize px-2 gap-2">
+                <MessageCircle className="w-4 h-4" />
+                Contactanos
               </Button>
+            )}
               <Button variant="secondary" href="/carrito/" className="w-full !p-2">
                 <ShoppingCart className="w-6 h-6" />
               </Button>
@@ -326,14 +332,18 @@ export function Navbar() {
             </div>
 
             <div className="p-4 border-t border-border flex flex-col gap-2">
-            <Button variant="secondary" href="/contacto/" className="w-full capitalize px-2 gap-2">
-          <MessageCircle className="w-4 h-4" />
+            {contactPopup ? (
+              <Button variant="secondary" className="w-full capitalize px-2 gap-2" onClick={() => { contactPopup.open(); closeMobile(); }}>
+                <MessageCircle className="w-4 h-4" />
                 Contactanos
               </Button>
-              <Button variant="secondary" href="/registro/" className="w-full capitalize px-2 gap-2">
-              <UserPlus className="w-4 h-4" />
-                Unete
+            ) : (
+              <Button variant="secondary" href="/contacto/" className="w-full capitalize px-2 gap-2">
+                <MessageCircle className="w-4 h-4" />
+                Contactanos
               </Button>
+            )}
+              
               <Button variant="secondary" href="/carrito/" className="w-full !p-2 gap-2 capitalize">
                 <ShoppingCart className="w-6 h-6" />
                 Carrito

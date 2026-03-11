@@ -18,6 +18,8 @@ interface HeroProps {
   tertiaryAction?: HeroAction;
   className?: string;
   image?: string;
+  /** If true, hero has no full-bleed background (carousel is rendered below separately) */
+  noBackground?: boolean;
 }
 
 export function Hero({

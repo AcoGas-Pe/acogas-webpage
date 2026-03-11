@@ -133,6 +133,23 @@ h1, h2, h3, h4, h5, h6 {
   border-left: 3px solid hsl(var(--primary));
 }
 
+/* Harmonious blueish card variants for homepage */
+.card-tint-1 { background-color: hsl(207 35% 14%); border-color: hsl(207 25% 22%); }
+.card-tint-2 { background-color: hsl(212 32% 15%); border-color: hsl(212 22% 23%); }
+.card-tint-3 { background-color: hsl(215 30% 16%); border-color: hsl(215 20% 24%); }
+.card-tint-4 { background-color: hsl(207 38% 13%); border-color: hsl(207 28% 21%); }
+.card-tint-5 { background-color: hsl(210 33% 14%); border-color: hsl(210 23% 22%); }
+.card-tint-6 { background-color: hsl(208 31% 15%); border-color: hsl(208 21% 23%); }
+.card-base.card-tint-1:hover,
+.card-base.card-tint-2:hover,
+.card-base.card-tint-3:hover,
+.card-base.card-tint-4:hover,
+.card-base.card-tint-5:hover,
+.card-base.card-tint-6:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  background-color: hsl(207 35% 18%);
+}
+
 .container {
   width: 100%;
   max-width: 80rem;

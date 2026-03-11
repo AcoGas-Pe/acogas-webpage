@@ -110,7 +110,7 @@ export function ServicesGrid({ className }: ServicesGridProps) {
             Servicios y Soluciones
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Soluciones técnicas integrales respaldadas por más de 53 años de
+            Soluciones técnicas integrales respaldadas por más de 50 años de
             experiencia y las mejores marcas de la industria.
           </p>
         </div>

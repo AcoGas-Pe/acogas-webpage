@@ -7,11 +7,12 @@ const nextConfig: NextConfig = {
       { source: "/quienes-somos", destination: "/nosotros/", permanent: true },
       { source: "/quienes-somos/", destination: "/nosotros/", permanent: true },
       // Old product URLs → hub /productos/ (optimización Search Console, se normaliza con el tiempo)
-      { source: "/categoria-producto/:path*", destination: "/productos/", permanent: true },
-      { source: "/producto/:path*", destination: "/productos/", permanent: true },
-      { source: "/productos/:path+", destination: "/productos/", permanent: true },
+      // Nota: no redirigir /productos/:slug para permitir páginas de producto en app/productos/[slug]
       { source: "/tienda", destination: "/productos/", permanent: true },
       { source: "/tienda/", destination: "/productos/", permanent: true },
+      // Soluciones = productos (unified label in nav)
+      { source: "/soluciones", destination: "/productos/", permanent: false },
+      { source: "/soluciones/", destination: "/productos/", permanent: false },
     ];
   },
 };

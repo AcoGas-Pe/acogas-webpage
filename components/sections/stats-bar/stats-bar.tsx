@@ -11,7 +11,7 @@ interface StatsBarProps {
 }
 
 const defaultStats: Stat[] = [
-  { value: "53+", label: "Años de experiencia" },
+  { value: "50+", label: "Años de experiencia" },
   { value: "6", label: "Marcas líderes mundiales" },
   { value: "100+", label: "Proyectos industriales" },
   { value: "24/7", label: "Soporte técnico" },

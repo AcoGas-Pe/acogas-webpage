@@ -5,6 +5,9 @@ import { Navbar } from "@/components/global/navbar/navbar";
 import { Footer } from "@/components/global/footer/footer";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { ContactPopupProvider } from "@/contexts/contact-popup-context";
+import { ContactPopup } from "@/components/ui/contact-popup";
 
 const heroFont = localFont({
   src: [
@@ -25,7 +28,7 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   title: "Acogas | Soluciones Industriales en GLP, Gas Natural y Vapor",
-  description: "Más de 53 años desarrollando soluciones industriales seguras y eficientes. Marcas líderes: Emerson, Corken, Cavagna, Liquid Controls. Solicite su visita técnica.",
+  description: "Más de 50 años desarrollando soluciones industriales seguras y eficientes. Marcas líderes: Emerson, Corken, Cavagna, Liquid Controls. Solicite su visita técnica.",
 };
 
 export default function RootLayout({
@@ -38,11 +41,21 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${heroFont.variable} antialiased flex flex-col`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <ContactPopupProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <ContactPopup />
+        </ContactPopupProvider>
 
-        {/* Google Analytics 4 */}
+        <WhatsAppButton
+            phoneNumber="+51998345895"
+            message="Hola, necesito información sobre sus servicios. ¿Pueden ayudarme?"
+            variant="floating"
+            size="lg"
+            showOnMobile={true}
+            showOnDesktop={true}
+          />        {/* Google Analytics 4 */}
         {GA_MEASUREMENT_ID && (
           <>
             <Script
@@ -60,7 +73,7 @@ export default function RootLayout({
           </>
         )}
 
-        {/* HubSpot Tracking Code */}
+        {/* HubSpot Embed Code - Tracking (//js.hs-scripts.com/50826545.js) */}
         <Script
           id="hs-script-loader"
           src="//js.hs-scripts.com/50826545.js"

@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Servicios | Acogas Industrial",
-  description: "Soluciones técnicas integrales en GLP, Gas Natural, Vapor, instrumentación y repuestos. Más de 53 años de experiencia con marcas líderes mundiales.",
+  description: "Soluciones técnicas integrales en GLP, Gas Natural, Vapor, instrumentación y repuestos. Más de 50 años de experiencia con marcas líderes mundiales.",
 };
 
 export default function ServiciosPage() {

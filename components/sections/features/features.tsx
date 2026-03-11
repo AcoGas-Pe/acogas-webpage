@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   Award,
@@ -26,11 +27,11 @@ interface FeaturesProps {
 
 const defaultFeatures: Feature[] = [
   {
-    title: "+53 Años de Experiencia",
+    title: "+50 Años de Experiencia",
     description:
       "Más de cinco décadas desarrollando soluciones técnicas seguras y eficientes para la industria peruana.",
     icon: Award,
-    highlight: "Desde 1971",
+    highlight: "Desde 1972",
   },
   {
     title: "Marcas Líderes Mundiales",
@@ -88,17 +89,19 @@ export function Features({
             {title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Desarrollamos soluciones industriales seguras, eficientes y normativamente confiables, integrando tecnología de clase mundial con acompañamiento técnico real en campo.
+            Desarrollamos soluciones industriales seguras, eficientes y normativamente confiables, integrando tecnología de clase mundial con acompañamiento técnico real en campo.{" "}
+            <Link href="/nosotros/" className="text-primary font-semibold hover:underline">Conócenos</Link>.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const tintClass = ["card-tint-1", "card-tint-2", "card-tint-3", "card-tint-4", "card-tint-5", "card-tint-6"][index % 6];
             return (
               <div
                 key={index}
-                className="card-base card-accent group p-5 sm:p-6 flex items-start gap-4 hover:-translate-y-0.5"
+                className={cn("card-base card-accent", tintClass, "group p-5 sm:p-6 flex items-start gap-4 hover:-translate-y-0.5")}
               >
                 <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />

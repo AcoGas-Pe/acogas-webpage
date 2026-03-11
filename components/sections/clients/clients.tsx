@@ -36,24 +36,7 @@ export function Clients({
 }: ClientsProps) {
   return (
     <section
-      className={cn(
-        "section py-12 sm:py-16 md:py-20 bg-background border-y border-border",
-        className
-      )}
-    >
-      <div className="container mb-8 sm:mb-10">
-        <div className="text-center">
-          {subtitle && (
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
-              {subtitle}
-            </p>
-          )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            {title}
-          </h2>
-        </div>
-      </div>
-
+    className={cn("relative z-10 bg-card border-y border-border", className)}>
       <InfiniteCarousel
         speed={30}
         gap="gap-8"

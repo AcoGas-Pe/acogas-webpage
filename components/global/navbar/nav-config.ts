@@ -55,10 +55,10 @@ export interface NavItem {
 
 // Navigation Menus Configuration
 export const NAV_MENUS = {
-  productos: {
+  soluciones: {
     mainLink: {
-      label: "Ver todos los productos",
-      href: "/productos/",
+      label: "Ver todas las soluciones",
+      href: "/soluciones/",
     },
     layout: "stackedProducts",
     columns: [
@@ -73,20 +73,8 @@ export const NAV_MENUS = {
         ],
       },
       {
-        title: "Industrias",
-        href: "/industrias/",
-        items: [
-          { label: "Alimentos y Bebidas", href: "/industrias/alimentos-bebidas/" },
-          { label: "Pesquera", href: "/industrias/pesquera/" },
-          { label: "Agroindustria", href: "/industrias/agroindustria/" },
-          { label: "Minería", href: "/industrias/mineria/" },
-          { label: "Papel y Cartón", href: "/industrias/papel-carton/" },
-          { label: "Industria General", href: "/industrias/industria-general/" },
-        ],
-      },
-      {
-        title: "Nuestros productos",
-        href: "/productos/",
+        title: "Nuestras soluciones",
+        href: "/soluciones/",
         categories: [
           {
             label: "Regulación y Control de Presión",
@@ -131,6 +119,15 @@ export const NAV_MENUS = {
               { title: "Sistemas de Protección" },
             ],
           },
+          {
+            label: "Procesos Especiales y Multifluidos",
+            href: "/productos/procesos-especiales-multifluidos/",
+            sections: [
+              { title: "Regulación de Gas Natural" },
+              { title: "Regulación de GLP" },
+              { title: "Regulación de Aire y Otros Fluidos" },
+            ],
+          },
         ],
       },
     ],
@@ -141,7 +138,7 @@ export const NAV_MENUS = {
       src: "/assets/config/placeholder-image.png",
       alt: "Quienes Somos",
       title: "Quiénes Somos",
-      description: "Más de 53 años desarrollando soluciones técnicas con marcas líderes",
+      description: "Más de 50 años desarrollando soluciones técnicas con marcas líderes",
       href: "/nosotros#quienes-somos",
     },
     columns: [
@@ -241,7 +238,8 @@ export const NAV_MENUS = {
 export const NAV_ITEMS: NavItem[] = [
   { label: "Nosotros", href: "/nosotros/", type: "trigger", menuKey: "nosotros" },
   { label: "Cobertura Industrial", href: "/cobertura-industrial/", type: "trigger", menuKey: "coberturaIndustrial" },
-  { label: "Productos", href: "/productos/", type: "trigger", menuKey: "productos" },
+  { label: "Soluciones", href: "/soluciones/", type: "trigger", menuKey: "soluciones" },
+  { label: "Marcas", href: "/marcas/", type: "link" },
   { label: "Servicios", href: "/servicios/", type: "trigger", menuKey: "servicios" },
   { label: "Contacto", href: "/contacto/", type: "trigger", menuKey: "contacto" },
 ];

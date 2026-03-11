@@ -2,51 +2,28 @@
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Building2 } from "lucide-react";
-
-interface Region {
-  name: string;
-  description: string;
-  cities: string[];
-  contactPhone?: string;
-  href: string;
-}
+import { MapPin, Building2 } from "lucide-react";
 
 interface CoverageProps {
   title?: string;
   subtitle?: string;
-  regions?: Region[];
   className?: string;
 }
 
-const defaultRegions: Region[] = [
-  {
-    name: "Lima",
-    description: "Sede principal y centro de operaciones. Cobertura completa en Lima Metropolitana y Callao.",
-    cities: ["Lurín", "Callao", "Santiago de Surco", "Villa El Salvador", "Ate"],
-    contactPhone: "+51998345895",
-    href: "/cobertura-industrial/lima/",
-  },
-  {
-    name: "Norte",
-    description: "Cobertura en la zona norte del país. Soporte técnico para operaciones industriales.",
-    cities: ["Trujillo", "Chiclayo", "Piura", "Chimbote"],
-    contactPhone: "+51994296627",
-    href: "/cobertura-industrial/norte/",
-  },
-  {
-    name: "Sur",
-    description: "Presencia en la zona sur. Acompañamiento técnico para minería y agroindustria.",
-    cities: ["Arequipa", "Tacna", "Ica", "Cusco"],
-    contactPhone: "+51994296627",
-    href: "/cobertura-industrial/sur/",
-  },
-];
+/** City pages: each city has its own page. Hub shows Lima + Ciudades. */
+const LIMA_HREF = "/cobertura-industrial/lima/";
+const CITIES = [
+  { name: "Trujillo", href: "/cobertura-industrial/trujillo/" },
+  { name: "Arequipa", href: "/cobertura-industrial/arequipa/" },
+  { name: "Chiclayo", href: "/cobertura-industrial/chiclayo/" },
+  { name: "Piura", href: "/cobertura-industrial/piura/" },
+  { name: "Chimbote", href: "/cobertura-industrial/chimbote/" },
+  { name: "Ica", href: "/cobertura-industrial/ica/" },
+] as const;
 
 export function Coverage({
-  title = "Cobertura a Nivel Nacional",
+  title = "Cobertura Industrial",
   subtitle = "Presencia Territorial",
-  regions = defaultRegions,
   className,
 }: CoverageProps) {
   return (
@@ -62,71 +39,61 @@ export function Coverage({
             {title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Brindamos soporte técnico presencial en las principales zonas industriales del Perú, con capacidad de respuesta para visitas técnicas y diagnóstico en campo.
+            Brindamos soporte técnico presencial en las principales zonas industriales del Perú. Cada ciudad tiene su propia página.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {regions.map((region) => (
-            <a
-              key={region.name}
-              href={region.href}
-              className="card-base group p-6 flex flex-col hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <MapPin className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">
-                    {region.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    {region.cities.length} ciudades
-                  </p>
-                </div>
+        {/* 2 columns: Lima | Ciudades (city page hub) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+          <a
+            href={LIMA_HREF}
+            className="card-base card-tint-1 group p-6 sm:p-8 flex flex-col hover:-translate-y-1"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <MapPin className="w-6 h-6 text-primary" />
               </div>
+              <h3 className="text-lg font-bold text-foreground">Lima</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+              Sede principal y centro de operaciones. Cobertura en Lima Metropolitana y Callao.
+            </p>
+            <span className="text-sm font-semibold text-primary mt-4 inline-flex items-center gap-1 group-hover:underline">
+              Ver cobertura en Lima
+            </span>
+          </a>
 
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                {region.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {region.cities.slice(0, 4).map((city) => (
-                  <span
-                    key={city}
-                    className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
-                  >
-                    {city}
-                  </span>
-                ))}
-                {region.cities.length > 4 && (
-                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                    +{region.cities.length - 4} más
-                  </span>
-                )}
+          <div className="card-base card-tint-2 p-6 sm:p-8 flex flex-col">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <Building2 className="w-6 h-6 text-primary" />
               </div>
-
-              {region.contactPhone && (
-                <div className="flex items-center gap-2 text-sm text-primary">
-                  <Phone className="w-4 h-4" />
-                  <span>{region.contactPhone}</span>
-                </div>
-              )}
-            </a>
-          ))}
+              <h3 className="text-lg font-bold text-foreground">Ciudades</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Otras ciudades con cobertura industrial.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {CITIES.map((city) => (
+                <a
+                  key={city.name}
+                  href={city.href}
+                  className="text-xs sm:text-sm px-3 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-foreground hover:bg-primary/20 hover:border-primary/30 transition-colors"
+                >
+                  {city.name}
+                </a>
+              ))}
+            </div>
+            <Button href="/cobertura-industrial/" variant="outline" size="sm" className="mt-4 w-full sm:w-auto">
+              Ver todas las ubicaciones
+            </Button>
+          </div>
         </div>
 
         <div className="text-center mt-10">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button href="/cobertura-industrial/" variant="outline" size="lg">
-              <Building2 className="mr-2 w-4 h-4" />
-              Ver todas las ubicaciones
-            </Button>
-            <Button href="/contacto?tipo=visita" size="lg">
-              Solicitar visita en mi zona
-            </Button>
-          </div>
+          <Button href="/contacto?tipo=visita" size="lg">
+            Solicitar visita en mi zona
+          </Button>
         </div>
       </div>
     </section>
