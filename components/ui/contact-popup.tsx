@@ -14,11 +14,26 @@ const POPUP_DURATION_MS = 300;
 export function ContactPopup() {
   const ctx = useContactPopup();
   const [isExiting, setIsExiting] = useState(false);
+  const [isFadedIn, setIsFadedIn] = useState(false);
 
   const handleClose = useCallback(() => {
     if (isExiting) return;
     setIsExiting(true);
   }, [isExiting]);
+
+  // Fade in: start at opacity 0, then transition to 1 after mount
+  useEffect(() => {
+    if (!ctx?.isOpen || isExiting) {
+      setIsFadedIn(false);
+      return;
+    }
+    const t = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setIsFadedIn(true);
+      });
+    });
+    return () => cancelAnimationFrame(t);
+  }, [ctx?.isOpen, isExiting]);
 
   useEffect(() => {
     if (!isExiting) return;
@@ -54,8 +69,9 @@ export function ContactPopup() {
     <div
       className={cn(
         "fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out",
-        entering && "animate-in fade-in duration-300 ease-in-out",
-        exiting && "animate-out fade-out duration-300 ease-in-out"
+        entering && !isFadedIn && "opacity-0",
+        entering && isFadedIn && "opacity-100",
+        exiting && "opacity-0"
       )}
       role="dialog"
       aria-modal="true"
@@ -64,20 +80,22 @@ export function ContactPopup() {
       <div
         className={cn(
           "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-in-out",
-          entering && "animate-in fade-in duration-300 ease-in-out",
-          exiting && "animate-out fade-out duration-300 ease-in-out"
+          entering && !isFadedIn && "opacity-0",
+          entering && isFadedIn && "opacity-100",
+          exiting && "opacity-0"
         )}
         onClick={handleClose}
         aria-hidden
       />
       <div
         className={cn(
-          "relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-lg bg-card border border-border shadow-xl transition-all duration-300 ease-in-out",
-          entering && "animate-in fade-in zoom-in-95 duration-300 ease-in-out",
-          exiting && "animate-out fade-out zoom-out-95 duration-300 ease-in-out"
+          "relative flex w-full max-w-lg flex-col rounded-lg bg-card border border-border shadow-xl transition-all duration-300 ease-in-out",
+          entering && !isFadedIn && "opacity-0 scale-95",
+          entering && isFadedIn && "opacity-100 scale-100",
+          exiting && "opacity-0 scale-95"
         )}
       >
-        <div className="sticky top-0 flex items-center justify-between p-4 border-b border-border bg-card z-10">
+        <div className="flex shrink-0 items-center justify-between p-4 border-b border-border bg-card">
           <h2 id="contact-popup-title" className="text-lg font-bold text-foreground">
             Contáctanos
           </h2>
@@ -90,13 +108,7 @@ export function ContactPopup() {
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div
-          className={cn(
-            "p-4 sm:p-6 transition-all duration-300 ease-in-out",
-            entering && "animate-in fade-in slide-in-from-bottom-2 duration-300 ease-in-out delay-75 fill-mode-both",
-            exiting && "animate-out fade-out slide-out-to-bottom-2 duration-300 ease-in-out fill-mode-both"
-          )}
-        >
+        <div className="min-h-0 max-h-[85vh] overflow-y-auto overflow-x-hidden p-4 sm:p-6">
           <HubSpotForm
             portalId={HUBSPOT_PORTAL_ID}
             formId={CONTACT_FORM_ID}

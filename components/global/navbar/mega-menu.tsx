@@ -15,7 +15,7 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
 
   if (hasCategories) {
     return (
-      <div className={cn("space-y-4 min-w-0", hideTitle && "pt-8")}>
+      <div className={cn("space-y-4 min-w-0 !col-span-2", hideTitle && "pt-8")}>
         {!hideTitle && (
           <p className="text-xs font-semibold text-primary-light uppercase tracking-wider pb-2 border-b border-border">
             {column.title}
@@ -100,8 +100,8 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
   const hasImage = !stacked && !!config.image;
   const columnCount = config.columns.length;
 
-  // stackedProducts: [Marcas, Industrias] stacked | [Tipo] single col
-  const leftColumns = stacked && columnCount >= 3 ? config.columns.slice(0, 2) : [];
+  // stackedProducts: 2 cols = both on left (e.g. Marcas + Nuestras soluciones); 3+ = left pair + right col
+  const leftColumns = stacked && columnCount >= 2 ? config.columns.slice(0, columnCount >= 3 ? 2 : columnCount) : [];
   const productsColumn = stacked && columnCount >= 3 ? config.columns[2] : null;
 
   const isLargeMenu = stacked ? true : columnCount >= 3 || (hasImage && columnCount >= 2);
@@ -126,17 +126,29 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
     >
       <div className="p-4 md:p-5 max-h-[min(70vh,calc(100svh-5rem))] overflow-y-auto overscroll-contain">
         {stacked ? (
-          /* Option B: no image, stacked Marcas+Industrias | single col Tipo productos */
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-6 min-w-0">
-            <div className="space-y-1 min-w-0">
-              {leftColumns.map((col, i) => (
-                <ColumnBlock key={i} column={col} />
-              ))}
-            </div>
-            {productsColumn && (
-              <div className="min-w-0">
-                <ColumnBlock column={productsColumn} />
-              </div>
+          /* stackedProducts: 2 cols = both side-by-side; 3+ = left pair + right col */
+          <div className={cn(
+            "grid gap-4 md:gap-6 min-w-0",
+            productsColumn ? "grid-cols-1 md:grid-cols-[2fr_1fr]" : "grid-cols-1 md:grid-cols-3"
+          )}>
+            {productsColumn ? (
+              <>
+                <div className="space-y-1 min-w-0 col-span-1 ">
+                  {leftColumns.map((col, i) => (
+                    <ColumnBlock key={i} column={col} />
+                  ))}
+                </div>
+                <div className="min-w-0 col-span-2 "> 
+                  <ColumnBlock column={productsColumn} />
+                </div>
+              </>
+            ) : (
+              leftColumns.map((col, i) => (
+
+                <div key={i} className={cn("min-w-0", i === 0 ? "col-span-1" : "col-span-2")}>
+                  <ColumnBlock column={col} /> 
+                </div>
+              ))
             )}
           </div>
         ) : (

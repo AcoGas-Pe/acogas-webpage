@@ -10,7 +10,7 @@ interface ContactPopupContextValue {
 
 const ContactPopupContext = createContext<ContactPopupContextValue | null>(null);
 
-const AUTO_OPEN_DELAY_MS = 5000;
+const AUTO_OPEN_DELAY_MS = 20000;
 
 export function ContactPopupProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);

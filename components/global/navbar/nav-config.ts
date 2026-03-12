@@ -239,7 +239,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Nosotros", href: "/nosotros/", type: "trigger", menuKey: "nosotros" },
   { label: "Cobertura Industrial", href: "/cobertura-industrial/", type: "trigger", menuKey: "coberturaIndustrial" },
   { label: "Soluciones", href: "/soluciones/", type: "trigger", menuKey: "soluciones" },
-  { label: "Marcas", href: "/marcas/", type: "link" },
   { label: "Servicios", href: "/servicios/", type: "trigger", menuKey: "servicios" },
   { label: "Contacto", href: "/contacto/", type: "trigger", menuKey: "contacto" },
 ];

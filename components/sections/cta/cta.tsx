@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, ClipboardCheck, Phone } from "lucide-react";
+import Image from "next/image";
 
 interface CTAAction {
   label: string;
@@ -18,20 +19,20 @@ interface CTAProps {
 }
 
 export function CTA({
-  title = "¿Listo para optimizar su operación?",
-  description = "Solicite una visita técnica o diagnóstico sin compromiso. Nuestro equipo evaluará sus necesidades y le propondrá la solución más segura y eficiente.",
+  title = "Recibe una propuesta personalizada para tu industria",
+  description = "Agende una visita técnica o diagnóstico sin compromiso. Nuestros especialistas analizan sus requerimientos y le presentan propuestas integrales, alineadas con los más altos estándares de seguridad y rentabilidad operativa.",
   primaryAction = {
-    label: "Solicitar Visita Técnica",
+    label: "Agendar Visita Técnica",
     href: "/contacto?tipo=visita",
     icon: "arrow",
   },
   secondaryAction = {
-    label: "Solicitar Diagnóstico",
+    label: "Solicitar Diagnóstico Profesional",
     href: "/contacto?tipo=diagnostico",
     icon: "clipboard",
   },
   tertiaryAction = {
-    label: "Cotiza Ahora",
+    label: "Contactar Asesor",
     href: "tel:+51998345895",
     icon: "phone",
   },
@@ -55,19 +56,23 @@ export function CTA({
       )}
     >
       {/* Gradient background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-primary via-primary-muted to-background"
+      <Image
+        src="/assets/images/refinery.webp"
+        alt="CTA Background"
+        width={1920}
+        height={1080}
+        className="absolute inset-0 w-full h-full sm:object-cover opacity-50"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary-light)/0.2),transparent_70%)]" aria-hidden />
+      <div className="absolute inset-0 bg-primary-muted/20" aria-hidden />
 
-      <div className="container relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight">
+      <div className="relative z-10 px-12">
+        <div className="text-center bg-card/80 border border-primary/20 p-6 sm:p-8 rounded-lg">
+          <h2 className="text-2xl sm:text-4xl font-semibold text-primary-foreground leading-tight">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-primary-foreground/80 leading-relaxed max-w-xl mx-auto">
+            <p className="mt-4 max-w-7xl sm:mt-5 text-xs sm:text-sm text-primary-foreground opacity-80 leading-relaxed mx-auto">
               {description}
             </p>
           )}
@@ -75,33 +80,22 @@ export function CTA({
             {primaryAction && (
               <Button
                 href={primaryAction.href}
-                size="lg"
-                className="min-h-12 w-full sm:w-auto bg-white text-primary-muted font-bold hover:bg-white/90 hover:text-primary shadow-lg"
+                size="sm"
+                className="min-h-12 w-full sm:w-auto bg-primary text-primary-foreground font-bold hover:bg-primary/90 hover:text-primary-foreground shadow-lg"
               >
                 {primaryAction.label}
-                {primaryAction.icon === "arrow" && <ArrowRight className="ml-2 w-4 h-4" />}
+                <span className="hidden sm:block">{primaryAction.icon === "arrow" && <ArrowRight className="ml-2 w-4 h-4" />}</span>
               </Button>
             )}
             {secondaryAction && (
               <Button
                 href={secondaryAction.href}
                 variant="outline"
-                size="lg"
-                className="min-h-12 w-full sm:w-auto border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:border-primary-foreground/50"
+                size="sm"
+                className="min-h-12 w-full sm:w-auto border-primary/30 text-primary-foreground bg-transparent hover:bg-primary/10 hover:border-primary/50"
               >
-                {secondaryAction.icon !== "arrow" && getIcon(secondaryAction.icon)}
+                <span className="hidden sm:block">{secondaryAction.icon !== "arrow" && getIcon(secondaryAction.icon)}</span>
                 {secondaryAction.label}
-              </Button>
-            )}
-            {tertiaryAction && (
-              <Button
-                href={tertiaryAction.href}
-                variant="ghost"
-                size="lg"
-                className="min-h-12 w-full sm:w-auto text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                {tertiaryAction.icon !== "arrow" && getIcon(tertiaryAction.icon)}
-                {tertiaryAction.label}
               </Button>
             )}
           </div>

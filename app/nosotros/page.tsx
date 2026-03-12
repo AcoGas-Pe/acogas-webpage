@@ -10,7 +10,7 @@ export default function NosotrosPage() {
       <PagesHero
         title="Ofreciendo Soluciones Seguras y Eficientes"
         subtitle="Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales."
-        image="/assets/images/refiner2.jpg"
+        image="/assets/images/refiner2.webp"
         breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Nosotros", href: "/nosotros" }]}
       />
       <QuienesSomos />

@@ -38,6 +38,7 @@ export interface ProductIndustry {
     slug: string;
     url: string;
     description?: string;
+    image?: string;
   }
 
 export interface Product {
@@ -560,36 +561,42 @@ export interface Product {
       slug: "alimentos-bebidas",
       url: "/industrias/alimentos-bebidas/",
       description: "Soluciones para la industria alimentaria y de bebidas",
+      image: "/assets/images/food-industry.webp",
     },
     {
       name: "Pesquera",
       slug: "pesquera",
       url: "/industrias/pesquera/",
       description: "Equipos para la industria pesquera",
+      image: "/assets/images/fishing-industry.webp",
     },
     {
       name: "Agroindustria",
       slug: "agroindustria",
       url: "/industrias/agroindustria/",
       description: "Soluciones para agroindustria",
+      image: "/assets/images/agro-industry.webp",
     },
     {
       name: "Minería",
       slug: "mineria",
       url: "/industrias/mineria/",
       description: "Equipos para la industria minera",
+      image: "/assets/images/mining-industry.webp",
     },
     {
       name: "Papel y Cartón",
       slug: "papel-carton",
       url: "/industrias/papel-carton/",
       description: "Soluciones para la industria del papel y cartón",
+      image: "/assets/images/cardboard.webp",
     },
     {
       name: "Industria General",
       slug: "industria-general",
       url: "/industrias/industria-general/",
       description: "Soluciones para industria general",
+      image: "/assets/images/general-industry.webp",
     },
   ];
 

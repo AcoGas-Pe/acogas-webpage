@@ -16,7 +16,7 @@ export default function RecursosPage() {
         title="Centro de Recursos Técnicos"
         subtitle="Recursos"
         description="Catálogos, manuales, normativas y guías técnicas para apoyar sus decisiones de ingeniería."
-        image="/assets/images/refiner2.jpg"
+        image="/assets/images/refiner2.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Recursos", href: "/recursos" },

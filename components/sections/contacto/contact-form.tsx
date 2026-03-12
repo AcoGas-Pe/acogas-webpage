@@ -95,7 +95,7 @@ export function ContactForm({ className }: ContactFormProps) {
           {/* HubSpot Form */}
           <div className="lg:col-span-3">
             <div className="card-base p-5 sm:p-6 md:p-8">
-              <p className="text-xs text-muted-foreground mb-4">Formulario de contacto (pruebas)</p>
+              <p className="text-xs text-muted-foreground mb-4">Información de Contacto</p>
               <HubSpotForm
                 portalId={HUBSPOT_PORTAL_ID}
                 formId={CONTACT_FORM_ID}
@@ -111,10 +111,10 @@ export function ContactForm({ className }: ContactFormProps) {
         <div className="max-w-2xl mx-auto">
           <div className="card-base p-5 sm:p-6 md:p-8">
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
-              Pruebas
+              Información de Contacto
             </p>
             <h3 className="text-xl font-bold text-foreground mb-4">
-              Formulario de registro
+              Formulario de Contacto
             </h3>
             {REGISTER_FORM_ID ? (
               <HubSpotForm

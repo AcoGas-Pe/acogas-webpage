@@ -14,7 +14,7 @@ export default function ContactoPage() {
         title="Contáctenos"
         subtitle="Contacto"
         description="Solicite una visita técnica, cotización o soporte. Nuestro equipo está listo para atenderle."
-        image="/assets/images/refiner3.jpg"
+        image="/assets/images/refiner3.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Contacto", href: "/contacto" },

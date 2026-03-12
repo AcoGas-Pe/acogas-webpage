@@ -18,10 +18,10 @@
   --secondary: 215 30% 22%;
   --secondary-foreground: 0 0% 95%;
 
-  /* Accent - Warm amber for highlights and bullets */
-  --accent: 38 92% 50%;
+  /* Accent - Bright red for highlights and bullets */
+  --accent: 0 100% 50%;
   --accent-foreground: 0 0% 100%;
-  --accent-muted: 38 60% 55%;
+  --accent-muted: 0 85% 60%;
 
   /* Muted - Readable body text */
   --muted: 215 20% 35%;
@@ -94,6 +94,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary-muted)) hsl(var(--background));
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -192,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 .hubspot-form-container select,
 .hubspot-form-container textarea {
   width: 100%;
-  height: 2.75rem;
+  height: 2.5rem;
   padding: 0 0.75rem;
   border-radius: var(--radius);
   background-color: hsl(var(--input));
@@ -297,3 +300,4 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.125rem;
   accent-color: hsl(var(--primary));
 }
+
