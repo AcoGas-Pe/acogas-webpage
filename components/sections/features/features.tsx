@@ -92,7 +92,7 @@ export function Features({
           <p className="my-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
             Desarrollamos soluciones industriales seguras, eficientes y normativamente confiables, integrando tecnología de clase mundial con acompañamiento técnico real en campo.{" "}
           </p>
-          <Button variant="outline" size="sm" className="w-full sm:w-fit min-h-10 border-primary text bg-primary hover:bg-primary hover:text-primary-foreground">Conócenos</Button>
+          <Button variant="outline" href="/nosotros#propuesta-valor" size="sm" className="w-full sm:w-fit min-h-10 border-primary text bg-primary hover:bg-primary hover:text-primary-foreground">Conócenos</Button>
         </div>
           {features.map((feature, index) => {
             const Icon = feature.icon;

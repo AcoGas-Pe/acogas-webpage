@@ -158,7 +158,7 @@ export function IndustriesSolutionsBento() {
                           className="object-cover w-full h-full rounded-md"
                           style={{ transition: 'transform 0.3s' }}
                         />
-                        <div className="absolute inset-0 bg-black/50" />
+                        <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300" />
                       </div>
                     )}
                     </div>

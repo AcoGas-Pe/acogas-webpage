@@ -70,22 +70,22 @@ export function PropuestaValor() {
   ];
 
   return (
-    <section id="propuesta-valor" className="section h-[90dvh] mx-auto bg-background text-center">
+    <section id="propuesta-valor" className="section py-16 sm:py-20 md:py-24 mx-auto bg-background text-center">
       <div className="container mx-auto px-4 py-16">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-4xl font-bold mb-2">Conoce Nuestros Valores</h2>
                 <p className="text-muted-foreground/80 text-sm mb-4">Lideramos la industria con tecnología, criterio y responsabilidad.</p>
-                <div className="flex flex-row items-start justify-start p-4 gap-4 flex-wrap">
+                <div className="flex flex-row items-start justify-center p-4 gap-4 flex-wrap">
                   {values.map((value) => {
                     const Icon = value.icon;
                     return (
-                      <div key={value.title} className="card-base cursor-default flex justify-center flex-col relative items-center justify-start p-4 w-100 h-50 group">
-                        <span className="absolute text-primary text-4xl opacity-10 group-hover:opacity-100 transition-all duration-300">
+                      <div key={value.title} className="card-base cursor-default flex justify-center flex-col relative items-center justify-start p-4 w-80 h-50 group">
+                        <span className="absolute text-primary text-4xl opacity-10 transition-all duration-300">
                           <Icon size={150} strokeWidth={2.2} />
                         </span>
-                        <div className="mt-10 flex flex-col items-center justify-start relative z-10">
+                        <div className="mt-10  flex flex-col items-center justify-start relative z-10">
                           <h3 className="text-lg font-bold text-primary">{value.title}</h3>
-                        <p className="text-foreground/80 font-semibold">{value.description}</p>
+                        <p className="text-foreground/80 font-light text-sm">{value.description}</p>
                         </div>
                  
                       </div>
@@ -98,7 +98,7 @@ export function PropuestaValor() {
                     {partners.map((partner) => (
                       <InfiniteCarouselItem
                         key={partner.name}
-                        className="card-base min-w-[280px] max-w-[320px] flex flex-col items-center justify-between p-4 gap-4"
+                        className="card-base min-w-[280px] max-w-[300px] flex flex-col items-center justify-between p-4 gap-4"
                       >
                         <Image
                           src={partner.image}

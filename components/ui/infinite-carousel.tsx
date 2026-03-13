@@ -68,7 +68,7 @@ export function InfiniteCarousel({
   return (
     <div
       className={cn("overflow-hidden", className)}
-      onMouseEnter={() => pauseOnHover && setIsPaused(true)}
+      onMouseEnter={() => pauseOnHover && setIsPaused(false)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
       aria-hidden
     >
