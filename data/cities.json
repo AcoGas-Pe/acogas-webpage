@@ -1,0 +1,228 @@
+{
+  "cities": [
+    {
+      "slug": "lima",
+      "name": "Lima",
+      "region": "Lima Metropolitana",
+      "isLimaDistrict": false,
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para Lima Metropolitana",
+        "subtitle": "Lima",
+        "description": "Más de 50 años brindando soluciones técnicas seguras y eficientes para la industria en Lima. Soporte técnico presencial, productos de clase mundial y acompañamiento real en campo.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=lima" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=lima" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "500+", "label": "Clientes en Lima" },
+        { "value": "24/7", "label": "Soporte técnico" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Respuesta Inmediata", "description": "Atención técnica en Lima Metropolitana con tiempos de respuesta menores a 24 horas." },
+        { "title": "Inventario Local", "description": "Stock permanente de equipos y repuestos en nuestra sede de La Molina." },
+        { "title": "Equipo Especializado", "description": "Ingenieros certificados con experiencia en plantas industriales de Lima." }
+      ],
+      "industries": [
+        { "name": "Manufactura", "description": "Plantas industriales en Ate, Santa Anita y Lurigancho." },
+        { "name": "Alimentos y Bebidas", "description": "Industria alimentaria en Lima Norte y Lima Sur." },
+        { "name": "Textil", "description": "Sector textil en Gamarra y zonas industriales." },
+        { "name": "Farmacéutica", "description": "Laboratorios y plantas farmacéuticas." }
+      ],
+      "testimonials": [
+        { "name": "Carlos Mendoza", "company": "Industrias del Pacífico", "quote": "ACOGAS ha sido nuestro aliado en la modernización de nuestras instalaciones de gas.", "rating": 5 },
+        { "name": "María Torres", "company": "Textiles San Martín", "quote": "El servicio técnico es excepcional, siempre responden cuando los necesitamos.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e0!3m2!1ses!2spe!4v1773358132766!5m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Lima | ACOGAS - GLP, Gas Natural y Vapor",
+      "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Lima Metropolitana. Más de 50 años de experiencia con soporte técnico presencial."
+    },
+    {
+      "slug": "callao",
+      "name": "Callao",
+      "region": "Callao",
+      "isLimaDistrict": true,
+      "parentCity": "lima",
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para el Callao",
+        "subtitle": "Callao",
+        "description": "Atención especializada para la zona industrial y portuaria del Callao. Equipos certificados y soporte técnico para operaciones críticas.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=callao" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=callao" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "150+", "label": "Clientes en Callao" },
+        { "value": "24/7", "label": "Soporte técnico" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Zona Portuaria", "description": "Experiencia en instalaciones portuarias y marítimas." },
+        { "title": "Respuesta Rápida", "description": "Proximidad a la zona industrial del Callao." },
+        { "title": "Normativa Especial", "description": "Conocimiento de regulaciones para zonas portuarias." }
+      ],
+      "industries": [
+        { "name": "Portuario", "description": "Terminal portuario y operaciones marítimas." },
+        { "name": "Almacenamiento", "description": "Depósitos y centros de distribución." },
+        { "name": "Manufactura", "description": "Plantas industriales en la zona franca." }
+      ],
+      "testimonials": [
+        { "name": "Roberto Chávez", "company": "Operaciones Portuarias SAC", "quote": "ACOGAS conoce las necesidades específicas del sector portuario.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Callao | ACOGAS - GLP, Gas Natural y Vapor",
+      "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en el Callao. Experiencia en zona portuaria con soporte técnico especializado."
+    },
+    {
+      "slug": "lurin",
+      "name": "Lurín",
+      "region": "Lima Sur",
+      "isLimaDistrict": true,
+      "parentCity": "lima",
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para Lurín",
+        "subtitle": "Lurín",
+        "description": "Cobertura especializada para el corredor industrial de Lurín. Equipos de clase mundial para la creciente zona industrial del sur de Lima.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=lurin" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=lurin" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "80+", "label": "Clientes en Lurín" },
+        { "value": "24/7", "label": "Soporte técnico" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Zona en Crecimiento", "description": "Experiencia en nuevas instalaciones industriales." },
+        { "title": "Acceso Directo", "description": "Fácil acceso desde nuestra sede principal." },
+        { "title": "Proyectos Nuevos", "description": "Especialistas en puesta en marcha de plantas nuevas." }
+      ],
+      "industries": [
+        { "name": "Manufactura", "description": "Plantas industriales del corredor sur." },
+        { "name": "Logística", "description": "Centros de distribución y almacenes." },
+        { "name": "Agroindustria", "description": "Procesamiento de alimentos y agroindustria." }
+      ],
+      "testimonials": [
+        { "name": "Ana García", "company": "Industrias del Sur", "quote": "Excelente soporte técnico para nuestra nueva planta en Lurín.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Lurín | ACOGAS - GLP, Gas Natural y Vapor",
+      "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en Lurín. Soporte técnico especializado para el corredor industrial del sur de Lima."
+    },
+    {
+      "slug": "santiago-de-surco",
+      "name": "Santiago de Surco",
+      "region": "Lima",
+      "isLimaDistrict": true,
+      "parentCity": "lima",
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para Santiago de Surco",
+        "subtitle": "Santiago de Surco",
+        "description": "Atención especializada para empresas e instituciones en Santiago de Surco. Soluciones eficientes para el sector comercial e industrial.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=santiago-de-surco" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=santiago-de-surco" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "60+", "label": "Clientes en Surco" },
+        { "value": "24/7", "label": "Soporte técnico" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Sector Corporativo", "description": "Experiencia en edificios corporativos y comerciales." },
+        { "title": "Proximidad", "description": "Cerca de nuestra sede principal en La Molina." },
+        { "title": "Atención Premium", "description": "Servicio personalizado para clientes corporativos." }
+      ],
+      "industries": [
+        { "name": "Comercial", "description": "Centros comerciales y edificios de oficinas." },
+        { "name": "Hotelería", "description": "Hoteles y restaurantes." },
+        { "name": "Salud", "description": "Clínicas y centros médicos." }
+      ],
+      "testimonials": [
+        { "name": "Luis Fernández", "company": "Centro Empresarial Sur", "quote": "Profesionalismo y calidad en cada servicio.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Santiago de Surco | ACOGAS",
+      "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en Santiago de Surco. Servicio técnico especializado para el sector corporativo."
+    },
+    {
+      "slug": "arequipa",
+      "name": "Arequipa",
+      "region": "Arequipa",
+      "isLimaDistrict": false,
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para Arequipa",
+        "subtitle": "Arequipa",
+        "description": "Cobertura técnica para la segunda ciudad industrial del Perú. Soporte especializado para minería, manufactura y agroindustria en la región sur.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=arequipa" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=arequipa" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "200+", "label": "Clientes en Arequipa" },
+        { "value": "48h", "label": "Tiempo de respuesta" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Región Sur", "description": "Cobertura para toda la macro región sur del Perú." },
+        { "title": "Sector Minero", "description": "Experiencia en proyectos mineros de gran escala." },
+        { "title": "Soporte Regional", "description": "Equipo técnico con base en la región." }
+      ],
+      "industries": [
+        { "name": "Minería", "description": "Proyectos mineros en Arequipa y Moquegua." },
+        { "name": "Agroindustria", "description": "Procesamiento agrícola y exportación." },
+        { "name": "Manufactura", "description": "Parque industrial de Arequipa." },
+        { "name": "Textil", "description": "Industria textil de alpaca y algodón." }
+      ],
+      "testimonials": [
+        { "name": "Pedro Quispe", "company": "Minera del Sur", "quote": "ACOGAS entiende las necesidades del sector minero.", "rating": 5 },
+        { "name": "Carmen Delgado", "company": "Agroindustrias Arequipa", "quote": "Servicio confiable y equipos de primera calidad.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244088.55498526826!2d-71.63198867578125!3d-16.398821950000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a3f0ad8c4d3%3A0x2b2f6e08f0e6c0a!2sArequipa!5e0!3m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Arequipa | ACOGAS - GLP, Gas Natural y Vapor",
+      "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Arequipa. Soporte técnico para minería, manufactura y agroindustria."
+    },
+    {
+      "slug": "trujillo",
+      "name": "Trujillo",
+      "region": "La Libertad",
+      "isLimaDistrict": false,
+      "hero": {
+        "title": "Soluciones industriales en GLP, Gas Natural y Vapor para Trujillo",
+        "subtitle": "Trujillo",
+        "description": "Cobertura técnica para la capital del norte peruano. Soporte especializado para agroindustria, manufactura y el creciente sector industrial de La Libertad.",
+        "primaryAction": { "label": "Solicitar Visita Técnica", "href": "/contacto?tipo=visita&ciudad=trujillo" },
+        "secondaryAction": { "label": "Solicitar Diagnóstico", "href": "/contacto?tipo=diagnostico&ciudad=trujillo" },
+        "tertiaryAction": { "label": "Ver Soluciones", "href": "/soluciones/" }
+      },
+      "stats": [
+        { "value": "50+", "label": "Años de experiencia" },
+        { "value": "150+", "label": "Clientes en Trujillo" },
+        { "value": "48h", "label": "Tiempo de respuesta" },
+        { "value": "100%", "label": "Certificaciones" }
+      ],
+      "features": [
+        { "title": "Región Norte", "description": "Cobertura para toda la macro región norte del Perú." },
+        { "title": "Agroindustria", "description": "Experiencia en plantas de procesamiento agrícola." },
+        { "title": "Soporte Regional", "description": "Visitas técnicas programadas a la región." }
+      ],
+      "industries": [
+        { "name": "Agroindustria", "description": "Procesamiento de espárragos, arándanos y más." },
+        { "name": "Manufactura", "description": "Parque industrial de Trujillo." },
+        { "name": "Calzado", "description": "Industria del calzado en El Porvenir." },
+        { "name": "Alimentos", "description": "Procesamiento de alimentos y conservas." }
+      ],
+      "testimonials": [
+        { "name": "Jorge Sánchez", "company": "Agroindustrias del Norte", "quote": "Equipos de calidad y servicio técnico confiable.", "rating": 5 }
+      ],
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252230.02061988697!2d-79.1462839453125!3d-8.111897999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d6f8c7dd417%3A0x7f6e4f2db7d631be!2sTrujillo!5e0!3m2!1ses!2spe",
+      "metaTitle": "Soluciones Industriales en Trujillo | ACOGAS - GLP, Gas Natural y Vapor",
+      "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Trujillo. Soporte técnico para agroindustria y manufactura en La Libertad."
+    }
+  ]
+}

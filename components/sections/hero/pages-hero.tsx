@@ -41,7 +41,7 @@ export function PagesHero({
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50" aria-hidden />
         </div>
       )}
       {!image && (
@@ -54,7 +54,7 @@ export function PagesHero({
             <ol className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
               {breadcrumbs.map((bc, i) => (
                 <li key={bc.href} className="flex items-center gap-1.5">
-                  {i > 0 && <span className="text-border">/</span>}
+                  {i > 0 && <span className="text-foreground/50">/</span>}
                   <Link
                     href={bc.href}
                     className={cn(

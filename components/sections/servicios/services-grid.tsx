@@ -1,18 +1,17 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import {
-  Flame,
-  Gauge,
-  Wind,
-  Settings,
+  Ruler,
+  PackageSearch,
+  ClipboardCheck,
+  Headphones,
+  Wrench,
   ArrowRight,
-  Thermometer,
-  Droplets,
 } from "lucide-react";
 
 interface ServiceDetail {
   title: string;
+  subtitle: string;
   description: string;
   features: string[];
   icon: React.ComponentType<{ className?: string }>;
@@ -25,76 +24,69 @@ interface ServicesGridProps {
 
 const services: ServiceDetail[] = [
   {
-    title: "Gas Natural",
+    title: "Ingeniería y Dimensionamiento",
+    subtitle: "Soluciones a medida",
     description:
-      "Regulación, medición y control para estaciones de gas natural con equipos de clase mundial. Diseño, dimensionamiento y puesta en marcha.",
+      "Diseñamos soluciones técnicas personalizadas para cada proyecto. Dimensionamiento de equipos, cálculo de capacidades y especificaciones según sus requerimientos operativos.",
     features: [
-      "Estaciones de regulación y medición",
-      "Válvulas de control y seguridad",
-      "Dimensionamiento y selección de equipos",
+      "Ingeniería conceptual y de detalle",
+      "Cálculo y dimensionamiento de equipos",
+      "Especificaciones técnicas personalizadas",
     ],
-    icon: Flame,
-    href: "/productos/gas-natural",
+    icon: Ruler,
+    href: "/servicios/ingenieria-dimensionamiento",
   },
   {
-    title: "Gas Licuado de Petróleo (GLP)",
+    title: "Selección de Equipos",
+    subtitle: "Elige el equipo ideal",
     description:
-      "Soluciones integrales en almacenamiento, vaporización, regulación y distribución de GLP para industria y comercio.",
+      "Le ayudamos a elegir el equipo correcto para su aplicación. Asesoría técnica basada en condiciones de operación, normativas y mejores prácticas de la industria.",
     features: [
-      "Vaporizadores y reguladores",
-      "Bombas y compresores (Corken)",
-      "Sistemas de medición (Liquid Controls)",
+      "Asesoría técnica especializada",
+      "Comparativa de alternativas",
+      "Recomendaciones según normativa",
     ],
-    icon: Gauge,
-    href: "/productos/gas-lp",
+    icon: PackageSearch,
+    href: "/servicios/seleccion-equipos",
   },
   {
-    title: "Vapor y Fluidos Térmicos",
+    title: "Diagnóstico Técnico",
+    subtitle: "Revisión profesional",
     description:
-      "Control y regulación de vapor, fluidos térmicos y procesos especiales para plantas industriales.",
+      "Evaluación completa de sus instalaciones para identificar oportunidades de mejora, riesgos operativos y optimización de procesos.",
     features: [
-      "Reguladores de presión y temperatura",
-      "Válvulas de seguridad y alivio",
-      "Trampas de vapor y accesorios",
+      "Inspección en campo",
+      "Análisis de condiciones operativas",
+      "Informe técnico con recomendaciones",
     ],
-    icon: Wind,
-    href: "/productos/equipos",
+    icon: ClipboardCheck,
+    href: "/servicios/diagnostico-tecnico",
   },
   {
-    title: "Ingeniería de Campo",
+    title: "Soporte Técnico",
+    subtitle: "Ayuda especializada",
     description:
-      "Acompañamiento técnico desde la ingeniería conceptual hasta la puesta en marcha y capacitación en planta.",
+      "Acompañamiento técnico continuo para resolver dudas, problemas operativos y consultas sobre sus equipos y sistemas.",
     features: [
-      "Visitas técnicas y diagnóstico",
-      "Puesta en marcha y commissioning",
-      "Capacitación al personal de planta",
+      "Atención telefónica y remota",
+      "Resolución de problemas operativos",
+      "Consultas técnicas especializadas",
     ],
-    icon: Settings,
-    href: "/contacto",
+    icon: Headphones,
+    href: "/servicios/soporte-tecnico",
   },
   {
-    title: "Instrumentación y Control",
+    title: "Mantenimiento Industrial",
+    subtitle: "Cuidado preventivo y correctivo",
     description:
-      "Instrumentación de procesos industriales con tecnología Emerson para monitoreo, control y automatización.",
+      "Servicios de mantenimiento para garantizar la continuidad operativa de sus equipos. Programas preventivos y atención correctiva con repuestos originales.",
     features: [
-      "Transmisores de presión y temperatura",
-      "Controladores de flujo",
-      "Sistemas de telemetría",
-    ],
-    icon: Thermometer,
-    href: "/productos/",
-  },
-  {
-    title: "Componentes y Repuestos",
-    description:
-      "Suministro de componentes originales Cavagna, Corken, Liquid Controls y Fisher para mantenimiento y recambio.",
-    features: [
+      "Mantenimiento preventivo programado",
+      "Mantenimiento correctivo",
       "Repuestos originales certificados",
-      "Kits de mantenimiento preventivo",
-      "Asesoría en compatibilidad",
     ],
-    icon: Droplets,
-    href: "/productos/",
+    icon: Wrench,
+    href: "/servicios/mantenimiento-industrial",
   },
 ];
 
@@ -127,9 +119,12 @@ export function ServicesGrid({ className }: ServicesGridProps) {
                   <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-foreground">
-                    {service.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-accent font-medium">{service.subtitle}</p>
+                  </div>
                 </div>
 
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed flex-1">

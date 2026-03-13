@@ -18,9 +18,9 @@ const CITIES = [
 
 const LIMA_CITIES = [
   { name: "Lima", href: "/cobertura-industrial/lima/" },
-  { name: "Callao", href: "/cobertura-industrial/lima/callao/" },
-  { name: "Lurin", href: "/cobertura-industrial/lima/lurin/" },
-  { name: "Santiago de Surco", href: "/cobertura-industrial/lima/santiago-de-surco/" },
+  { name: "Callao", href: "/cobertura-industrial/callao/" },
+  { name: "Lurín", href: "/cobertura-industrial/lurin/" },
+  { name: "Santiago de Surco", href: "/cobertura-industrial/santiago-de-surco/" },
 ] as const;
 
 export function Coverage({

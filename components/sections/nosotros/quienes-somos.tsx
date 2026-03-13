@@ -2,29 +2,29 @@ import Image from "next/image";
 
 export function QuienesSomos() {
   return (
-    <section id="quienes-somos" className="section !h-[95dvh] mx-auto bg-background-light text-light-foreground text-center">
+    <section id="quienes-somos" className="section  mx-auto bg-from-background-light text-light-foreground text-center">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4 text-foreground">
             Experiencia, Confianza y Trayectoria en Soluciones Industriales
           </h2>
-          <div className="flex  sm:flex-row flex-col items-start text-left justify-start p-4 gap-4 ">
+          <div className="flex  sm:flex-row flex-col items-start text-left justify-start p-4 gap-4 text-foreground">
             <div className="flex flex-col items-start justify-start gap-3 w-1/2">
-            <p className="text-lg text-light-foreground opacity-60">
+            <p className="text-lg text-foreground opacity-60">
               Con más de <span className="font-bold">50 años</span> de experiencia en  
               <a href="/" className="text-primary hover:text-primary-light transition-colors font-bold"> ACOGAS INDUSTRIAL S.A.C.</a>, 
               nos hemos dedicado a impulsar el desarrollo de la industria peruana. Nuestra misión es ser aliados estratégicos de nuestros clientes para que operen de manera más eficiente y segura, brindando experiencia, criterio técnico y un compromiso genuino en cada proyecto.
             </p>
-            <p className="text-lg text-light-foreground opacity-60">
+            <p className="text-lg text-foreground opacity-60">
             Comercializamos y representamos marcas líderes a nivel mundial como Emerson (Fisher, Tartarini, Spence, Cash, Corken, Liquid Controls y Cavagna), garantizando seguridad, eficiencia operativa, precisión, cumplimiento normativo y confiabilidad en cada proyecto, desde la selección del equipo hasta su correcta aplicación en campo.
             </p>
             
             <div className="flex flex-col items-start justify-start gap-3 p-4">
             
-            <p className="text-lg text-light-foreground/50 italic">
+            <p className="text-lg text-foreground/50 italic">
             <q> No vendemos productos, <span className="font-bold text-primary/90">desarrollamos soluciones integrales</span> para GLP, Gas Natural, Vapor y procesos industriales con respaldo técnico, normativo y de marca.</q>
             </p>
-            <p className="text-sm text-light-foreground/30 italic">~ Acogas Industrial S.A.C.</p>
+            <p className="text-sm text-foreground/30 italic">~ Acogas Industrial S.A.C.</p>
             </div>
 
 
