@@ -58,8 +58,8 @@ export function ProductsMainSection({
         <Button variant="default" href="#descargas-catalogo" size="sm" className="w-full sm:w-fit min-h-10">
           Descargar catálogo
         </Button>
-        <Button variant="outline" size="sm" className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-          Agrega al carrito
+        <Button variant="outline" size="sm" href="/cotizar/" className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+          Solicitar cotización
         </Button>
         </div>
         <span className="text-sm flex py-2 opacity-50 px-2 border-b border-muted-foreground font-light w-full">

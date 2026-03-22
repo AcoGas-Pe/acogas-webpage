@@ -66,10 +66,19 @@ export const NAV_MENUS = {
         title: "Marcas",
         href: "/marcas/",
         items: [
-          { label: "Emerson", href: "/marcas/emerson/" },
-          { label: "Corken", href: "/marcas/corken/" },
-          { label: "Cavagna", href: "/marcas/cavagna/" },
-          { label: "Liquid Controls", href: "/marcas/liquid-controls/" },
+          { label: "Fisher (GLP · GN · Otros)", href: "/marcas/" },
+          { label: "Tartarini", href: "/marcas/" },
+          { label: "Spence", href: "/marcas/" },
+          { label: "Cash", href: "/marcas/" },
+          { label: "Anderson Greenwood", href: "/marcas/" },
+          { label: "Crosby", href: "/marcas/" },
+          { label: "Kunkle", href: "/marcas/" },
+          { label: "Marston", href: "/marcas/" },
+          { label: "Enardo", href: "/marcas/" },
+          { label: "Varec", href: "/marcas/" },
+          { label: "Corken", href: "/marcas/" },
+          { label: "Liquid Controls", href: "/marcas/" },
+          { label: "Cavagna", href: "/marcas/" },
         ],
       },
       {
@@ -138,7 +147,8 @@ export const NAV_MENUS = {
       src: "/assets/config/placeholder-image.png",
       alt: "Quienes Somos",
       title: "Quiénes Somos",
-      description: "Más de 50 años desarrollando soluciones técnicas con marcas líderes",
+      description:
+        "Más de 50 años desarrollando soluciones técnicas con marcas líderes",
       href: "/nosotros#quienes-somos",
     },
     columns: [
@@ -146,19 +156,52 @@ export const NAV_MENUS = {
         title: "Empresa",
         href: "/nosotros/",
         items: [
-          { label: "Nosotros", href: "/nosotros/", description: "Conócenos en detalle" },
-          { label: "Trayectoria", href: "/nosotros#trayectoria", description: "Nuestro recorrido a lo largo de los años" },
-          { label: "Propuesta de Valor", href: "/nosotros#propuesta-valor", description: "Nuestras fortalezas y beneficios" },
+          {
+            label: "Nosotros",
+            href: "/nosotros/",
+            description: "Conócenos en detalle",
+          },
+          {
+            label: "Soluciones",
+            href: "/soluciones/",
+            description: "Líneas de solución por energía y proceso",
+          },
+          {
+            label: "Trayectoria",
+            href: "/nosotros#trayectoria",
+            description: "Nuestro recorrido a lo largo de los años",
+          },
+          {
+            label: "Propuesta de Valor",
+            href: "/nosotros#propuesta-valor",
+            description: "Valores y socios estratégicos",
+          },
         ],
       },
       {
         title: "Recursos",
         href: "/recursos-tecnicos/",
         items: [
-          { label: "Blog Técnico", href: "/recursos-tecnicos/blog/", description: "Artículos y novedades técnicas" },
-          { label: "Catálogos", href: "/recursos-tecnicos/catalogos/", description: "Catálogos de productos" },
-          { label: "Fichas Técnicas", href: "/recursos-tecnicos/fichas-tecnicas/", description: "Especificaciones técnicas" },
-          { label: "Normativa y Cumplimiento", href: "/recursos-tecnicos/normativa-cumplimiento/", description: "Regulaciones y estándares" },
+          {
+            label: "Blog Técnico",
+            href: "/recursos-tecnicos/blog/",
+            description: "Artículos y novedades técnicas",
+          },
+          {
+            label: "Catálogos",
+            href: "/recursos-tecnicos/catalogos/",
+            description: "Catálogos de productos",
+          },
+          {
+            label: "Fichas Técnicas",
+            href: "/recursos-tecnicos/fichas-tecnicas/",
+            description: "Especificaciones técnicas",
+          },
+          {
+            label: "Normativa y Cumplimiento",
+            href: "/recursos-tecnicos/normativa-cumplimiento/",
+            description: "Regulaciones y estándares",
+          },
         ],
       },
     ],
@@ -169,23 +212,63 @@ export const NAV_MENUS = {
       src: "/assets/config/placeholder-image.png",
       alt: "Contacto",
       title: "Contacto",
-      description: "Contacta con nosotros para obtener más información",
+      description: "Canales corporativos Acogas Industrial",
       href: "/contacto/",
     },
     columns: [
       {
-        title: "Contacto",
+        title: "Correo",
         href: "/contacto/",
         items: [
-          { label: "Asesoría Técnica", href: "/contacto#asesoria-tecnica/", description: "Consulta con nuestros expertos" },
-          { label: "Hablar con un Especialista", href: "/contacto#hablar-especialista/", description: "Contacta directamente con nosotros" },
+          {
+            label: "acogas@acogas.pe",
+            href: "mailto:acogas@acogas.pe",
+            description: "Consultas generales",
+          },
+          {
+            label: "ventas@acogas.pe",
+            href: "mailto:ventas@acogas.pe",
+            description: "Ventas y cotizaciones",
+          },
+        ],
+      },
+      {
+        title: "Teléfonos",
+        href: "/contacto/",
+        items: [
+          {
+            label: "+51 998 345 895",
+            href: "tel:+51998345895",
+            description: "Central de atención",
+          },
+          {
+            label: "+51 998 345 014",
+            href: "tel:+51998345014",
+            description: "Línea corporativa",
+          },
+        ],
+      },
+      {
+        title: "Acciones",
+        href: "/contacto/",
+        items: [
+          {
+            label: "Formulario de contacto",
+            href: "/contacto/",
+            description: "Visita técnica, diagnóstico o consulta",
+          },
+          {
+            label: "Solicitar cotización",
+            href: "/cotizar/",
+            description: "Propuesta técnica y comercial",
+          },
         ],
       },
     ],
   } satisfies NavMenuConfig,
 
   coberturaIndustrial: {
-        image: {
+    image: {
       src: "/assets/config/placeholder-image.png",
       alt: "Cobertura Industrial",
       title: "Cobertura Industrial",
@@ -197,17 +280,37 @@ export const NAV_MENUS = {
         title: "Lima",
         href: "/cobertura-industrial/lima/",
         items: [
-          { label: "Lurín", href: "/cobertura-industrial/lima/lurin", description: "Ver ubicaciones en Lurín" },
-          { label: "Callao", href: "/cobertura-industrial/lima/callao", description: "Ver ubicaciones en Callao" },
-          { label: "Santiago de Surco", href: "/cobertura-industrial/lima/santiago-de-surco", description: "Ver ubicaciones en Santiago de Surco" },
+          {
+            label: "Lurín",
+            href: "/cobertura-industrial/lurin",
+            description: "Ver ubicaciones en Lurín",
+          },
+          {
+            label: "Callao",
+            href: "/cobertura-industrial/callao",
+            description: "Ver ubicaciones en Callao",
+          },
+          {
+            label: "Santiago de Surco",
+            href: "/cobertura-industrial/santiago-de-surco",
+            description: "Ver ubicaciones en Santiago de Surco",
+          },
         ],
       },
       {
         title: "Otras ciudades",
         href: "/cobertura-industrial/",
         items: [
-          { label: "Trujillo", href: "/cobertura-industrial/trujillo/", description: "Ver ubicaciones en Trujillo" },
-          { label: "Arequipa", href: "/cobertura-industrial/arequipa/", description: "Ver ubicaciones en Arequipa" },
+          {
+            label: "Trujillo",
+            href: "/cobertura-industrial/trujillo/",
+            description: "Ver ubicaciones en Trujillo",
+          },
+          {
+            label: "Arequipa",
+            href: "/cobertura-industrial/arequipa/",
+            description: "Ver ubicaciones en Arequipa",
+          },
         ],
       },
     ],
@@ -223,11 +326,31 @@ export const NAV_MENUS = {
         title: "Servicios",
         href: "/servicios/",
         items: [
-          { label: "Ingeniería y Dimensionamiento", href: "/servicios/ingenieria-dimensionamiento/", description: "Soluciones a medida" },
-          { label: "Selección de Equipos", href: "/servicios/seleccion-equipos/", description: "Elige el equipo ideal" },
-          { label: "Diagnóstico Técnico", href: "/servicios/diagnostico-tecnico/", description: "Revisión profesional" },
-          { label: "Soporte Técnico", href: "/servicios/soporte-tecnico/", description: "Ayuda especializada" },
-          { label: "Mantenimiento Industrial", href: "/servicios/mantenimiento-industrial/", description: "Cuidado preventivo y correctivo" },
+          {
+            label: "Ingeniería y Dimensionamiento",
+            href: "/servicios/ingenieria-dimensionamiento/",
+            description: "Soluciones a medida",
+          },
+          {
+            label: "Selección de Equipos",
+            href: "/servicios/seleccion-equipos/",
+            description: "Elige el equipo ideal",
+          },
+          {
+            label: "Diagnóstico Técnico",
+            href: "/servicios/diagnostico-tecnico/",
+            description: "Revisión profesional",
+          },
+          {
+            label: "Soporte Técnico",
+            href: "/servicios/soporte-tecnico/",
+            description: "Ayuda especializada",
+          },
+          {
+            label: "Mantenimiento Industrial",
+            href: "/servicios/mantenimiento-industrial/",
+            description: "Cuidado preventivo y correctivo",
+          },
         ],
       },
     ],
@@ -236,10 +359,34 @@ export const NAV_MENUS = {
 
 // Main Navigation Items (desktop triggers)
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Nosotros", href: "/nosotros/", type: "trigger", menuKey: "nosotros" },
-  { label: "Cobertura Industrial", href: "/cobertura-industrial/", type: "trigger", menuKey: "coberturaIndustrial" },
-  { label: "Soluciones", href: "/soluciones/", type: "trigger", menuKey: "soluciones" },
-  { label: "Servicios", href: "/servicios/", type: "trigger", menuKey: "servicios" },
-  { label: "Contacto", href: "/contacto/", type: "trigger", menuKey: "contacto" },
+  {
+    label: "Nosotros",
+    href: "/nosotros/",
+    type: "trigger",
+    menuKey: "nosotros",
+  },
+  {
+    label: "Cobertura Industrial",
+    href: "/cobertura-industrial/",
+    type: "trigger",
+    menuKey: "coberturaIndustrial",
+  },
+  {
+    label: "Soluciones",
+    href: "/soluciones/",
+    type: "trigger",
+    menuKey: "soluciones",
+  },
+  {
+    label: "Servicios",
+    href: "/servicios/",
+    type: "trigger",
+    menuKey: "servicios",
+  },
+  {
+    label: "Contacto",
+    href: "/contacto/",
+    type: "trigger",
+    menuKey: "contacto",
+  },
 ];
-

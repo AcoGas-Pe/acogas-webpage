@@ -105,42 +105,43 @@ export default function CoberturaIndustrialPage() {
         </div>
       </section>
 
-      <section className="section py-16 sm:py-20 bg-background-alt">
-        <div className="container">
+      <section className="section py-16 sm:py-20 bg-linear-to-r from-gray-900 via-primary to-gray-900">
+        <div className="container ">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-                ¿Por qué elegir ACOGAS?
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">Por qué elegirnos</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 !tracking-wider">
+                Nuestra propuesta de valor industrial
               </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">50+</span>
+              <div className="text-center p-6 glass-panel backdrop-blur-xs rounded-lg">
+                <div className="w-20 h-20 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white/80">50+</span>
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Años de Experiencia</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-bold text-white/80 mb-2">Años de Experiencia</h3>
+                <p className="text-sm text-white/50">
                   Más de cinco décadas de experiencia en soluciones industriales.
                 </p>
               </div>
 
-              <div className="text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">24/7</span>
+              <div className="text-center p-6 glass-panel backdrop-blur-xs rounded-lg">
+                <div className="w-20 h-20 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white/80">24/7</span>
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Soporte Técnico</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-bold text-white/80 mb-2">Soporte Técnico</h3>
+                <p className="text-sm text-white/50">
                   Atención técnica disponible cuando más lo necesita.
                 </p>
               </div>
 
-              <div className="text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">100%</span>
+              <div className="text-center p-6 glass-panel backdrop-blur-xs rounded-lg">
+                <div className="w-20 h-20 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white/80">100%</span>
                 </div>
-                <h3 className="font-bold text-foreground mb-2">Certificados</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-bold text-white/80 mb-2">Certificados</h3>
+                <p className="text-sm text-white/50">
                   Equipos certificados con las mejores marcas mundiales.
                 </p>
               </div>

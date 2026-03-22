@@ -202,6 +202,33 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ]
   },
 
+  "/cotizar/": {
+    title: `Cotizar | ${BUSINESS_INFO.name}`,
+    description: `Solicite cotización de equipos y soluciones industriales en GLP, Gas Natural, Vapor y procesos. Respuesta orientada a su aplicación y normativa.`,
+    keywords: ["cotización", "cotizar", "GLP", "gas natural", "vapor", "equipos industriales", "acogas", CONTACT.city.toLowerCase()],
+    canonical: `${siteConfig.url}/cotizar/`,
+    ogImage: "/assets/config/og.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Cotizar | ${BUSINESS_INFO.name}`,
+    linkedinDescription: `Solicite una propuesta técnica y comercial alineada a su operación.`,
+    linkedinImage: "/assets/config/og.png",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Cotizar | ${BUSINESS_INFO.name}`,
+    socialDescription: `Equipos y soluciones industriales con respaldo técnico y normativo.`,
+    socialImage: "/assets/config/og.png",
+    articleSection: "Cotización",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Cotizar", url: `${siteConfig.url}/cotizar/` },
+    ],
+  },
+
   "/contacto/": {
     title: `Contacto | ${BUSINESS_INFO.name}`,
     description: `Contáctanos para asesoría técnica especializada en GLP, Gas Natural, Vapor y Procesos Especiales. ${BUSINESS_INFO.ctaText}`,
@@ -285,8 +312,21 @@ export const seoConfigs: Record<string, SEOConfig> = {
 
   "/industrias/": {
     title: `Industrias | ${BUSINESS_INFO.name}`,
-    description: `Soluciones para industrias como alimentos y bebidas, pesquera, agroindustria, minería, papel y cartón, e industria general.`,
-    keywords: ["industrias", "alimentos y bebidas", "pesquera", "agroindustria", "minería", "papel y cartón", "industria general", "acogas"],
+    description: `Soluciones por sector: agroindustria, energía, minería, pesca, cartón y papel, químico y plástico, textil, alimentos y bebidas, transporte y entorno GLP.`,
+    keywords: [
+      "industrias",
+      "agroindustria",
+      "energía",
+      "minería",
+      "pesca",
+      "cartón y papel",
+      "químico",
+      "textil",
+      "alimentos y bebidas",
+      "transporte",
+      "glp",
+      "acogas",
+    ],
     canonical: `${siteConfig.url}/industrias/`,
     ogImage: "/assets/config/og.png",
     ogType: "website",

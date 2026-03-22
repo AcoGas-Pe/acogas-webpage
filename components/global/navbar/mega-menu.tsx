@@ -3,14 +3,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import type { NavMenuConfig, NavMenuColumn, NavMenuCategory } from "./nav-config";
+import type {
+  NavMenuConfig,
+  NavMenuColumn,
+  NavMenuCategory,
+} from "./nav-config";
 
 interface MegaMenuProps {
   config: NavMenuConfig;
   isOpen: boolean;
 }
 
-function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?: boolean }) {
+function ColumnBlock({
+  column,
+  hideTitle,
+}: {
+  column: NavMenuColumn;
+  hideTitle?: boolean;
+}) {
   const hasCategories = !!column.categories?.length;
 
   if (hasCategories) {
@@ -34,9 +44,12 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
   return (
     <div className={cn("space-y-1", hideTitle && "pt-1")}>
       {!hideTitle && (
-        <Link href={column.href ?? ""} className="flex pb-2 border-b border-border">
+        <Link
+          href={column.href ?? ""}
+          className="flex pb-2 border-b border-border"
+        >
           <span className="text-xs font-semibold text-primary-light uppercase tracking-wider">
-          {column.title}
+            {column.title}
           </span>
         </Link>
       )}
@@ -52,7 +65,7 @@ function ColumnBlock({ column, hideTitle }: { column: NavMenuColumn; hideTitle?:
                   "text-sm w-full transition-colors",
                   item.description
                     ? "text-foreground group-hover:text-primary"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {item.label}
@@ -101,10 +114,15 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
   const columnCount = config.columns.length;
 
   // stackedProducts: 2 cols = both on left (e.g. Marcas + Nuestras soluciones); 3+ = left pair + right col
-  const leftColumns = stacked && columnCount >= 2 ? config.columns.slice(0, columnCount >= 3 ? 2 : columnCount) : [];
+  const leftColumns =
+    stacked && columnCount >= 2
+      ? config.columns.slice(0, columnCount >= 3 ? 2 : columnCount)
+      : [];
   const productsColumn = stacked && columnCount >= 3 ? config.columns[2] : null;
 
-  const isLargeMenu = stacked ? true : columnCount >= 3 || (hasImage && columnCount >= 2);
+  const isLargeMenu = stacked
+    ? true
+    : columnCount >= 3 || (hasImage && columnCount >= 2);
   const menuWidth = stacked
     ? "w-[min(720px,calc(100vw-1.5rem))] max-w-[calc(100vw-1.5rem)]"
     : isLargeMenu
@@ -116,21 +134,25 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
   return (
     <div
       className={cn(
-        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-navbar-background border border-border rounded-lg shadow-xl",
+        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-[#ececec] border border-border rounded-lg shadow-xl",
         "transition-all duration-200 ease-out",
         isOpen
           ? "opacity-100 visible translate-y-0"
           : "opacity-0 invisible -translate-y-2 pointer-events-none",
-        menuWidth
+        menuWidth,
       )}
     >
       <div className="p-4 md:p-5 max-h-[min(70vh,calc(100svh-5rem))] overflow-y-auto overscroll-contain">
         {stacked ? (
           /* stackedProducts: 2 cols = both side-by-side; 3+ = left pair + right col */
-          <div className={cn(
-            "grid gap-4 md:gap-6 min-w-0",
-            productsColumn ? "grid-cols-1 md:grid-cols-[2fr_1fr]" : "grid-cols-1 md:grid-cols-3"
-          )}>
+          <div
+            className={cn(
+              "grid gap-4 md:gap-6 min-w-0",
+              productsColumn
+                ? "grid-cols-1 md:grid-cols-[2fr_1fr]"
+                : "grid-cols-1 md:grid-cols-3",
+            )}
+          >
             {productsColumn ? (
               <>
                 <div className="space-y-1 min-w-0 col-span-1 ">
@@ -138,21 +160,31 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
                     <ColumnBlock key={i} column={col} />
                   ))}
                 </div>
-                <div className="min-w-0 col-span-2 "> 
+                <div className="min-w-0 col-span-2 ">
                   <ColumnBlock column={productsColumn} />
                 </div>
               </>
             ) : (
               leftColumns.map((col, i) => (
-
-                <div key={i} className={cn("min-w-0", i === 0 ? "col-span-1" : "col-span-2")}>
-                  <ColumnBlock column={col} /> 
+                <div
+                  key={i}
+                  className={cn(
+                    "min-w-0",
+                    i === 0 ? "col-span-1" : "col-span-2",
+                  )}
+                >
+                  <ColumnBlock column={col} />
                 </div>
               ))
             )}
           </div>
         ) : (
-          <div className={cn("grid gap-4 md:gap-6", hasImage ? "grid-cols-1 md:grid-cols-[200px_1fr]" : "grid-cols-1")}>
+          <div
+            className={cn(
+              "grid gap-4 md:gap-6",
+              hasImage ? "grid-cols-1 md:grid-cols-[200px_1fr]" : "grid-cols-1",
+            )}
+          >
             {config.image && (
               <Link
                 href={config.image.href}
@@ -164,11 +196,15 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="relative z-10 p-4 text-white">
-                  <h3 className="text-lg font-bold mb-1">{config.image.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/55 to-transparent" />
+                <div className="relative z-10 p-4 text-foreground">
+                  <h3 className="text-lg font-bold mb-1 text-primary">
+                    {config.image.title}
+                  </h3>
                   {config.image.description && (
-                    <p className="text-xs text-white/80 line-clamp-2">{config.image.description}</p>
+                    <p className="text-xs text-muted-foreground line-clamp-2">
+                      {config.image.description}
+                    </p>
                   )}
                 </div>
               </Link>
@@ -178,7 +214,7 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
                 "grid gap-4 md:gap-6 min-w-0",
                 columnCount === 1 && "grid-cols-1",
                 columnCount === 2 && "grid-cols-1 md:grid-cols-2",
-                columnCount >= 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                columnCount >= 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
               )}
             >
               {config.columns.map((col, i) => (
@@ -195,8 +231,18 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
               className="inline-flex items-center text-sm text-primary-light font-semibold"
             >
               {config.mainLink.label}
-              <svg className="ml-1.5 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="ml-1.5 w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </Link>
           </div>

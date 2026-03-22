@@ -1,16 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
-  Award,
+  History,
   BadgeCheck,
   Headphones,
-  Factory,
-  FileCheck,
-  RulerDimensionLine,
+  Workflow,
+  ClipboardList,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface Feature {
   title: string;
@@ -28,108 +28,141 @@ interface FeaturesProps {
 
 const defaultFeatures: Feature[] = [
   {
-    title: "+50 Años de Experiencia",
+    title: "Trayectoria que forma industria",
     description:
-      "Más de cinco décadas desarrollando soluciones técnicas seguras y eficientes para la industria peruana.",
-    icon: Award,
-    highlight: "Desde 1972",
+      "Más de cincuenta años como referente técnico y espacio de formación para profesionales y empresarios del sector energético e industrial en el Perú.",
+    icon: History,
+    highlight: "+50 años",
   },
   {
-    title: "Marcas Líderes Mundiales",
+    title: "Tecnología de clase mundial",
     description:
-      "Representantes autorizados de Emerson, Corken, Cavagna y Liquid Controls con respaldo técnico directo.",
+      "Representación y comercialización de marcas globales con desempeño comprobado, alineadas a certificaciones y estándares internacionales del sector.",
     icon: BadgeCheck,
-    highlight: "Reconocidas en el Mundo",
+    highlight: "Marcas líderes",
   },
   {
-    title: "Soporte Técnico Real",
+    title: "Soporte técnico real",
     description:
-      "Acompañamiento pre y post venta con ingenieros especializados. Soporte 24/7 para operaciones críticas.",
+      "Acompañamiento antes, durante y después de cada implementación, con presencia en campo y criterio aplicado a su realidad operativa.",
     icon: Headphones,
-    highlight: "Atención Personalizada",
+    highlight: "En planta",
   },
   {
-    title: "Enfoque por Industria",
+    title: "Enfoque por proceso",
     description:
-      "Soluciones específicas para cada sector: no vendemos productos, resolvemos problemas de proceso.",
-    icon: Factory,
-    highlight: "Multisectorial",
+      "No comercializamos productos aislados ni soluciones genéricas por catálogo: diseñamos según la necesidad energética, operativa o industrial del cliente.",
+    icon: Workflow,
+    highlight: "Por solución",
   },
   {
-    title: "Diagnóstico y Dimensionamiento",
+    title: "Capacidad de diagnóstico",
     description:
-      "Capacidad técnica para evaluar, dimensionar y acompañar desde el diseño hasta la puesta en marcha.",
-    icon: RulerDimensionLine,
-    highlight: "Ingeniería",
+      "Evaluación de condiciones reales para proponer alternativas seguras, eficientes y sostenibles, con criterio de ingeniería y visión de riesgo.",
+    icon: ClipboardList,
+    highlight: "Ingeniería aplicada",
   },
   {
-    title: "Cumplimiento Normativo",
+    title: "Cumplimiento normativo certificado",
     description:
-      "Productos y soluciones que cumplen con OSINERGMIN, MINAM y normativas internacionales aplicables.",
-    icon: FileCheck,
-    highlight: "Certificado",
+      "Trabajamos con equipos y soluciones acordes a OSINERGMIN, MINEM y estándares internacionales aplicables, orientados a operaciones auditables y seguras.",
+    icon: ShieldCheck,
+    highlight: "Normativa",
   },
 ];
 
 export function Features({
-  title = "Nuestra Propuesta de Valor",
-  subtitle = "Por Qué Elegirnos",
+  title = "Nuestros pilares",
+  subtitle = "Por qué elegirnos",
   features = defaultFeatures,
   className,
 }: FeaturesProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
-      <div className="container grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <section
+      className={cn(
+        "section relative py-16 sm:py-20 md:py-24 text-foreground",
+        className,
+      )}
+    >
+      <div className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center [transform:translateZ(0)]" aria-hidden>
+        <Image
+          src="/assets/images/general-industry.webp"
+          alt=""
+          fill
+          className="object-cover w-full h-full"
+          priority
+        />
+        <div className="absolute inset-0 bg-primary/80" />
+      </div>
+
+      <div className="container relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div className="text-left mb-10 sm:mb-14 col-span-2">
           {subtitle && (
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
               {subtitle}
             </p>
           )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
             {title}
           </h2>
-          <p className="my-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Desarrollamos soluciones industriales seguras, eficientes y normativamente confiables, integrando tecnología de clase mundial con acompañamiento técnico real en campo.{" "}
+          <p className="my-3 text-sm sm:text-base text-white opacity-80 max-w-2xl">
+            Impulsamos la operación energética e industrial de nuestros clientes
+            con soluciones seguras, eficientes y normativamente confiables. No
+            somos un proveedor de catálogo: somos el socio industrial que
+            convierte la energía en operación segura.
           </p>
-          <Button variant="outline" href="/nosotros#propuesta-valor" size="sm" className="w-full sm:w-fit min-h-10 border-primary text bg-primary hover:bg-primary hover:text-primary-foreground">Conócenos</Button>
+          <p className="mb-4 text-xs sm:text-sm text-white opacity-80 max-w-2xl leading-relaxed">
+            No ofrecemos catálogos aislados: integramos equipos, ingeniería y
+            servicios según su proceso.
+          </p>
+          <Button
+            variant="outline"
+            href="/nosotros#propuesta-valor"
+            size="sm"
+            className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            Conócenos
+          </Button>
         </div>
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            const tintClass = ["card-tint-1", "card-tint-2", "card-tint-3", "card-tint-4", "card-tint-5", "card-tint-6"][index % 6];
-            return (
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={index}
+              className={cn(
+                "flex-col glass-panel justify-start group px-5 py-4 sm:px-6 sm:py-6 flex items-start gap-4 relative", // add relative positioning here
+                "transition-all duration-300 ease-in-out hover:-translate-y-1",
+              )}
+            >
               <div
-                key={index}
-                className={cn(
-                  tintClass, 
-                  "flex-col justify-start group px-5 py-4 sm:px-6 sm:py-6 flex items-start gap-4 relative", // add relative positioning here
-                  "transition-all duration-300 ease-in-out hover:-translate-y-1"
-                )}
-              >
-                {feature.highlight && (
-                  <span className="text-[10px] px-1.5 py-0.5 self-end rounded bg-primary/10 text-primary font-semibold">
-                    {feature.highlight}
-                  </span>
-                )}
-                <div className="flex items-start gap-2 w-full">
-                  {/* Fix: Make icon always visible, not appear only on hover */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full p-6 z-0 pointer-events-none text-primary">
-                    <Icon className="w-full h-full text-primary opacity-10" />
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0 bg-primary/20 backdrop-blur-xs backdrop-saturate-100 transform-[translateZ(0)]"
+              />
+              {feature.highlight && (
+                <span className="text-[10px] px-1.5 py-0.5 self-end rounded bg-accent/10 z-10 text-accent font-semibold">
+                  {feature.highlight}
+                </span>
+              )}
+              <div className="flex items-start gap-2 w-full">
+                {/* Clip decorative icon without overflow:hidden on .glass-panel (breaks backdrop-filter) */}
+                <Icon className="w-full h-full p-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary opacity-50" />
+
+                <div className="min-w-0 flex-1 z-10">
+                  {" "}
+                  {/* ensure it sits above the icon */}
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-sm sm:text-base font-bold text-white">
+                      {feature.title}
+                    </h3>
                   </div>
-                  <div className="min-w-0 flex-1 z-10"> {/* ensure it sits above the icon */}
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-sm sm:text-base font-bold text-foreground">
-                        {feature.title}
-                      </h3>
-                    </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-white opacity-80 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

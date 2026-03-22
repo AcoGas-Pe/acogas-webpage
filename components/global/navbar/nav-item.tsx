@@ -16,7 +16,7 @@ export function NavItem({ label, href, isActive }: NavItemProps) {
       className={cn(
         "inline-flex items-center px-3 py-2 text-sm font-medium transition-colors",
         "hover:text-primary-light focus:outline-none",
-        isActive ? "text-primary-light" : "text-foreground"
+        isActive ? "text-primary-light" : "text-primary"
       )}
     >
       {label}

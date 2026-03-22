@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ClipboardCheck } from "lucide-react";
-import Image from "next/image";
+import { ClipboardCheck, Phone } from "lucide-react";
 import { Slideshow } from "./slideshow";
 
 interface HeroAction {
@@ -45,45 +44,45 @@ export function Hero({
         <div className="absolute inset-0 w-full h-full">
           <Slideshow />
           {/* overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/70 to-black/20" aria-hidden />
+          <div className="absolute inset-0 bg-linear-to-r from-white/80 via-white/40 to-white/80" aria-hidden />
         </div>
       )}
-      <div className="container max-w-7xl mx-auto flex items-start justify-start mx-auto px-4 py-16 z-10">
+      <div className="container max-w-7xl flex items-start justify-start mx-auto px-4 py-16 z-10">
         <div className=" text-left">
           {/* Subtitle */}
           {subtitle && (
-            <p className="text-sm font-semibold uppercase tracking-[1rem] text-accent mb-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.5rem] text-accent mb-4">
               {subtitle}
             </p>
           )}
-          
-          {/* Main Title - Black Lives display font */}
-          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-semibold text-foreground !tracking-wide [font-family:var(--font-hero)]">
+
+          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-semibold text-primary !tracking-wider [font-family:var(--font-hero)]">
             {title}
           </h1>
-          
-          {/* Description */}
+
           {description && (
-            <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base text-foreground max-w-2xl leading-relaxed mt-3">
               {description}
             </p>
           )}
-          
-          {/* Actions - Dual CTA Strategy */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-left items-stretch sm:items-center pt-8">
+
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 justify-start items-stretch sm:items-center pt-8">
             {primaryAction && (
-              <Button href={primaryAction.href} size="lg">
+              <Button href={primaryAction.href} size="lg" className="w-full sm:w-auto min-h-12 justify-center">
+                {primaryAction.href.startsWith("tel:") && (
+                  <Phone className="mr-2 w-4 h-4 shrink-0" aria-hidden />
+                )}
                 {primaryAction.label}
               </Button>
             )}
             {secondaryAction && (
-              <Button href={secondaryAction.href} variant="secondary" size="lg">
-                <ClipboardCheck className="mr-2 w-4 h-4" />
+              <Button href={secondaryAction.href} variant="secondary" size="lg" className="w-full sm:w-auto min-h-12 justify-center">
+                <ClipboardCheck className="mr-2 w-4 h-4 shrink-0" />
                 {secondaryAction.label}
               </Button>
             )}
             {tertiaryAction && (
-              <Button href={tertiaryAction.href} variant="outline" size="lg">
+              <Button href={tertiaryAction.href} variant="outline" size="lg" className="w-full sm:w-auto min-h-12 justify-center">
                 {tertiaryAction.label}
               </Button>
             )}

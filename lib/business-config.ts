@@ -116,7 +116,8 @@ export interface Product {
     websiteUrl: "https://www.acogas.pe",
     tone: "Professional",
     logoUrl: "/assets/config/logo.png",
-    tagline: "Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales.",
+    tagline:
+      "Ingeniería que respalda decisiones industriales. Soluciones en GLP, Gas Natural, Vapor y procesos industriales.",
     primaryKeyword: "Productos para la Industria, Gas y Energía",
     ctaText: "Solicitar visita técnica especializada",
   } as const;
@@ -557,25 +558,18 @@ export interface Product {
   // ==========================================
   export const PRODUCT_INDUSTRIES: ProductIndustry[] = [
     {
-      name: "Alimentos y Bebidas",
-      slug: "alimentos-bebidas",
-      url: "/industrias/alimentos-bebidas/",
-      description: "Soluciones para la industria alimentaria y de bebidas",
-      image: "/assets/images/food-industry.webp",
-    },
-    {
-      name: "Pesquera",
-      slug: "pesquera",
-      url: "/industrias/pesquera/",
-      description: "Equipos para la industria pesquera",
-      image: "/assets/images/fishing-industry.webp",
-    },
-    {
       name: "Agroindustria",
       slug: "agroindustria",
       url: "/industrias/agroindustria/",
       description: "Soluciones para agroindustria",
       image: "/assets/images/agro-industry.webp",
+    },
+    {
+      name: "Energía",
+      slug: "energia",
+      url: "/industrias/energia/",
+      description: "Soluciones para generación y operaciones energéticas",
+      image: "/assets/images/refiner2.webp",
     },
     {
       name: "Minería",
@@ -585,17 +579,53 @@ export interface Product {
       image: "/assets/images/mining-industry.webp",
     },
     {
-      name: "Papel y Cartón",
-      slug: "papel-carton",
-      url: "/industrias/papel-carton/",
-      description: "Soluciones para la industria del papel y cartón",
-      image: "/assets/images/cardboard.webp",
+      name: "Pesca",
+      slug: "pesquera",
+      url: "/industrias/pesquera/",
+      description: "Equipos para la industria pesquera",
+      image: "/assets/images/fishing-industry.webp",
     },
     {
-      name: "Industria General",
-      slug: "industria-general",
-      url: "/industrias/industria-general/",
-      description: "Soluciones para industria general",
+      name: "Cartón y Papel",
+      slug: "papel-carton",
+      url: "/industrias/papel-carton/",
+      description: "Soluciones para la industria del cartón y papel",
+      image: "/assets/images/cardboard.webp",
+    },
+    
+    {
+      name: "Textil",
+      slug: "textil",
+      url: "/industrias/textil/",
+      description: "Soluciones para la industria textil",
+      image: "/assets/images/general-industry.webp",
+    },
+    {
+      name: "Químico y plástico",
+      slug: "quimico-plastico",
+      url: "/industrias/quimico-plastico/",
+      description: "Soluciones para química y transformación de plásticos",
+      image: "/assets/images/general-industry.webp",
+    },
+    {
+      name: "Alimentos y Bebidas",
+      slug: "alimentos-bebidas",
+      url: "/industrias/alimentos-bebidas/",
+      description: "Soluciones para la industria alimentaria y de bebidas",
+      image: "/assets/images/food-industry.webp",
+    },
+    {
+      name: "Transporte",
+      slug: "transporte",
+      url: "/industrias/transporte/",
+      description: "Soluciones para operaciones de transporte y logística industrial",
+      image: "/assets/images/refiner3.webp",
+    },
+    {
+      name: "Entorno GLP",
+      slug: "entorno-glp",
+      url: "/industrias/entorno-glp/",
+      description: "Infraestructura y aplicaciones con gas licuado de petróleo",
       image: "/assets/images/general-industry.webp",
     },
   ];
@@ -644,7 +674,7 @@ export interface Product {
     state: "Lima",
     zip: "15023",
     areaCode: "51",
-    phone: ["998345895", "994296627"],
+    phone: ["998345895", "998345014"],
     email: ["acogas@acogas.pe", "ventas@acogas.pe"],
     addressVisibility: "VISIBLE", // SAB (Service Area Business)
   };
@@ -881,6 +911,7 @@ export interface Product {
    */
   export const getCompanyLinks = () => [
     { name: "Nosotros", href: "/nosotros/" },
+    { name: "Soluciones", href: "/soluciones/" },
     { name: "Contacto", href: "/contacto/" },
     { name: "Productos", href: "/productos/" },
     { name: "Marcas", href: "/marcas/" },
@@ -900,7 +931,7 @@ export interface Product {
   export const formatPhoneDisplay = (phone: string): string => {
     const digits = phone.replace(/\D/g, '');
     if (digits.length === 9) {
-      return `+51 ${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+      return `+51 ${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
     }
     if (digits.length === 11 && digits.startsWith('51')) {
       const withoutCountryCode = digits.slice(1);

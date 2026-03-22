@@ -17,9 +17,11 @@ export default function NosotrosPage() {
       <PropuestaValor />
       <Trayectoria />
       <CTA
-        title="¿Listo para comenzar?"
-        description="Contáctanos hoy y descubre cómo podemos ayudarte con tus necesidades de gas y energía."
-        primaryAction={{ label: "Contactar", href: "/contacto" }}
+        title="¿Desea profundizar en su requerimiento?"
+        description="Coordine una visita técnica, un diagnóstico o una conversación con nuestro equipo comercial. Respondemos con criterio de ingeniería y trazabilidad normativa."
+        primaryAction={{ label: "Programar visita técnica", href: "/contacto?tipo=visita", icon: "arrow" }}
+        secondaryAction={{ label: "Solicitar diagnóstico", href: "/contacto?tipo=diagnostico", icon: "clipboard" }}
+        tertiaryAction={{ label: "Llamar ahora", href: "tel:+51998345895", icon: "phone" }}
       />
     </>
   )

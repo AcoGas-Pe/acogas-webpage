@@ -1,60 +1,67 @@
 @import "tailwindcss";
 
+/*
+  Light theme + brand tokens (#004EA5, #ff0000, #878787).
+  Section audit (image vs solid):
+  - Image + overlay/scrim: hero, hero-carousel, pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
+  - Solid surfaces: most sections (bg-background / bg-background-alt), clients strip, cards, HubSpot form.
+*/
+
 :root {
-  /* Base colors - Dark theme */
-  --background: 215 50% 10%;
-  --background-alt: 215 40% 13%;
-  --foreground: 210 20% 92%;
-  --light-foreground: 210 10% 12%;
-  --background-light: 210 10% 92%;
+  /* Base — light theme (default canvas: white) */
+  --background: 0 0% 100%;
+  --background-alt: 210 20% 97%;
+  --foreground: 210 15% 11%;
+  --light-foreground: 210 15% 11%;
+  --background-light: 210 20% 96%;
 
-  /* Primary brand - Blue, tuned for contrast on dark and in cards */
-  --primary: 207 90% 54%;
+  /* Primary brand blue #004EA5 */
+  --primary: 212 100% 32%;
   --primary-foreground: 0 0% 100%;
-  --primary-light: 207 90% 62%;
-  --primary-muted: 207 40% 30%;
+  --primary-light: 212 85% 42%;
+  --primary-muted: 212 45% 92%;
 
-  /* Secondary - Muted blue */
-  --secondary: 215 30% 22%;
-  --secondary-foreground: 0 0% 95%;
+  --secondary: 210 15% 94%;
+  --secondary-foreground: 210 15% 18%;
 
-  /* Accent - Bright red for highlights and bullets */
   --accent: 0 100% 50%;
   --accent-foreground: 0 0% 100%;
-  --accent-muted: 0 85% 60%;
+  --accent-muted: 0 85% 45%;
 
-  /* Muted - Readable body text */
-  --muted: 215 20% 35%;
-  --muted-foreground: 215 15% 62%;
-  --muted-light: 215 15% 85%;
+  --muted: 210 15% 92%;
+  --muted-foreground: 0 0% 53%;
+  --muted-light: 210 15% 88%;
 
-  /* Card surface - elevated from background */
-  --card: 215 35% 14%;
-  --card-hover: 215 35% 17%;
-  --card-background: 215 10% 10%;
-  --card-foreground: 210 20% 92%;
+  --card: 0 0% 100%;
+  --card-hover: 210 20% 98%;
+  --card-background: 210 20% 97%;
+  --card-foreground: 210 15% 11%;
 
-  /* Border */
-  --border: 215 20% 22%;
-  --border-muted: 215 15% 18%;
-  --input: 215 25% 18%;
-  --ring: 207 90% 58%;
+  --border: 210 15% 88%;
+  --border-muted: 210 15% 92%;
+  --input: 210 15% 96%;
+  --ring: 212 100% 32%;
 
   /* Footer and navbar */
   --footer-background: 215 50% 8%;
   --navbar-background: 215 40% 8%;
 
-  /* Status */
-  --destructive: 0 70% 55%;
+  /* Partner / third-party logos & neutral lockups */
+  --partner-foreground: 0 0% 9%;
+
+  --destructive: 0 72% 50%;
   --destructive-foreground: 0 0% 100%;
 
   --radius: 0.375rem;
 
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.15);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.15);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.15);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.15);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.06);
 }
 
 @theme inline {
@@ -77,6 +84,7 @@
   --color-muted: hsl(var(--muted));
   --color-muted-light: hsl(var(--muted-light));
   --color-light-foreground: hsl(var(--light-foreground));
+  --color-partner-foreground: hsl(var(--partner-foreground));
   --color-footer-background: hsl(var(--footer-background));
   --color-navbar-background: hsl(var(--navbar-background));
   --color-muted-foreground: hsl(var(--muted-foreground));
@@ -92,6 +100,7 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   scrollbar-width: thin;
@@ -107,7 +116,12 @@ body {
   letter-spacing: -0.01em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -118,39 +132,65 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+/* Light scrim over full-bleed photography (replaces heavy dark overlays) */
+.section-image-scrim {
+  background: linear-gradient(
+    to right,
+    hsl(0 0% 100% / 0.88),
+    hsl(0 0% 100% / 0.5),
+    hsl(0 0% 100% / 0.12)
+  );
+}
+
+/* Glass panel: blur on ::before so it composites above the page (Chromium is picky about same-element bg + backdrop) */
+.glass-panel {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid hsl(0 0% 100% / 0.43);
+  box-shadow:
+    0 4px 32px 0 hsl(0 0% 70% / 0.15),
+    var(--shadow-md);
+  background-color: transparent;
+  overflow: visible;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-color: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+.glass-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Standardized card */
 .card-base {
   background-color: hsl(var(--card));
-  color: hsl(var(--foreground));
+  color: hsl(var(--card-foreground));
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
 }
 .card-base:hover {
-  border-color: hsl(var(--primary) / 0.4);
+  border-color: hsl(var(--primary) / 0.35);
   background-color: hsl(var(--card-hover));
 }
 
 /* Card with left accent */
 .card-accent {
   border-left: 3px solid hsl(var(--primary));
-}
-
-/* Harmonious blueish card variants for homepage */
-.card-tint-1 { background-color: hsl(207 35% 14%); border-color: hsl(207 25% 22%); }
-.card-tint-2 { background-color: hsl(212 32% 15%); border-color: hsl(212 22% 23%); }
-.card-tint-3 { background-color: hsl(215 30% 16%); border-color: hsl(215 20% 24%); }
-.card-tint-4 { background-color: hsl(207 38% 13%); border-color: hsl(207 28% 21%); }
-.card-tint-5 { background-color: hsl(210 33% 14%); border-color: hsl(210 23% 22%); }
-.card-tint-6 { background-color: hsl(208 31% 15%); border-color: hsl(208 21% 23%); }
-.card-base.card-tint-1:hover,
-.card-base.card-tint-2:hover,
-.card-base.card-tint-3:hover,
-.card-base.card-tint-4:hover,
-.card-base.card-tint-5:hover,
-.card-base.card-tint-6:hover {
-  border-color: hsl(var(--primary) / 0.4);
-  background-color: hsl(207 35% 18%);
 }
 
 .container {
@@ -161,8 +201,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes infinite-carousel-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* HubSpot Form Styling */
@@ -202,7 +246,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid hsl(var(--border));
   color: hsl(var(--foreground));
   font-size: 0.875rem;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .hubspot-form-container textarea {
@@ -243,7 +289,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius);
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .hubspot-form-container .hs-button:hover,
@@ -275,8 +323,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hubspot-form-container .submitted-message {
   padding: 1.5rem;
-  background-color: hsl(var(--primary) / 0.1);
-  border: 1px solid hsl(var(--primary) / 0.3);
+  background-color: hsl(var(--primary) / 0.08);
+  border: 1px solid hsl(var(--primary) / 0.25);
   border-radius: var(--radius);
   color: hsl(var(--foreground));
   text-align: center;
@@ -288,7 +336,9 @@ h1, h2, h3, h4, h5, h6 {
   color: hsl(var(--muted-foreground));
 }
 
-.hubspot-form-container .legal-consent-container .hs-form-booleancheckbox-display {
+.hubspot-form-container
+  .legal-consent-container
+  .hs-form-booleancheckbox-display {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
@@ -300,4 +350,3 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.125rem;
   accent-color: hsl(var(--primary));
 }
-

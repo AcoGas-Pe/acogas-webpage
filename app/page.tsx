@@ -9,12 +9,17 @@ import { Testimonials } from "@/components/sections/testimonials/testimonials";
 import { CTA } from "@/components/sections/cta/cta";
 import { Novedades } from "@/components/sections/novedades/novedades";
 import { Metadata } from "next";
-import { generateMetadataFromConfig, generateStructuredData } from "@/lib/seo-metadata";
+import {
+  generateMetadataFromConfig,
+  generateStructuredData,
+} from "@/lib/seo-metadata";
+import { CONTACT, formatPhoneTel } from "@/lib/business-config";
+import { PRIMARY_SLOGAN, TECH_COMMERCIAL_SLOGAN } from "@/lib/strategic-brands";
 
-export const metadata: Metadata = generateMetadataFromConfig('/');
+export const metadata: Metadata = generateMetadataFromConfig("/");
 
 export default function Home() {
-  const structuredData = generateStructuredData('/');
+  const structuredData = generateStructuredData("/");
 
   return (
     <>
@@ -27,12 +32,21 @@ export default function Home() {
       ))}
 
       <Hero
-        title="Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales."
-        subtitle="Confianza y Calidad"
-        description="Más de 50 años desarrollando soluciones técnicas seguras, eficientes y normativamente confiables para la industria peruana, integrando tecnología de clase mundial con acompañamiento real en campo."
-        primaryAction={{ label: "Solicitar Visita Técnica", href: "/contacto?tipo=visita" }}
-        secondaryAction={{ label: "Solicitar Diagnóstico", href: "/contacto?tipo=diagnostico" }}
-        tertiaryAction={{ label: "Ver Soluciones", href: "/soluciones/" }}
+        title="Ingeniería aplicada a GLP, gas natural, vapor y procesos industriales."
+        subtitle="Control y Criterio"
+        description={`${PRIMARY_SLOGAN} Más de cincuenta años acompañando a la industria peruana con criterio técnico, marcas de referencia mundial y presencia en campo.`}
+        primaryAction={{
+          label: "Llamar ahora",
+          href: `tel:${formatPhoneTel(CONTACT.phone[0])}`,
+        }}
+        secondaryAction={{
+          label: "Programar visita técnica",
+          href: "/contacto?tipo=visita",
+        }}
+        tertiaryAction={{
+          label: "Solicitar diagnóstico",
+          href: "/contacto?tipo=diagnostico",
+        }}
         noBackground
       />
       <Clients />

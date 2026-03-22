@@ -9,114 +9,105 @@ import {
   Users,
 } from "lucide-react";
 import { InfiniteCarousel, InfiniteCarouselItem } from "@/components/ui/infinite-carousel";
-import Image from "next/image";
+import { STRATEGIC_BRANDS, VISION_TAGLINE } from "@/lib/strategic-brands";
+import { cn } from "@/lib/utils";
 
 export function PropuestaValor() {
-
   const values = [
     {
-      title: "Seguridad y Cumplimiento Normativo",
-      description: "La seguridad es principio operativo. Cumplimos normas nacionales e internacionales para proteger personas, instalaciones y procesos.",
-      icon: ShieldCheck, // Icon Component
+      title: "Seguridad y cumplimiento normativo",
+      description:
+        "La seguridad es principio operativo. Promovemos el cumplimiento de normas nacionales e internacionales (OSINERGMIN, MINEM, MINAM), protegiendo personas, instalaciones y procesos.",
+      icon: ShieldCheck,
     },
     {
-      title: "Excelencia Técnica",
-      description: "Nuestras soluciones se basan en criterio ingenieril, conocimiento aplicado y experiencia en campo.",
-      icon: Lightbulb, // Icon Component
+      title: "Excelencia técnica",
+      description:
+        "Cada recomendación, cotización o proyecto se sustenta en criterio de ingeniería, conocimiento aplicado y experiencia en campo.",
+      icon: Lightbulb,
     },
     {
-      title: "Integridad y Transparencia",
-      description: "Actuamos con honestidad, claridad y responsabilidad. No prometemos lo que no podemos cumplir.",
-      icon: Scale, // Icon Component
+      title: "Integridad y transparencia",
+      description:
+        "Actuamos con honestidad, claridad y responsabilidad. No comprometemos expectativas que no podamos respaldar técnicamente.",
+      icon: Scale,
     },
     {
-      title: "Innovación con Sentido Práctico",
-      description: "Colaboramos en soluciones tecnológicas que aportan valor real a cada cliente.",
-      icon: Sparkles, // Icon Component
+      title: "Innovación con sentido práctico",
+      description:
+        "Incorporamos tecnología y nuevas soluciones cuando aportan valor medible al cliente y a su operación.",
+      icon: Sparkles,
     },
     {
-      title: "Experiencia y Respaldo",
-      description: "Con más de 50 años en el sector, anticipamos riesgos y acompañamos decisiones clave.",
-      icon: Award, // Icon Component
+      title: "Experiencia y respaldo",
+      description:
+        "Más de cincuenta años en el sector permiten anticipar riesgos y acompañar decisiones críticas con criterio.",
+      icon: Award,
     },
     {
-      title: "Cercanía y Empatía Industrial",
-      description: "Escuchamos y comprendemos los procesos, hablando el lenguaje de la planta.",
-      icon: Users, // Icon Component
-    },
-  ];
-
-  const partners = [
-    {
-      name: "Emerson",
-      image: "/assets/images/emerson.png",
-      description: "Líder mundial en automatización y control industrial."
-    },
-    {
-      name: "Corken",
-      image: "/assets/images/corken.png",
-      description: "Bombas y compresores para GLP y gases; claves para integración y venta cruzada en proyectos industriales."
-    },
-    {
-      name: "Cavagna Group",
-      image: "/assets/images/cavagna.png",
-      description: "Regulación y componentes para GLP y GN, complemento estratégico para soluciones integrales."
-    },
-    {
-      name: "Liquid Controls",
-      image: "/assets/images/liquid-controls.png",
-      description: "Medición y control preciso de líquidos y fluidos, brindando confiabilidad e información en tiempo real."
+      title: "Cercanía y empatía industrial",
+      description:
+        "Escuchamos, comprendemos procesos y hablamos el lenguaje de la planta, no únicamente el del catálogo.",
+      icon: Users,
     },
   ];
 
   return (
     <section id="propuesta-valor" className="section py-16 sm:py-20 md:py-24 mx-auto bg-background text-center">
       <div className="container mx-auto px-4 py-16">
-            <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl font-bold mb-2">Conoce Nuestros Valores</h2>
-                <p className="text-muted-foreground/80 text-sm mb-4">Lideramos la industria con tecnología, criterio y responsabilidad.</p>
-                <div className="flex flex-row items-start justify-center p-4 gap-4 flex-wrap">
-                  {values.map((value) => {
-                    const Icon = value.icon;
-                    return (
-                      <div key={value.title} className="card-base cursor-default flex justify-center flex-col relative items-center justify-start p-4 w-80 h-50 group">
-                        <span className="absolute text-primary text-4xl opacity-10 transition-all duration-300">
-                          <Icon size={150} strokeWidth={2.2} />
-                        </span>
-                        <div className="mt-10  flex flex-col items-center justify-start relative z-10">
-                          <h3 className="text-lg font-bold text-primary">{value.title}</h3>
-                        <p className="text-foreground/80 font-light text-sm">{value.description}</p>
-                        </div>
-                 
-                      </div>
-                    );
-                  })}
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-foreground">Valores corporativos</h2>
+          <p className="text-muted-foreground text-sm sm:text-base mb-10 max-w-2xl mx-auto">
+            {VISION_TAGLINE}
+          </p>
+          <div className="flex flex-row items-start justify-center p-4 gap-4 flex-wrap">
+            {values.map((value) => {
+              const Icon = value.icon;
+              return (
+                <div
+                  key={value.title}
+                  className="card-base cursor-default flex justify-center flex-col relative items-center justify-start p-4 w-80 min-h-[13rem] group"
+                >
+                  <span className="absolute text-primary text-4xl opacity-10 transition-all duration-300">
+                    <Icon size={150} strokeWidth={2.2} />
+                  </span>
+                  <div className="mt-8 flex flex-col items-center justify-start relative z-10 gap-2">
+                    <h3 className="text-base font-bold text-primary px-1">{value.title}</h3>
+                    <p className="text-foreground/80 font-light text-sm leading-relaxed px-2">{value.description}</p>
+                  </div>
                 </div>
-                <div className="w-full">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Nuestros socios</h3>
-                  <InfiniteCarousel speed={35} gap="gap-8" className="py-4">
-                    {partners.map((partner) => (
-                      <InfiniteCarouselItem
-                        key={partner.name}
-                        className="card-base min-w-[280px] max-w-[300px] flex flex-col items-center justify-between p-4 gap-4"
-                      >
-                        <Image
-                          src={partner.image}
-                          alt={partner.name}
-                          width={100}
-                          height={100}
-                          className="w-20 h-20 object-contain"
-                        />
-                        <h4 className="text-lg font-bold text-primary">{partner.name}</h4>
-                        <p className="text-foreground/80 font-semibold text-sm text-center">
-                          {partner.description}
-                        </p>
-                      </InfiniteCarouselItem>
-                    ))}
-                  </InfiniteCarousel>
-                </div>
-            </div>
+              );
+            })}
+          </div>
+          <div className="w-full mt-12">
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Socios estratégicos</h3>
+            <p className="text-sm text-muted-foreground max-w-3xl mx-auto mb-6">
+              Marcas que nos permiten integrar soluciones completas, no productos aislados. Las fichas comerciales y
+              logotipos oficiales podrán incorporarse conforme disponibilidad de material gráfico.
+            </p>
+            <InfiniteCarousel speed={32} gap="gap-6" className="py-4">
+              {STRATEGIC_BRANDS.map((partner) => (
+                <InfiniteCarouselItem
+                  key={partner.name}
+                  className="card-base min-w-[280px] sm:min-w-[300px] max-w-[320px] flex flex-col items-stretch justify-between p-4 gap-3 text-left"
+                >
+                  <div
+                    className={cn(
+                      "flex min-h-[3.5rem] items-center justify-center rounded-md border border-primary/20 bg-primary/5 px-3 py-2",
+                    )}
+                  >
+                    <span className="text-center text-base font-bold text-primary leading-tight">{partner.name}</span>
+                  </div>
+                  {partner.line && (
+                    <p className="text-xs font-medium text-muted-foreground text-center">{partner.line}</p>
+                  )}
+                  <p className="text-foreground/85 text-xs sm:text-sm leading-relaxed">{partner.shortDescription}</p>
+                </InfiniteCarouselItem>
+              ))}
+            </InfiniteCarousel>
+          </div>
         </div>
+      </div>
     </section>
   );
 }

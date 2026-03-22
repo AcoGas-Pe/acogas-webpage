@@ -10,6 +10,11 @@ import {
   Mountain,
   FileText,
   Factory,
+  Zap,
+  FlaskConical,
+  Shirt,
+  Truck,
+  Fuel,
 } from "lucide-react";
 
 interface Industry {
@@ -27,12 +32,16 @@ interface IndustriesProps {
 }
 
 const industryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  "alimentos-bebidas": Utensils,
-  "pesquera": Fish,
-  "agroindustria": Wheat,
-  "mineria": Mountain,
+  agroindustria: Wheat,
+  energia: Zap,
+  mineria: Mountain,
+  pesquera: Fish,
   "papel-carton": FileText,
-  "industria-general": Factory,
+  "quimico-plastico": FlaskConical,
+  textil: Shirt,
+  "alimentos-bebidas": Utensils,
+  transporte: Truck,
+  "entorno-glp": Fuel,
 };
 
 const industries: Industry[] = PRODUCT_INDUSTRIES.map((industry) => ({
@@ -46,7 +55,7 @@ export function Industries({
   className,
 }: IndustriesProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
+    <section className={cn("section py-16 sm:py-20 md:py-24 bg-white text-foreground", className)}>
       <div className="container">
         <div className="text-center mb-10 sm:mb-14">
           {subtitle && (

@@ -72,15 +72,15 @@ export function Services({
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/55 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-1">
                 {subtitle}
               </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
                 {title}
               </h2>
-              <p className="text-sm text-foreground/70 mt-2 max-w-md">
+              <p className="text-sm text-muted-foreground mt-2 max-w-md">
                 Desarrollamos soluciones técnicas integrales con marcas líderes
                 para cada tipo de energía y proceso industrial.
               </p>

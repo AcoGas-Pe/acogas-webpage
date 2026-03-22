@@ -77,7 +77,7 @@ export function PagesHero({
           </span>
         )}
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]">
           {title}
         </h1>
 

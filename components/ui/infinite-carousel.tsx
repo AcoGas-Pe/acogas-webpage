@@ -40,7 +40,7 @@ function ensureKeyframes() {
 
 export function InfiniteCarousel({
   children,
-  speed = 30,
+  speed = 2,
   direction = "left",
   pauseOnHover = false,
   gap = "gap-6",

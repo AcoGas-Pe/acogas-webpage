@@ -3,16 +3,16 @@ import Link from "next/link";
 import { 
   BUSINESS_INFO, 
   CONTACT, 
-  PRODUCT_BRANDS,
-  TOP_LEVEL_CATEGORIES,
   SOCIAL_MEDIA,
   getCompanyLinks,
   getLegalLinks,
   formatPhoneTel,
+  formatPhoneDisplay,
   type SocialMedia as SocialMediaType,
-  getPhoneDisplay,
   GOOGLE_MAPS
 } from "@/lib/business-config";
+import { FOOTER_PRODUCT_LINKS } from "@/lib/footer-products";
+import { FOOTER_BRAND_LINKS } from "@/lib/footer-brands";
 import { 
   Mail, 
   Phone, 
@@ -102,8 +102,8 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               {/* Email(s) */}
 
-              <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-foreground" />
+              <div className="flex items-center text-white/80 gap-2">
+              <Mail className="w-4 h-4 text-white/80" />
               Escribenos:
               </div>
               <div className="flex flex-row gap-2 flex-wrap"> 
@@ -120,8 +120,8 @@ export function Footer() {
               </div>
 
 
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-foreground" />
+            <div className="flex  text-white/80 items-center gap-2">
+              <Phone className="w-4 h-4 text-white/80" />
               Llámanos:
               </div>              {/* Phone(s) */}
             <div className="flex flex-row gap-2 flex-wrap"> 
@@ -131,14 +131,14 @@ export function Footer() {
                     href={`tel:${formatPhoneTel(phone)}`} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {getPhoneDisplay()}
+                    {formatPhoneDisplay(phone)}
                   </a>
                 </div>
               ))}
               </div>
               {/* Address */}
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-foreground" />
+              <div className="flex items-center text-white/80 gap-2">
+                <MapPin className="w-4 h-4 text-white/80" />
                 Encuéntranos:
               </div>
               {CONTACT.addressVisibility === 'VISIBLE' && (
@@ -156,31 +156,31 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Products Categories Section */}
+          {/* Products — líneas comerciales */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Productos</h3>
+            <h3 className="font-semibold text-white/80 mb-4">Soluciones</h3>
             <ul className="space-y-2">
-              {TOP_LEVEL_CATEGORIES.map((category) => (
-                <li key={category.url}>
+              {FOOTER_PRODUCT_LINKS.map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href={category.url} 
+                    href={item.href} 
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    {category.name}
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Brands Section */}
+          {/* Brands */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Marcas</h3>
+            <h3 className="font-semibold text-white/80 mb-4">Marcas</h3>
             <ul className="space-y-2">
-              {PRODUCT_BRANDS.map((brand) => (
-                <li key={brand.url}>
+              {FOOTER_BRAND_LINKS.map((brand) => (
+                <li key={brand.name}>
                   <Link 
-                    href={brand.url} 
+                    href={brand.href} 
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {brand.name}
@@ -192,7 +192,7 @@ export function Footer() {
 
           {/* Company Section */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Empresa</h3>
+            <h3 className="font-semibold text-white/80 mb-4">Empresa</h3>
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.href}>
@@ -210,7 +210,7 @@ export function Footer() {
           {/* Social Media Section */}
           {activeSocialMedia.length > 0 && (
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Síguenos</h3>
+              <h3 className="font-semibold text-white/80 mb-4">Síguenos</h3>
               <div className="flex flex-col space-y-3">
                 {activeSocialMedia.map(({ platform, url, icon: Icon, name }) => (
                   <a
