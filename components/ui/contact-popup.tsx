@@ -68,7 +68,7 @@ export function ContactPopup() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out",
+        "fixed inset-0 z-100 flex items-start justify-center overflow-y-auto overflow-x-hidden p-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:items-center sm:overflow-hidden sm:p-4 transition-opacity duration-300 ease-in-out",
         entering && !isFadedIn && "opacity-0",
         entering && isFadedIn && "opacity-100",
         exiting && "opacity-0"
@@ -89,14 +89,17 @@ export function ContactPopup() {
       />
       <div
         className={cn(
-          "relative flex w-full max-w-lg flex-col rounded-lg bg-card border border-border shadow-xl transition-all duration-300 ease-in-out",
+          "relative my-auto flex w-full max-w-lg min-h-0 max-h-[min(92dvh,calc(100dvh-1.5rem))] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-xl transition-all duration-300 ease-in-out sm:max-h-[min(90dvh,calc(100dvh-2rem))]",
           entering && !isFadedIn && "opacity-0 scale-95",
           entering && isFadedIn && "opacity-100 scale-100",
           exiting && "opacity-0 scale-95"
         )}
       >
-        <div className="flex shrink-0 items-center justify-between p-4 border-b border-border bg-card">
-          <h2 id="contact-popup-title" className="text-lg font-bold text-foreground">
+        <div className="flex shrink-0 items-center justify-between gap-2 border-b border-border bg-card p-3 sm:p-4">
+          <h2
+            id="contact-popup-title"
+            className="min-w-0 text-base font-bold text-foreground sm:text-lg"
+          >
             Contáctanos
           </h2>
           <button
@@ -108,8 +111,9 @@ export function ContactPopup() {
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div className="min-h-0 max-h-[85vh] overflow-y-auto overflow-x-hidden p-4 sm:p-6">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden overscroll-contain p-3 sm:p-6">
           <HubSpotForm
+            className="max-w-full"
             portalId={HUBSPOT_PORTAL_ID}
             formId={CONTACT_FORM_ID}
             region={HUBSPOT_REGION}

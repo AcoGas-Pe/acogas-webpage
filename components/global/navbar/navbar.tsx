@@ -22,6 +22,7 @@ import {
   type NavMenuConfig,
 } from "./nav-config";
 import { useContactPopup } from "@/contexts/contact-popup-context";
+import { useQuoteCart } from "@/contexts/quote-cart-context";
 
 const SCROLL_THRESHOLD = 10;
 
@@ -35,6 +36,7 @@ export function Navbar() {
   const [isAtTop, setIsAtTop] = useState(true);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const contactPopup = useContactPopup();
+  const quoteCart = useQuoteCart();
 
   const handleMouseEnter = useCallback((menuKey: string) => {
     if (timeoutRef.current) {
@@ -158,7 +160,12 @@ export function Navbar() {
           </ul>
 
           {/* Desktop CTA */}
-          <div className={cn("hidden md:flex flex-row gap-2", isAtTop ? "text-foreground font-semibold" : "text-white")}>
+          <div
+            className={cn(
+              "hidden md:flex flex-row gap-2",
+              isAtTop ? "text-foreground font-semibold" : "text-white",
+            )}
+          >
             {contactPopup ? (
               <Button
                 variant="ghost"
@@ -180,12 +187,26 @@ export function Navbar() {
             )}
             <Button
               variant="secondary"
-              href="/cotizar/"
-              className="w-full p-2 min-h-10 min-w-10"
-              aria-label="Solicitar cotización"
-              title="Cotizar"
+              type="button"
+              className="relative w-full p-2 min-h-10 min-w-10"
+              aria-label="Abrir cotización"
+              title="Cotización"
+              onClick={() => quoteCart.open()}
             >
-              <ShoppingCart className="w-6 h-6" />
+              <svg
+                className="w-8 h-8 shrink-0 text-foreground "
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/assets/icons/gear-cart.svg#icon" />
+              </svg>
+              {quoteCart.totalQuantity > 0 ? (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold leading-none text-primary-foreground">
+                  {quoteCart.totalQuantity > 99
+                    ? "99+"
+                    : quoteCart.totalQuantity}
+                </span>
+              ) : null}
             </Button>
           </div>
 
@@ -424,11 +445,28 @@ export function Navbar() {
 
               <Button
                 variant="secondary"
-                href="/cotizar/"
-                className="w-full min-h-12 !py-3 gap-2 capitalize"
+                type="button"
+                className="relative w-full min-h-12 !py-3 gap-2 capitalize"
+                onClick={() => {
+                  quoteCart.open();
+                  closeMobile();
+                }}
               >
-                <ShoppingCart className="w-5 h-5 shrink-0" />
+                <svg
+                  className="w-8 h-8 shrink-0 text-foreground fill-current"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="/assets/icons/gear-cart.svg#icon" />
+                </svg>
                 Cotizar
+                {quoteCart.totalQuantity > 0 ? (
+                  <span className="absolute top-2 right-3 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold leading-none text-primary-foreground">
+                    {quoteCart.totalQuantity > 99
+                      ? "99+"
+                      : quoteCart.totalQuantity}
+                  </span>
+                ) : null}
               </Button>
             </div>
           </div>

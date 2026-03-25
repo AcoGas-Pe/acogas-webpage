@@ -66,19 +66,19 @@ export const NAV_MENUS = {
         title: "Marcas",
         href: "/marcas/",
         items: [
-          { label: "Fisher (GLP · GN · Otros)", href: "/marcas/" },
-          { label: "Tartarini", href: "/marcas/" },
-          { label: "Spence", href: "/marcas/" },
-          { label: "Cash", href: "/marcas/" },
-          { label: "Anderson Greenwood", href: "/marcas/" },
-          { label: "Crosby", href: "/marcas/" },
-          { label: "Kunkle", href: "/marcas/" },
-          { label: "Marston", href: "/marcas/" },
-          { label: "Enardo", href: "/marcas/" },
-          { label: "Varec", href: "/marcas/" },
-          { label: "Corken", href: "/marcas/" },
-          { label: "Liquid Controls", href: "/marcas/" },
-          { label: "Cavagna", href: "/marcas/" },
+          { label: "Corken", href: "/marcas/corken/" },
+          { label: "Fisher (GLP · GN · Otros)", href: "/marcas/fisher/" },
+          { label: "Kunkle", href: "/marcas/kunkle/" },
+          { label: "Spence", href: "/marcas/spence/" },
+          { label: "Tartarini", href: "/marcas/tartarini/" },
+          { label: "Cash", href: "/marcas/cash/" },
+          { label: "Anderson Greenwood", href: "/marcas/anderson-greenwood/" },
+          { label: "Crosby", href: "/marcas/crosby/" },
+          { label: "Marston", href: "/marcas/marston/" },
+          { label: "Enardo", href: "/marcas/enardo/" },
+          { label: "Varec", href: "/marcas/varec/" },
+          { label: "Liquid Controls", href: "/marcas/liquid-controls/" },
+          { label: "Cavagna", href: "/marcas/cavagna/" },
         ],
       },
       {
@@ -216,38 +216,6 @@ export const NAV_MENUS = {
       href: "/contacto/",
     },
     columns: [
-      {
-        title: "Correo",
-        href: "/contacto/",
-        items: [
-          {
-            label: "acogas@acogas.pe",
-            href: "mailto:acogas@acogas.pe",
-            description: "Consultas generales",
-          },
-          {
-            label: "ventas@acogas.pe",
-            href: "mailto:ventas@acogas.pe",
-            description: "Ventas y cotizaciones",
-          },
-        ],
-      },
-      {
-        title: "Teléfonos",
-        href: "/contacto/",
-        items: [
-          {
-            label: "+51 998 345 895",
-            href: "tel:+51998345895",
-            description: "Central de atención",
-          },
-          {
-            label: "+51 998 345 014",
-            href: "tel:+51998345014",
-            description: "Línea corporativa",
-          },
-        ],
-      },
       {
         title: "Acciones",
         href: "/contacto/",

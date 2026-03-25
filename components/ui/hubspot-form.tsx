@@ -10,7 +10,10 @@ interface HubSpotFormProps {
   region?: string;
   className?: string;
   onFormReady?: () => void;
+  /** Runs before the submission is sent to HubSpot */
   onFormSubmit?: () => void;
+  /** Runs after HubSpot accepts the submission (use for post-success actions, e.g. downloads) */
+  onFormSubmitted?: () => void;
 }
 
 declare global {
@@ -24,6 +27,7 @@ declare global {
           target: string;
           onFormReady?: () => void;
           onFormSubmit?: () => void;
+          onFormSubmitted?: () => void;
         }) => void;
       };
     };
@@ -37,6 +41,7 @@ export function HubSpotForm({
   className,
   onFormReady,
   onFormSubmit,
+  onFormSubmitted,
 }: HubSpotFormProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const formCreated = useRef(false);
@@ -61,6 +66,7 @@ export function HubSpotForm({
           target: `#hubspot-form-${formId}`,
           onFormReady: handleFormReady,
           onFormSubmit,
+          onFormSubmitted,
         });
       }
     };
@@ -88,10 +94,15 @@ export function HubSpotForm({
     return () => {
       formCreated.current = false;
     };
-  }, [portalId, formId, region, onFormSubmit]);
+  }, [portalId, formId, region, onFormSubmit, onFormSubmitted]);
 
   return (
-    <div className={cn("relative min-h-[200px]", className)}>
+    <div
+      className={cn(
+        "relative min-h-[min(12rem,38dvh)] sm:min-h-[200px] max-w-full",
+        className
+      )}
+    >
       {/* Loader: shown until HubSpot form is ready */}
       {!isReady && (
         <div
@@ -126,7 +137,7 @@ export function HubSpotForm({
         ref={containerRef}
         id={`hubspot-form-${formId}`}
         className={cn(
-          "hubspot-form-container transition-all duration-300",
+          "hubspot-form-container max-w-full overflow-x-hidden transition-all duration-300",
           isReady
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-2 pointer-events-none"

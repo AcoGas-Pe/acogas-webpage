@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-
+import { CTA } from "../cta/cta";
 interface ContactFormProps {
   className?: string;
 }
@@ -46,6 +46,7 @@ const contactInfo = [
 
 export function ContactForm({ className }: ContactFormProps) {
   return (
+    <>
     <section className={cn("section py-16 sm:py-20 md:py-24 bg-background", className)}>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -105,38 +106,26 @@ export function ContactForm({ className }: ContactFormProps) {
           </div>
         </div>
       </div>
-
-      {/* Registering form - for testing (set NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID in .env.local) */}
-      <div className="container mt-16">
-        <div className="max-w-2xl mx-auto">
-          <div className="card-base p-5 sm:p-6 md:p-8">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
-              Información de Contacto
-            </p>
-            <h3 className="text-xl font-bold text-foreground mb-4">
-              Formulario de Contacto
-            </h3>
-            {REGISTER_FORM_ID ? (
-              <HubSpotForm
-                portalId={HUBSPOT_PORTAL_ID}
-                formId={REGISTER_FORM_ID}
-                region={HUBSPOT_REGION}
-              />
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                Para probar el formulario de registro, agregue en{" "}
-                <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
-                  .env.local
-                </code>
-                :{" "}
-                <code className="text-xs bg-muted px-1.5 py-0.5 rounded break-all">
-                  NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID=su-form-id-de-hubspot
-                </code>
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
     </section>
+    <CTA
+      title="¿Desea profundizar en su requerimiento?"
+      description="Descubra soluciones a medida para su empresa. Nuestro equipo de especialistas realiza diagnósticos y visitas técnicas, brindando asesoramiento basado en ingeniería y normativas vigentes, con total respaldo operativo."
+      primaryAction={{
+        label: "Ver marcas",
+        href: "/marcas/",
+        icon: "arrow",
+      }}
+      secondaryAction={{
+        label: "Ver productos",
+        href: "/productos/",
+        icon: "arrow",
+      }}
+      tertiaryAction={{
+        label: "Cotizar",
+        href: "/cotizar/",
+        icon: "arrow",
+      }}
+    />
+    </>
   );
 }

@@ -8,6 +8,7 @@ import {
   Award,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 import { InfiniteCarousel, InfiniteCarouselItem } from "@/components/ui/infinite-carousel";
 import { STRATEGIC_BRANDS, VISION_TAGLINE } from "@/lib/strategic-brands";
 import { cn } from "@/lib/utils";
@@ -91,17 +92,23 @@ export function PropuestaValor() {
                   key={partner.name}
                   className="card-base min-w-[280px] sm:min-w-[300px] max-w-[320px] flex flex-col items-stretch justify-between p-4 gap-3 text-left"
                 >
-                  <div
-                    className={cn(
-                      "flex min-h-[3.5rem] items-center justify-center rounded-md border border-primary/20 bg-primary/5 px-3 py-2",
-                    )}
+                  <Link
+                    href={`/marcas/${partner.slug}/`}
+                    className="flex flex-col gap-3 text-left rounded-md -m-1 p-1 transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
-                    <span className="text-center text-base font-bold text-primary leading-tight">{partner.name}</span>
-                  </div>
-                  {partner.line && (
-                    <p className="text-xs font-medium text-muted-foreground text-center">{partner.line}</p>
-                  )}
-                  <p className="text-foreground/85 text-xs sm:text-sm leading-relaxed">{partner.shortDescription}</p>
+                    <div
+                      className={cn(
+                        "flex min-h-[3.5rem] items-center justify-center rounded-md border border-primary/20 bg-primary/5 px-3 py-2",
+                      )}
+                    >
+                      <span className="text-center text-base font-bold text-primary leading-tight">{partner.name}</span>
+                    </div>
+                    {partner.line && (
+                      <p className="text-xs font-medium text-muted-foreground text-center">{partner.line}</p>
+                    )}
+                    <p className="text-foreground/85 text-xs sm:text-sm leading-relaxed">{partner.shortDescription}</p>
+                    <span className="text-xs font-medium text-primary">Ver ficha →</span>
+                  </Link>
                 </InfiniteCarouselItem>
               ))}
             </InfiniteCarousel>

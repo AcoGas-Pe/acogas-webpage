@@ -157,7 +157,12 @@ const PRODUCTS: Product[] = [
       { valor: "Hidrógeno" },
     ],
     catalogoDocs: [
-      { categoria: "Generales", url: "/assets/docs/Brochure-General-FISHER-2.pdf", nombre: "Brochure General FISHER 2.pdf", paginas: "Página 17" },
+      {
+        categoria: "Generales",
+        url: "/assets/docs/Brochure%20General%20FISHER%202.pdf",
+        nombre: "Brochure General FISHER 2.pdf",
+        paginas: "Página 17",
+      },
       { categoria: "Generales", url: "/assets/docs/Reguladores-presion-Tipo-EZH-EZHSO.pdf", nombre: "Reguladores de presión (Tipo EZH y EZHSO).pdf", paginas: "Todo" },
       { categoria: "Generales", url: "/assets/docs/Soluciones-de-refino.pdf", nombre: "Soluciones de refino.pdf", paginas: "Página 6" },
       { categoria: "Generales", url: "/assets/docs/Pressure-regulators-Type-EZH-EZHO.pdf", nombre: "Pressure regulators (Type EZH and EZHO).pdf", paginas: "Todo" },
@@ -197,6 +202,11 @@ const PRODUCTS: Product[] = [
 
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
+}
+
+/** Lista completa para búsqueda / cotización (misma fuente que la ficha de producto). */
+export function getAllProducts(): Product[] {
+  return PRODUCTS;
 }
 
 export function getAllProductSlugs(): string[] {

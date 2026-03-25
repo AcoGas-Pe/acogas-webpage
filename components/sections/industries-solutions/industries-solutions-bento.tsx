@@ -94,7 +94,7 @@ export function IndustriesSolutionsBento() {
 
         {/* Bento grid: Industries (left) | Solutions (right) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-2 h-full min-h-auto sm:min-h-[60vh]">
-          {/* Right: Solutions — con enlace a Soluciones */}
+          {/* Right: Solutions ,  con enlace a Soluciones */}
           <div className="flex flex-col">
             <div className="gap-2 grid-cols-4 grid-rows-5 sm:grid-rows-7 grid h-full">
               <Link
@@ -144,7 +144,7 @@ export function IndustriesSolutionsBento() {
             </div>
           </div>
 
-          {/* Left: Industries — solo mencionar sectores */}
+          {/* Left: Industries ,  solo mencionar sectores */}
           <div className="flex flex-col">
             <div className="gap-2 grid-cols-2 sm:grid-cols-4 grid-rows-3 grid h-full">
               <div className="h-full hover:scale-95 transition-transform duration-300 order-2 p-6 col-span-2 rounded-md bg-primary/10 border border-primary/20 text-foreground">

@@ -7,7 +7,9 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { ContactPopupProvider } from "@/contexts/contact-popup-context";
+import { QuoteCartProvider } from "@/contexts/quote-cart-context";
 import { ContactPopup } from "@/components/ui/contact-popup";
+import { QuoteCartSidebar } from "@/components/global/quote-cart-sidebar";
 
 const heroFont = localFont({
   src: [
@@ -46,10 +48,13 @@ export default function RootLayout({
         className={`${montserrat.variable} ${heroFont.variable} antialiased flex flex-col`}
       >
         <ContactPopupProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <ContactPopup />
+          <QuoteCartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <ContactPopup />
+            <QuoteCartSidebar />
+          </QuoteCartProvider>
         </ContactPopupProvider>
 
         <WhatsAppButton

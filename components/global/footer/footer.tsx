@@ -1,24 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  BUSINESS_INFO, 
-  CONTACT, 
+import {
+  BUSINESS_INFO,
+  CONTACT,
   SOCIAL_MEDIA,
   getCompanyLinks,
   getLegalLinks,
   formatPhoneTel,
   formatPhoneDisplay,
   type SocialMedia as SocialMediaType,
-  GOOGLE_MAPS
+  GOOGLE_MAPS,
 } from "@/lib/business-config";
 import { FOOTER_PRODUCT_LINKS } from "@/lib/footer-products";
 import { FOOTER_BRAND_LINKS } from "@/lib/footer-brands";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-} from "lucide-react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube, FaTiktok } from "react-icons/fa";
+import { Mail, Phone, MapPin } from "lucide-react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
 import type { ComponentType } from "react";
 
 // Social Media Icon Mapping Interface
@@ -35,7 +38,6 @@ const SOCIAL_ICONS: SocialIconMap = {
   tiktok: FaTiktok,
 };
 
-
 // Helper function to get social media display name
 const getSocialDisplayName = (platform: string): string => {
   const names: { [key: string]: string } = {
@@ -49,11 +51,18 @@ const getSocialDisplayName = (platform: string): string => {
     nextdoor: "Nextdoor",
     yelp: "Yelp",
   };
-  return names[platform] || platform.charAt(0).toUpperCase() + platform.slice(1);
+  return (
+    names[platform] || platform.charAt(0).toUpperCase() + platform.slice(1)
+  );
 };
 
 // Helper function to get active social media entries
-const getActiveSocialMedia = (): Array<{ platform: keyof SocialMediaType; url: string; icon: ComponentType<{ className?: string }>; name: string }> => {
+const getActiveSocialMedia = (): Array<{
+  platform: keyof SocialMediaType;
+  url: string;
+  icon: ComponentType<{ className?: string }>;
+  name: string;
+}> => {
   return Object.entries(SOCIAL_MEDIA)
     .filter(([_, url]) => url)
     .map(([platform, url]) => ({
@@ -101,50 +110,54 @@ export function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               {/* Email(s) */}
-
               <div className="flex items-center text-white/80 gap-2">
-              <Mail className="w-4 h-4 text-white/80" />
-              Escribenos:
+                <Mail className="w-4 h-4 text-white/80" />
+                Escribenos:
               </div>
-              <div className="flex flex-row gap-2 flex-wrap"> 
-              {emails.map((email, index) => (
-                <div key={`email-${index}`} className="flex items-center gap-2">
-                  <a 
-                    href={`mailto:${email}`} 
-                    className="text-muted-foreground hover:text-primary transition-colors"
+              <div className="flex flex-row gap-2 flex-wrap">
+                {emails.map((email, index) => (
+                  <div
+                    key={`email-${index}`}
+                    className="flex items-center gap-2"
                   >
-                    {email}
-                  </a>
-                </div>
-              ))}
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {email}
+                    </a>
+                  </div>
+                ))}
               </div>
-
-
-            <div className="flex  text-white/80 items-center gap-2">
-              <Phone className="w-4 h-4 text-white/80" />
-              Llámanos:
-              </div>              {/* Phone(s) */}
-            <div className="flex flex-row gap-2 flex-wrap"> 
-              {phones.map((phone, index) => (
-                <div key={`phone-${index}`} className="flex items-center gap-2">
-                  <a 
-                    href={`tel:${formatPhoneTel(phone)}`} 
-                    className="text-muted-foreground hover:text-primary transition-colors"
+              <div className="flex  text-white/80 items-center gap-2">
+                <Phone className="w-4 h-4 text-white/80" />
+                Llámanos:
+              </div>{" "}
+              {/* Phone(s) */}
+              <div className="flex flex-row gap-2 flex-wrap">
+                {phones.map((phone, index) => (
+                  <div
+                    key={`phone-${index}`}
+                    className="flex items-center gap-2"
                   >
-                    {formatPhoneDisplay(phone)}
-                  </a>
-                </div>
-              ))}
+                    <a
+                      href={`tel:${formatPhoneTel(phone)}`}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {formatPhoneDisplay(phone)}
+                    </a>
+                  </div>
+                ))}
               </div>
               {/* Address */}
               <div className="flex items-center text-white/80 gap-2">
                 <MapPin className="w-4 h-4 text-white/80" />
                 Encuéntranos:
               </div>
-              {CONTACT.addressVisibility === 'VISIBLE' && (
+              {CONTACT.addressVisibility === "VISIBLE" && (
                 <div className="flex items-center gap-2">
-                  <a 
-                    href={`${GOOGLE_MAPS.shortLink}`} 
+                  <a
+                    href={`${GOOGLE_MAPS.shortLink}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -156,14 +169,14 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Products — líneas comerciales */}
+          {/* Products ,  líneas comerciales */}
           <div>
             <h3 className="font-semibold text-white/80 mb-4">Soluciones</h3>
             <ul className="space-y-2">
               {FOOTER_PRODUCT_LINKS.map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {item.name}
@@ -179,8 +192,8 @@ export function Footer() {
             <ul className="space-y-2">
               {FOOTER_BRAND_LINKS.map((brand) => (
                 <li key={brand.name}>
-                  <Link 
-                    href={brand.href} 
+                  <Link
+                    href={brand.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {brand.name}
@@ -196,8 +209,8 @@ export function Footer() {
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     {link.name}
@@ -212,18 +225,20 @@ export function Footer() {
             <div>
               <h3 className="font-semibold text-white/80 mb-4">Síguenos</h3>
               <div className="flex flex-col space-y-3">
-                {activeSocialMedia.map(({ platform, url, icon: Icon, name }) => (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    <Icon className="w-5 h-5" />
-                    {name}
-                  </a>
-                ))}
+                {activeSocialMedia.map(
+                  ({ platform, url, icon: Icon, name }) => (
+                    <a
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+                    >
+                      <Icon className="w-5 h-5" />
+                      {name}
+                    </a>
+                  ),
+                )}
               </div>
             </div>
           )}
@@ -233,13 +248,14 @@ export function Footer() {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm text-center md:text-left">
-              © {new Date().getFullYear()} {BUSINESS_INFO.name.trim()}. Todos los derechos reservados.
+              © {new Date().getFullYear()} {BUSINESS_INFO.name.trim()}. Todos
+              los derechos reservados.
             </p>
             <div className="flex flex-wrap justify-center md:justify-end gap-4 text-sm">
               {legalLinks.map((link) => (
-                <Link 
+                <Link
                   key={link.href}
-                  href={link.href} 
+                  href={link.href}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {link.name}

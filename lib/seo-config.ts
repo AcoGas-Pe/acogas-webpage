@@ -285,7 +285,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
 
   "/marcas/": {
     title: `Marcas | ${BUSINESS_INFO.name}`,
-    description: `Marcas líderes en soluciones industriales: Emerson (Fisher, Tartarini, Cash, Spence), Corken, Cavagna y Liquid Controls.`,
+    description: `Socios estratégicos: Fisher, Tartarini, Spence, Cash, Anderson Greenwood, Crosby, Kunkle, Marston, Enardo, Varec, Corken, Liquid Controls y Cavagna. Fichas por marca y soporte técnico.`,
     keywords: ["marcas", "emerson", "fisher", "tartarini", "cash", "spence", "corken", "cavagna", "liquid controls", "acogas"],
     canonical: `${siteConfig.url}/marcas/`,
     ogImage: "/assets/config/og.png",

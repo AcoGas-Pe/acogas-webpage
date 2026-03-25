@@ -8,7 +8,7 @@
 */
 
 :root {
-  /* Base — light theme (default canvas: white) */
+  /* Base ,  light theme (default canvas: white) */
   --background: 0 0% 100%;
   --background-alt: 210 20% 97%;
   --foreground: 210 15% 11%;
@@ -210,6 +210,10 @@ h6 {
 }
 
 /* HubSpot Form Styling */
+.hubspot-form-container iframe {
+  max-width: 100% !important;
+}
+
 .hubspot-form-container .hs-form {
   font-family: var(--font-montserrat), system-ui, sans-serif;
 }

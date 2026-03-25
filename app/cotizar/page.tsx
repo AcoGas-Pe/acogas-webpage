@@ -1,6 +1,8 @@
 import { PagesHero } from "@/components/sections/hero/pages-hero";
+import { CotizarQuoteFlow } from "@/components/cotizar/cotizar-quote-flow";
 import { Button } from "@/components/ui/button";
 import { CONTACT, formatPhoneTel } from "@/lib/business-config";
+import { getAllProducts } from "@/lib/products-data";
 import { Metadata } from "next";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import Link from "next/link";
@@ -9,6 +11,7 @@ export const metadata: Metadata = generateMetadataFromConfig("/cotizar/");
 
 export default function CotizarPage() {
   const telHref = `tel:${formatPhoneTel(CONTACT.phone[0])}`;
+  const products = getAllProducts();
 
   return (
     <>
@@ -22,6 +25,7 @@ export default function CotizarPage() {
           { label: "Cotizar", href: "/cotizar" },
         ]}
       />
+      <CotizarQuoteFlow products={products} />
       <section className="section py-16 sm:py-20 md:py-24 bg-background">
         <div className="container max-w-3xl mx-auto px-4 text-center">
           <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">

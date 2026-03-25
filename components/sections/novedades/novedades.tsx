@@ -5,7 +5,7 @@ interface NovedadesProps {
 }
 
 /**
- * Homepage section for blog/CMS content — "Novedades / Mantenerse actualizado".
+ * Homepage section for blog/CMS content ,  "Novedades / Mantenerse actualizado".
  * Kept empty for the moment; ready for CMS integration.
  */
 export function Novedades({ className }: NovedadesProps) {
@@ -26,9 +26,11 @@ export function Novedades({ className }: NovedadesProps) {
             Próximamente: noticias, artículos técnicos y novedades del sector.
           </p>
         </div>
-        {/* Placeholder for CMS-driven blog grid — keep empty for the moment */}
+        {/* Placeholder for CMS-driven blog grid ,  keep empty for the moment */}
         <div className="min-h-[200px] flex items-center justify-center rounded-lg border border-dashed border-border bg-muted/20">
-          <p className="text-sm text-muted-foreground">Contenido en preparación</p>
+          <p className="text-sm text-muted-foreground">
+            Contenido en preparación
+          </p>
         </div>
       </div>
     </section>
