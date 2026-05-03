@@ -1,21 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  History,
-  BadgeCheck,
-  Headphones,
-  Workflow,
-  ClipboardList,
-  ShieldCheck,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 interface Feature {
   title: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
   highlight?: string;
 }
 
@@ -31,138 +22,139 @@ const defaultFeatures: Feature[] = [
     title: "Trayectoria que forma industria",
     description:
       "Más de cincuenta años como referente técnico y espacio de formación para profesionales y empresarios del sector energético e industrial en el Perú.",
-    icon: History,
-    highlight: "+50 años",
+    highlight: "+50 AÑOS",
   },
   {
     title: "Tecnología de clase mundial",
     description:
       "Representación y comercialización de marcas globales con desempeño comprobado, alineadas a certificaciones y estándares internacionales del sector.",
-    icon: BadgeCheck,
-    highlight: "Marcas líderes",
+    highlight: "MARCAS LÍDERES",
   },
   {
     title: "Soporte técnico real",
     description:
       "Acompañamiento antes, durante y después de cada implementación, con presencia en campo y criterio aplicado a su realidad operativa.",
-    icon: Headphones,
-    highlight: "En planta",
+    highlight: "EN PLANTA",
   },
   {
     title: "Enfoque por proceso",
     description:
       "No comercializamos productos aislados ni soluciones genéricas por catálogo: diseñamos según la necesidad energética, operativa o industrial del cliente.",
-    icon: Workflow,
-    highlight: "Por solución",
+    highlight: "POR SOLUCIÓN",
   },
   {
     title: "Capacidad de diagnóstico",
     description:
       "Evaluación de condiciones reales para proponer alternativas seguras, eficientes y sostenibles, con criterio de ingeniería y visión de riesgo.",
-    icon: ClipboardList,
-    highlight: "Ingeniería aplicada",
+    highlight: "INGENIERÍA APLICADA",
   },
   {
     title: "Cumplimiento normativo certificado",
     description:
       "Trabajamos con equipos y soluciones acordes a OSINERGMIN, MINEM y estándares internacionales aplicables, orientados a operaciones auditables y seguras.",
-    icon: ShieldCheck,
-    highlight: "Normativa",
+    highlight: "NORMATIVA",
   },
 ];
 
+function FeatureCard({ feature }: { feature: Feature }) {
+  return (
+    <div
+      className={cn(
+        "flex h-full flex-col rounded-[3px] border border-white/[0.08]",
+        "bg-[rgba(40,40,40,0.72)] px-6 pb-7 pt-6 shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.05)] transition duration-300",
+        "hover:border-white/14 hover:bg-[rgba(40,40,40,0.8)] sm:px-7 sm:pb-[1.75rem] sm:pt-[1.35rem]",
+      )}
+    >
+      {feature.highlight && (
+        <span className="mb-5 inline-flex w-fit rounded-full bg-accent px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white sm:text-[11px] sm:tracking-[0.12em]">
+          {feature.highlight}
+        </span>
+      )}
+      <h3 className="text-[0.96875rem] font-bold leading-snug text-white sm:text-base">
+        {feature.title}
+      </h3>
+      <p className="mt-2.5 flex-1 text-[0.8125rem] font-normal leading-relaxed text-white/90 sm:text-sm">
+        {feature.description}
+      </p>
+    </div>
+  );
+}
+
 export function Features({
   title = "Nuestros pilares",
-  subtitle = "Por qué elegirnos",
+  subtitle = "¿Por qué elegirnos?",
   features = defaultFeatures,
   className,
 }: FeaturesProps) {
+  const topRow = features.slice(0, 2);
+  const bottomRow = features.slice(2);
+
   return (
     <section
       className={cn(
-        "section relative py-16 sm:py-20 md:py-24 text-foreground",
+        "section relative overflow-hidden py-14 text-white sm:py-16 md:py-[4.25rem]",
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center [transform:translateZ(0)]" aria-hidden>
+      <div
+        className="pointer-events-none absolute inset-0 z-0 [transform:translateZ(0)]"
+        aria-hidden
+      >
         <Image
           src="/assets/images/general-industry.webp"
           alt=""
           fill
-          className="object-cover w-full h-full"
+          className="scale-105 object-cover object-center blur-[2px]"
+          sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 bg-black/[0.55]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/35" />
       </div>
 
-      <div className="container relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="text-left mb-10 sm:mb-14 col-span-2">
-          {subtitle && (
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
-              {subtitle}
-            </p>
-          )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-            {title}
-          </h2>
-          <p className="my-3 text-sm sm:text-base text-white opacity-80 max-w-2xl">
-            Impulsamos la operación energética e industrial de nuestros clientes
-            con soluciones seguras, eficientes y normativamente confiables. No
-            somos un proveedor de catálogo: somos el socio industrial que
-            convierte la energía en operación segura.
-          </p>
-          <p className="mb-4 text-xs sm:text-sm text-white opacity-80 max-w-2xl leading-relaxed">
-            No ofrecemos catálogos aislados: integramos equipos, ingeniería y
-            servicios según su proceso.
-          </p>
-          <Button
-            variant="outline"
-            href="/nosotros#propuesta-valor"
-            size="sm"
-            className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-          >
-            Conócenos
-          </Button>
-        </div>
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <div
-              key={index}
-              className={cn(
-                "flex-col glass-panel justify-start group px-5 py-4 sm:px-6 sm:py-6 flex items-start gap-4 relative", // add relative positioning here
-                "transition-all duration-300 ease-in-out hover:-translate-y-1",
+      <div className="container relative z-10">
+        <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-3 lg:items-stretch">
+            <header className="flex flex-col text-left lg:min-h-0 lg:pr-4">
+              {subtitle && (
+                <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
+                  {subtitle}
+                </p>
               )}
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 z-0 bg-primary/20 backdrop-blur-xs backdrop-saturate-100 transform-[translateZ(0)]"
-              />
-              {feature.highlight && (
-                <span className="text-[10px] px-1.5 py-0.5 self-end rounded bg-accent/10 z-10 text-accent font-semibold">
-                  {feature.highlight}
-                </span>
-              )}
-              <div className="flex items-start gap-2 w-full">
-                {/* Clip decorative icon without overflow:hidden on .glass-panel (breaks backdrop-filter) */}
-                <Icon className="w-full h-full p-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary opacity-50" />
+              <h2 className="text-[1.5rem] font-extrabold uppercase leading-[1.12] tracking-[0.11em] text-white sm:text-3xl md:text-[2rem] lg:text-[2.125rem]">
+                {title}
+              </h2>
+              <p className="mt-4 max-w-md text-[0.8125rem] font-normal leading-relaxed text-white sm:text-sm">
+              Impulsamos la operación energética e industrial de nuestros clientes
+con soluciones seguras, eficientes y normativamente confiables. No
+somos un proveedor de catálogo: somos el socio industrial que
+convierte la energía en operación segura.
+              </p>
+              <p className="mt-4 max-w-md text-[0.8125rem] font-normal leading-relaxed text-white sm:text-sm">
+              No ofrecemos catálogos aislados: integramos equipos, ingeniería y
+              servicios según su proceso
+              </p>
 
-                <div className="min-w-0 flex-1 z-10">
-                  {" "}
-                  {/* ensure it sits above the icon */}
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-sm sm:text-base font-bold text-white">
-                      {feature.title}
-                    </h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-white opacity-80 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+              <Button
+                variant="outline"
+                href="/nosotros#propuesta-valor"
+                size="sm"
+                className="mt-6 min-h-10 w-fit !border-white bg-transparent px-6 text-[11px] font-bold uppercase tracking-[0.18em] !text-white hover:!border-white hover:bg-white/12 hover:!text-white"
+              >
+                Conócenos
+              </Button>
+            </header>
+            {topRow.map((feature) => (
+              <FeatureCard key={feature.title} feature={feature} />
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {bottomRow.map((feature) => (
+              <FeatureCard key={feature.title} feature={feature} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

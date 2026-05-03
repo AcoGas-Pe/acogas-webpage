@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { MapPin, Building2, FlagIcon } from "lucide-react";
+import { Building2, FlagIcon } from "lucide-react";
 
 interface CoverageProps {
   title?: string;
@@ -10,7 +10,6 @@ interface CoverageProps {
   className?: string;
 }
 
-/** City pages: each city has its own page. Hub shows Lima + Ciudades. */
 const CITIES = [
   { name: "Trujillo", href: "/cobertura-industrial/trujillo/" },
   { name: "Arequipa", href: "/cobertura-industrial/arequipa/" },
@@ -27,106 +26,119 @@ const LIMA_CITIES = [
 ] as const;
 
 export function Coverage({
-  title = "Cobertura Industrial",
-  subtitle = "Presencia Territorial",
+  title = "Cobertura industrial",
+  subtitle = "Presencia territorial",
   className,
 }: CoverageProps) {
   return (
     <section
-      className={cn("section py-16 sm:py-20 md:py-24 bg-background", className)}
+      className={cn(
+        "section border-y border-border/50 bg-background py-11 sm:py-12 md:py-14",
+        className,
+      )}
     >
       <div className="container">
-        <div className="text-center mb-10 sm:mb-14">
-          {subtitle && (
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
-              {subtitle}
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+          <header className="max-w-xl text-left lg:pt-1 flex flex-col items-start justify-center gap-3">
+            {subtitle && (
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent sm:text-sm">
+                {subtitle}
+              </p>
+            )}
+            <h2 className="mt-2 text-2xl font-bold uppercase tracking-[0.06em] text-primary sm:text-3xl md:text-[5rem]">
+              {title}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-foreground sm:text-base">
+              Brindamos soporte técnico presencial en las principales zonas
+              industriales del Perú.
             </p>
-          )}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Brindamos soporte técnico presencial en las principales zonas
-            industriales del Perú.
-          </p>
-        </div>
+          </header>
 
-        {/* 2 columns: Lima | Ciudades (city page hub) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto bg-primary/80 p-6 sm:p-8 shadow-primary/80 rounded-2xl shadow-[0px_0px_50px_0px_rgba(0,0,0,0.1)]">
-          <div>
-            <div className="card-base p-6 sm:p-8 flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <FlagIcon className="w-6 h-6 text-primary" />
+          <div className="flex flex-col items-center justify-center gap-3 sm:mt-9 sm:gap-4"> 
+          <div
+            className={cn(
+              "rounded-2xl border-2 border-primary/25 p-3 shadow-sm sm:p-4",
+              "ring-1 ring-primary/10 bg-primary",
+            )}
+          >
+            <div className="grid min-h-[240px] gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-4 md:min-h-[280px]">
+              <div className="flex flex-col gap-4 rounded-xl bg-white p-4 sm:p-5">
+                <div>
+                  <div className="mb-3 flex items-center gap-2.5">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/15 bg-primary/10">
+                      <FlagIcon className="h-[1.125rem] w-[1.125rem] text-primary" />
+                    </div>
+                    <h3 className="text-sm font-bold text-foreground sm:text-base">
+                      En la capital
+                    </h3>
+                  </div>
+                  <p className="mb-3 text-xs text-muted-foreground sm:text-sm">
+                    Distritos de Lima Metropolitana.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {LIMA_CITIES.map((city) => (
+                      <a
+                        key={city.name}
+                        href={city.href}
+                        className="rounded-md border border-neutral-200/90 bg-primary/10 px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)] transition hover:border-primary/30 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
+                      >
+                        {city.name}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-foreground">
-                  En la Capital
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Distritos de Lima Metropolitana.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {LIMA_CITIES.map((city) => (
-                  <a
-                    key={city.name}
-                    href={city.href}
-                    className="text-xs sm:text-sm px-3 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-foreground hover:bg-primary/20 hover:border-primary/30 transition-colors"
-                  >
-                    {city.name}
-                  </a>
-                ))}
-              </div>
-              <div className="w-full flex border-b border-primary-light/50 py-2"></div>
-              <div className="flex items-center gap-3 mb-4 mt-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-primary" />
+
+                <div className="border-t border-border/80 pt-4">
+                  <div className="mb-3 flex items-center gap-2.5">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/15 bg-primary/10">
+                      <Building2 className="h-[1.125rem] w-[1.125rem] text-primary" />
+                    </div>
+                    <h3 className="text-sm font-bold text-foreground sm:text-base">
+                      Otras ciudades
+                    </h3>
+                  </div>
+                  <p className="mb-3 text-xs text-muted-foreground sm:text-sm">
+                    Cobertura nacional.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {CITIES.map((city) => (
+                      <a
+                        key={city.name}
+                        href={city.href}
+                        className="rounded-md border border-neutral-200/90 bg-primary/10 px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)] transition hover:border-primary/30 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
+                      >
+                        {city.name}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-foreground">
-                  Otras Ciudades
-                </h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Cobertura nacional
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {CITIES.map((city) => (
-                  <a
-                    key={city.name}
-                    href={city.href}
-                    className="text-xs sm:text-sm px-3 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-foreground hover:bg-primary/20 hover:border-primary/30 transition-colors"
-                  >
-                    {city.name}
-                  </a>
-                ))}
-              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e0!3m2!1ses!2spe!4v1773358132766!5m2!1ses!2spe"
+                width={600}
+                height={280}
+                className="h-full min-h-[220px] w-full shrink-0 rounded-xl border border-border/60 md:min-h-0"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa ubicación ACOGAS"
+              />
             </div>
           </div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e0!3m2!1ses!2spe!4v1773358132766!5m2!1ses!2spe"
-            width={600}
-            height={350}
-            style={{
-              border: 0,
-              width: "100%",
-              height: "100%",
-              borderRadius: "10px",
-            }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Mapa ubicación ACOGAS"
-          ></iframe>
-        </div>
-
-        <div className="text-center mt-10 flex flex-row gap-4 justify-center">
-          <Button href="/cobertura-industrial/" size="lg">
-            Encuentranos cerca de ti
+          <div className="mt-8 flex flex-row items-center justify-start gap-3 sm:mt-9 sm:gap-4">
+          <Button href="/cobertura-industrial/" size="sm">
+            Encuéntranos cerca de ti
           </Button>
-          <Button href="/contacto" size="lg">
+          <Button href="/contacto" size="sm">
             Solicitar visita en mi zona
           </Button>
         </div>
+        </div>
+        </div>
+
+        
       </div>
     </section>
   );

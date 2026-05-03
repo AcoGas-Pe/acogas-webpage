@@ -1,202 +1,159 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PRODUCT_INDUSTRIES } from "@/lib/business-config";
 import {
-  Utensils,
-  Fish,
-  Wheat,
-  Mountain,
-  FileText,
-  Factory,
   Flame,
   Gauge,
   Wind,
-  Atom,
-  ArrowRight,
-  Zap,
-  FlaskConical,
-  Shirt,
-  Truck,
   Fuel,
+  ArrowRight,
+  Truck,
   Shield,
   CogIcon,
 } from "lucide-react";
 import Link from "next/link";
-
-type IndustryGridAttr = "small" | "large" | "tall";
-
-const industryCardConfig: Record<
-  string,
-  { icon: React.ComponentType<{ className?: string }>; grid: IndustryGridAttr }
-> = {
-  agroindustria: { icon: Wheat, grid: "tall" },
-  energia: { icon: Zap, grid: "small" },
-  mineria: { icon: Mountain, grid: "small" },
-  pesquera: { icon: Fish, grid: "small" },
-  "papel-carton": { icon: FileText, grid: "large" },
-  textil: { icon: Shirt, grid: "small" },
-  "quimico-plastico": { icon: FlaskConical, grid: "large" },
-  "alimentos-bebidas": { icon: Utensils, grid: "large" },
-  transporte: { icon: Truck, grid: "small" },
-  "entorno-glp": { icon: Fuel, grid: "small" },
-};
-
-const industryIcons: Record<
-  string,
-  React.ComponentType<{ className?: string }>
-> = Object.fromEntries(
-  Object.entries(industryCardConfig).map(([slug, config]) => [
-    slug,
-    config.icon,
-  ]),
-) as Record<string, React.ComponentType<{ className?: string }>>;
-
-const industryGridAttrs: Record<string, IndustryGridAttr> = Object.fromEntries(
-  Object.entries(industryCardConfig).map(([slug, config]) => [
-    slug,
-    config.grid,
-  ]),
-) as Record<string, IndustryGridAttr>;
+import { Button } from "@/components/ui/button";
 
 const solutions = [
-  { title: "GLP", icon: Gauge, grid: "large" },
-  { title: "Gas Natural", icon: Flame, grid: "large" },
-  { title: "Vapor", icon: Wind, grid: "large" },
-  { title: "Combustibles Líquidos", icon: Fuel, grid: "large" },
-  { title: "Control de Procesos", icon: CogIcon, grid: "large" },
-  { title: "Almacenamiento Seguro", icon: Shield, grid: "large" },
-  { title: "Transferencia de Fluidos", icon: Truck, grid: "large" },
-];
+  { title: "GLP", icon: Gauge },
+  { title: "Gas natural", icon: Flame },
+  { title: "Vapor", icon: Wind },
+  { title: "Combustibles líquidos", icon: Fuel },
+  { title: "Control de procesos", icon: CogIcon },
+  { title: "Almacenamiento seguro", icon: Shield },
+  { title: "Transferencia de fluidos", icon: Truck },
+] as const;
 
-/** Revisar la distribución del bento al incorporar o reordenar sectores industriales. */
+/** Tarjeta alcance (dos columnas) + rejilla de industrias con fotografía */
 export function IndustriesSolutionsBento() {
   return (
     <section
-      className="section py-16 sm:py-20 md:py-24 bg-white text-foreground"
+      className="section border-y border-border/60 bg-linear-to-b from-background-alt via-background-alt to-muted/35 py-11 text-foreground sm:py-14 md:py-16"
       aria-label="Industrias y Soluciones"
     >
       <div className="container">
-        <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+        <header className="mb-6 text-center sm:mb-8">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-accent sm:text-sm">
             Conoce nuestro alcance
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            Industrias y Soluciones
+          <h2 className="text-2xl font-bold uppercase tracking-[0.08em] text-primary sm:text-3xl md:text-4xl">
+            Industrias y soluciones
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-foreground/85 sm:text-base">
             Atendemos diversos sectores con soluciones técnicas por tipo de
             energía y proceso.
           </p>
-        </div>
+        </header>
 
-        {/* Bento grid: Industries (left) | Solutions (right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-2 h-full min-h-auto sm:min-h-[60vh]">
-          {/* Right: Solutions ,  con enlace a Soluciones */}
-          <div className="flex flex-col">
-            <div className="gap-2 grid-cols-4 grid-rows-5 sm:grid-rows-7 grid h-full">
+        <div
+          className={cn(
+            "rounded-xl border border-primary/12 bg-card p-5 shadow-[0_2px_16px_-2px_rgb(0_0_0_/_0.1),0_1px_4px_-1px_rgb(0_0_0_/_0.05)]",
+            "ring-1 ring-black/[0.04] sm:p-6 md:p-7",
+          )}
+        >
+          <div className="grid gap-7 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
+            <div className="flex min-w-0 flex-col">
+              <h3 className="text-base font-bold uppercase tracking-[0.06em] text-foreground sm:text-lg">
+                Al alcance de tu industria
+              </h3>
+              <p className="mt-2.5 max-w-xl text-sm leading-snug text-foreground/90 sm:text-[0.9375rem] sm:leading-relaxed">
+                Ofrecemos soluciones integrales diseñadas para cubrir una amplia
+                gama de necesidades energéticas y aplicaciones industriales,
+                asegurando eficiencia, seguridad y confiabilidad en cada
+                proceso.
+              </p>
               <Link
                 href="/soluciones/"
-                className="hover:scale-99  transition-all duration-300 hover:cursor-pointer hover:bg-primary-light/20 group h-full flex flex-col justify-between row-span-1 sm:row-span-7 p-6 col-span-4 sm:col-span-2 rounded-md bg-primary/10 border border-primary/20 text-foreground"
+                className="group mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold uppercase tracking-wide text-foreground underline-offset-4 transition-colors hover:text-primary"
               >
-                <div>
-                  <h3 className="text-lg font-bold text-foreground mb-1">
-                    Al alcance de tu industria
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    Ofrecemos soluciones integrales diseñadas para cubrir una
-                    amplia gama de necesidades energéticas y aplicaciones
-                    industriales, asegurando eficiencia, seguridad y
-                    confiabilidad en cada proceso.
-                  </p>
-                </div>
-
-                <span className="flex flex-row items-center gap-1 hover:bg-transparent text-sm group-hover:text-primary w-full sm:w-auto">
-                  Explora soluciones
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
+                Explorar soluciones
+                <ArrowRight
+                  className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+                  aria-hidden
+                />
               </Link>
+            </div>
+
+            <ul className="grid grid-cols-2 gap-2 sm:gap-2.5 md:border-l md:border-border/80 md:pl-8 lg:pl-9">
               {solutions.map((sol) => {
                 const Icon = sol.icon;
-                const gridAttr = sol.grid || "small";
                 return (
-                  <div
-                    key={sol.title}
-                    className={cn(
-                      "hover:scale-95 transition-all duration-300 hover:bg-primary-light/20 group relative flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1.5 rounded-md border text-foreground overflow-hidden",
-                      "bg-primary/10 border-primary/20 text-foreground",
-                      gridAttr === "small" && "col-span-1",
-                      gridAttr === "large" && "col-span-2",
-                      gridAttr === "tall" && "row-span-2",
-                    )}
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  <li key={sol.title} className="flex items-center gap-2.5 sm:gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center text-primary sm:h-9 sm:w-9">
+                      <Icon
+                        className="h-[1.375rem] w-[1.375rem] sm:h-6 sm:w-6"
+                        aria-hidden
+                        strokeWidth={1.75}
+                      />
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase leading-tight tracking-wide text-foreground sm:text-xs">
                       {sol.title}
                     </span>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </div>
+        </div>
 
-          {/* Left: Industries ,  solo mencionar sectores */}
-          <div className="flex flex-col">
-            <div className="gap-2 grid-cols-2 sm:grid-cols-4 grid-rows-3 grid h-full">
-              <div className="h-full hover:scale-95 transition-transform duration-300 order-2 p-6 col-span-2 rounded-md bg-primary/10 border border-primary/20 text-foreground">
-                <div>
-                  <h3 className="text-lg font-bold text-foreground mb-1">
-                    Industrias
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    Sectores en los que desarrollamos soluciones específicas.
-                  </p>
-                </div>
-              </div>
+        <div className="mt-5">
+          <header className="mb-5 text-center sm:mb-6">
+            <h3 className="text-lg font-bold uppercase tracking-[0.08em] text-foreground sm:text-xl">
+              Industrias
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Sectores en los que desarrollamos soluciones específicas.
+            </p>
+          </header>
 
-              {PRODUCT_INDUSTRIES.map((ind) => {
-                const Icon = industryIcons[ind.slug] || Factory;
-                const gridAttr = industryGridAttrs[ind.slug] || "small";
-                const bgImage = ind.image || "";
-                return (
-                  <div
-                    key={ind.slug}
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-5">
+            {PRODUCT_INDUSTRIES.map((ind) => {
+              const bgImage = ind.image || "";
+              return (
+                <Link
+                  key={ind.slug}
+                  href={ind.url}
+                  className={cn(
+                    "group relative flex aspect-[4/3] min-h-[76px] items-center justify-center overflow-hidden rounded-md sm:min-h-[88px] md:aspect-[16/11] md:min-h-[84px]",
+                    !bgImage && "border border-border bg-muted/50",
+                  )}
+                >
+                  {bgImage && (
+                    <>
+                      <Image
+                        src={bgImage}
+                        alt=""
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      />
+                      <div
+                        className="absolute inset-0 bg-black/55 transition-colors duration-300 group-hover:bg-black/45"
+                        aria-hidden
+                      />
+                    </>
+                  )}
+                  <span
                     className={cn(
-                      "relative group hover:scale-95 transition-transform duration-300 flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1.5 rounded-md border text-foreground overflow-hidden",
-                      bgImage
-                        ? "border-white/20 text-white h-[100px] sm:h-full"
-                        : "bg-primary/10 border-primary/20 text-foreground",
-                      gridAttr === "small" && "col-span-1",
-                      gridAttr === "large" && "col-span-1 sm:col-span-2",
-                      gridAttr === "tall" &&
-                        "row-span-1 col-span-1 sm:row-span-2",
+                      "relative z-[1] px-2 text-center text-[11px] font-bold uppercase leading-tight tracking-wide sm:text-xs",
+                      bgImage ? "text-white" : "text-foreground",
                     )}
                   >
-                    <div className="flex items-center gap-2 z-1">
-                      <Icon className="w-4 h-4 text-primary shrink-0" />
-                      <span className="truncate">{ind.name}</span>
-                    </div>
-                    {bgImage && (
-                      <div className="absolute inset-0 z-0 transition-all duration-300 pointer-events-none blur-[1px] group-hover:blur-none group-hover:scale-110">
-                        <Image
-                          src={bgImage}
-                          alt={ind.name}
-                          fill
-                          className="object-cover w-full h-full rounded-md"
-                          style={{ transition: "transform 0.3s" }}
-                        />
-                        <div className="absolute inset-0 bg-primary/50  group-hover:bg-black/50 transition-all duration-300" />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                    {ind.name}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
+
+          <p className="mt-5 text-center sm:mt-6">
+            <Button href="/industrias/" variant="nav" size="lg" className="gap-2 group hover:bg-primary/10">
+              Ver todas las industrias
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" aria-hidden />
+            </Button>
+          </p>
         </div>
       </div>
     </section>

@@ -9,6 +9,8 @@ import {
   STRATEGIC_PARTNERS_CLOSING,
 } from "@/lib/strategic-brands";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
+import { CertificadosPdfDownloads } from "@/components/sections/recursos/certificados-pdf-downloads";
+import { MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG } from "@/lib/certificados-pdfs-data";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = generateMetadataFromConfig("/marcas/");
@@ -54,9 +56,7 @@ export default function MarcasPage() {
                         className="h-10 w-auto max-w-[120px] object-contain opacity-90 group-hover:opacity-100"
                       />
                     ) : null}
-                    <span className="text-center text-base font-bold text-primary leading-tight">
-                      {brand.name}
-                    </span>
+                    
                   </div>
                   {brand.line ? (
                     <p className="mt-2 text-center text-xs font-medium text-muted-foreground">
@@ -75,6 +75,12 @@ export default function MarcasPage() {
           </ul>
         </div>
       </section>
+
+      <CertificadosPdfDownloads
+        gateSlug={MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG}
+        sectionTitle="Certificados de fabricante"
+        description="Documentación ISO, SIL, UL y más para Fisher, Tartarini y Spence. Complete el formulario para descargar."
+      />
 
       <CTA
         title="¿Necesita integrar una solución con estas marcas?"

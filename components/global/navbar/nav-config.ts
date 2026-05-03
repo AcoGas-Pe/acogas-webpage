@@ -189,18 +189,18 @@ export const NAV_MENUS = {
           },
           {
             label: "Catálogos",
-            href: "/recursos-tecnicos/catalogos/",
-            description: "Catálogos de productos",
+            href: "/soluciones/",
+            description: "Soluciones por energía y proceso",
           },
-          {
-            label: "Fichas Técnicas",
-            href: "/recursos-tecnicos/fichas-tecnicas/",
-            description: "Especificaciones técnicas",
-          },
-          {
+                    {
             label: "Normativa y Cumplimiento",
-            href: "/recursos-tecnicos/normativa-cumplimiento/",
+            href: "/recursos-tecnicos/normativas/",
             description: "Regulaciones y estándares",
+          },
+          {
+            label: "Certificados",
+            href: "/recursos-tecnicos/certificados/",
+            description: "Certificaciones de fabricante (Fisher, Tartarini, Spence)",
           },
         ],
       },

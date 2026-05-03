@@ -21,6 +21,9 @@ interface CTAProps {
 
 const defaultTel = `tel:${formatPhoneTel(CONTACT.phone[0])}`;
 
+const ctaActionBtnClass =
+  "min-h-12 w-full border-2 border-white bg-white px-5 text-accent shadow-md hover:bg-white/95 hover:text-accent sm:w-auto sm:min-w-[11.5rem] justify-center font-bold";
+
 export function CTA({
   title = "¿Desea una propuesta alineada a su operación?",
   description =
@@ -45,46 +48,49 @@ export function CTA({
   const getIcon = (iconType?: string) => {
     switch (iconType) {
       case "clipboard":
-        return <ClipboardCheck className="mr-2 w-4 h-4 shrink-0" aria-hidden />;
+        return <ClipboardCheck className="mr-2 h-4 w-4 shrink-0" aria-hidden />;
       case "phone":
-        return <Phone className="mr-2 w-4 h-4 shrink-0" aria-hidden />;
+        return <Phone className="mr-2 h-4 w-4 shrink-0" aria-hidden />;
       default:
-        return <ArrowRight className="ml-2 w-4 h-4 shrink-0" aria-hidden />;
+        return <ArrowRight className="ml-2 h-4 w-4 shrink-0" aria-hidden />;
     }
   };
+
   return (
     <section
       className={cn(
-        "relative overflow-hidden py-16 sm:py-20 md:py-24",
-        className
+        "section relative overflow-hidden py-12 sm:py-16 md:py-16",
+        className,
       )}
     >
       <Image
-        src="/assets/images/refinery.webp"
+        src="/assets/images/refiner3.webp"
         alt=""
         width={1920}
         height={1080}
-        className="absolute inset-0 w-full h-full sm:object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-primary/80" aria-hidden />
+      <div className="absolute inset-0 bg-primary/55" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/25" aria-hidden />
 
-      <div className="relative z-10 px-4 sm:px-8 lg:px-12">
-        <div className="text-center glass-panel backdrop-blur-xs rounded-xl p-6 sm:p-8 max-w-5xl mx-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white leading-tight">
+      <div className="relative z-10 container px-4 sm:px-6">
+        <div className="mx-auto max-w-4xl rounded-xl border border-white/18 bg-primary/88 px-5 py-7 shadow-[0_12px_40px_-12px_rgb(0_0_0_/_0.35)] backdrop-blur-[1px] sm:px-8 sm:py-9 md:px-10 md:py-10">
+          <h2 className="text-center text-xl font-bold uppercase leading-snug tracking-[0.04em] text-white sm:text-2xl md:text-[1.625rem]">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 max-w-3xl sm:mt-5 text-sm sm:text-base text-white opacity-80 leading-relaxed mx-auto">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-white/90 sm:text-base">
               {description}
             </p>
           )}
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 justify-center items-stretch sm:items-center pt-8 sm:pt-10">
+          <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
             {primaryAction && (
               <Button
                 href={primaryAction.href}
                 size="lg"
-                className="min-h-12 w-full sm:w-auto sm:min-w-[200px] bg-primary text-primary-foreground font-semibold hover:bg-primary/90 hover:text-primary-foreground shadow-lg inline-flex justify-center"
+                variant="outline"
+                className={cn(ctaActionBtnClass, "uppercase tracking-wide")}
               >
                 {primaryAction.label}
                 {primaryAction.icon === "arrow" && getIcon("arrow")}
@@ -93,20 +99,22 @@ export function CTA({
             {secondaryAction && (
               <Button
                 href={secondaryAction.href}
-                variant="outline"
                 size="lg"
-                className="min-h-12 w-full sm:w-auto sm:min-w-[200px] border-primary text-primary bg-transparent hover:text-primary hover:bg-primary/10 hover:border-primary inline-flex justify-center"
+                variant="outline"
+                className={cn(ctaActionBtnClass, "uppercase tracking-wide")}
               >
-                {secondaryAction.icon && secondaryAction.icon !== "arrow" && getIcon(secondaryAction.icon)}
+                {secondaryAction.icon &&
+                  secondaryAction.icon !== "arrow" &&
+                  getIcon(secondaryAction.icon)}
                 {secondaryAction.label}
               </Button>
             )}
             {tertiaryAction && (
               <Button
                 href={tertiaryAction.href}
-                variant="outline"
                 size="lg"
-                className="min-h-12 w-full sm:w-auto sm:min-w-[200px] border-border text-foreground hover:text-primary bg-background/80 hover:bg-background inline-flex justify-center"
+                variant="outline"
+                className={cn(ctaActionBtnClass, "uppercase tracking-wide")}
               >
                 {getIcon(tertiaryAction.icon ?? "phone")}
                 {tertiaryAction.label}

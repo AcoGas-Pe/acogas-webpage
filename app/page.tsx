@@ -54,8 +54,8 @@ export default function Home() {
       <IndustriesSolutionsBento />
       <Features />
       <Coverage />
-      <Testimonials />
       <CTA />
+      <Testimonials />
       <Novedades />
     </>
   );

@@ -1,8 +1,16 @@
-import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { QuienesSomos } from "@/components/sections/nosotros/quienes-somos";
 import { PropuestaValor } from "@/components/sections/nosotros/propuesta-valor";
 import { Trayectoria } from "@/components/sections/nosotros/trayectoria";
 import { CTA } from "@/components/sections/cta/cta";
+import { Metadata } from "next";
+import Link from "next/link";
+import { PagesHero } from "@/components/sections/hero/pages-hero";
+
+export const metadata: Metadata = {
+  title: "Nosotros | ACOGAS — Socio estratégico para la industria peruana",
+  description:
+    "Acogas Industrial: ingeniería, marcas líderes y valores corporativos. GLP, gas natural, vapor y procesos industriales con criterio técnico y normativo.",
+};
 
 export default function NosotrosPage() {
   return (
@@ -19,10 +27,22 @@ export default function NosotrosPage() {
       <CTA
         title="¿Desea profundizar en su requerimiento?"
         description="Coordine una visita técnica, un diagnóstico o una conversación con nuestro equipo comercial. Respondemos con criterio de ingeniería y trazabilidad normativa."
-        primaryAction={{ label: "Programar visita técnica", href: "/contacto?tipo=visita", icon: "arrow" }}
-        secondaryAction={{ label: "Solicitar diagnóstico", href: "/contacto?tipo=diagnostico", icon: "clipboard" }}
-        tertiaryAction={{ label: "Llamar ahora", href: "tel:+51998345895", icon: "phone" }}
+        primaryAction={{
+          label: "Programar visita técnica",
+          href: "/contacto?tipo=visita",
+          icon: "arrow",
+        }}
+        secondaryAction={{
+          label: "Solicitar diagnóstico",
+          href: "/contacto?tipo=diagnostico",
+          icon: "clipboard",
+        }}
+        tertiaryAction={{
+          label: "Llamar ahora",
+          href: "tel:+51998345895",
+          icon: "phone",
+        }}
       />
     </>
-  )
+  );
 }

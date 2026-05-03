@@ -14,32 +14,44 @@ interface ClientsProps {
   className?: string;
 }
 
+/** Uniform logo tile: fixed width so every brand reads at similar horizontal size */
+const logoTileClasses =
+  "relative h-14 w-[8.75rem] shrink-0 sm:h-[4.5rem] sm:w-40 rounded-md border border-black/10 bg-white px-2 py-2 shadow-sm ring-1 ring-black/[0.04]";
+
 export function Clients({
   title = "Marcas que representamos",
   subtitle = "Socios estratégicos",
   className,
 }: ClientsProps) {
   return (
-    <section className={cn("relative z-10 bg-card border-y border-border", className)}>
-
-      <InfiniteCarousel speed={28} gap="gap-10" pauseOnHover className="py-4 sm:py-6">
-        {STRATEGIC_BRANDS.map((brand) => (
-          <InfiniteCarouselItem
-            key={brand.name}
-            className="flex min-w-max items-center justify-center px-2 sm:px-4"
-          ><Image
-          src={brand.logo || ""}
-          alt={brand.name || ""}
-          width={140}
-          height={60}
-          className="w-auto h-8 sm:h-10 md:h-12 object-contain"
-        />  
-            <span className="whitespace-nowrap text-sm sm:text-base md:text-lg font-semibold tracking-wide text-partner-foreground/90">
-              {brand.name}
-              {brand.line && (
-                <span className="font-normal text-muted-foreground"> · {brand.line}</span>
-              )}
-            </span>
+    <section
+      aria-label={`${subtitle} — ${title}`}
+      className={cn(
+        "relative z-10 border-y border-border bg-background-alt",
+        className,
+      )}
+    >
+      <InfiniteCarousel
+        speed={28}
+        gap="gap-6 sm:gap-8"
+        pauseOnHover
+        className="py-4 sm:py-6"
+      >
+        {STRATEGIC_BRANDS.filter((brand) => brand.logo).map((brand) => (
+          <InfiniteCarouselItem key={brand.slug} className="flex shrink-0">
+            <div className={logoTileClasses}>
+              <Image
+                src={brand.logo as string}
+                alt={
+                  brand.line
+                    ? `Logo ${brand.name} (${brand.line})`
+                    : `Logo ${brand.name}`
+                }
+                fill
+                className="object-contain object-center p-0.5"
+                sizes="(max-width: 640px) 140px, 160px"
+              />
+            </div>
           </InfiniteCarouselItem>
         ))}
       </InfiniteCarousel>

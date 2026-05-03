@@ -143,13 +143,7 @@ function FilterPanel({
         selected={filters.tiposBrochure}
         onToggle={(v) => patch("tiposBrochure", v)}
       />
-      <FilterSection
-        sectionId="fluido"
-        title="Fluido o gas"
-        values={facets.fluidos}
-        selected={filters.fluidos}
-        onToggle={(v) => patch("fluidos", v)}
-      />
+      
     </div>
   );
 }

@@ -29,7 +29,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "corken",
     name: "Corken",
-    logo: "/assets/images/corken.png",
+    logo: "/assets/images/brands/corken-logo.webp",
     shortDescription:
       "Bombas y compresores industriales para GLP, gases y líquidos críticos: transferencia de GLP, compresión, recuperación de vapores y continuidad operativa con foco en seguridad.",
     paragraphs: [
@@ -42,7 +42,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
     slug: "fisher",
     name: "Fisher",
     line: "GLP · GN · Otros",
-    logo: "/assets/images/fisher.png",
+    logo: "/assets/images/brands/fisher-logo.webp",
     shortDescription:
       "Estándar global en control final para gas natural, GLP y gases industriales: regulación de presión, continuidad del suministro y protección del sistema con reguladores de acción directa y pilotados.",
     paragraphs: [
@@ -55,7 +55,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "kunkle",
     name: "Kunkle",
-    logo: "/assets/images/kunkle.png",
+    logo: "/assets/images/brands/kunkle-valve-division-logo-png-transparent.webp",
     shortDescription:
       "Válvulas de seguridad y alivio de presión para aplicaciones críticas: protección frente a sobrepresiones en calderas, compresores, tanques y procesos industriales.",
     paragraphs: [
@@ -66,7 +66,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "spence",
     name: "Spence",
-    logo: "/assets/images/spence.png",
+    logo: "/assets/images/brands/spencevalve-header-logo.webp",
     shortDescription:
       "Control de vapor y fluidos para redes térmicas, HVAC y procesos industriales; regulación estable, eficiencia y seguridad en sistemas con vapor.",
     paragraphs: [
@@ -78,7 +78,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "tartarini",
     name: "Tartarini",
-    logo: "/assets/images/tartarini.png",
+    logo: "/assets/images/brands/tartarini-logo.webp",
     shortDescription:
       "Regulación, seguridad y control de presión en gas natural y gases industriales; estaciones de regulación, biometano y mezclas con hidrógeno.",
     paragraphs: [
@@ -91,7 +91,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "cash",
     name: "Cash",
-    logo: "/assets/images/cash.png",
+    logo: "/assets/images/brands/cash-logo.webp",
     shortDescription:
       "Regulación y contrapresión robusta para vapor, aire, gases de proceso y servicios criogénicos, con estabilidad y seguridad en condiciones extremas.",
     paragraphs: [
@@ -103,7 +103,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "anderson-greenwood",
     name: "Anderson Greenwood",
-    logo: "/assets/images/anderson-greenwood.png",
+    logo: "/assets/images/brands/anderson-greenwood.webp",
     shortDescription:
       "Alivio de presión y protección de tanques para petróleo, gas, química y energía, con foco en seguridad, emisiones y continuidad operativa.",
     paragraphs: [
@@ -115,7 +115,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "crosby",
     name: "Crosby",
-    logo: "/assets/images/crosby.png",
+    logo: "/assets/images/brands/crosby.webp",
     shortDescription:
       "Válvulas de seguridad y alivio de presión ampliamente adoptadas en petróleo, gas, petroquímica y generación, incluida la nuclear.",
     paragraphs: [
@@ -126,7 +126,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "marston",
     name: "Marston",
-    logo: "/assets/images/marston.png",
+    logo: "/assets/images/brands/marston.webp",
     shortDescription:
       "Discos de ruptura y dispositivos asociados como protección primaria ante sobrepresiones en tanques, tuberías y sistemas de proceso.",
     paragraphs: [
@@ -137,7 +137,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "enardo",
     name: "Enardo",
-    logo: "/assets/images/enardo.png",
+    logo: "/assets/images/brands/enardo.webp",
     shortDescription:
       "Seguridad y control ambiental para tanques de almacenamiento: alivio de presión y vacío, arrestadores de flama y control de emisiones.",
     paragraphs: [
@@ -148,7 +148,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "varec",
     name: "Varec",
-    logo: "/assets/images/varec.png",
+    logo: "/assets/images/brands/varec.webp",
     shortDescription:
       "Medición y control de inventarios en tanques con instrumentación y software para terminales y operaciones con combustibles y productos industriales.",
     paragraphs: [
@@ -159,7 +159,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "liquid-controls",
     name: "Liquid Controls",
-    logo: "/assets/images/liquid-controls.png",
+    logo: "/assets/images/brands/liquid-controls-logo.webp",
     shortDescription:
       "Medición de líquidos de alta precisión para transferencias críticas, custody transfer y trazabilidad con medidores de desplazamiento positivo y electrónica asociada.",
     paragraphs: [
@@ -171,7 +171,7 @@ export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {
     slug: "cavagna",
     name: "Cavagna",
-    logo: "/assets/images/cavagna.png",
+    logo: "/assets/images/brands/cavagna-logo.webp",
     shortDescription:
       "Control, regulación y manejo seguro de gases en GLP, gas natural e hidrocarburos alternativos, desde almacenamiento hasta el punto de uso.",
     paragraphs: [

@@ -119,7 +119,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             )}
           </div>
         </div>
-        <Image src="/assets/images/google-logo.png" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
+        <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
       </div>
 
       {/* Star rating */}
@@ -149,7 +149,7 @@ export function Testimonials({
         <div className="text-center">
           {subtitle && (
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Image src="/assets/images/google-logo.png" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
+              <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent">
                 {subtitle}
               </p>
@@ -188,7 +188,7 @@ export function Testimonials({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
-            <Image src="/assets/images/google-logo.png" alt="Google" width={20} height={20} className="w-4 h-4 shrink-0" />
+            <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-4 h-4 shrink-0" />
             Ver todas las reseñas en Google
             <svg
               className="w-4 h-4"

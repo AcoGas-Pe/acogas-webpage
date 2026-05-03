@@ -350,6 +350,92 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ]
   },
 
+  "/recursos-tecnicos/normativas/": {
+    title: `Normativas y cumplimiento | ${BUSINESS_INFO.name}`,
+    description:
+      "Mapa normativo Perú e internacional para GLP, gas natural industrial y vapor: leyes, DS, OSINERGMIN, NTP y estándares NFPA, ASME, API, IEC. Consulta de fuentes oficiales.",
+    keywords: [
+      "normativas",
+      "GLP",
+      "gas natural",
+      "OSINERGMIN",
+      "NTP",
+      "NFPA",
+      "ASME",
+      "B31.8",
+      "cumplimiento",
+      "acogas",
+    ],
+    canonical: `${siteConfig.url}/recursos-tecnicos/normativas/`,
+    ogImage: "/assets/config/og.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Normativas y cumplimiento | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Referencia técnica: marco peruano y estándares internacionales para instalaciones industriales.",
+    linkedinImage: "/assets/config/og.png",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Normativas | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "GLP, gas natural, vapor: normativa nacional y rutas de consulta internacional.",
+    socialImage: "/assets/config/og.png",
+    articleSection: "Recursos técnicos",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Recursos técnicos", url: `${siteConfig.url}/recursos/` },
+      { name: "Normativas", url: `${siteConfig.url}/recursos-tecnicos/normativas/` },
+    ],
+  },
+
+  "/recursos-tecnicos/certificados/": {
+    title: `Certificados de fabricante | ${BUSINESS_INFO.name}`,
+    description:
+      "Descarga de certificaciones ISO, SIL, UL y documentación asociada para marcas Fisher, Tartarini y Spence, con acceso tras registro.",
+    keywords: [
+      "certificados",
+      "ISO",
+      "SIL",
+      "UL",
+      "Fisher",
+      "Tartarini",
+      "Spence",
+      "documentación técnica",
+      "acogas",
+    ],
+    canonical: `${siteConfig.url}/recursos-tecnicos/certificados/`,
+    ogImage: "/assets/config/og.png",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Certificados de fabricante | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Certificaciones y documentos oficiales de fabricante para ingeniería y compras.",
+    linkedinImage: "/assets/config/og.png",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Certificados | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Fisher, Tartarini, Spence: certificados y cuadros comparativos descargables.",
+    socialImage: "/assets/config/og.png",
+    articleSection: "Recursos técnicos",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Recursos técnicos", url: `${siteConfig.url}/recursos-tecnicos/` },
+      {
+        name: "Certificados",
+        url: `${siteConfig.url}/recursos-tecnicos/certificados/`,
+      },
+    ],
+  },
+
   "/servicios/": {
     title: `Servicios | ${BUSINESS_INFO.name}`,
     description: `Servicios para la industria: ingeniería y dimensionamiento, selección de equipos, diagnóstico técnico, soporte técnico y mantenimiento industrial.`,

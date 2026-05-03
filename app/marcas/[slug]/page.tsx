@@ -10,6 +10,11 @@ import {
   STRATEGIC_PARTNERS_CLOSING,
 } from "@/lib/strategic-brands";
 import { siteConfig } from "@/lib/seo-config";
+import { CertificadosPdfDownloads } from "@/components/sections/recursos/certificados-pdf-downloads";
+import {
+  MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG,
+  strategicBrandHasCertificados,
+} from "@/lib/certificados-pdfs-data";
 
 interface BrandPageProps {
   params: Promise<{ slug: string }>;
@@ -102,6 +107,15 @@ export default async function MarcaPage({ params }: BrandPageProps) {
           </p>
         </div>
       </section>
+
+      {strategicBrandHasCertificados(slug) ? (
+        <CertificadosPdfDownloads
+          gateSlug={MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG}
+          brandSlug={slug}
+          sectionTitle="Certificados y documentación"
+          description="Certificaciones y archivos descargables asociados a esta marca."
+        />
+      ) : null}
 
       <CTA
         title="¿Desea avanzar con esta marca en su proyecto?"

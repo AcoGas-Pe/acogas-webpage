@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Light theme + brand tokens (#004EA5, #ff0000, #878787).
+  Light theme + brand tokens (#1A4B8F blue, #E30613 red, neutrals).
   Section audit (image vs solid):
   - Image + overlay/scrim: hero, hero-carousel, pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
   - Solid surfaces: most sections (bg-background / bg-background-alt), clients strip, cards, HubSpot form.
@@ -15,18 +15,19 @@
   --light-foreground: 210 15% 11%;
   --background-light: 210 20% 96%;
 
-  /* Primary brand blue #004EA5 */
-  --primary: 212 100% 32%;
+  /* Primary brand blue ~#1A4B8F */
+  --primary: 216 71% 33%;
   --primary-foreground: 0 0% 100%;
-  --primary-light: 212 85% 42%;
-  --primary-muted: 212 45% 92%;
+  --primary-light: 216 65% 42%;
+  --primary-muted: 216 38% 92%;
 
   --secondary: 210 15% 94%;
   --secondary-foreground: 210 15% 18%;
 
-  --accent: 0 100% 50%;
+  /* Accent red ~#E30613 */
+  --accent: 356 93% 46%;
   --accent-foreground: 0 0% 100%;
-  --accent-muted: 0 85% 45%;
+  --accent-muted: 356 85% 38%;
 
   --muted: 210 15% 92%;
   --muted-foreground: 0 0% 53%;
@@ -40,7 +41,7 @@
   --border: 210 15% 88%;
   --border-muted: 210 15% 92%;
   --input: 210 15% 96%;
-  --ring: 212 100% 32%;
+  --ring: 216 71% 33%;
 
   /* Footer and navbar */
   --footer-background: 215 50% 8%;

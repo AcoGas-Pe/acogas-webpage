@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
       // Soluciones = productos (unified label in nav)
       { source: "/soluciones", destination: "/productos/", permanent: false },
       { source: "/soluciones/", destination: "/productos/", permanent: false },
+      // Hub recursos técnicos → página de recursos (hasta exista índice dedicado)
+      { source: "/recursos-tecnicos", destination: "/recursos/", permanent: false },
+      { source: "/recursos-tecnicos/", destination: "/recursos/", permanent: false },
+      // Normativas bajo recursos técnicos
+      { source: "/normativas", destination: "/recursos-tecnicos/normativas/", permanent: true },
+      { source: "/normativas/", destination: "/recursos-tecnicos/normativas/", permanent: true },
     ];
   },
 };
