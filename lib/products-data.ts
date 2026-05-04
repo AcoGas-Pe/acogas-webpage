@@ -117,7 +117,8 @@ const PRODUCTS: Product[] = [
     macroCategoria: "",
     categoria: "",
     tipoBrochure: "",
-    itemId: ""
+    itemId: "",
+    relacionadosSlugs: ["reguladores-ezh-ezhso"],
   },
   {
     slug: "reguladores-ezh-ezhso",
@@ -196,7 +197,8 @@ const PRODUCTS: Product[] = [
     macroCategoria: "Regulación y control de presión",
     categoria: "Válvulas y Reguladores de Presión",
     tipoBrochure: "Reguladores reductores de presión",
-    itemId: "9"
+    itemId: "9",
+    relacionadosSlugs: ["bombas-paletas-deslizantes-serie-z"],
   },
 ];
 

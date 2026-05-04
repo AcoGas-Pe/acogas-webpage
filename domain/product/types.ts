@@ -203,4 +203,10 @@ export interface Product {
   regulador?: ReguladorInfo[];
   /** Catálogo de documentos del producto */
   catalogoDocs?: CatalogoDocs[];
+
+  /** Texto libre bajo el bloque “Marca” (p. ej. desde CPT Marca o campo ACF) */
+  informacionMarca?: string;
+
+  /** Slugs de otros productos para la sección “Relacionados” */
+  relacionadosSlugs?: string[];
 }

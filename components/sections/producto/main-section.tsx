@@ -55,18 +55,19 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
           ))}
         </ol>
       </div>
-      <div className=" container max-w-5xl flex flex-row justify-between">
-        <div className="container">
+      <div className="container max-w-6xl grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start">
+        <div className="relative min-h-[280px] w-full overflow-hidden rounded-xl border border-border bg-muted lg:sticky lg:top-24 lg:min-h-[min(70vh,520px)]">
           <Image
             src={product.imagen || "/assets/config/placeholder-image.png"}
             alt={product.modelo || "Producto"}
-            width={100}
-            height={100}
-            className="w-full h-[60dvh] object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width:1024px) 100vw, 45vw"
+            priority
           />
         </div>
-        <div className="container">
-          <h1 className="text-2xl mb-1 !font-semibold !tracking-wide text-foreground">
+        <div className="min-w-0">
+          <h1 className="text-2xl mb-1 !font-semibold !tracking-wide text-foreground md:text-3xl">
             {product.modelo}
           </h1>
           <a
@@ -75,24 +76,32 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
           >
             {product.marca}
           </a>
-          <span className="text-sm flex px-2 border-b border-primary font-bold text-primary w-full">
+          <span className="text-sm flex border-b border-primary px-2 font-bold text-primary">
             Características
           </span>
-          <div className=" grid grid-cols-1 gap-2 py-2">
+          <ul className="grid grid-cols-1 gap-2 py-3">
             {product.caracteristicas?.map((carac, idx) => (
-              <p key={idx} className="text-sm px-2 text-foreground/80 wrap-normal">
+              <li
+                key={idx}
+                className="rounded-lg border border-border/80 bg-muted/20 px-3 py-2 text-sm text-foreground/90"
+              >
                 {carac}
-              </p>
+              </li>
             ))}
-          </div>
-          <div className="mt-2 flex flex-row gap-2">
+          </ul>
+          <div className="mt-2 flex flex-row flex-wrap gap-2">
             <Button
               variant="default"
-              href="#descargas-catalogo"
+              type="button"
               size="sm"
               className="w-full sm:w-fit min-h-10"
+              onClick={() => {
+                document
+                  .getElementById("descargas-catalogo")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
             >
-              Descargar catálogo
+              Ver documentación
             </Button>
             <Button
               variant="outline"
@@ -107,14 +116,7 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
             >
               Agregar a cotización ({prodCount})
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleProdCount(prodCount + 1)}
-              className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              +
-            </Button>
+            
             <Button
               variant="outline"
               size="sm"
@@ -122,6 +124,14 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
               className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               -
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleProdCount(prodCount + 1)}
+              className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            >
+              +
             </Button>
           </div>
           

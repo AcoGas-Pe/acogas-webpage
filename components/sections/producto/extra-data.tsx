@@ -13,7 +13,7 @@ interface AdditionalProductDataProps {
 }
 
 /** Category keys from data — tabs appear in this order when they have documents */
-const DOC_TAB_ORDER = ["Generales", "Específicos", "Esquemáticos"] as const;
+const DOC_TAB_ORDER = ["Generales", "Específicos", "Esquemáticos", "Otros"] as const;
 
 const DOC_TAB_SET = new Set<string>(DOC_TAB_ORDER);
 

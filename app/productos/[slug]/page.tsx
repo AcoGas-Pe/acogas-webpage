@@ -2,9 +2,11 @@ import { getProductBySlug, getAllProductSlugs } from "@/lib/products-data";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { generateDynamicMetadata } from "@/lib/seo-metadata";
-import { cn } from "@/lib/utils";
-import { EspecificacionItem } from "@/domain/product/types";
 import { ProductsMainSection } from "@/components/sections/producto/main-section";
+import {
+  ProductCmsFooterSections,
+  ProductCmsMainSections,
+} from "@/components/sections/producto/product-cms-sections";
 import { AdditionalProductData } from "@/components/sections/producto/extra-data";
 
 interface ProductPageProps {
@@ -33,19 +35,11 @@ export default async function ProductoPage({ params }: ProductPageProps) {
   return (
     <>
       <ProductsMainSection product={product} />
-      <AdditionalProductData product={product} />
-
-      <section className="section container max-w-4xl mx-auto">
-        <div className="space-y-10">
-          {/* Marca */}
-          <div>
-            <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2">
-              Marca
-            </h2>
-            <p className="text-lg font-semibold text-foreground">{product.marca}</p>
-          </div>
-        </div>
-      </section>
+      <ProductCmsMainSections product={product} />
+      <div id="descargas-catalogo" className="scroll-mt-24">
+        <AdditionalProductData product={product} />
+      </div>
+      <ProductCmsFooterSections product={product} />
     </>
   );
 }
