@@ -13,9 +13,10 @@ export default function ServiciosPage() {
   return (
     <>
       <PagesHero
-        title="Servicios y Soluciones Industriales"
-        subtitle="Servicios"
-        description="Desde la ingeniería conceptual hasta la puesta en marcha, acompañamos su operación con criterio técnico, marcas líderes y experiencia real en campo."
+        title="Servicios y soluciones"
+        titleClassName="uppercase tracking-tight"
+        subtitle="Lo que ofrecemos"
+        description="Soluciones técnicas integrales respaldadas por más de 50 años de experiencia y las mejores marcas de la industria."
         image="/assets/images/refinery.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },

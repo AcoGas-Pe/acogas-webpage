@@ -18,12 +18,24 @@ export interface StrategicBrand {
 
 export const STRATEGIC_PARTNERS_HEADING = {
   eyebrow: "Socios estratégicos",
-  title: "Con quién crecemos",
+  title: "Con quien crecemos",
   subtitle: "Marcas",
 } as const;
 
 export const STRATEGIC_PARTNERS_CLOSING =
   "Estos socios nos permiten ofrecer soluciones completas, no productos aislados.";
+
+/** Logos a color; el resto se muestra en escala de grises hasta recibir logos nuevos. */
+export const STRATEGIC_BRAND_FULL_COLOR_SLUGS = new Set([
+  "fisher",
+  "corken",
+  "cavagna",
+  "liquid-controls",
+]);
+
+export function strategicBrandLogoUsesFullColor(slug: string): boolean {
+  return STRATEGIC_BRAND_FULL_COLOR_SLUGS.has(slug);
+}
 
 export const STRATEGIC_BRANDS: StrategicBrand[] = [
   {

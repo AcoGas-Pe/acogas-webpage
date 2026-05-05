@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CatalogoDocs } from "@/domain/product";
 import { Download } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -31,7 +31,102 @@ export interface PdfDocGridProps {
   onDocSelect: (doc: CatalogoDocs) => void;
 }
 
-/** Lista + vista previa al hover (mismo patrón que documentos de producto) */
+export interface PdfDocListWithPreviewProps extends PdfDocGridProps {
+  /** Nombre accesible de la zona de vista previa */
+  previewAriaLabel?: string;
+}
+
+/** Lista vertical + vista previa fija (estilo catálogo Soluciones / productos) */
+export function PdfDocListWithPreview({
+  docs,
+  onDocSelect,
+  previewAriaLabel = "Vista previa del PDF",
+}: PdfDocListWithPreviewProps) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const docsFingerprint = useMemo(
+    () => docs.map((d) => d.url).join("\0"),
+    [docs],
+  );
+
+  /** Otra lista de documentos (p. ej. otro tab u otro producto): reiniciar selección */
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [docsFingerprint]);
+
+  if (docs.length === 0) {
+    return (
+      <p className="py-8 text-center text-sm text-muted-foreground">
+        No hay documentos en esta categoría por ahora.
+      </p>
+    );
+  }
+
+  const selected = docs[Math.min(selectedIndex, docs.length - 1)];
+  const safeIdx = Math.min(selectedIndex, docs.length - 1);
+
+  return (
+    <div className="flex flex-col gap-6 xl:flex-row xl:gap-8">
+      <ul
+        className="flex max-h-[min(50vh,420px)] min-h-0 flex-col gap-1 overflow-y-auto pr-1 xl:max-h-[560px] xl:w-[min(100%,20rem)] xl:shrink-0"
+        role="list"
+      >
+        {docs.map((doc, index) => {
+          const isActive = safeIdx === index;
+          return (
+            <li key={`${doc.categoria}-${doc.url}-${index}`}>
+              <div
+                className={cn(
+                  "flex rounded-lg border transition-colors",
+                  isActive ? "border-primary bg-primary/5" : "border-border bg-card hover:bg-muted/40",
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedIndex(index)}
+                  className={cn(
+                    "min-w-0 flex-1 px-3 py-2.5 text-left text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
+                    isActive ? "text-primary" : "text-foreground hover:text-primary",
+                  )}
+                >
+                  <span className="line-clamp-2">{doc.nombre}</span>
+                  {doc.paginas ? (
+                    <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                      {doc.paginas}
+                    </span>
+                  ) : null}
+                </button>
+                <button
+                  type="button"
+                  aria-label={`Descargar ${doc.nombre}`}
+                  onClick={() => onDocSelect(doc)}
+                  className="shrink-0 border-l border-border px-3 text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                >
+                  <Download className="size-4" aria-hidden />
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div
+        className="min-h-[min(50vh,360px)] min-w-0 flex-1 overflow-hidden rounded-lg border border-border bg-muted xl:min-h-[520px]"
+        aria-label={previewAriaLabel}
+      >
+        <iframe
+          key={selected.url}
+          title={`Vista previa: ${selected.nombre}`}
+          src={pdfPreviewPageOneSrc(selected.url)}
+          className="h-full min-h-[min(50vh,360px)] w-full border-0 bg-muted xl:min-h-[520px]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+}
+
+/** Lista + vista previa al hover */
 export function PdfDocGrid({ docs, onDocSelect }: PdfDocGridProps) {
   const [hoverDocUrl, setHoverDocUrl] = useState<string | null>(null);
 

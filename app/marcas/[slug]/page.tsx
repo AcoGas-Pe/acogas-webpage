@@ -114,6 +114,7 @@ export default async function MarcaPage({ params }: BrandPageProps) {
           brandSlug={slug}
           sectionTitle="Certificados y documentación"
           description="Certificaciones y archivos descargables asociados a esta marca."
+          requireDownloadGate={false}
         />
       ) : null}
 

@@ -7,6 +7,8 @@ interface PagesHeroProps {
   title?: string;
   subtitle?: string;
   description?: string;
+  /** Clases extra para el H1 (p. ej. mayúsculas en landings) */
+  titleClassName?: string;
   primaryAction?: { label: string; href: string };
   secondaryAction?: { label: string; href: string };
   className?: string;
@@ -18,6 +20,7 @@ export function PagesHero({
   title = "Acogas",
   subtitle,
   description,
+  titleClassName,
   className,
   image,
   breadcrumbs,
@@ -77,7 +80,12 @@ export function PagesHero({
           </span>
         )}
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]">
+        <h1
+          className={cn(
+            "text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]",
+            titleClassName,
+          )}
+        >
           {title}
         </h1>
 

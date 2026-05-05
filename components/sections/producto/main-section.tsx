@@ -19,10 +19,17 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
   const { addProduct, open: openQuoteCart } = useQuoteCart();
   const breadcrumbs: BreadcrumbItem[] = [
     { label: "Productos", href: "/productos/" },
-    { label: product.marca || "", href:  `/${(product.marca || "").toLowerCase()}/`  },
+    ...(product.marca
+      ? [
+          {
+            label: product.marca,
+            href: `/productos/?marca=${encodeURIComponent(product.marca)}`,
+          },
+        ]
+      : []),
     {
       label: product.modelo || "Producto",
-      href: `/${product.slug}/`,
+      href: `/productos/${product.slug}/`,
     },
   ];
   const [prodCount, setProdCount] = useState(0);
@@ -70,12 +77,28 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
           <h1 className="text-2xl mb-1 !font-semibold !tracking-wide text-foreground md:text-3xl">
             {product.modelo}
           </h1>
-          <a
-            href={`/${(product.marca || "").toLowerCase()}/`}
-            className="text-sm px-2 mb-4 text-primary font-light hover:font-bold  transition-all"
-          >
-            {product.marca}
-          </a>
+          <div className="mb-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 px-2 text-sm">
+            {product.marca ? (
+              <a
+                href={`/productos/?marca=${encodeURIComponent(product.marca)}`}
+                className="text-primary font-light transition-all hover:font-semibold"
+              >
+                {product.marca}
+              </a>
+            ) : null}
+            {product.grupoEmpresarial?.trim() ? (
+              <>
+                {product.marca ? (
+                  <span className="text-muted-foreground font-light" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
+                <span className="font-medium text-muted-foreground">
+                  {product.grupoEmpresarial.trim()}
+                </span>
+              </>
+            ) : null}
+          </div>
           <span className="text-sm flex border-b border-primary px-2 font-bold text-primary">
             Características
           </span>

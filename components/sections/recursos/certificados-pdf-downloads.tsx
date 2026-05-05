@@ -48,6 +48,8 @@ export interface CertificadosPdfDownloadsProps {
   sectionTitle: string;
   /** Párrafo opcional bajo el título */
   description?: string;
+  /** Si es false, descarga directa sin formulario previo */
+  requireDownloadGate?: boolean;
 }
 
 export function CertificadosPdfDownloads({
@@ -55,6 +57,7 @@ export function CertificadosPdfDownloads({
   brandSlug = null,
   sectionTitle,
   description,
+  requireDownloadGate = true,
 }: CertificadosPdfDownloadsProps) {
   const [pendingDownload, setPendingDownload] = useState<{
     url: string;
@@ -82,13 +85,16 @@ export function CertificadosPdfDownloads({
 
   const handleDocSelect = useCallback(
     async (doc: CatalogoDocs) => {
-      if (isProductDownloadGateSatisfied(gateSlug)) {
+      if (
+        !requireDownloadGate ||
+        isProductDownloadGateSatisfied(gateSlug)
+      ) {
         await triggerFileDownload(doc.url, doc.nombre);
         return;
       }
       setPendingDownload({ url: doc.url, nombre: doc.nombre });
     },
-    [gateSlug]
+    [gateSlug, requireDownloadGate]
   );
 
   if (singleBrandDocs !== null && singleBrandDocs.length === 0) {
@@ -100,13 +106,15 @@ export function CertificadosPdfDownloads({
       className="border-b border-border/60 bg-muted/20 py-16 sm:py-20 md:py-24"
       aria-labelledby="certificados-downloads-heading"
     >
-      <DownloadGateModal
-        open={pendingDownload !== null}
-        onClose={() => setPendingDownload(null)}
-        productSlug={gateSlug}
-        downloadUrl={pendingDownload?.url ?? ""}
-        documentTitle={pendingDownload?.nombre ?? ""}
-      />
+      {requireDownloadGate ? (
+        <DownloadGateModal
+          open={pendingDownload !== null}
+          onClose={() => setPendingDownload(null)}
+          productSlug={gateSlug}
+          downloadUrl={pendingDownload?.url ?? ""}
+          documentTitle={pendingDownload?.nombre ?? ""}
+        />
+      ) : null}
 
       <div className="container">
         <h2

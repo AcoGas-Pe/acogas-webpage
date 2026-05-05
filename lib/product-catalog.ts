@@ -1,4 +1,8 @@
 import type { Product } from "@/domain/product";
+import {
+  todasCategoriasSolucionesNav,
+  todasMacrosSolucionesNav,
+} from "@/lib/soluciones-navegacion-catalogo";
 
 export interface ProductCatalogFacets {
   marcas: string[];
@@ -11,6 +15,23 @@ export interface ProductCatalogFacets {
 
 function uniqSorted(values: Iterable<string>): string[] {
   return [...new Set(values)].filter(Boolean).sort((a, b) => a.localeCompare(b, "es"));
+}
+
+/** Añade al sidebar las líneas definidas en el menú Nuestras soluciones aunque aún no haya productos. */
+export function mergeSolucionesNavIntoFacets(
+  facets: ProductCatalogFacets,
+): ProductCatalogFacets {
+  return {
+    ...facets,
+    macroCategorias: uniqSorted([
+      ...facets.macroCategorias,
+      ...todasMacrosSolucionesNav(),
+    ]),
+    categorias: uniqSorted([
+      ...facets.categorias,
+      ...todasCategoriasSolucionesNav(),
+    ]),
+  };
 }
 
 export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
@@ -100,6 +121,34 @@ export function productMatchesSearchQuery(product: Product, raw: string): boolea
   }
   const haystack = chunks.join(" ").toLowerCase();
   return haystack.includes(q);
+}
+
+/** Lee filtros desde `/productos/?marca=X&macro=Y` (valores deben coincidir con facetas). */
+export function catalogFiltersFromSearchParams(
+  sp: URLSearchParams,
+): CatalogFilters | null {
+  const marcas = sp.getAll("marca").filter(Boolean);
+  const macroCategorias = sp.getAll("macro").filter(Boolean);
+  const categorias = sp.getAll("cat").filter(Boolean);
+  const tiposBrochure = sp.getAll("brochure").filter(Boolean);
+  const gruposEmpresariales = sp.getAll("grupo").filter(Boolean);
+  const fluidos = sp.getAll("fluido").filter(Boolean);
+  const total =
+    marcas.length +
+    macroCategorias.length +
+    categorias.length +
+    tiposBrochure.length +
+    gruposEmpresariales.length +
+    fluidos.length;
+  if (total === 0) return null;
+  return {
+    marcas,
+    macroCategorias,
+    categorias,
+    tiposBrochure,
+    gruposEmpresariales,
+    fluidos,
+  };
 }
 
 export function filterAndSearchProducts(

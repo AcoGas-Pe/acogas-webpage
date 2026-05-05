@@ -3,6 +3,12 @@
  * Single source of truth for desktop mega menus + mobile sidebar.
  */
 
+import {
+  hrefProductosPorSolucion,
+  SOLUCIONES_NAV_PILARES,
+} from "@/lib/soluciones-navegacion-catalogo";
+import { productosUrlForServicioSlug } from "@/lib/servicios-product-catalog";
+
 export interface NavMenuItem {
   label: string;
   href: string;
@@ -11,6 +17,7 @@ export interface NavMenuItem {
 
 export interface NavMenuSection {
   title: string;
+  href: string;
 }
 
 export interface NavMenuCategory {
@@ -53,12 +60,23 @@ export interface NavItem {
   menuKey?: keyof typeof NAV_MENUS;
 }
 
+function buildSolucionesNavCategories(): NavMenuCategory[] {
+  return SOLUCIONES_NAV_PILARES.map((pillar) => ({
+    label: pillar.label,
+    href: hrefProductosPorSolucion(pillar.macro),
+    sections: pillar.sections.map((s) => ({
+      title: s.title,
+      href: hrefProductosPorSolucion(pillar.macro, s.categoria),
+    })),
+  }));
+}
+
 // Navigation Menus Configuration
 export const NAV_MENUS = {
   soluciones: {
     mainLink: {
       label: "Ver todas las soluciones",
-      href: "/soluciones/",
+      href: "/productos/",
     },
     layout: "stackedProducts",
     columns: [
@@ -83,61 +101,8 @@ export const NAV_MENUS = {
       },
       {
         title: "Nuestras soluciones",
-        href: "/soluciones/",
-        categories: [
-          {
-            label: "Regulación y Control de Presión",
-            href: "/productos/regulacion-control-presion/",
-            sections: [
-              { title: "Reguladores de Presión" },
-              { title: "Válvulas de Control" },
-              { title: "Estaciones de Regulación" },
-            ],
-          },
-          {
-            label: "Medición y Control de Flujo",
-            href: "/productos/medicion-control-flujo/",
-            sections: [
-              { title: "Medidores Industriales" },
-              { title: "Sistemas de Medición" },
-              { title: "Accesorios de Medición" },
-            ],
-          },
-          {
-            label: "Vapor y Procesos Térmicos",
-            href: "/productos/vapor-procesos-termicos/",
-            sections: [
-              { title: "Regulación de Vapor" },
-              { title: "Trampas de Vapor" },
-              { title: "Accesorios para Vapor" },
-            ],
-          },
-          {
-            label: "Bombas y Compresores",
-            href: "/productos/bombas-compresores/",
-            sections: [
-              { title: "Bombas Industriales" },
-              { title: "Compresores Industriales" },
-            ],
-          },
-          {
-            label: "Seguridad y Alivio de Presión",
-            href: "/productos/seguridad-alivio-presion/",
-            sections: [
-              { title: "Válvulas de Seguridad" },
-              { title: "Sistemas de Protección" },
-            ],
-          },
-          {
-            label: "Procesos Especiales y Multifluidos",
-            href: "/productos/procesos-especiales-multifluidos/",
-            sections: [
-              { title: "Regulación de Gas Natural" },
-              { title: "Regulación de GLP" },
-              { title: "Regulación de Aire y Otros Fluidos" },
-            ],
-          },
-        ],
+        href: "/productos/",
+        categories: buildSolucionesNavCategories(),
       },
     ],
   } satisfies NavMenuConfig,
@@ -163,7 +128,7 @@ export const NAV_MENUS = {
           },
           {
             label: "Soluciones",
-            href: "/soluciones/",
+            href: "/productos/",
             description: "Líneas de solución por energía y proceso",
           },
           {
@@ -188,11 +153,6 @@ export const NAV_MENUS = {
             description: "Artículos y novedades técnicas",
           },
           {
-            label: "Catálogos",
-            href: "/soluciones/",
-            description: "Soluciones por energía y proceso",
-          },
-                    {
             label: "Normativa y Cumplimiento",
             href: "/recursos-tecnicos/normativas/",
             description: "Regulaciones y estándares",
@@ -323,7 +283,7 @@ export const NAV_MENUS = {
       },
     ],
   } satisfies NavMenuConfig,
-} as const;
+};
 
 // Main Navigation Items (desktop triggers)
 export const NAV_ITEMS: NavItem[] = [
@@ -341,7 +301,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Soluciones",
-    href: "/soluciones/",
+    href: "/productos/",
     type: "trigger",
     menuKey: "soluciones",
   },

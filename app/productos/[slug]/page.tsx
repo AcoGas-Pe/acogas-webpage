@@ -34,10 +34,10 @@ export default async function ProductoPage({ params }: ProductPageProps) {
 
   return (
     <>
-      <ProductsMainSection product={product} />
+      <ProductsMainSection key={product.slug} product={product} />
       <ProductCmsMainSections product={product} />
       <div id="descargas-catalogo" className="scroll-mt-24">
-        <AdditionalProductData product={product} />
+        <AdditionalProductData key={product.slug} product={product} />
       </div>
       <ProductCmsFooterSections product={product} />
     </>

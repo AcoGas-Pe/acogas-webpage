@@ -7,6 +7,7 @@ import {
   STRATEGIC_BRANDS,
   STRATEGIC_PARTNERS_HEADING,
   STRATEGIC_PARTNERS_CLOSING,
+  strategicBrandLogoUsesFullColor,
 } from "@/lib/strategic-brands";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import { CertificadosPdfDownloads } from "@/components/sections/recursos/certificados-pdf-downloads";
@@ -53,7 +54,11 @@ export default function MarcasPage() {
                         alt=""
                         width={120}
                         height={48}
-                        className="h-10 w-auto max-w-[120px] object-contain opacity-90 group-hover:opacity-100"
+                        className={
+                          strategicBrandLogoUsesFullColor(brand.slug)
+                            ? "h-10 w-auto max-w-[120px] object-contain opacity-90 group-hover:opacity-100"
+                            : "h-10 w-auto max-w-[120px] object-contain opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                        }
                       />
                     ) : null}
                     
@@ -79,8 +84,37 @@ export default function MarcasPage() {
       <CertificadosPdfDownloads
         gateSlug={MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG}
         sectionTitle="Certificados de fabricante"
-        description="Documentación ISO, SIL, UL y más para Fisher, Tartarini y Spence. Complete el formulario para descargar."
+        description="Documentación ISO, SIL, UL y más para Fisher, Tartarini y Spence."
+        requireDownloadGate={false}
       />
+
+      <section
+        className="section border-b border-border bg-muted/15 py-14 sm:py-16"
+        aria-labelledby="cartas-autorizacion-heading"
+      >
+        <div className="container max-w-4xl mx-auto px-4">
+          <h2
+            id="cartas-autorizacion-heading"
+            className="text-2xl font-bold text-foreground sm:text-3xl"
+          >
+            Cartas de autorización
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Documentación de representación y autorización por marca, unificada en
+            esta sección cuando esté disponible. Contenido en preparación —
+            próximamente podrá descargar el paquete consolidado.
+          </p>
+          <div className="mt-8 rounded-xl border border-dashed border-border bg-card/50 px-6 py-12 text-center">
+            <p className="text-sm font-medium text-foreground">
+              Material pendiente de envío
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
+              Publicaremos aquí las cartas oficiales tan pronto como recibamos los
+              archivos finales.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <CTA
         title="¿Necesita integrar una solución con estas marcas?"

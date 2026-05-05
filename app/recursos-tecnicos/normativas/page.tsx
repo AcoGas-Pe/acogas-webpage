@@ -1,5 +1,4 @@
 import { CTA } from "@/components/sections/cta/cta";
-import { NormativasContent } from "@/components/sections/recursos/normativas-content";
 import { NormativasPdfDownloads } from "@/components/sections/recursos/normativas-pdf-downloads";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { BUSINESS_INFO } from "@/lib/business-config";
@@ -25,8 +24,7 @@ export default function RecursosTecnicosNormativasPage() {
           { label: "Normativas", href: "/recursos-tecnicos/normativas" },
         ]}
       />
-      <NormativasPdfDownloads />
-      <NormativasContent />
+      <NormativasPdfDownloads requireDownloadGate={false} />
       <CTA
         title="¿Desea profundizar en su requerimiento?"
         description="Coordine una visita técnica, un diagnóstico o una conversación con nuestro equipo comercial. Respondemos con criterio de ingeniería y trazabilidad normativa."

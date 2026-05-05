@@ -1,4 +1,5 @@
 import { getServiceBySlug, getAllServiceSlugs } from "@/lib/services-data";
+import { productosUrlForServicioSlug } from "@/lib/servicios-product-catalog";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
@@ -46,7 +47,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
         description={service.description}
         image={service.heroImage || "/assets/images/refinery.webp"}
         primaryAction={{ label: "Solicitar Cotización", href: `/contacto?servicio=${service.slug}` }}
-        secondaryAction={{ label: "Ver Productos", href: "/productos" }}
+        secondaryAction={{
+          label: "Ver productos filtrados",
+          href: productosUrlForServicioSlug(service.slug),
+        }}
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Servicios", href: "/servicios" },

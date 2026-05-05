@@ -41,9 +41,6 @@ function TaxonomyPills({ product }: { product: Product }) {
   if (product.tipoBrochure?.trim()) {
     pills.push({ label: "Brochure", value: product.tipoBrochure.trim() });
   }
-  if (product.grupoEmpresarial?.trim()) {
-    pills.push({ label: "Grupo", value: product.grupoEmpresarial.trim() });
-  }
   if (pills.length === 0) return null;
   return (
     <SectionShell title="Clasificación">

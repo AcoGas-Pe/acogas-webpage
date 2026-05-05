@@ -95,7 +95,7 @@ function CategoryBlock({ category }: { category: NavMenuCategory }) {
       <div className="space-y-1.5 pl-0 flex flex-col gap-0.1">
         {category.sections.map((sec, i) => (
           <Link
-            href={`${category.href}/${sec.title.toLowerCase().replace(/ /g, "-")}`}
+            href={sec.href}
             key={i}
             className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary-light hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
           >

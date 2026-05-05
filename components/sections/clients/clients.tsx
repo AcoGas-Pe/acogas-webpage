@@ -1,7 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { STRATEGIC_BRANDS } from "@/lib/strategic-brands";
+import {
+  STRATEGIC_BRANDS,
+  strategicBrandLogoUsesFullColor,
+} from "@/lib/strategic-brands";
 import Image from "next/image";
 import {
   InfiniteCarousel,
@@ -48,7 +51,11 @@ export function Clients({
                     : `Logo ${brand.name}`
                 }
                 fill
-                className="object-contain object-center p-0.5"
+                className={
+                  strategicBrandLogoUsesFullColor(brand.slug)
+                    ? "object-contain object-center p-0.5"
+                    : "object-contain object-center p-0.5 grayscale opacity-80"
+                }
                 sizes="(max-width: 640px) 140px, 160px"
               />
             </div>

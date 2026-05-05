@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { LayoutGrid, List, Search, SlidersHorizontal, X } from "lucide-react";
@@ -10,6 +11,7 @@ import {
   type CatalogFilters,
   type ProductCatalogFacets,
   buildSearchSuggestions,
+  catalogFiltersFromSearchParams,
   emptyCatalogFilters,
   filterAndSearchProducts,
 } from "@/lib/product-catalog";
@@ -31,12 +33,15 @@ function FilterSection({
   values,
   selected,
   onToggle,
+  expandList = false,
 }: {
   sectionId: string;
   title: string;
   values: string[];
   selected: string[];
   onToggle: (v: string) => void;
+  /** Sin límite de altura ni scroll interno */
+  expandList?: boolean;
 }) {
   if (values.length === 0) return null;
   return (
@@ -44,7 +49,12 @@ function FilterSection({
       <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
         {title}
       </h3>
-      <ul className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+      <ul
+        className={cn(
+          "space-y-1.5 pr-1",
+          expandList ? "" : "max-h-48 overflow-y-auto",
+        )}
+      >
         {values.map((v) => {
           const id = `${sectionId}-${v}`.replace(/[^a-zA-Z0-9_-]/g, "_");
           const checked = selected.includes(v);
@@ -116,13 +126,6 @@ function FilterPanel({
         onToggle={(v) => patch("marcas", v)}
       />
       <FilterSection
-        sectionId="grupo"
-        title="Grupo empresarial"
-        values={facets.gruposEmpresariales}
-        selected={filters.gruposEmpresariales}
-        onToggle={(v) => patch("gruposEmpresariales", v)}
-      />
-      <FilterSection
         sectionId="macro"
         title="Macrocategoría"
         values={facets.macroCategorias}
@@ -135,6 +138,7 @@ function FilterPanel({
         values={facets.categorias}
         selected={filters.categorias}
         onToggle={(v) => patch("categorias", v)}
+        expandList
       />
       <FilterSection
         sectionId="brochure"
@@ -151,6 +155,7 @@ function FilterPanel({
 function ProductPills({ product }: { product: Product }) {
   const brochure = product.tipoBrochure?.trim();
   const marca = product.marca?.trim();
+  const grupo = product.grupoEmpresarial?.trim();
   return (
     <div className="flex flex-wrap gap-1.5">
       {brochure ? (
@@ -163,12 +168,19 @@ function ProductPills({ product }: { product: Product }) {
           {marca}
         </span>
       ) : null}
+      {grupo ? (
+        <span className="inline-flex max-w-full items-center rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
+          {grupo}
+        </span>
+      ) : null}
     </div>
   );
 }
 
 export function ProductsCatalogClient({ products, facets }: ProductsCatalogClientProps) {
-  const [filters, setFilters] = useState<CatalogFilters>(emptyCatalogFilters);
+  const searchParams = useSearchParams();
+  const queryKey = searchParams.toString();
+  const [filters, setFilters] = useState<CatalogFilters>(emptyCatalogFilters());
   const [search, setSearch] = useState("");
   const [view, setView] = useState<ViewMode>("grid");
   const [suggestOpen, setSuggestOpen] = useState(false);
@@ -199,6 +211,14 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
+
+  /** Cada cambio de query (navbar, enlaces internos) vuelve a sincronizar el sidebar */
+  useEffect(() => {
+    const fromUrl = catalogFiltersFromSearchParams(
+      new URLSearchParams(queryKey),
+    );
+    setFilters(fromUrl ?? emptyCatalogFilters());
+  }, [queryKey]);
 
   const clearFilters = useCallback(() => {
     setFilters(emptyCatalogFilters());

@@ -38,7 +38,14 @@ function peDocsForTab(id: PeTabId): CatalogoDocs[] {
   }
 }
 
-export function NormativasPdfDownloads() {
+export interface NormativasPdfDownloadsProps {
+  /** Si es false, descarga directa sin formulario previo */
+  requireDownloadGate?: boolean;
+}
+
+export function NormativasPdfDownloads({
+  requireDownloadGate = true,
+}: NormativasPdfDownloadsProps) {
   const [pendingDownload, setPendingDownload] = useState<{
     url: string;
     nombre: string;
@@ -52,25 +59,33 @@ export function NormativasPdfDownloads() {
     return peDocsForTab(peTab);
   }, [macroTab, peTab]);
 
-  const handleDocSelect = useCallback(async (doc: CatalogoDocs) => {
-    if (isProductDownloadGateSatisfied(NORMATIVAS_DOWNLOAD_GATE_SLUG)) {
-      await triggerFileDownload(doc.url, doc.nombre);
-      return;
-    }
-    setPendingDownload({ url: doc.url, nombre: doc.nombre });
-  }, []);
+  const handleDocSelect = useCallback(
+    async (doc: CatalogoDocs) => {
+      if (
+        !requireDownloadGate ||
+        isProductDownloadGateSatisfied(NORMATIVAS_DOWNLOAD_GATE_SLUG)
+      ) {
+        await triggerFileDownload(doc.url, doc.nombre);
+        return;
+      }
+      setPendingDownload({ url: doc.url, nombre: doc.nombre });
+    },
+    [requireDownloadGate],
+  );
 
   const hasOtras = otrasNormativasDocumentosSueltos.length > 0;
 
   return (
     <div className="border-b border-border/60 bg-muted/20 py-16 sm:py-20 md:py-24">
-      <DownloadGateModal
-        open={pendingDownload !== null}
-        onClose={() => setPendingDownload(null)}
-        productSlug={NORMATIVAS_DOWNLOAD_GATE_SLUG}
-        downloadUrl={pendingDownload?.url ?? ""}
-        documentTitle={pendingDownload?.nombre ?? ""}
-      />
+      {requireDownloadGate ? (
+        <DownloadGateModal
+          open={pendingDownload !== null}
+          onClose={() => setPendingDownload(null)}
+          productSlug={NORMATIVAS_DOWNLOAD_GATE_SLUG}
+          downloadUrl={pendingDownload?.url ?? ""}
+          documentTitle={pendingDownload?.nombre ?? ""}
+        />
+      ) : null}
 
       <div className="container space-y-16 sm:space-y-20">
         <section aria-labelledby="normativas-web-heading">

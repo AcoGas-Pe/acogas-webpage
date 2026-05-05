@@ -26,7 +26,7 @@ export default function RecursosTecnicosCertificadosPage() {
       <CertificadosPdfDownloads
         gateSlug={CERTIFICADOS_DOWNLOAD_GATE_SLUG}
         sectionTitle="Certificados disponibles"
-        description="Tras completar el formulario podrá descargar los certificados y documentos asociados a cada marca."
+        requireDownloadGate={false}
       />
       <CTA
         title="¿Necesita otro documento o validación técnica?"

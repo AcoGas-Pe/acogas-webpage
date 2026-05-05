@@ -371,12 +371,14 @@ export function Navbar() {
                                           {cat.label}
                                         </Link>
                                         {cat.sections.map((sec, si) => (
-                                          <div
+                                          <Link
                                             key={si}
-                                            className="pl-2 text-xs font-medium text-muted-foreground"
+                                            href={sec.href}
+                                            onClick={closeMobile}
+                                            className="block pl-2 text-xs font-medium text-muted-foreground hover:text-primary hover:underline"
                                           >
                                             {sec.title}
-                                          </div>
+                                          </Link>
                                         ))}
                                       </div>
                                     ))

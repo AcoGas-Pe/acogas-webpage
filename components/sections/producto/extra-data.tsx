@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Product, CatalogoDocs } from "@/domain/product";
 import { DownloadGateModal } from "@/components/ui/download-gate-modal";
-import { PdfDocGrid } from "@/components/ui/pdf-doc-grid";
+import { PdfDocListWithPreview } from "@/components/ui/pdf-doc-grid";
 import { isProductDownloadGateSatisfied } from "@/lib/download-gate-storage";
 import { triggerFileDownload } from "@/lib/trigger-file-download";
 import { cn } from "@/lib/utils";
@@ -130,7 +130,11 @@ export function AdditionalProductData({ product }: AdditionalProductDataProps) {
             }
             className="px-4 py-4 sm:px-8 sm:py-6"
           >
-            <PdfDocGrid docs={activeDocs} onDocSelect={handleDocSelect} />
+            <PdfDocListWithPreview
+              key={activeTab}
+              docs={activeDocs}
+              onDocSelect={handleDocSelect}
+            />
           </div>
         </div>
       </div>
