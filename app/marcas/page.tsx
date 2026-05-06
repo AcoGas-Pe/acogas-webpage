@@ -57,7 +57,7 @@ export default function MarcasPage() {
                         className={
                           strategicBrandLogoUsesFullColor(brand.slug)
                             ? "h-10 w-auto max-w-[120px] object-contain opacity-90 group-hover:opacity-100"
-                            : "h-10 w-auto max-w-[120px] object-contain opacity-90 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                            : "h-10 w-auto max-w-[120px] object-contain opacity-90 grayscale group-hover:opacity-100"
                         }
                       />
                     ) : null}

@@ -25,7 +25,10 @@ export const STRATEGIC_PARTNERS_HEADING = {
 export const STRATEGIC_PARTNERS_CLOSING =
   "Estos socios nos permiten ofrecer soluciones completas, no productos aislados.";
 
-/** Logos a color; el resto se muestra en escala de grises hasta recibir logos nuevos. */
+/**
+ * Logos a color (marcas con autorización / archivos finales).
+ * El resto permanece en gris (p. ej. Cash y otras: pendiente envío de logos nuevos).
+ */
 export const STRATEGIC_BRAND_FULL_COLOR_SLUGS = new Set([
   "fisher",
   "corken",

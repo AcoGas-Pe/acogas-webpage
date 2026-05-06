@@ -66,7 +66,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
       )}
     >
       {feature.highlight && (
-        <span className="mb-5 inline-flex w-fit rounded-full bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-accent sm:text-[11px] sm:tracking-[0.12em]">
+        <span className="mb-5 inline-flex w-fit rounded-full bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--accent))] sm:text-[11px] sm:tracking-[0.12em]">
           {feature.highlight}
         </span>
       )}
