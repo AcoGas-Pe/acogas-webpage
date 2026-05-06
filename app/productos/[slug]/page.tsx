@@ -1,4 +1,4 @@
-import { getProductBySlug, getAllProductSlugs } from "@/lib/products-data";
+import { resolveAllProducts, resolveProductBySlug, resolveAllProductSlugs } from "@/lib/products-resolve";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { generateDynamicMetadata } from "@/lib/seo-metadata";
@@ -14,22 +14,27 @@ interface ProductPageProps {
 }
 
 export async function generateStaticParams() {
-  return getAllProductSlugs().map((slug) => ({ slug }));
+  const slugs = await resolveAllProductSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await resolveProductBySlug(slug);
   if (!product) return { title: "Producto no encontrado" };
+  const brand = product.marca?.trim() || "ACOGAS";
   return generateDynamicMetadata(`/productos/${slug}/`, {
-    title: `${product.modelo} | ${product.marca}`,
-    description: product.descripcion ?? `Producto ${product.modelo} de ${product.marca}.`,
+    title: `${product.modelo} | ${brand}`,
+    description: product.descripcion ?? `Producto ${product.modelo ?? slug} — ${brand}.`,
   });
 }
 
 export default async function ProductoPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const [product, allProducts] = await Promise.all([
+    resolveProductBySlug(slug),
+    resolveAllProducts(),
+  ]);
   if (!product) notFound();
 
   return (
@@ -39,7 +44,7 @@ export default async function ProductoPage({ params }: ProductPageProps) {
       <div id="descargas-catalogo" className="scroll-mt-24">
         <AdditionalProductData key={product.slug} product={product} />
       </div>
-      <ProductCmsFooterSections product={product} />
+      <ProductCmsFooterSections product={product} allProducts={allProducts} />
     </>
   );
 }

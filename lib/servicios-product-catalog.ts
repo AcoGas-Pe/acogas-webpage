@@ -30,11 +30,9 @@ function appendFilterParams(
           ? "cat"
           : key === "tiposBrochure"
             ? "brochure"
-            : key === "gruposEmpresariales"
-              ? "grupo"
-              : key === "fluidos"
-                ? "fluido"
-                : null;
+            : key === "fluidos"
+              ? "fluido"
+              : null;
   if (!qKey) return;
   for (const v of values) {
     if (v.trim()) params.append(qKey, v.trim());

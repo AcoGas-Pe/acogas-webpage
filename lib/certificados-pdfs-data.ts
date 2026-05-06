@@ -1,126 +1,223 @@
 import type { CatalogoDocs } from "@/domain/product";
+import { assetDoc } from "@/lib/asset-doc-url";
 
-/** Gate para la página dedicada de certificados */
-export const CERTIFICADOS_DOWNLOAD_GATE_SLUG = "recursos-tecnicos-certificados";
-
-/** Gate compartido entre /marcas y /marcas/[slug] para descargas de certificados */
+/** Gate HubSpot compartido al descargar desde páginas `/marcas/[slug]` */
 export const MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG = "marcas-certificados";
 
-function certUrl(brandFolder: string, fileName: string): string {
-  const enc = encodeURIComponent(fileName);
-  return `/assets/docs/certificados/${brandFolder}/${enc}`;
-}
+/** Gate para la página hub `/recursos-tecnicos/certificados/` */
+export const CERTIFICADOS_DOWNLOAD_GATE_SLUG = "recursos-tecnicos-certificados";
 
-const fisher = "Fisher" as const;
-const tartarini = "Tartarini" as const;
-const spence = "Spence" as const;
+/**
+ * Pestañas del bloque multipágina (sin `brandSlug`): solo marcas con certificados
+ * típicamente usados desde producto / recurso técnico.
+ */
+export const CERTIFICADO_BRAND_SLUGS = ["fisher", "tartarini", "spence"] as const;
 
-/** Slug de carpeta bajo `public/assets/docs/certificados/` */
-export type CertificadoBrandFolder = "fisher" | "tartarini" | "spence";
+/** Orden de pestañas en “Certificados de marca” */
+export const CERTIFICADOS_MARCA_TAB_ORDER = [
+  "Cavagna",
+  "Corken",
+  "Emerson",
+  "Fisher",
+  "Spence",
+  "Tartarini",
+] as const;
 
-export const CERTIFICADO_BRAND_SLUGS: CertificadoBrandFolder[] = [
-  "fisher",
-  "tartarini",
-  "spence",
+const m = {
+  cavagna: "Cavagna",
+  corken: "Corken",
+  emerson: "Emerson",
+  fisher: "Fisher",
+  spence: "Spence",
+  tartarini: "Tartarini",
+} as const;
+
+/**
+ * Certificados en `public/assets/docs/certificados/` (subcarpetas por marca cuando aplica).
+ * `categoria` = pestaña visible.
+ */
+export const certificadosMarcaDocs: CatalogoDocs[] = [
+  {
+    categoria: m.cavagna,
+    nombre: "Cavagna — Certificado 902",
+    url: assetDoc("certificados", "CAVAGNA CERTIFICADO 902.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.cavagna,
+    nombre: "Cavagna — Certificado (1)",
+    url: assetDoc("certificados", "CERTIFICADO CAVAGNA 1.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.cavagna,
+    nombre: "Cavagna — Certificado (2)",
+    url: assetDoc("certificados", "CERTIFICADO CAVAGNA 2.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.cavagna,
+    nombre: "Cavagna — Certificado (3)",
+    url: assetDoc("certificados", "CERTIFICADO CAVAGNA 3.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.cavagna,
+    nombre: "Cavagna — Garantía 10 años",
+    url: assetDoc("certificados", "CAVAGNA GARANTIA 10 AÑOS.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.corken,
+    nombre: "Corken — Certificado",
+    url: assetDoc("certificados", "CERTIFICADO CORKEN.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.corken,
+    nombre: "Corken — Certificado (2)",
+    url: assetDoc("certificados", "CERTIFICADO CORKEN 2.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.corken,
+    nombre: "Corken — ISO 9001 (2022)",
+    url: assetDoc("certificados", "CORKEN CERT 9001 - 2022.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.emerson,
+    nombre: "Emerson — Respaldo comercial Acogas (1)",
+    url: assetDoc("certificados", "EMERSON RESPALDO COMERCIAL 1 ACOGAS.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.emerson,
+    nombre: "Emerson — Respaldo comercial Acogas (2)",
+    url: assetDoc("certificados", "EMERSON RESPALDO COMERCIAL 2 ACOGAS.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.emerson,
+    nombre:
+      "FROMEX — Certificado Emerson de México (SPA, vigencia hasta 09/08/2027)",
+    url: assetDoc(
+      "certificados",
+      "CERT-0121215_SPA_FROMEX S.A. EMERSON DE C.V_ Vigencia hasta 09-Agosto-2027.pdf",
+    ),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado SIL",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (SIL).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado ISO",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (ISO).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado UL (1)",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (UL 1).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado UL (2)",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (UL 2).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado UL (3)",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (UL 3).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.fisher,
+    nombre: "Fisher — Certificado UL (4)",
+    url: assetDoc("certificados", "fisher", "Certificado FISHER (UL 4).pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.spence,
+    nombre: "Spence — Certificado",
+    url: assetDoc("certificados", "spence", "Certificado SPENCE.pdf"),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.tartarini,
+    nombre: "Tartarini — Certificado",
+    url: assetDoc(
+      "certificados",
+      "tartarini",
+      "Certificado TARTARINI.pdf",
+    ),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.tartarini,
+    nombre: "Tartarini — ISO 9001",
+    url: assetDoc(
+      "certificados",
+      "tartarini",
+      "Certificado TARTARINI (ISO 9001).pdf",
+    ),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.tartarini,
+    nombre: "Tartarini — ISO 14001",
+    url: assetDoc(
+      "certificados",
+      "tartarini",
+      "Certificado TARTARINI (ISO 14001).pdf",
+    ),
+    paginas: "PDF",
+  },
+  {
+    categoria: m.tartarini,
+    nombre: "Tartarini — ISO 50001",
+    url: assetDoc(
+      "certificados",
+      "tartarini",
+      "Certificado TARTARINI (ISO 50001).pdf",
+    ),
+    paginas: "PDF",
+  },
 ];
 
-export const certificadosFisher: CatalogoDocs[] = [
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (ISO)",
-    url: certUrl("fisher", "Certificado FISHER (ISO).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (SIL)",
-    url: certUrl("fisher", "Certificado FISHER (SIL).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (UL 1)",
-    url: certUrl("fisher", "Certificado FISHER (UL 1).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (UL 2)",
-    url: certUrl("fisher", "Certificado FISHER (UL 2).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (UL 3)",
-    url: certUrl("fisher", "Certificado FISHER (UL 3).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Certificado FISHER (UL 4)",
-    url: certUrl("fisher", "Certificado FISHER (UL 4).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: fisher,
-    nombre: "Cuadro comparativo certificados FISHER",
-    url: certUrl("fisher", "Cuadro comparativo certificados FISHER.xlsx"),
-    paginas: "XLSX",
-  },
-];
-
-export const certificadosTartarini: CatalogoDocs[] = [
-  {
-    categoria: tartarini,
-    nombre: "Certificado TARTARINI",
-    url: certUrl("tartarini", "Certificado TARTARINI.pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: tartarini,
-    nombre: "Certificado TARTARINI (ISO 9001)",
-    url: certUrl("tartarini", "Certificado TARTARINI (ISO 9001).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: tartarini,
-    nombre: "Certificado TARTARINI (ISO 14001)",
-    url: certUrl("tartarini", "Certificado TARTARINI (ISO 14001).pdf"),
-    paginas: "PDF",
-  },
-  {
-    categoria: tartarini,
-    nombre: "Certificado TARTARINI (ISO 50001)",
-    url: certUrl("tartarini", "Certificado TARTARINI (ISO 50001).pdf"),
-    paginas: "PDF",
-  },
-];
-
-export const certificadosSpence: CatalogoDocs[] = [
-  {
-    categoria: spence,
-    nombre: "Certificado SPENCE",
-    url: certUrl("spence", "Certificado SPENCE.pdf"),
-    paginas: "PDF",
-  },
-];
-
-const DOCS_BY_BRAND_SLUG: Record<CertificadoBrandFolder, CatalogoDocs[]> = {
-  fisher: certificadosFisher,
-  tartarini: certificadosTartarini,
-  spence: certificadosSpence,
+const STRATEGIC_SLUG_TO_CATEGORIA: Record<string, string> = {
+  corken: m.corken,
+  cavagna: m.cavagna,
+  fisher: m.fisher,
+  spence: m.spence,
+  tartarini: m.tartarini,
 };
 
+/** Certificados para una página `/marcas/[slug]` cuando el slug coincide con la carpeta de marca */
 export function getCertificadosForStrategicBrandSlug(
-  slug: string
+  slug: string,
 ): CatalogoDocs[] {
-  const key = slug.toLowerCase();
-  if (key in DOCS_BY_BRAND_SLUG) {
-    return DOCS_BY_BRAND_SLUG[key as CertificadoBrandFolder];
-  }
-  return [];
+  const catName = STRATEGIC_SLUG_TO_CATEGORIA[slug.trim().toLowerCase()];
+  if (!catName) return [];
+  return certificadosMarcaDocs.filter((d) => d.categoria === catName);
 }
 
 export function strategicBrandHasCertificados(slug: string): boolean {
   return getCertificadosForStrategicBrandSlug(slug).length > 0;
 }
+
+function docsEnCategoria(catName: string): CatalogoDocs[] {
+  return certificadosMarcaDocs.filter((d) => d.categoria === catName);
+}
+
+export const certificadosFisher = docsEnCategoria(m.fisher);
+
+export const certificadosSpence = docsEnCategoria(m.spence);
+
+export const certificadosTartarini = docsEnCategoria(m.tartarini);

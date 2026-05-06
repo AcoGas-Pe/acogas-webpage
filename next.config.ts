@@ -1,6 +1,25 @@
 import type { NextConfig } from "next";
 
+function wordPressImageHostPattern(): { protocol: "http" | "https"; hostname: string; pathname: string }[] {
+  const explicit = process.env.WORDPRESS_IMAGE_HOSTNAME?.trim();
+  if (explicit) {
+    return [{ protocol: "https", hostname: explicit, pathname: "/**" }];
+  }
+  const gql = process.env.WORDPRESS_GRAPHQL_URL?.trim();
+  if (!gql) return [];
+  try {
+    const u = new URL(gql);
+    const protocol = u.protocol === "http:" ? ("http" as const) : ("https" as const);
+    return [{ protocol, hostname: u.hostname, pathname: "/**" }];
+  } catch {
+    return [];
+  }
+}
+
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: wordPressImageHostPattern(),
+  },
   async redirects() {
     return [
       // Quiénes somos → Nosotros (consolidar URL)

@@ -1,4 +1,5 @@
 import type { CatalogoDocs } from "@/domain/product";
+import { assetDoc } from "@/lib/asset-doc-url";
 
 /** Clave única para el gate HubSpot (una vez cumplido, aplica a todas las descargas de esta página) */
 export const NORMATIVAS_DOWNLOAD_GATE_SLUG = "recursos-tecnicos-normativas";
@@ -10,13 +11,6 @@ const cat = {
   internacional: "Documentos sueltos",
   otras: "Otras normativas",
 } as const;
-
-/** Rutas bajo `public/assets/docs/`. Codifica segmentos para espacios, tildes y “°” en nombres de archivo. */
-function assetDoc(...segments: string[]): string {
-  return (
-    "/assets/docs/" + segments.map((s) => encodeURIComponent(s)).join("/")
-  );
-}
 
 /**
  * Nota: la carpeta en disco es `resolucones-directorales` (sin la “i”).

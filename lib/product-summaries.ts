@@ -12,10 +12,14 @@ function toSummary(p: Product): ProductCardSummary {
   };
 }
 
-/** Resuelve slugs contra el catálogo actual (luego: misma fuente que el CMS). */
-export function getProductSummariesBySlugs(slugs: string[] | undefined): ProductCardSummary[] {
+/** Resuelve slugs contra el catálogo (por defecto estático; pasar `catalog` si vienes de WP). */
+export function getProductSummariesBySlugs(
+  slugs: string[] | undefined,
+  catalog?: Product[],
+): ProductCardSummary[] {
   if (!slugs?.length) return [];
-  const bySlug = new Map(getAllProducts().map((p) => [p.slug, p] as const));
+  const list = catalog ?? getAllProducts();
+  const bySlug = new Map(list.map((p) => [p.slug, p] as const));
   const out: ProductCardSummary[] = [];
   for (const s of slugs) {
     const p = bySlug.get(s);
@@ -46,10 +50,10 @@ function sameTaxonomy(p: Product, other: Product): number {
  */
 export function getRelatedProductSummaries(
   product: Product,
-  options?: { limit?: number },
+  options?: { limit?: number; catalog?: Product[] },
 ): ProductCardSummary[] {
   const limit = options?.limit ?? 6;
-  const all = getAllProducts();
+  const all = options?.catalog ?? getAllProducts();
   const bySlug = new Map(all.map((p) => [p.slug, p] as const));
   const seen = new Set<string>();
   const out: ProductCardSummary[] = [];

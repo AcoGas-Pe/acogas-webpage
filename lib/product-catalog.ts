@@ -6,7 +6,6 @@ import {
 
 export interface ProductCatalogFacets {
   marcas: string[];
-  gruposEmpresariales: string[];
   macroCategorias: string[];
   categorias: string[];
   tiposBrochure: string[];
@@ -36,7 +35,6 @@ export function mergeSolucionesNavIntoFacets(
 
 export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
   const marcas: string[] = [];
-  const grupos: string[] = [];
   const macros: string[] = [];
   const cats: string[] = [];
   const tipos: string[] = [];
@@ -44,7 +42,6 @@ export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
 
   for (const p of products) {
     if (p.marca?.trim()) marcas.push(p.marca.trim());
-    if (p.grupoEmpresarial?.trim()) grupos.push(p.grupoEmpresarial.trim());
     if (p.macroCategoria?.trim()) macros.push(p.macroCategoria.trim());
     if (p.categoria?.trim()) cats.push(p.categoria.trim());
     if (p.tipoBrochure?.trim()) tipos.push(p.tipoBrochure.trim());
@@ -55,7 +52,6 @@ export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
 
   return {
     marcas: uniqSorted(marcas),
-    gruposEmpresariales: uniqSorted(grupos),
     macroCategorias: uniqSorted(macros),
     categorias: uniqSorted(cats),
     tiposBrochure: uniqSorted(tipos),
@@ -65,7 +61,6 @@ export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
 
 export type CatalogFilters = {
   marcas: string[];
-  gruposEmpresariales: string[];
   macroCategorias: string[];
   categorias: string[];
   tiposBrochure: string[];
@@ -74,7 +69,6 @@ export type CatalogFilters = {
 
 export const emptyCatalogFilters = (): CatalogFilters => ({
   marcas: [],
-  gruposEmpresariales: [],
   macroCategorias: [],
   categorias: [],
   tiposBrochure: [],
@@ -93,7 +87,6 @@ export function filterProductsByFacets(
 ): Product[] {
   return products.filter((p) => {
     if (!matchesField(filters.marcas, p.marca)) return false;
-    if (!matchesField(filters.gruposEmpresariales, p.grupoEmpresarial)) return false;
     if (!matchesField(filters.macroCategorias, p.macroCategoria)) return false;
     if (!matchesField(filters.categorias, p.categoria)) return false;
     if (!matchesField(filters.tiposBrochure, p.tipoBrochure)) return false;
@@ -115,7 +108,6 @@ export function productMatchesSearchQuery(product: Product, raw: string): boolea
   if (product.tipoBrochure) chunks.push(product.tipoBrochure);
   if (product.macroCategoria) chunks.push(product.macroCategoria);
   if (product.categoria) chunks.push(product.categoria);
-  if (product.grupoEmpresarial) chunks.push(product.grupoEmpresarial);
   for (const f of product.fluidosYGases ?? []) {
     if (f.valor) chunks.push(f.valor);
   }
@@ -131,14 +123,12 @@ export function catalogFiltersFromSearchParams(
   const macroCategorias = sp.getAll("macro").filter(Boolean);
   const categorias = sp.getAll("cat").filter(Boolean);
   const tiposBrochure = sp.getAll("brochure").filter(Boolean);
-  const gruposEmpresariales = sp.getAll("grupo").filter(Boolean);
   const fluidos = sp.getAll("fluido").filter(Boolean);
   const total =
     marcas.length +
     macroCategorias.length +
     categorias.length +
     tiposBrochure.length +
-    gruposEmpresariales.length +
     fluidos.length;
   if (total === 0) return null;
   return {
@@ -146,7 +136,6 @@ export function catalogFiltersFromSearchParams(
     macroCategorias,
     categorias,
     tiposBrochure,
-    gruposEmpresariales,
     fluidos,
   };
 }

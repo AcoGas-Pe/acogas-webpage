@@ -260,8 +260,14 @@ function MarcaBlock({ product }: { product: Product }) {
   );
 }
 
-function RelacionadosBlock({ product }: { product: Product }) {
-  const summaries = getRelatedProductSummaries(product, { limit: 6 });
+function RelacionadosBlock({
+  product,
+  catalog,
+}: {
+  product: Product;
+  catalog?: Product[];
+}) {
+  const summaries = getRelatedProductSummaries(product, { limit: 6, catalog });
   if (summaries.length === 0) return null;
   return (
     <SectionShell title="Productos relacionados">
@@ -319,11 +325,18 @@ export function ProductCmsMainSections({ product }: { product: Product }) {
 }
 
 /** Tras documentos: texto de marca (CMS) y tarjetas de relacionados por slug. */
-export function ProductCmsFooterSections({ product }: { product: Product }) {
+export function ProductCmsFooterSections({
+  product,
+  allProducts,
+}: {
+  product: Product;
+  /** Misma fuente que el listado (p. ej. productos desde WordPress). */
+  allProducts?: Product[];
+}) {
   return (
     <>
       <MarcaBlock product={product} />
-      <RelacionadosBlock product={product} />
+      <RelacionadosBlock product={product} catalog={allProducts} />
     </>
   );
 }

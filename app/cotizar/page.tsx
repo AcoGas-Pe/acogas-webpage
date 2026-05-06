@@ -2,16 +2,16 @@ import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { CotizarQuoteFlow } from "@/components/cotizar/cotizar-quote-flow";
 import { Button } from "@/components/ui/button";
 import { CONTACT, formatPhoneTel } from "@/lib/business-config";
-import { getAllProducts } from "@/lib/products-data";
+import { resolveAllProducts } from "@/lib/products-resolve";
 import { Metadata } from "next";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = generateMetadataFromConfig("/cotizar/");
 
-export default function CotizarPage() {
+export default async function CotizarPage() {
   const telHref = `tel:${formatPhoneTel(CONTACT.phone[0])}`;
-  const products = getAllProducts();
+  const products = await resolveAllProducts();
 
   return (
     <>
