@@ -1,6 +1,7 @@
 /**
  * Pilares "Nuestras soluciones" del menú Soluciones ↔ filtros del catálogo (`macro` + `cat` en query).
- * Los valores deben alinearse con `macroCategoria` y `categoria` en datos de producto.
+ * Los valores deben coincidir exactamente con `Product.macroCategoria` y `Product.categoria`
+ * (misma convención que `data/products-import.json` y el CMS).
  */
 
 export type SolucionNavSection = {
@@ -19,60 +20,119 @@ export type SolucionNavPillar = {
 
 export const SOLUCIONES_NAV_PILARES: SolucionNavPillar[] = [
   {
-    label: "Regulación y Control de Presión",
+    label: "Regulación y control de presión",
     macro: "Regulación y control de presión",
     sections: [
       {
-        title: "Reguladores de Presión",
+        title: "Reguladores de Primera y Segunda Etapa",
+        categoria: "Reguladores de Primera y Segunda Etapa",
+      },
+      {
+        title: "Válvulas y Reguladores de Contrapresión",
+        categoria: "Válvulas y Reguladores de Contrapresión",
+      },
+      {
+        title: "Válvulas y Reguladores de Presión",
         categoria: "Válvulas y Reguladores de Presión",
       },
-      { title: "Válvulas de Control", categoria: "Válvulas de control" },
-      { title: "Estaciones de Regulación", categoria: "Estaciones de regulación" },
     ],
   },
   {
-    label: "Medición y Control de Flujo",
-    macro: "Medición y control de flujo",
+    label: "Seguridad, Alivio y Vacío",
+    macro: "Seguridad, Alivio y Vacío",
     sections: [
-      { title: "Medidores Industriales", categoria: "Medidores industriales" },
-      { title: "Sistemas de Medición", categoria: "Sistemas de medición" },
-      { title: "Accesorios de Medición", categoria: "Accesorios de medición" },
-    ],
-  },
-  {
-    label: "Vapor y Procesos Térmicos",
-    macro: "Vapor y procesos térmicos",
-    sections: [
-      { title: "Regulación de Vapor", categoria: "Regulación de vapor" },
-      { title: "Trampas de Vapor", categoria: "Trampas de vapor" },
-      { title: "Accesorios para Vapor", categoria: "Accesorios para vapor" },
-    ],
-  },
-  {
-    label: "Bombas y Compresores",
-    macro: "Bombas y compresores",
-    sections: [
-      { title: "Bombas Industriales", categoria: "Bombas industriales" },
-      { title: "Compresores Industriales", categoria: "Compresores industriales" },
-    ],
-  },
-  {
-    label: "Seguridad y Alivio de Presión",
-    macro: "Seguridad y alivio de presión",
-    sections: [
-      { title: "Válvulas de Seguridad", categoria: "Válvulas de seguridad" },
-      { title: "Sistemas de Protección", categoria: "Sistemas de protección" },
-    ],
-  },
-  {
-    label: "Procesos Especiales y Multifluidos",
-    macro: "Procesos especiales y multifluidos",
-    sections: [
-      { title: "Regulación de Gas Natural", categoria: "Regulación de gas natural" },
-      { title: "Regulación de GLP", categoria: "Regulación de GLP" },
+      { title: "Cierre y protección", categoria: "Cierre y protección" },
       {
-        title: "Regulación de Aire y Otros Fluidos",
-        categoria: "Regulación de aire y otros fluidos",
+        title: "Válvulas y Reguladores de Alivio y Seguridad",
+        categoria: "Válvulas y Reguladores de Alivio y Seguridad",
+      },
+      {
+        title: "Válvulas y Reguladores de Vacío",
+        categoria: "Válvulas y Reguladores de Vacío",
+      },
+    ],
+  },
+  {
+    label: "Equipo de bombeo y compresión",
+    macro: "Equipo de bombeo y compresión",
+    sections: [
+      { title: "Bombas industriales", categoria: "Bombas industriales" },
+      { title: "Compresores", categoria: "Compresores" },
+    ],
+  },
+  {
+    label: "Control de Temperatura y Vapor",
+    macro: "Control de Temperatura y Vapor",
+    sections: [
+      {
+        title: "Manejo de vapor y Condensado",
+        categoria: "Manejo de vapor y Condensado",
+      },
+      {
+        title: "Regulación de temperatura",
+        categoria: "Regulación de temperatura",
+      },
+    ],
+  },
+  {
+    label: "Control de Flujo, Filtración y Ruido",
+    macro: "Control de Flujo, Filtración y Ruido",
+    sections: [
+      {
+        title: "Filtración y Silenciamiento",
+        categoria: "Filtración y Silenciamiento",
+      },
+      {
+        title: "Válvulas de Control y Flujo",
+        categoria: "Válvulas de Control y Flujo",
+      },
+    ],
+  },
+  {
+    label: "Inertización, Recuperación de vapor y Tanques",
+    macro: "Inertización, Recuperación de vapor y Tanques",
+    sections: [
+      { title: "Inertización de tanques", categoria: "Inertización de tanques" },
+      { title: "Recuperación de Vapor", categoria: "Recuperación de Vapor" },
+    ],
+  },
+  {
+    label: "Automatización, Medición y Control",
+    macro: "Automatización, Medición y Control",
+    sections: [
+      {
+        title: "Filtración y Silenciamiento",
+        categoria: "Filtración y Silenciamiento",
+      },
+    ],
+  },
+  {
+    label: "Sistemas, Estaciones y Soluciones Integrales",
+    macro: "Sistemas, Estaciones y Soluciones Integrales",
+    sections: [
+      {
+        title: "Filtración y Silenciamiento",
+        categoria: "Filtración y Silenciamiento",
+      },
+    ],
+  },
+  {
+    label: "Accesorios y otros componentes",
+    macro: "Accesorios y otros componentes",
+    sections: [
+      {
+        title: "Filtración y Silenciamiento",
+        categoria: "Filtración y Silenciamiento",
+      },
+    ],
+  },
+  {
+    label: "Autogas y Aplicaciones Especiales",
+    macro: "Autogas y Aplicaciones Especiales",
+    sections: [
+      {
+        title: "Filtración y Silenciamiento",
+        categoria: "Filtración y Silenciamiento",
       },
     ],
   },
@@ -81,8 +141,7 @@ export const SOLUCIONES_NAV_PILARES: SolucionNavPillar[] = [
 export function hrefProductosPorSolucion(macro: string, categoria?: string): string {
   const params = new URLSearchParams();
   params.append("macro", macro.trim());
-  if (categoria?.trim())
-    params.append("cat", categoria.trim());
+  if (categoria?.trim()) params.append("cat", categoria.trim());
   return `/productos/?${params.toString()}`;
 }
 

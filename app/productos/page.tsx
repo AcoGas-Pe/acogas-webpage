@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { ProductsCatalogClient } from "@/components/productos/products-catalog-client";
-import { buildCatalogFacets, mergeSolucionesNavIntoFacets } from "@/lib/product-catalog";
+import { buildCatalogFacets } from "@/lib/product-catalog";
 import { resolveAllProducts } from "@/lib/products-resolve";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import type { Metadata } from "next";
@@ -10,7 +10,7 @@ export const metadata: Metadata = generateMetadataFromConfig("/productos/");
 
 export default async function ProductosPage() {
   const products = await resolveAllProducts();
-  const facets = mergeSolucionesNavIntoFacets(buildCatalogFacets(products));
+  const facets = buildCatalogFacets(products);
 
   return (
     <>

@@ -88,19 +88,44 @@ function acfTextoPlano(value: unknown): string | undefined {
   return undefined;
 }
 
+/** Quita `<br>`, párrafos típicos de ACF y entidades básicas antes de partir el texto. */
+function normalizeAcfRichText(s: string): string {
+  return s
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>\s*/gi, "\n")
+    .replace(/<p[^>]*>/gi, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\r\n/g, "\n")
+    .trim();
+}
+
 function splitSemicolons(s: string | null | undefined | unknown): string[] {
   const str = typeof s === "string" ? s : acfTextoPlano(s) ?? "";
   if (!str.trim()) return [];
-  return str
+  const normalized = normalizeAcfRichText(str);
+  if (normalized.includes("\n")) {
+    return normalized
+      .split(/\n+/)
+      .map((x) => x.trim())
+      .filter(Boolean);
+  }
+  return normalized
     .split(/\s*;\s*/)
     .map((x) => x.trim())
     .filter(Boolean);
 }
 
-function parseNombreValorBlocks(s: string | null | undefined | unknown): { nombre: string; valor: string }[] {
-  const str = typeof s === "string" ? s : acfTextoPlano(s) ?? "";
-  if (!str.trim()) return [];
-  const parts = splitSemicolons(str);
+/**
+ * Blocos nombre:valor separados por `;` (un solo párrafo).
+ * El primer `:` separa nombre y valor (valores pueden contener `:`, poco frecuente).
+ */
+function parseNombreValorSemicolonOnly(
+  normalizedSingleParagraph: string,
+): { nombre: string; valor: string }[] {
+  const parts = normalizedSingleParagraph
+    .split(/\s*;\s*/)
+    .map((x) => x.trim())
+    .filter(Boolean);
   const out: { nombre: string; valor: string }[] = [];
   for (const p of parts) {
     const idx = p.indexOf(":");
@@ -114,6 +139,71 @@ function parseNombreValorBlocks(s: string | null | undefined | unknown): { nombr
     }
   }
   return out;
+}
+
+/**
+ * Texto multilínea con HTML (`<br />`) o saltos: listas `- sección:` / `-- sub: valor`.
+ * Ej.: `- Presión:<br />-- Enardo A: 2, 4…` → filas "Presión – Enardo A" / valor.
+ */
+function parseNombreValorMultiline(normalized: string): { nombre: string; valor: string }[] {
+  const lines = normalized
+    .split(/\n+/)
+    .map((l) => l.trim())
+    .filter(Boolean);
+  const out: { nombre: string; valor: string }[] = [];
+  let group = "";
+
+  for (let rawLine of lines) {
+    let line = rawLine;
+    const isSub = /^\s*--\s*/.test(line);
+    if (isSub) {
+      line = line.replace(/^\s*--\s*/, "").trim();
+    } else if (/^\s*-\s*/.test(line)) {
+      line = line.replace(/^\s*-\s*/, "").trim();
+    }
+
+    const idx = line.indexOf(":");
+    if (idx <= 0) {
+      if (out.length) {
+        out[out.length - 1].valor = `${out[out.length - 1].valor} ${line}`.trim();
+      } else {
+        out.push({ nombre: "Detalle", valor: line });
+      }
+      continue;
+    }
+
+    const name = line.slice(0, idx).trim();
+    const val = line.slice(idx + 1).trim();
+
+    if (isSub && group) {
+      out.push({ nombre: `${group} – ${name}`, valor: val });
+      continue;
+    }
+    if (isSub && !group) {
+      out.push({ nombre: name, valor: val });
+      continue;
+    }
+
+    if (!val) {
+      group = name;
+      continue;
+    }
+
+    group = "";
+    out.push({ nombre: name, valor: val });
+  }
+
+  return out;
+}
+
+function parseNombreValorBlocks(s: string | null | undefined | unknown): { nombre: string; valor: string }[] {
+  const str = typeof s === "string" ? s : acfTextoPlano(s) ?? "";
+  if (!str.trim()) return [];
+  const normalized = normalizeAcfRichText(str);
+  if (normalized.includes("\n")) {
+    return parseNombreValorMultiline(normalized);
+  }
+  return parseNombreValorSemicolonOnly(normalized);
 }
 
 function parseMaterialesBlocks(s: string | null | undefined | unknown): MaterialItem[] {

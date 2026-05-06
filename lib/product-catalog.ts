@@ -16,7 +16,7 @@ function uniqSorted(values: Iterable<string>): string[] {
   return [...new Set(values)].filter(Boolean).sort((a, b) => a.localeCompare(b, "es"));
 }
 
-/** Añade al sidebar las líneas definidas en el menú Nuestras soluciones aunque aún no haya productos. */
+/** Opcional: mezcla rutas del menú «Nuestras soluciones» en macro/categoría aunque no haya productos. El catálogo usa solo datos reales. */
 export function mergeSolucionesNavIntoFacets(
   facets: ProductCatalogFacets,
 ): ProductCatalogFacets {

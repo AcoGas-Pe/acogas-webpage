@@ -1,20 +1,12 @@
 /**
  * Consulta para listado de soluciones/productos desde WPGraphQL.
  *
- * - El nombre en RootQuery lo define el tema (`graphql_plural_name`). En acogas.pe es
- *   `solucionesProductos`. Otros sitios pueden usar `soluciones` u otro; ajusta env.
- * - Muchas versiones exigen `first` (o `last`) en la conexión; sin eso, `nodes` puede ir vacío.
+ * Paginación: WPGraphQL suele limitar `first` (p. ej. 100). Se piden varias páginas con `after`
+ * hasta agotar resultados. Tamaño de cada petición:
+ *   WORDPRESS_GRAPHQL_PRODUCTS_FIRST=100  (por defecto 100, máx. 500 por petición).
  *
- * Si tu esquema usa otro nombre, define en .env.local:
+ * Si tu esquema usa otro nombre de conexión:
  *   WORDPRESS_GRAPHQL_PRODUCTS_FIELD=solucionesProductos
- *
- * Valida nombres reales en GraphiQL: esquema → RootQuery.
- *
- * Logs en la terminal de `next dev`: prefijo [WP productos]. Más detalle:
- *   WORDPRESS_PRODUCTS_DEBUG=1
- *
- * En `detalles`, el campo de texto largo de aplicaciones puede ser `applicaciones` (GraphQL)
- * si el name ACF fue registrado con doble p; el mapper acepta ambas formas.
  */
 
 const GRAPHQL_NAME_SAFE = /^[a-zA-Z][a-zA-Z0-9_]*$/;
@@ -26,17 +18,15 @@ export function getWpProductsGraphqlRootField(): string {
   return "solucionesProductos";
 }
 
-/** Construye la query en runtime (respeta env al importar el módulo en el servidor). */
-export function buildSolucionesProductosQuery(): string {
-  const root = getWpProductsGraphqlRootField();
-  const first = Math.min(
-    Math.max(Number(process.env.WORDPRESS_GRAPHQL_PRODUCTS_FIRST) || 500, 1),
-    500,
-  );
-  return /* GraphQL */ `
-  query SolucionesProductos {
-    ${root}(first: ${first}) {
-      nodes {
+/** Registros por petición GraphQL (recomendado ≤100 si el servidor limita; subir si WP lo permite). */
+export function getGraphqlProductsPageSize(): number {
+  const raw = Number(process.env.WORDPRESS_GRAPHQL_PRODUCTS_FIRST);
+  const n = Number.isFinite(raw) && raw >= 1 ? raw : 100;
+  return Math.min(Math.max(Math.floor(n), 1), 500);
+}
+
+/** Campos de cada nodo (compartido por query paginada). */
+const SOLUCION_PRODUCTO_NODE_FIELDS = /* GraphQL */ `
         databaseId
         slug
         title
@@ -258,6 +248,20 @@ export function buildSolucionesProductosQuery(): string {
             }
           }
         }
+`;
+
+/** Query con cursor; repetir hasta `hasNextPage === false`. */
+export function buildSolucionesProductosPagedQuery(): string {
+  const root = getWpProductsGraphqlRootField();
+  return /* GraphQL */ `
+  query SolucionesProductosPaged($first: Int!, $after: String) {
+    ${root}(first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+${SOLUCION_PRODUCTO_NODE_FIELDS}
       }
     }
   }

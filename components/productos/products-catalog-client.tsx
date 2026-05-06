@@ -300,6 +300,7 @@ function CatalogPaginationMini({
 function ProductPills({ product }: { product: Product }) {
   const brochure = product.tipoBrochure?.trim();
   const marca = product.marca?.trim();
+  const grupo = product.grupoEmpresarial?.trim();
   return (
     <div className="flex flex-wrap gap-1.5">
       {brochure ? (
@@ -310,6 +311,11 @@ function ProductPills({ product }: { product: Product }) {
       {marca ? (
         <span className="inline-flex max-w-full items-center rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
           {marca}
+        </span>
+      ) : null}
+      {grupo ? (
+        <span className="inline-flex max-w-full items-center rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
+          {grupo}
         </span>
       ) : null}
     </div>
