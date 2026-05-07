@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { seoConfigs, siteConfig } from '@/lib/seo-config';
+import { isSiteIndexingDisabled } from '@/lib/site-indexing';
 /*
 import { getAllPosts } from '@/lib/blog-utils';
 import { getAllThingsToDoPages } from '@/lib/things-to-do-utils';
@@ -8,8 +9,12 @@ import { getCityUrls } from '@/lib/city-utils';
 */
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (isSiteIndexingDisabled()) {
+    return [];
+  }
+
   const baseUrl = siteConfig.url;
-  
+
   const routes = Object.entries(seoConfigs).map(([path]) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),

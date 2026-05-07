@@ -1,6 +1,22 @@
 import { Metadata } from 'next';
 import { getSEOConfig, siteConfig, getOrganizationSchema, getLocalBusinessSchema, getWebsiteSchema, getServiceSchema, getArticleSchema, getCityLocalBusinessSchema, getCityPlaceSchema, getServicePageSchema, getThingsToDoSchema, getFAQSchema, getBusinessSchema, getPortfolioSchema } from './seo-config';
+import { isSiteIndexingDisabled } from './site-indexing';
 // import { generateBreadcrumbSchema } from './breadcrumb-utils';
+
+function buildRobotsMeta(seo: { noIndex?: boolean; noFollow?: boolean }): NonNullable<Metadata['robots']> {
+  const block = isSiteIndexingDisabled();
+  return {
+    index: !block && !seo.noIndex,
+    follow: !block && !seo.noFollow,
+    googleBot: {
+      index: !block && !seo.noIndex,
+      follow: !block && !seo.noFollow,
+      'max-video-preview': -1,
+      'max-image-preview': 'large' as const,
+      'max-snippet': -1,
+    },
+  };
+}
 
 interface BlogPostData {
   title: string;
@@ -68,17 +84,7 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
         creator: siteConfig.social.twitterHandle ? `@${siteConfig.social.twitterHandle}` : undefined,
       },
 
-      robots: {
-        index: !seo.noIndex,
-        follow: !seo.noFollow,
-        googleBot: {
-          index: !seo.noIndex,
-          follow: !seo.noFollow,
-          'max-video-preview': -1,
-          'max-image-preview': 'large' as const,
-          'max-snippet': -1,
-        },
-      },
+      robots: buildRobotsMeta(seo),
 
       // Google Search Console verification
       ...(siteConfig.verification?.google && {
@@ -119,6 +125,9 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
     return {
       title: siteConfig.name,
       description: siteConfig.description,
+      ...(isSiteIndexingDisabled() && {
+        robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+      }),
       openGraph: {
         title: siteConfig.name,
         description: siteConfig.description,
@@ -325,17 +334,7 @@ export function generateDynamicMetadata(
       creator: siteConfig.social.twitterHandle ? `@${siteConfig.social.twitterHandle}` : undefined,
     },
     
-    robots: {
-      index: !seo.noIndex,
-      follow: !seo.noFollow,
-      googleBot: {
-        index: !seo.noIndex,
-        follow: !seo.noFollow,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: buildRobotsMeta(seo),
 
     // Explicit meta title for better SEO tool compatibility
     other: {
