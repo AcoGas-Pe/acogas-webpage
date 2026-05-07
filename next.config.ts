@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Prefer apex (canonical host); sitemap & meta canonical use https://acogas.pe
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.acogas.pe" }],
+        destination: "https://acogas.pe/:path*",
+        permanent: true,
+      },
       // Quiénes somos → Nosotros (consolidar URL)
       { source: "/quienes-somos", destination: "/nosotros/", permanent: true },
       { source: "/quienes-somos/", destination: "/nosotros/", permanent: true },

@@ -113,7 +113,7 @@ export interface Product {
   // ==========================================
   export const BUSINESS_INFO = {
     name: "Acogas ",
-    websiteUrl: "https://www.acogas.pe",
+    websiteUrl: "https://acogas.pe",
     tone: "Professional",
     logoUrl: "/assets/config/logo.png",
     tagline:

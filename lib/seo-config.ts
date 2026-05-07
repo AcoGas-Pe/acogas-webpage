@@ -102,7 +102,7 @@ Remember on localhost the url will be http://localhost:3000 but in production it
 // Import from business config for dynamic values
 export const siteConfig: SiteConfig = {
   name: BUSINESS_INFO.name,
-  url: (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.acogas.pe'),
+  url: (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://acogas.pe'),
   description: `Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales en ${CONTACT.city}, ${CONTACT.state}. ${BUSINESS_INFO.ctaText}`,
   logo: BUSINESS_INFO.logoUrl || "/assets/config/logo.png",
   favicon: "/assets/config/favicon.ico",
