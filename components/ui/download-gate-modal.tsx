@@ -114,7 +114,9 @@ export function DownloadGateModal({
       />
       <div
         className={cn(
-          "relative flex w-full max-w-full min-h-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-xl transition-all duration-300 ease-in-out max-h-[min(92dvh,calc(100dvh-1.5rem))] sm:max-h-none sm:overflow-visible sm:w-[min(50dvw,42rem)]",
+          "relative flex min-h-0 w-full max-w-[min(42rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-xl transition-all duration-300 ease-in-out",
+          /** Tope de alto en todos los breakpoints: no ocupa pantalla completa; el cuerpo hace scroll si el embed es alto */
+          "max-h-[min(88dvh,34rem)] sm:max-h-[min(90dvh,38rem)]",
           entering && !isFadedIn && "opacity-0 scale-95",
           entering && isFadedIn && "opacity-100 scale-100",
           exiting && "opacity-0 scale-95"
@@ -133,7 +135,7 @@ export function DownloadGateModal({
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-x-hidden overflow-y-auto overscroll-contain p-3 sm:flex-none sm:overflow-visible sm:overscroll-auto sm:p-6">
+        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-x-hidden overflow-y-auto overscroll-contain p-3 sm:p-6">
           <p className="shrink-0 text-sm leading-relaxed text-muted-foreground">
             Complete el formulario para acceder a{" "}
             <span className="wrap-break-word font-medium text-primary">
