@@ -15,7 +15,7 @@ export function ServicesCTA({ className }: ServicesCTAProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[240px] sm:min-h-[300px] lg:min-h-0">
               <Image
-                src="/assets/config/placeholder-image.png"
+                src="/assets/images/revision-en-planta-3.webp"
                 alt="Equipo técnico Acogas en campo"
                 fill
                 className="object-cover"

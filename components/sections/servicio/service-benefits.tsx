@@ -1,8 +1,6 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import { Service } from "@/domain/service";
-import { Star } from "lucide-react";
+import type { Service } from "@/domain/service";
+import { getBenefitIcon } from "@/lib/section-icons";
 
 interface ServiceBenefitsProps {
   service: Service;
@@ -11,32 +9,45 @@ interface ServiceBenefitsProps {
 
 export function ServiceBenefits({ service, className }: ServiceBenefitsProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background", className)}>
+    <section
+      className={cn(
+        "section bg-background-alt py-14 sm:py-16 md:py-20",
+        className,
+      )}
+    >
       <div className="container">
-        <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+          <p className="text-xs font-bold uppercase tracking-[0.15em] text-accent sm:text-sm">
             Beneficios
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            ¿Por qué elegirnos?
+          <h2 className="mt-2 text-2xl font-bold uppercase tracking-[0.08em] text-foreground sm:text-3xl md:text-[2rem]">
+            Valor para su operación
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-          {service.benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="card-base card-tint-2 p-5 sm:p-6 text-center hover:-translate-y-0.5 transition-transform"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
-                <Star className="w-5 h-5 text-primary" />
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {service.benefits.map((benefit, index) => {
+            const Icon = getBenefitIcon(benefit.title ?? "", index);
+            return (
+              <div
+                key={benefit.title ?? index}
+                className={cn(
+                  "flex flex-col rounded-xl border border-border bg-card p-6 text-center shadow-sm",
+                  "transition hover:border-primary/25 hover:shadow-md",
+                )}
+              >
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
+                  <Icon className="h-7 w-7 text-accent" strokeWidth={1.5} aria-hidden />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wide text-primary sm:text-base">
+                  {benefit.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {benefit.description}
+                </p>
               </div>
-              <h3 className="text-base font-bold text-foreground mb-2">{benefit.title}</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

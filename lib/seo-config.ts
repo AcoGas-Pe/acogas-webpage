@@ -18,6 +18,8 @@ export interface SEOConfig {
   keywords: string[];
   canonical: string;
   ogImage: string;
+  /** Segunda imagen en og:image (logo). `false` = no añadir logo. Por defecto se usa OG_IMAGE_DEFAULTS.brandLogo. */
+  ogBrandLogo?: string | false;
   ogType: 'website' | 'article';
   twitterCard: 'summary' | 'summary_large_image';
   noIndex?: boolean;
@@ -139,6 +141,13 @@ export const siteConfig: SiteConfig = {
   }
 };
 
+/** Rutas públicas para Open Graph / Twitter (single source of truth). */
+export const OG_IMAGE_DEFAULTS = {
+  heroBackground: "/assets/images/refinery.webp",
+  brandLogo: "/assets/config/logo.png",
+  productFallback: "/assets/images/revision-en-planta.webp",
+} as const;
+
 export const seoConfigs: Record<string, SEOConfig> = {
   "/": {
     title: `${BUSINESS_INFO.name} | ${BUSINESS_INFO.primaryKeyword}`,
@@ -156,7 +165,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
       CONTACT.state.toLowerCase()
     ],
     canonical: `${siteConfig.url}/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/refinery.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -165,12 +174,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `${BUSINESS_INFO.name} | ${BUSINESS_INFO.primaryKeyword}`,
     linkedinDescription: `Soluciones industriales en ${CONTACT.city}. GLP, Gas Natural, Vapor y Procesos Especiales. ${BUSINESS_INFO.ctaText}`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `${BUSINESS_INFO.name} | Soluciones industriales`,
     socialDescription: `GLP, Gas Natural, Vapor y Procesos Especiales. Marcas líderes y soporte técnico especializado.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: BUSINESS_INFO.primaryKeyword,
     breadcrumbs: [{ name: "Inicio", url: siteConfig.url }]
   },
@@ -180,7 +189,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     description: `Conoce a ${BUSINESS_INFO.name}. Más de 50 años desarrollando soluciones técnicas con marcas líderes, acompañando a la industria peruana desde el diagnóstico hasta la puesta en marcha.`,
     keywords: ["nosotros", BUSINESS_INFO.name.toLowerCase(), "acogas", "soluciones industriales", "ingeniería", "soporte técnico"],
     canonical: `${siteConfig.url}/nosotros/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/revision-planta.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -189,12 +198,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Nosotros | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Conoce nuestra experiencia y enfoque en soluciones industriales para GLP, Gas Natural, Vapor y Procesos Especiales.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/revision-planta.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Nosotros | ${BUSINESS_INFO.name}`,
     socialDescription: `Experiencia, ingeniería y soporte técnico para la industria.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/revision-planta.webp",
     articleSection: "Empresa",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -207,7 +216,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     description: `Solicite cotización de equipos y soluciones industriales en GLP, Gas Natural, Vapor y procesos. Respuesta orientada a su aplicación y normativa.`,
     keywords: ["cotización", "cotizar", "GLP", "gas natural", "vapor", "equipos industriales", "acogas", CONTACT.city.toLowerCase()],
     canonical: `${siteConfig.url}/cotizar/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/refinery.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -216,12 +225,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Cotizar | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Solicite una propuesta técnica y comercial alineada a su operación.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Cotizar | ${BUSINESS_INFO.name}`,
     socialDescription: `Equipos y soluciones industriales con respaldo técnico y normativo.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: "Cotización",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -234,7 +243,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     description: `Contáctanos para asesoría técnica especializada en GLP, Gas Natural, Vapor y Procesos Especiales. ${BUSINESS_INFO.ctaText}`,
     keywords: ["contacto", "acogas", "visita técnica", "asesoría", "ventas", CONTACT.city.toLowerCase(), CONTACT.state.toLowerCase()],
     canonical: `${siteConfig.url}/contacto/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/agricola-revision.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -243,12 +252,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Contacto | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Solicita una visita técnica especializada. Respuesta rápida y soporte experto.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/agricola-revision.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Contacto | ${BUSINESS_INFO.name}`,
     socialDescription: `Solicita una visita técnica especializada y cotiza con expertos.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/agricola-revision.webp",
     articleSection: "Contacto",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -256,12 +265,134 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ]
   },
 
+  "/preguntas-frecuentes/": {
+    title: `Preguntas frecuentes | ${BUSINESS_INFO.name}`,
+    description:
+      "Respuestas sobre marcas representadas, visitas técnicas, normativa peruana, cotizaciones, capacitación y cobertura nacional en GLP, gas natural y vapor.",
+    keywords: [
+      "FAQ",
+      "preguntas frecuentes",
+      "acogas",
+      "visita técnica",
+      "normativa",
+      "GLP",
+      "gas natural",
+      "vapor",
+      CONTACT.city.toLowerCase(),
+    ],
+    canonical: `${siteConfig.url}/preguntas-frecuentes/`,
+    ogImage: "/assets/images/refinery.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Preguntas frecuentes | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Información clara sobre servicios, normativa y soporte técnico industrial.",
+    linkedinImage: "/assets/images/refinery.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `FAQ | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Dudas habituales sobre ingeniería, equipos y soporte en campo.",
+    socialImage: "/assets/images/refinery.webp",
+    articleSection: "Soporte",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      {
+        name: "Preguntas frecuentes",
+        url: `${siteConfig.url}/preguntas-frecuentes/`,
+      },
+    ],
+  },
+
+  "/recursos/": {
+    title: `Recursos técnicos | ${BUSINESS_INFO.name}`,
+    description:
+      "Catálogos, manuales técnicos, normativas y guías de selección para GLP, gas natural y vapor. Centro de documentación y cumplimiento para ingeniería y operación.",
+    keywords: [
+      "recursos técnicos",
+      "catálogos",
+      "manuales",
+      "normativas",
+      "GLP",
+      "gas natural",
+      "vapor",
+      "documentación",
+      "acogas",
+    ],
+    canonical: `${siteConfig.url}/recursos/`,
+    ogImage: "/assets/images/trabajando-carton.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Recursos técnicos | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Documentación técnica, normativa y herramientas para proyectos industriales.",
+    linkedinImage: "/assets/images/trabajando-carton.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Recursos | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Catálogos, normativas y guías para GLP, gas natural y vapor.",
+    socialImage: "/assets/images/trabajando-carton.webp",
+    articleSection: "Recursos técnicos",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Recursos técnicos", url: `${siteConfig.url}/recursos/` },
+    ],
+  },
+
+  "/cobertura-industrial/": {
+    title: `Cobertura industrial | ${BUSINESS_INFO.name}`,
+    description:
+      "Presencia y soporte técnico en las principales zonas industriales del Perú: Lima Metropolitana, Lurín, Arequipa, Trujillo y más ciudades con visitas en campo.",
+    keywords: [
+      "cobertura",
+      "Lima",
+      "Arequipa",
+      "Trujillo",
+      "soporte técnico",
+      "visita técnica",
+      "industria",
+      "acogas",
+    ],
+    canonical: `${siteConfig.url}/cobertura-industrial/`,
+    ogImage: "/assets/images/revision-industria.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Cobertura industrial | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Zonas industriales atendidas con ingeniería, equipos y soporte presencial.",
+    linkedinImage: "/assets/images/revision-industria.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Cobertura industrial | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Soporte técnico nacional en GLP, gas natural y vapor.",
+    socialImage: "/assets/images/revision-industria.webp",
+    articleSection: "Cobertura",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Cobertura industrial", url: `${siteConfig.url}/cobertura-industrial/` },
+    ],
+  },
+
   "/productos/": {
     title: `Productos | ${BUSINESS_INFO.name}`,
     description: `Explora nuestras categorías de productos industriales: regulación y control de presión, medición, vapor, bombas y compresores, seguridad y procesos especiales.`,
     keywords: ["productos", "reguladores", "válvulas", "medición", "bombas", "compresores", "vapor", "seguridad", "acogas"],
     canonical: `${siteConfig.url}/productos/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/refinery.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -270,12 +401,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Productos | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Productos industriales para GLP, Gas Natural, Vapor y Procesos Especiales.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Productos | ${BUSINESS_INFO.name}`,
     socialDescription: `Categorías de productos industriales y marcas líderes.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: "Productos",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -288,7 +419,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     description: `Socios estratégicos: Fisher, Tartarini, Spence, Cash, Anderson Greenwood, Crosby, Kunkle, Marston, Enardo, Varec, Corken, Liquid Controls y Cavagna. Fichas por marca y soporte técnico.`,
     keywords: ["marcas", "emerson", "fisher", "tartarini", "cash", "spence", "corken", "cavagna", "liquid controls", "acogas"],
     canonical: `${siteConfig.url}/marcas/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/refinery.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -297,12 +428,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Marcas | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Representamos marcas líderes para regulación, medición, vapor, bombas y compresores.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Marcas | ${BUSINESS_INFO.name}`,
     socialDescription: `Marcas líderes y soporte técnico especializado.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: "Marcas",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -328,7 +459,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
       "acogas",
     ],
     canonical: `${siteConfig.url}/industrias/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/refinery.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -337,12 +468,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Industrias | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Aplicaciones industriales para GLP, Gas Natural, Vapor y Procesos Especiales.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Industrias | ${BUSINESS_INFO.name}`,
     socialDescription: `Soluciones por industria y soporte especializado.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: "Industrias",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -367,7 +498,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
       "acogas",
     ],
     canonical: `${siteConfig.url}/recursos-tecnicos/normativas/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/mineria.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -377,13 +508,13 @@ export const seoConfigs: Record<string, SEOConfig> = {
     linkedinTitle: `Normativas y cumplimiento | ${BUSINESS_INFO.name}`,
     linkedinDescription:
       "Referencia técnica: marco peruano y estándares internacionales para instalaciones industriales.",
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/mineria.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Normativas | ${BUSINESS_INFO.name}`,
     socialDescription:
       "GLP, gas natural, vapor: normativa nacional y rutas de consulta internacional.",
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/mineria.webp",
     articleSection: "Recursos técnicos",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -408,7 +539,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
       "acogas",
     ],
     canonical: `${siteConfig.url}/recursos-tecnicos/certificados/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/revision-refineria.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -418,17 +549,17 @@ export const seoConfigs: Record<string, SEOConfig> = {
     linkedinTitle: `Certificados de fabricante | ${BUSINESS_INFO.name}`,
     linkedinDescription:
       "Certificaciones y documentos oficiales de fabricante para ingeniería y compras.",
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/refinery.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Certificados | ${BUSINESS_INFO.name}`,
     socialDescription:
       "Fisher, Tartarini, Spence: certificados y cuadros comparativos descargables.",
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/refinery.webp",
     articleSection: "Recursos técnicos",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
-      { name: "Recursos técnicos", url: `${siteConfig.url}/recursos-tecnicos/` },
+      { name: "Recursos técnicos", url: `${siteConfig.url}/recursos/` },
       {
         name: "Certificados",
         url: `${siteConfig.url}/recursos-tecnicos/certificados/`,
@@ -441,7 +572,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     description: `Servicios para la industria: ingeniería y dimensionamiento, selección de equipos, diagnóstico técnico, soporte técnico y mantenimiento industrial.`,
     keywords: ["servicios", "ingeniería", "dimensionamiento", "selección de equipos", "diagnóstico técnico", "soporte técnico", "mantenimiento industrial", "acogas"],
     canonical: `${siteConfig.url}/servicios/`,
-    ogImage: "/assets/config/og.png",
+    ogImage: "/assets/images/pipes-white.webp",
     ogType: "website",
     twitterCard: "summary_large_image",
     language: "es-PE",
@@ -450,12 +581,12 @@ export const seoConfigs: Record<string, SEOConfig> = {
     geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
     linkedinTitle: `Servicios | ${BUSINESS_INFO.name}`,
     linkedinDescription: `Acompañamiento técnico desde el diagnóstico hasta la puesta en marcha.`,
-    linkedinImage: "/assets/config/og.png",
+    linkedinImage: "/assets/images/pipes-white.webp",
     linkedinAuthor: BUSINESS_INFO.name,
     facebookAppId: siteConfig.social.facebookAppId,
     socialTitle: `Servicios | ${BUSINESS_INFO.name}`,
     socialDescription: `Ingeniería, selección, diagnóstico, soporte y mantenimiento industrial.`,
-    socialImage: "/assets/config/og.png",
+    socialImage: "/assets/images/pipes-white.webp",
     articleSection: "Servicios",
     breadcrumbs: [
       { name: "Inicio", url: siteConfig.url },
@@ -469,27 +600,83 @@ export const defaultSEO: SEOConfig = {
   description: siteConfig.description,
   keywords: ["acogas", "soluciones industriales", "glp", "gas natural", "vapor", "procesos especiales"],
   canonical: siteConfig.url,
-  ogImage: `${siteConfig.url}/assets/config/og.png`,
+  ogImage: OG_IMAGE_DEFAULTS.heroBackground,
+  ogBrandLogo: OG_IMAGE_DEFAULTS.brandLogo,
   ogType: "website",
-  twitterCard: "summary",
+  twitterCard: "summary_large_image",
   language: "es-PE",
   linkedinTitle: siteConfig.name,
   linkedinDescription: siteConfig.description,
-  linkedinImage: `${siteConfig.url}/assets/config/og.png`,
+  linkedinImage: OG_IMAGE_DEFAULTS.heroBackground,
   linkedinAuthor: siteConfig.author,
   facebookAppId: siteConfig.social.facebookAppId,
   socialTitle: siteConfig.name,
   socialDescription: siteConfig.description,
-  socialImage: `${siteConfig.url}/assets/config/og.png`,
+  socialImage: OG_IMAGE_DEFAULTS.heroBackground,
   articleSection: "General",
   breadcrumbs: [
     { name: "Inicio", url: siteConfig.url }
   ]
 };
 
+function mergeHubChild(hubPath: string, normalizedPath: string): SEOConfig | null {
+  const hub = seoConfigs[hubPath];
+  if (!hub) return null;
+  return {
+    ...defaultSEO,
+    ...hub,
+    canonical: `${siteConfig.url}${normalizedPath}`,
+  };
+}
+
 export function getSEOConfig(pathname: string): SEOConfig {
   const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
-  return seoConfigs[normalizedPath] || defaultSEO;
+  const direct = seoConfigs[normalizedPath];
+  if (direct) return direct;
+
+  /** Fichas de producto: heredan SEO del hub /productos/ (keywords, OG base, etc.). */
+  if (
+    normalizedPath.startsWith("/productos/") &&
+    normalizedPath.length > "/productos/".length
+  ) {
+    const merged = mergeHubChild("/productos/", normalizedPath);
+    if (merged) return merged;
+  }
+
+  /** Detalle de servicio */
+  if (
+    normalizedPath.startsWith("/servicios/") &&
+    normalizedPath !== "/servicios/"
+  ) {
+    const merged = mergeHubChild("/servicios/", normalizedPath);
+    if (merged) return merged;
+  }
+
+  /** Ficha de marca */
+  if (normalizedPath.startsWith("/marcas/") && normalizedPath !== "/marcas/") {
+    const merged = mergeHubChild("/marcas/", normalizedPath);
+    if (merged) return merged;
+  }
+
+  /** Ciudad / zona — cobertura industrial */
+  if (
+    normalizedPath.startsWith("/cobertura-industrial/") &&
+    normalizedPath !== "/cobertura-industrial/"
+  ) {
+    const merged = mergeHubChild("/cobertura-industrial/", normalizedPath);
+    if (merged) return merged;
+  }
+
+  /** Industria sectorial */
+  if (
+    normalizedPath.startsWith("/industrias/") &&
+    normalizedPath !== "/industrias/"
+  ) {
+    const merged = mergeHubChild("/industrias/", normalizedPath);
+    if (merged) return merged;
+  }
+
+  return defaultSEO;
 }
 
 export function getOrganizationSchema() {
@@ -804,6 +991,15 @@ export function getThingsToDoSchema(thingsToDoData: {
  * Generate Service schema for individual service pages
  * More flexible than the existing getServiceSchema
  */
+export function toAbsoluteAssetUrl(pathOrUrl: string): string {
+  const t = pathOrUrl.trim();
+  if (!t) return siteConfig.url;
+  if (t.startsWith("http://") || t.startsWith("https://")) return t;
+  const base = siteConfig.url.replace(/\/$/, "");
+  const path = t.startsWith("/") ? t : `/${t}`;
+  return `${base}${path}`;
+}
+
 export function getServicePageSchema(serviceData: {
   name: string;
   description: string;
@@ -812,8 +1008,18 @@ export function getServicePageSchema(serviceData: {
   price?: string;
   serviceType?: string;
   areaServed?: string[];
+  /** Imagen representativa del servicio (ruta bajo /public o URL absoluta). */
+  image?: string;
 }) {
-  return {
+  const areaDefault = serviceData.areaServed || [
+    {
+      "@type": "City",
+      "name": siteConfig.contact.city,
+      "addressRegion": siteConfig.contact.state,
+    },
+  ];
+
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": serviceData.name,
@@ -832,43 +1038,141 @@ export function getServicePageSchema(serviceData: {
         "addressLocality": siteConfig.contact.city,
         "addressRegion": siteConfig.contact.city,
         "postalCode": siteConfig.contact.zipCode,
-        "addressCountry": siteConfig.contact.country
+        "addressCountry": siteConfig.contact.country,
       },
-      "areaServed": serviceData.areaServed || [
-        {
-          "@type": "City",
-          "name": siteConfig.contact.city,
-          "addressRegion": siteConfig.contact.state
-        }
-      ],
+      "areaServed": areaDefault,
     },
     "serviceType": serviceData.serviceType || serviceData.category || serviceData.name,
     "category": serviceData.category,
-    "areaServed": serviceData.areaServed || [
-      {
-        "@type": "City",
-        "name": siteConfig.contact.city,
-        "addressRegion": siteConfig.contact.state
-      }
-    ],
-    "offers": {
+    "areaServed": areaDefault,
+  };
+
+  if (serviceData.price) {
+    schema.offers = {
       "@type": "Offer",
-      "description": `Professional ${serviceData.name.toLowerCase()} with free consultation`,
-      "priceCurrency": "USD",
-      "price": serviceData.price || "0",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "priceCurrency": "USD",
-        "price": serviceData.price || "0"
-      },
+      "description": `Consultoría y servicio: ${serviceData.name}`,
+      "priceCurrency": "PEN",
+      "price": serviceData.price,
       "availability": "https://schema.org/InStock",
-      "validFrom": new Date().toISOString().split('T')[0]
+      "url": serviceData.url,
+      "seller": {
+        "@type": "Organization",
+        "name": siteConfig.name,
+        "url": siteConfig.url,
+      },
+    };
+  }
+
+  const img = serviceData.image?.trim();
+  if (img) {
+    schema.image = toAbsoluteAssetUrl(img);
+  }
+
+  return schema;
+}
+
+/**
+ * Producto industrial (ficha de catálogo). Sin precio público: `offers` indica canal de consulta.
+ */
+export function getProductSchema(input: {
+  name: string;
+  description?: string;
+  image?: string;
+  brand?: string;
+  sku?: string;
+  url: string;
+}) {
+  const productUrl = input.url.startsWith("http")
+    ? input.url
+    : toAbsoluteAssetUrl(input.url.startsWith("/") ? input.url : `/${input.url}`);
+
+  const img = input.image?.trim();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": input.name,
+    "description": input.description,
+    "sku": input.sku || input.name,
+    ...(input.brand && {
+      brand: { "@type": "Brand", "name": input.brand },
+    }),
+    ...(img && { image: toAbsoluteAssetUrl(img) }),
+    "url": productUrl,
+    offers: {
+      "@type": "Offer",
+      "url": productUrl,
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": siteConfig.name,
+        "url": siteConfig.url,
+      },
     },
-    "brand": {
-      "@type": "Brand",
-      "name": siteConfig.name
+  };
+}
+
+/** Marca representada + página de contenido (sin duplicar precios inventados). */
+export function getMarcaStructuredSchemas(input: {
+  name: string;
+  logo?: string;
+  pageUrl: string;
+  description?: string;
+}): Record<string, unknown>[] {
+  const pageUrl = input.pageUrl.startsWith("http")
+    ? input.pageUrl
+    : toAbsoluteAssetUrl(
+        input.pageUrl.startsWith("/") ? input.pageUrl : `/${input.pageUrl}`,
+      );
+
+  const brandSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: input.name,
+  };
+  const logo = input.logo?.trim();
+  if (logo) {
+    brandSchema.logo = toAbsoluteAssetUrl(logo);
+  }
+
+  return [
+    brandSchema,
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${input.name} | ${siteConfig.name}`,
+      description: input.description,
+      url: pageUrl,
+      about: { "@type": "Brand", name: input.name },
+      isPartOf: {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.url,
+      },
     },
-    "image": `${siteConfig.url}${siteConfig.logo}`
+  ];
+}
+
+export function getWebPageSchema(input: {
+  name: string;
+  description?: string;
+  url: string;
+}) {
+  const url = input.url.startsWith("http")
+    ? input.url
+    : toAbsoluteAssetUrl(input.url.startsWith("/") ? input.url : `/${input.url}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: input.name,
+    description: input.description,
+    url,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
   };
 }
 

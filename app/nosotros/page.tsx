@@ -2,23 +2,21 @@ import { QuienesSomos } from "@/components/sections/nosotros/quienes-somos";
 import { PropuestaValor } from "@/components/sections/nosotros/propuesta-valor";
 import { Trayectoria } from "@/components/sections/nosotros/trayectoria";
 import { CTA } from "@/components/sections/cta/cta";
-import { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: "Nosotros | ACOGAS — Socio estratégico para la industria peruana",
-  description:
-    "Acogas Industrial: ingeniería, marcas líderes y valores corporativos. GLP, gas natural, vapor y procesos industriales con criterio técnico y normativo.",
-};
+export const metadata: Metadata = generateMetadataFromConfig("/nosotros/");
 
 export default function NosotrosPage() {
   return (
     <>
+      <JsonLdScripts pathname="/nosotros/" />
       <PagesHero
         title="Ofreciendo Soluciones Seguras y Eficientes"
         subtitle="Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales."
-        image="/assets/images/refiner2.webp"
+        image="/assets/images/revision-planta.webp"
         breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Nosotros", href: "/nosotros" }]}
       />
       <QuienesSomos />

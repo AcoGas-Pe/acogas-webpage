@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { PRODUCT_INDUSTRY_URLS } from '@/lib/business-config';
 import { seoConfigs, siteConfig } from '@/lib/seo-config';
 import { isSiteIndexingDisabled } from '@/lib/site-indexing';
 /*
@@ -67,5 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...routes, ...blogPostRoutes, ...serviceRoutes, ...thingsToDoRoutes, ...cityRoutes];
 */
-return routes;
+  const industryRoutes: MetadataRoute.Sitemap = PRODUCT_INDUSTRY_URLS.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  return [...routes, ...industryRoutes];
 }

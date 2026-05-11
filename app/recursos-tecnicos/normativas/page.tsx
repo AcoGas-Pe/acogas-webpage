@@ -1,23 +1,23 @@
 import { CTA } from "@/components/sections/cta/cta";
 import { NormativasPdfDownloads } from "@/components/sections/recursos/normativas-pdf-downloads";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
-import { BUSINESS_INFO } from "@/lib/business-config";
 import type { Metadata } from "next";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: `Normativas y cumplimiento | ${BUSINESS_INFO.name}`,
-  description:
-    "Mapa normativo Perú e internacional para GLP, gas natural, vapor y procesos industriales: DS, OSINERGMIN, NTP y estándares NFPA, ASME, API, IEC. Rutas oficiales de consulta.",
-};
+export const metadata: Metadata = generateMetadataFromConfig(
+  "/recursos-tecnicos/normativas/",
+);
 
 export default function RecursosTecnicosNormativasPage() {
   return (
     <>
+      <JsonLdScripts pathname="/recursos-tecnicos/normativas/" />
       <PagesHero
         title="Normativas y cumplimiento"
         subtitle="Recursos técnicos"
         description="Marco peruano, NTP y estándares internacionales de referencia para diseño, operación y fiscalización en GLP, gas natural y vapor."
-        image="/assets/images/refiner2.webp"
+        image="/assets/images/mineria.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Recursos técnicos", href: "/recursos-tecnicos/" },

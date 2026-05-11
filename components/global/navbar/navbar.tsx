@@ -153,7 +153,11 @@ export function Navbar() {
                     </div>
                   </>
                 ) : (
-                  <NavItem label={item.label} href={item.href} />
+                  <NavItem
+                    label={item.label}
+                    href={item.href}
+                    isAtTop={isAtTop}
+                  />
                 )}
               </li>
             ))}
@@ -162,7 +166,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div
             className={cn(
-              "hidden md:flex flex-row gap-2",
+              "hidden md:flex flex-row gap-2 items-center",
               isAtTop ? "text-foreground font-semibold" : "text-white",
             )}
           >
@@ -194,7 +198,9 @@ export function Navbar() {
               onClick={() => quoteCart.open()}
             >
               <svg
-                className="w-8 h-8 shrink-0 text-foreground "
+                className={cn(
+                  "w-8 h-8 shrink-0",
+                )}
                 aria-hidden="true"
                 focusable="false"
               >
@@ -213,7 +219,12 @@ export function Navbar() {
           {/* Mobile trigger */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-muted transition-colors"
+            className={cn(
+              "md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md transition-colors",
+              isAtTop
+                ? "hover:bg-muted text-foreground"
+                : "hover:bg-white/10 text-white",
+            )}
             onClick={openMobile}
             aria-label="Abrir menú"
           >
@@ -258,7 +269,7 @@ export function Navbar() {
               </Link>
               <button
                 type="button"
-                className="inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-muted transition-colors"
+                className="inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-white/10 text-white transition-colors"
                 onClick={closeMobile}
                 aria-label="Cerrar menú"
               >
@@ -276,7 +287,7 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={closeMobile}
-                      className="block px-3 py-3 rounded-md hover:bg-muted text-foreground font-medium"
+                      className="block px-3 py-3 rounded-md hover:bg-white/10 text-white/90 font-medium"
                     >
                       {item.label}
                     </Link>
@@ -287,13 +298,13 @@ export function Navbar() {
                   <div key={item.href} className="mb-1">
                     <button
                       type="button"
-                      className="w-full flex items-center justify-between px-3 py-3 rounded-md hover:bg-muted text-foreground font-medium"
+                      className="w-full flex items-center justify-between px-3 py-3 rounded-md hover:bg-white/10 text-white/90 font-medium"
                       onClick={() => toggleMobileSection(menuKey)}
                     >
                       <span>{item.label}</span>
                       <ChevronDown
                         className={cn(
-                          "w-5 h-5 transition-transform",
+                          "w-5 h-5 transition-transform text-white/70",
                           isSectionOpen && "rotate-180",
                         )}
                       />
@@ -366,7 +377,7 @@ export function Navbar() {
                                         <Link
                                           href={cat.href}
                                           onClick={closeMobile}
-                                          className="block text-sm font-semibold text-primary-light hover:underline"
+                                          className="block text-sm font-semibold text-primary hover:underline"
                                         >
                                           {cat.label}
                                         </Link>
@@ -375,7 +386,7 @@ export function Navbar() {
                                             key={si}
                                             href={sec.href}
                                             onClick={closeMobile}
-                                            className="block pl-2 text-xs font-medium text-muted-foreground hover:text-primary hover:underline"
+                                            className="block pl-2 text-xs font-medium text-white/60 hover:text-primary hover:underline"
                                           >
                                             {sec.title}
                                           </Link>
@@ -387,7 +398,7 @@ export function Navbar() {
                                         key={li}
                                         href={link.href}
                                         onClick={closeMobile}
-                                        className="block px-3 py-2 rounded-md hover:bg-muted text-sm text-foreground"
+                                        className="block px-3 py-2 rounded-md hover:bg-muted text-sm text-white/90 hover:text-foreground"
                                       >
                                         <div className="font-medium">
                                           {link.label}
@@ -408,7 +419,7 @@ export function Navbar() {
                             <Link
                               href={menu.mainLink.href}
                               onClick={closeMobile}
-                              className="inline-flex items-center text-sm text-primary-light font-semibold hover:underline"
+                              className="inline-flex items-center text-sm text-primary font-semibold hover:underline"
                             >
                               {menu.mainLink.label}
                             </Link>

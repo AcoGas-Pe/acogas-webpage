@@ -1,6 +1,7 @@
 "use client";
 
 import type { Product } from "@/domain/product";
+import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
@@ -65,7 +66,7 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
       <div className="container max-w-6xl grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start">
         <div className="relative min-h-[280px] w-full overflow-hidden rounded-xl border border-border bg-muted lg:sticky lg:top-24 lg:min-h-[min(70vh,520px)]">
           <Image
-            src={product.imagen || "/assets/config/placeholder-image.png"}
+            src={product.imagen || PRODUCT_IMAGE_FALLBACK}
             alt={product.modelo || "Producto"}
             fill
             className="object-cover"

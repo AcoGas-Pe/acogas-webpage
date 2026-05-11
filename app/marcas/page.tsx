@@ -9,6 +9,7 @@ import {
   STRATEGIC_PARTNERS_CLOSING,
   strategicBrandLogoUsesFullColor,
 } from "@/lib/strategic-brands";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import { CertificadosPdfDownloads } from "@/components/sections/recursos/certificados-pdf-downloads";
 import { MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG } from "@/lib/certificados-pdfs-data";
@@ -19,11 +20,12 @@ export const metadata: Metadata = generateMetadataFromConfig("/marcas/");
 export default function MarcasPage() {
   return (
     <>
+      <JsonLdScripts pathname="/marcas/" />
       <PagesHero
         title={STRATEGIC_PARTNERS_HEADING.title}
         subtitle={`${STRATEGIC_PARTNERS_HEADING.eyebrow} · ${STRATEGIC_PARTNERS_HEADING.subtitle}`}
         description="Integración de equipos, ingeniería y servicios con marcas líderes en regulación, seguridad, vapor, bombas y medición."
-        image="/assets/images/refinery.webp"
+        image="/assets/images/metales-trabajando.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Marcas", href: "/marcas/" },

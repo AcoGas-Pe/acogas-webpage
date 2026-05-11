@@ -109,7 +109,7 @@ export const NAV_MENUS = {
 
   nosotros: {
     image: {
-      src: "/assets/config/placeholder-image.png",
+      src: "/assets/images/trabajando-refineria.webp",
       alt: "Quienes Somos",
       title: "Quiénes Somos",
       description:
@@ -169,7 +169,7 @@ export const NAV_MENUS = {
 
   contacto: {
     image: {
-      src: "/assets/config/placeholder-image.png",
+      src: "/assets/images/banner-revision.webp",
       alt: "Contacto",
       title: "Contacto",
       description: "Canales corporativos Acogas Industrial",
@@ -197,7 +197,7 @@ export const NAV_MENUS = {
 
   coberturaIndustrial: {
     image: {
-      src: "/assets/config/placeholder-image.png",
+      src: "/assets/images/planta-industrial.webp",
       alt: "Cobertura Industrial",
       title: "Cobertura Industrial",
       description: "Nuestra presencia en Lima, Trujillo y Arequipa",

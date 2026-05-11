@@ -1,8 +1,6 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import { Service } from "@/domain/service";
-import { ArrowRight } from "lucide-react";
+import type { Service } from "@/domain/service";
+import { getApplicationIcon } from "@/lib/section-icons";
 
 interface ServiceApplicationsProps {
   service: Service;
@@ -11,33 +9,50 @@ interface ServiceApplicationsProps {
 
 export function ServiceApplications({ service, className }: ServiceApplicationsProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
+    <section
+      className={cn(
+        "section border-y border-border/60 bg-background py-14 sm:py-16 md:py-20",
+        className,
+      )}
+    >
       <div className="container">
-        <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+          <p className="text-xs font-bold uppercase tracking-[0.15em] text-accent sm:text-sm">
             Aplicaciones
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            Sectores Industriales
+          <h2 className="mt-2 text-2xl font-bold uppercase tracking-[0.08em] text-foreground sm:text-3xl md:text-[2rem]">
+            Sectores y casos típicos
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            Nuestras soluciones de {service.shortTitle.toLowerCase()} se aplican en diversos sectores industriales.
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            Dónde aplica nuestra experiencia en {service.shortTitle.toLowerCase()}.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          {service.applications.map((app, index) => (
-            <div
-              key={index}
-              className="card-base p-5 flex items-start gap-4 hover:border-primary/30 transition-colors"
-            >
-              <ArrowRight className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="text-base font-bold text-foreground mb-1">{app.industry}</h3>
-                <p className="text-sm text-muted-foreground">{app.useCase}</p>
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+          {service.applications.map((app, index) => {
+            const Icon = getApplicationIcon(app.industry ?? "", index);
+            return (
+              <div
+                key={`${app.industry}-${index}`}
+                className={cn(
+                  "flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm",
+                  "transition hover:border-primary/25 hover:shadow-md",
+                )}
+              >
+                <div className="shrink-0 pt-0.5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
+                    <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden />
+                  </div>
+                </div>
+                <div className="min-w-0 text-left">
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-primary sm:text-base">
+                    {app.industry}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{app.useCase}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

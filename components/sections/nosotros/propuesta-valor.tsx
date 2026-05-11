@@ -110,7 +110,7 @@ export function PropuestaValor() {
       >
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
           <Image
-            src="/assets/images/refiner2.webp"
+            src="/assets/images/revision-refineria-2.webp"
             alt=""
             fill
             className="object-cover opacity-25"

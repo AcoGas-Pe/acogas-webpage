@@ -22,7 +22,7 @@ interface HeroProps {
 }
 
 export function Hero({
-  title = "Soluciones Profesionales en Gas y Energía",
+  title = "Soluciones Profesionales en Gas y Energia",
   subtitle = "Confianza y Calidad",
   description = "Comprometidos con la excelencia en el suministro de gas y energía para hogares y empresas. Seguridad, confiabilidad y servicio de primera clase.",
   primaryAction = {
@@ -44,7 +44,7 @@ export function Hero({
         <div className="absolute inset-0 w-full h-full">
           <Slideshow />
           {/* overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-white/80 via-white/40 to-white/80" aria-hidden />
+          <div className="absolute inset-0 bg-linear-to-r from-black/40 via-primary/40 to-black/40" aria-hidden />
         </div>
       )}
       <div className="container max-w-7xl flex items-start justify-start mx-auto px-4 py-16 z-10">
@@ -61,7 +61,7 @@ export function Hero({
           </h1>
 
           {description && (
-            <p className="text-sm sm:text-base text-foreground max-w-2xl leading-relaxed mt-3">
+            <p className="text-sm opacity-80 sm:text-base text-white max-w-2xl leading-relaxed mt-3">
               {description}
             </p>
           )}

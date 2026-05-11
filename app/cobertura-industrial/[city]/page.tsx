@@ -1,6 +1,13 @@
 import { getCityBySlug, getAllCitySlugs } from "@/lib/cities-data";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import {
+  generateBreadcrumbSchema,
+  getCityPlaceSchema,
+  siteConfig,
+} from "@/lib/seo-config";
+import { generateDynamicMetadata } from "@/lib/seo-metadata";
 import { Hero } from "@/components/sections/hero/hero";
 import { StatsBar } from "@/components/sections/stats-bar/stats-bar";
 import { IndustriesSolutionsBento } from "@/components/sections/industries-solutions/industries-solutions-bento";
@@ -23,16 +30,13 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const { city: slug } = await params;
   const city = getCityBySlug(slug);
   if (!city) return { title: "Ciudad no encontrada" };
-  
-  return {
+
+  return generateDynamicMetadata(`/cobertura-industrial/${slug}/`, {
     title: city.metaTitle,
     description: city.metaDescription,
-    openGraph: {
-      title: city.metaTitle,
-      description: city.metaDescription,
-      type: "website",
-    },
-  };
+    image: "/assets/images/revision-industria.webp",
+    openGraphType: "website",
+  });
 }
 
 export default async function CityPage({ params }: CityPageProps) {
@@ -46,8 +50,29 @@ export default async function CityPage({ params }: CityPageProps) {
     { label: city.name, href: `/cobertura-industrial/${city.slug}` },
   ];
 
+  const pageUrl = `${siteConfig.url}/cobertura-industrial/${slug}/`;
+
   return (
     <>
+      <JsonLdScripts
+        pathname={`/cobertura-industrial/${slug}/`}
+        includeBreadcrumb={false}
+        extra={[
+          generateBreadcrumbSchema([
+            { name: "Inicio", url: siteConfig.url },
+            {
+              name: "Cobertura industrial",
+              url: `${siteConfig.url}/cobertura-industrial/`,
+            },
+            { name: city.name, url: pageUrl },
+          ]),
+          getCityPlaceSchema({
+            name: city.name,
+            state: city.region || "Perú",
+            description: city.metaDescription,
+          }),
+        ]}
+      />
       <Hero
         title={city.hero.title}
         subtitle={city.hero.subtitle}

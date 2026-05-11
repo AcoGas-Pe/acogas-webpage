@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CONTACT, formatPhoneTel } from "@/lib/business-config";
 import { resolveAllProducts } from "@/lib/products-resolve";
 import { Metadata } from "next";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import Link from "next/link";
 
@@ -15,11 +16,12 @@ export default async function CotizarPage() {
 
   return (
     <>
+      <JsonLdScripts pathname="/cotizar/" />
       <PagesHero
-        title="Solicitar cotización"
+        title="Solicitar cotizacion"
         subtitle="Propuestas técnicas y comerciales"
         description="Indíquenos su aplicación, fluido de trabajo y requisitos normativos. Nuestro equipo preparará una propuesta alineada a su operación, sin ofrecer productos aislados por catálogo."
-        image="/assets/images/refiner3.webp"
+        image="/assets/images/pintura-vajilla.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Cotizar", href: "/cotizar" },

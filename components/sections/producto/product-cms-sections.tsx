@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/domain/product";
+import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 import { cn } from "@/lib/utils";
 import { getRelatedProductSummaries } from "@/lib/product-summaries";
 
@@ -273,7 +274,7 @@ function RelacionadosBlock({
     <SectionShell title="Productos relacionados">
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {summaries.map((p) => {
-          const img = p.imagen ?? "/assets/config/placeholder-image.png";
+          const img = p.imagen ?? PRODUCT_IMAGE_FALLBACK;
           const title = p.modelo ?? p.slug;
           return (
             <li key={p.slug}>

@@ -1,5 +1,21 @@
 import { Metadata } from 'next';
-import { getSEOConfig, siteConfig, getOrganizationSchema, getLocalBusinessSchema, getWebsiteSchema, getServiceSchema, getArticleSchema, getCityLocalBusinessSchema, getCityPlaceSchema, getServicePageSchema, getThingsToDoSchema, getFAQSchema, getBusinessSchema, getPortfolioSchema } from './seo-config';
+import {
+  getSEOConfig,
+  siteConfig,
+  OG_IMAGE_DEFAULTS,
+  type SEOConfig,
+  getOrganizationSchema,
+  getLocalBusinessSchema,
+  getWebsiteSchema,
+  getArticleSchema,
+  getCityLocalBusinessSchema,
+  getCityPlaceSchema,
+  getServicePageSchema,
+  getThingsToDoSchema,
+  getFAQSchema,
+  getBusinessSchema,
+  getPortfolioSchema,
+} from './seo-config';
 import { isSiteIndexingDisabled } from './site-indexing';
 // import { generateBreadcrumbSchema } from './breadcrumb-utils';
 
@@ -47,6 +63,14 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
     // Ensure description is under 160 characters
     const description = truncateDescription(seo.description || '', 160);
     
+    const ogPrimary = generateOGImageUrl(
+      seo.socialImage,
+      seo.ogImage,
+      undefined,
+      OG_IMAGE_DEFAULTS.heroBackground,
+    );
+    const ogAlt = seo.description || `${siteConfig.name} - ${seo.title}`;
+
     const metadata = {
       title: seo.title,
       description: description,
@@ -66,21 +90,14 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
         title: seo.socialTitle || seo.title,
         description: truncateDescription(seo.socialDescription || seo.description || '', 160),
         siteName: siteConfig.name,
-        images: [
-          {
-            url: generateOGImageUrl(seo.socialImage, seo.ogImage),
-            width: 1200,
-            height: 630,
-            alt: seo.description || `${siteConfig.name} - ${seo.title}`,
-          },
-        ],
+        images: buildOpenGraphImages(seo, { primaryAbsoluteUrl: ogPrimary, primaryAlt: ogAlt }),
       },
 
       twitter: {
         card: seo.twitterCard,
         title: seo.socialTitle || seo.title,
         description: truncateDescription(seo.socialDescription || seo.description || '', 160),
-        images: [generateOGImageUrl(seo.socialImage, seo.ogImage)],
+        images: [ogPrimary],
         creator: siteConfig.social.twitterHandle ? `@${siteConfig.social.twitterHandle}` : undefined,
       },
 
@@ -106,7 +123,12 @@ export function generateMetadataFromConfig(pathname: string): Metadata {
         linkedin: {
           title: seo.linkedinTitle,
           description: seo.linkedinDescription,
-          image: generateOGImageUrl(seo.linkedinImage, seo.ogImage),
+          image: generateOGImageUrl(
+            seo.linkedinImage,
+            seo.socialImage,
+            seo.ogImage,
+            OG_IMAGE_DEFAULTS.heroBackground,
+          ),
         },
       }),
       
@@ -175,54 +197,64 @@ export function truncateDescription(description: string, maxLength: number = 160
 }
 
 /**
- * Generate OG image URL with fallbacks
- * Ensures there's always a valid OG image URL
- * 
- * @param customImage - Custom image URL (optional)
- * @param seoImage - SEO config image URL (optional)
- * @param defaultImage - Default image filename (optional)
- * @returns Valid OG image URL
+ * URL absoluta para og:image / twitter.
+ * Orden: candidatos en orden; el último argumento es ruta relativa de respaldo (p. ej. hero o producto).
  */
 export function generateOGImageUrl(
-  customImage?: string,
-  seoImage?: string,
-  defaultImage: string = 'og.png'
+  a?: string,
+  b?: string,
+  c?: string,
+  fallbackRelative: string = OG_IMAGE_DEFAULTS.heroBackground,
 ): string {
-  // Priority: custom > seo config > default
-  const imageUrl = customImage || seoImage || `${siteConfig.url}/${defaultImage}`;
-  
-  // Ensure absolute URL
-  if (imageUrl.startsWith('/')) {
-    return `${siteConfig.url}${imageUrl}`;
+  const raw = (a?.trim() || b?.trim() || c?.trim() || fallbackRelative).trim();
+  if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
+  const path = raw.startsWith('/') ? raw : `/${raw}`;
+  const base = siteConfig.url.replace(/\/$/, '');
+  return `${base}${path}`;
+}
+
+function resolveOgBrandLogoSource(seo: SEOConfig): string | null {
+  if (seo.ogBrandLogo === false) return null;
+  if (typeof seo.ogBrandLogo === 'string' && seo.ogBrandLogo.trim()) return seo.ogBrandLogo.trim();
+  return OG_IMAGE_DEFAULTS.brandLogo;
+}
+
+/** Primera imagen = contenido; segunda = logo Acogas (según seo-config). */
+function buildOpenGraphImages(
+  seo: SEOConfig,
+  options: { primaryAbsoluteUrl: string; primaryAlt: string },
+): NonNullable<NonNullable<Metadata['openGraph']>['images']> {
+  const images: NonNullable<NonNullable<Metadata['openGraph']>['images']> = [
+    {
+      url: options.primaryAbsoluteUrl,
+      width: 1200,
+      height: 630,
+      alt: options.primaryAlt,
+    },
+  ];
+  const logoSrc = resolveOgBrandLogoSource(seo);
+  if (logoSrc) {
+    images.push({
+      url: generateOGImageUrl(logoSrc),
+      width: 512,
+      height: 512,
+      alt: `${siteConfig.name} logo`,
+    });
   }
-  
-  if (imageUrl.startsWith('http')) {
-    return imageUrl;
-  }
-  
-  return `${siteConfig.url}/${imageUrl}`;
+  return images;
 }
 
 export function generateStructuredData(pathname?: string, additionalData?: { blogPostData?: BlogPostData }) {
   const schemas: Record<string, unknown>[] = [
-    getWebsiteSchema(), // Website schema for other pages
-    getBusinessSchema(), // Business schema (includes logo) - more comprehensive than LocalBusiness
+    getWebsiteSchema(),
+    getBusinessSchema(),
   ];
-  
-  // Add service schema for service pages
-  if (pathname) {
-    const serviceSchema = getServiceSchema(pathname);
-    if (serviceSchema) {
-      schemas.push(serviceSchema);
-    }
-  }
-  
+
   // Add article schema for blog posts
   if (additionalData?.blogPostData) {
     const articleSchema = getArticleSchema(additionalData.blogPostData);
     schemas.push(articleSchema);
   }
-  
 
   return schemas.map((schema, index) => ({
     id: `schema-${index}`,
@@ -279,6 +311,7 @@ export function generateDynamicMetadata(
     tags?: string[];
     image?: string;
     keywords?: string[];
+    openGraphType?: 'website' | 'article';
   }
 ): Metadata {
   const seo = getSEOConfig(pathname);
@@ -292,6 +325,20 @@ export function generateDynamicMetadata(
   
   // Ensure description is under 160 characters
   const description = truncateDescription(dynamicData.description, 160);
+
+  const isProductDetail =
+    normalizedPath.startsWith('/productos/') && normalizedPath !== '/productos/';
+  const ogFallback = isProductDetail
+    ? OG_IMAGE_DEFAULTS.productFallback
+    : OG_IMAGE_DEFAULTS.heroBackground;
+
+  const ogPrimary = generateOGImageUrl(
+    dynamicData.image,
+    seo.socialImage,
+    seo.ogImage,
+    ogFallback,
+  );
+  const ogAlt = dynamicData.description || `${siteConfig.name} - ${dynamicData.title}`;
   
   return {
     title: dynamicData.title,
@@ -306,20 +353,13 @@ export function generateDynamicMetadata(
     },
     
     openGraph: {
-      type: 'article',
+      type: dynamicData.openGraphType ?? 'article',
       locale: seo.language || 'en_US',
       url: canonicalUrl,
       title: dynamicData.title,
       description: description,
       siteName: siteConfig.name,
-      images: [
-        {
-          url: generateOGImageUrl(dynamicData.image, seo.ogImage),
-          width: 1200,
-          height: 630,
-          alt: dynamicData.description || `${siteConfig.name} - ${dynamicData.title}`,
-        },
-      ],
+      images: buildOpenGraphImages(seo, { primaryAbsoluteUrl: ogPrimary, primaryAlt: ogAlt }),
       ...(dynamicData.publishedTime && { publishedTime: dynamicData.publishedTime }),
       ...(dynamicData.modifiedTime && { modifiedTime: dynamicData.modifiedTime }),
       ...(dynamicData.author && { authors: [dynamicData.author] }),
@@ -330,11 +370,19 @@ export function generateDynamicMetadata(
       card: 'summary_large_image',
       title: dynamicData.title,
       description: description,
-      images: [generateOGImageUrl(dynamicData.image, seo.ogImage)],
+      images: [ogPrimary],
       creator: siteConfig.social.twitterHandle ? `@${siteConfig.social.twitterHandle}` : undefined,
     },
     
     robots: buildRobotsMeta(seo),
+
+    ...(seo.linkedinTitle && {
+      linkedin: {
+        title: dynamicData.title,
+        description,
+        image: ogPrimary,
+      },
+    }),
 
     // Explicit meta title for better SEO tool compatibility
     other: {

@@ -23,6 +23,7 @@ import {
   emptyCatalogFilters,
   filterAndSearchProducts,
 } from "@/lib/product-catalog";
+import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 const PRODUCTS_PER_PAGE = 9;
 
@@ -627,7 +628,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
 }
 
 function ProductCardGrid({ product }: { product: Product }) {
-  const img = product.imagen ?? "/assets/config/placeholder-image.png";
+  const img = product.imagen ?? PRODUCT_IMAGE_FALLBACK;
   const title = product.modelo ?? product.slug;
   return (
     <Link
@@ -654,7 +655,7 @@ function ProductCardGrid({ product }: { product: Product }) {
 }
 
 function ProductCardList({ product }: { product: Product }) {
-  const img = product.imagen ?? "/assets/config/placeholder-image.png";
+  const img = product.imagen ?? PRODUCT_IMAGE_FALLBACK;
   const title = product.modelo ?? product.slug;
   return (
     <Link

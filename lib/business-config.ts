@@ -569,7 +569,7 @@ export interface Product {
       slug: "energia",
       url: "/industrias/energia/",
       description: "Soluciones para generación y operaciones energéticas",
-      image: "/assets/images/refiner2.webp",
+      image: "/assets/images/energia-ecologica.webp",
     },
     {
       name: "Minería",
@@ -598,14 +598,14 @@ export interface Product {
       slug: "textil",
       url: "/industrias/textil/",
       description: "Soluciones para la industria textil",
-      image: "/assets/images/general-industry.webp",
+      image: "/assets/images/textil.webp",
     },
     {
       name: "Químico y plástico",
       slug: "quimico-plastico",
       url: "/industrias/quimico-plastico/",
       description: "Soluciones para química y transformación de plásticos",
-      image: "/assets/images/general-industry.webp",
+      image: "/assets/images/quimica.webp",
     },
     {
       name: "Alimentos y Bebidas",
@@ -619,14 +619,14 @@ export interface Product {
       slug: "transporte",
       url: "/industrias/transporte/",
       description: "Soluciones para operaciones de transporte y logística industrial",
-      image: "/assets/images/refiner3.webp",
+      image: "/assets/images/logistica.webp",
     },
     {
       name: "Entorno GLP",
       slug: "entorno-glp",
       url: "/industrias/entorno-glp/",
       description: "Infraestructura y aplicaciones con gas licuado de petróleo",
-      image: "/assets/images/general-industry.webp",
+      image: "/assets/images/pipes-white.webp",
     },
   ];
 
@@ -798,7 +798,7 @@ export interface Product {
     secondaryButtonLink: "/project-gallery",
     awardCardTitle: "Award-Winning Service",
     awardCardDescription: "Recognized for excellence in Houston, Sugar Land, Katy, Cypress, and surrounding areas",
-    headerImage: "/assets/config/placeholder-image.png",
+    headerImage: "/assets/images/revision-refineria.webp",
     headerImageAlt: "Professional garage door installation team at work",
   };
   
@@ -915,6 +915,7 @@ export interface Product {
     { name: "Contacto", href: "/contacto/" },
     { name: "Productos", href: "/productos/" },
     { name: "Marcas", href: "/marcas/" },
+    { name: "Preguntas frecuentes", href: "/preguntas-frecuentes/" },
   ];
   
   /**

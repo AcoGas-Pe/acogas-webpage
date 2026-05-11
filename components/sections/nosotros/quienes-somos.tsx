@@ -59,7 +59,7 @@ export function QuienesSomos() {
 
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg lg:aspect-[5/6] lg:min-h-[22rem]">
             <Image
-              src="/assets/images/general-industry.webp"
+              src="/assets/images/trabajando-refineria.webp"
               alt="Instalaciones industriales — ACOGAS"
               fill
               className="object-cover"

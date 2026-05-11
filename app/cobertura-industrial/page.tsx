@@ -4,14 +4,12 @@ import { CTA } from "@/components/sections/cta/cta";
 import { CoberturaIndustrialRegions } from "@/components/sections/cobertura-industrial/cobertura-industrial-regions";
 import { getCityBySlug, getRegionalCities } from "@/lib/cities-data";
 import { MapPin } from "lucide-react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: "Cobertura Industrial | ACOGAS - Presencia Nacional",
-  description:
-    "Cobertura técnica en las principales zonas industriales del Perú. Lima Metropolitana, Lurín, Arequipa, Trujillo y más ciudades con soporte técnico presencial.",
-};
+export const metadata: Metadata = generateMetadataFromConfig("/cobertura-industrial/");
 
 const LIMA_AREA_QUICK = ["lima", "callao", "lurin"] as const;
 
@@ -24,11 +22,12 @@ export default function CoberturaIndustrialPage() {
 
   return (
     <>
+      <JsonLdScripts pathname="/cobertura-industrial/" />
       <PagesHero
         title="Cobertura Industrial Nacional"
         subtitle="Presencia Territorial"
         description="Brindamos soporte técnico presencial en las principales zonas industriales del Perú. Más de 50 años de experiencia con equipos de clase mundial."
-        image="/assets/images/refinery.webp"
+        image="/assets/images/revision-industria.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Cobertura Industrial", href: "/cobertura-industrial" },

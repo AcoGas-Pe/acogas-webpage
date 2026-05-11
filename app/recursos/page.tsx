@@ -2,21 +2,21 @@ import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { ResourcesGrid } from "@/components/sections/recursos/resources-grid";
 import { FAQSection } from "@/components/sections/recursos/faq-section";
 import { CTA } from "@/components/sections/cta/cta";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: "Recursos | Acogas Industrial",
-  description: "Acceda a catálogos, manuales técnicos, normativas y guías de selección para GLP, Gas Natural y Vapor. Centro de recursos técnicos de Acogas.",
-};
+export const metadata: Metadata = generateMetadataFromConfig("/recursos/");
 
 export default function RecursosPage() {
   return (
     <>
+      <JsonLdScripts pathname="/recursos/" />
       <PagesHero
-        title="Centro de Recursos Técnicos"
+        title="Centro de Recursos Tecnicos"
         subtitle="Recursos"
         description="Catálogos, manuales, normativas y guías técnicas para apoyar sus decisiones de ingeniería."
-        image="/assets/images/refiner2.webp"
+        image="/assets/images/trabajando-carton.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Recursos", href: "/recursos" },

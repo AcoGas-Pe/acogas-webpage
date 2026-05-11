@@ -64,7 +64,7 @@ export function CTA({
       )}
     >
       <Image
-        src="/assets/images/refiner3.webp"
+        src="/assets/images/planta-nuclear.webp"
         alt=""
         width={1920}
         height={1080}

@@ -3,12 +3,12 @@ import type { Service } from "@/domain/service";
 const SERVICES: Service[] = [
   {
     slug: "ingenieria-dimensionamiento",
-    title: "Ingeniería y Dimensionamiento",
+    title: "Ingenieria y Dimensionamiento",
     shortTitle: "Ingeniería",
     icon: "Ruler",
     description: "Soluciones a medida para cada proyecto industrial.",
     longDescription: "Diseñamos soluciones técnicas personalizadas para cada proyecto. Nuestro equipo de ingeniería realiza el dimensionamiento de equipos, cálculo de capacidades y especificaciones técnicas según sus requerimientos operativos específicos. Más de 50 años de experiencia nos respaldan en proyectos de GLP, Gas Natural, Vapor y procesos industriales.",
-    heroImage: "/assets/images/refinery.webp",
+    heroImage: "/assets/images/revision-planta.webp",
     features: [
       { title: "Ingeniería Conceptual", description: "Desarrollo de conceptos y evaluación de alternativas técnicas para su proyecto." },
       { title: "Ingeniería de Detalle", description: "Diseño detallado, especificaciones y planos de instalación completos." },
@@ -40,12 +40,12 @@ const SERVICES: Service[] = [
   },
   {
     slug: "seleccion-equipos",
-    title: "Selección de Equipos",
+    title: "Seleccion de Equipos",
     shortTitle: "Selección",
     icon: "PackageSearch",
     description: "Elige el equipo ideal para tu aplicación.",
     longDescription: "Le ayudamos a elegir el equipo correcto para su aplicación específica. Nuestra asesoría técnica se basa en las condiciones de operación, normativas vigentes y mejores prácticas de la industria. Trabajamos con las mejores marcas mundiales: Fisher, Emerson, Corken, Cavagna y Liquid Controls.",
-    heroImage: "/assets/images/refinery.webp",
+    heroImage: "/assets/images/reivios-bombas-de-presion.webp",
     features: [
       { title: "Asesoría Técnica", description: "Análisis de sus requerimientos para identificar la mejor solución." },
       { title: "Comparativa de Alternativas", description: "Evaluación técnica y económica de diferentes opciones." },
@@ -77,12 +77,12 @@ const SERVICES: Service[] = [
   },
   {
     slug: "diagnostico-tecnico",
-    title: "Diagnóstico Técnico",
+    title: "Diagnostico Tecnico",
     shortTitle: "Diagnóstico",
     icon: "ClipboardCheck",
     description: "Revisión profesional de sus instalaciones.",
     longDescription: "Evaluación completa de sus instalaciones para identificar oportunidades de mejora, riesgos operativos y optimización de procesos. Nuestro equipo técnico realiza inspecciones en campo y genera informes detallados con recomendaciones accionables.",
-    heroImage: "/assets/images/refinery.webp",
+    heroImage: "/assets/images/revision-en-planta.webp",
     features: [
       { title: "Inspección en Campo", description: "Visita técnica para evaluar el estado actual de sus instalaciones." },
       { title: "Análisis Operativo", description: "Revisión de condiciones de operación y parámetros de proceso." },
@@ -114,12 +114,12 @@ const SERVICES: Service[] = [
   },
   {
     slug: "soporte-tecnico",
-    title: "Soporte Técnico",
+    title: "Soporte Tecnico",
     shortTitle: "Soporte",
     icon: "Headphones",
     description: "Ayuda especializada cuando la necesite.",
     longDescription: "Acompañamiento técnico continuo para resolver dudas, problemas operativos y consultas sobre sus equipos y sistemas. Nuestro equipo de ingenieros está disponible para brindarle el soporte que necesita, ya sea de forma remota o presencial.",
-    heroImage: "/assets/images/refinery.webp",
+    heroImage: "/assets/images/revision-industria.webp",
     features: [
       { title: "Atención Telefónica", description: "Línea directa con ingenieros especializados." },
       { title: "Soporte Remoto", description: "Asistencia técnica por videollamada o correo electrónico." },
@@ -156,7 +156,7 @@ const SERVICES: Service[] = [
     icon: "Wrench",
     description: "Cuidado preventivo y correctivo para sus equipos.",
     longDescription: "Servicios de mantenimiento para garantizar la continuidad operativa de sus equipos. Ofrecemos programas de mantenimiento preventivo y atención correctiva con repuestos originales de las mejores marcas mundiales.",
-    heroImage: "/assets/images/refinery.webp",
+    heroImage: "/assets/images/revision-de-metal.webp",
     features: [
       { title: "Mantenimiento Preventivo", description: "Programas periódicos para evitar fallas y extender vida útil." },
       { title: "Mantenimiento Correctivo", description: "Reparación de equipos con diagnóstico profesional." },

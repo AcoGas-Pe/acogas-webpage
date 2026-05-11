@@ -1,20 +1,20 @@
 import { PagesHero } from "@/components/sections/hero/pages-hero";
 import { ContactForm } from "@/components/sections/contacto/contact-form";
-import { Metadata } from "next";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import type { Metadata } from "next";
+import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 
-export const metadata: Metadata = {
-  title: "Contacto | Acogas Industrial",
-  description: "Contáctenos para solicitar una visita técnica, cotización o soporte. Estamos listos para ayudarle con sus necesidades de GLP, Gas Natural y Vapor.",
-};
+export const metadata: Metadata = generateMetadataFromConfig("/contacto/");
 
 export default function ContactoPage() {
   return (
     <>
+      <JsonLdScripts pathname="/contacto/" />
       <PagesHero
-        title="Contáctenos"
+        title="Contactenos"
         subtitle="Contacto"
         description="Solicite una visita técnica, cotización o soporte. Nuestro equipo está listo para atenderle."
-        image="/assets/images/refiner3.webp"
+        image="/assets/images/agricola-revision.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Contacto", href: "/contacto" },

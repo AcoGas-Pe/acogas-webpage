@@ -66,7 +66,7 @@ export function Services({
           {/* Left: Image + overlay text */}
           <div className="relative rounded-md overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full min-h-[280px] sm:min-h-[360px]">
             <Image
-              src="/assets/config/placeholder-image.png"
+              src="/assets/images/industrias-herolike.webp"
               alt="Instalación industrial de gas - Acogas"
               fill
               className="object-cover"

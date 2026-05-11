@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from "react";
 type Slide = { type: "image"; src: string } | { type: "video"; src: string };
 
 const slides: Slide[] = [
-  { type: "video", src: "/assets/videos/acogas-video-1.mp4" },
   { type: "video", src: "/assets/videos/acogas-video-2.mp4" },
+  { type: "video", src: "/assets/videos/acogas-video-1.mp4" },
 ];
 
 const FADE_DURATION_MS = 2000;

@@ -11,6 +11,7 @@ import { QuoteCartProvider } from "@/contexts/quote-cart-context";
 import { ContactPopup } from "@/components/ui/contact-popup";
 import { QuoteCartSidebar } from "@/components/global/quote-cart-sidebar";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
+import { siteConfig } from "@/lib/seo-config";
 
 const heroFont = localFont({
   src: [
@@ -30,6 +31,7 @@ const montserrat = Montserrat({
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: "Acogas | Soluciones Industriales en GLP, Gas Natural y Vapor",
   description:
     "Más de 50 años desarrollando soluciones industriales seguras y eficientes. Marcas líderes: Emerson, Corken, Cavagna, Liquid Controls. Solicite su visita técnica.",

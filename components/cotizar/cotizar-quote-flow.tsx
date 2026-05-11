@@ -12,6 +12,7 @@ import {
   quoteWhatsappHref,
 } from "@/lib/quote-whatsapp";
 import { Button } from "@/components/ui/button";
+import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 interface CotizarQuoteFlowProps {
   products: Product[];
@@ -142,7 +143,7 @@ function QuoteSendPreviewRow({
   quantity: number;
 }) {
   const p = getProductBySlug(slug);
-  const img = p?.imagen ?? "/assets/config/placeholder-image.png";
+  const img = p?.imagen ?? PRODUCT_IMAGE_FALLBACK;
   const title = p?.modelo ?? slug;
   const marca = p?.marca;
 
@@ -193,7 +194,7 @@ function ProductQuoteRow({
     setQty((q) => Math.min(MAX_QTY_PER_LINE, Math.max(1, q + delta)));
   };
 
-  const img = product.imagen ?? "/assets/config/placeholder-image.png";
+  const img = product.imagen ?? PRODUCT_IMAGE_FALLBACK;
   const title = product.modelo ?? product.slug;
 
   return (

@@ -1,0 +1,296 @@
+Updated: C:\Users\SEBRH\Documents\02.Personal\01.Laboral\02.Work\acogas\acogas-webpage\wp-import-acf-payload.json
+Backup: C:\Users\SEBRH\Documents\02.Personal\01.Laboral\02.Work\acogas\acogas-webpage\wp-import-acf-payload.json.bak
+Posts with at least one field changed: 282
+Corrections applied: 1961
+Still unresolved references: 47
+
+--- Sample corrections (first 80) ---
+[stem] bombas-de-paletas-deslizantes-serie-z :: imagen_filename
+  Serie Z.png
+  -> Serie-Z.jpg
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_1.nombre_visible
+  Installation, Operation & Maintenance Manual (Z-Series).pdf
+  -> Installation-Operation-Maintenance-Manual-Z-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_2.nombre_visible
+  Serie GLP.pdf
+  -> Serie-GLP.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_3.nombre_visible
+  Repair/Rebuild Kits (Z Series).pdf
+  -> Repair_Rebuild-Kits-Z-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_4.nombre_visible
+  LPG Series.pdf
+  -> LPG-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_5.nombre_visible
+  Parts Details (Z Series).pdf
+  -> Parts-Details-Z-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_6.nombre_visible
+  Manual de Instalación, Operación y Mantenimiento (Serie Z).pdf
+  -> Manual-de-Instalacion-Operacion-y-Mantenimiento-Serie-Z.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_7.nombre_visible
+  Juegos de Reparación/Recontrucción (Serie Z).pdf
+  -> Juegos-de-Reparacion_Reconstruccion-Serie-Z.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_8.nombre_visible
+  Parts Details (Z Series).pdf
+  -> Parts-Details-Z-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_9.nombre_visible
+  Z3500 Pump.pdf
+  -> Z3500-Pump.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_10.nombre_visible
+  Z4500 Stationary Pump.pdf
+  -> Z4500-Stationary-Pump.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_11.nombre_visible
+  Serie Z.pdf
+  -> Serie-Z.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_12.nombre_visible
+  Z Series.pdf
+  -> Z-Series.pdf
+[stem] bombas-de-paletas-deslizantes-serie-pt :: imagen_filename
+  Serie PT.png
+  -> Serie-PT.jpg
+[sanitize] bombas-de-paletas-deslizantes-serie-pt :: documento_pdf_1.nombre_visible
+  Installation, Operation & Maintenance Manual (PT-Series).pdf
+  -> Installation-Operation-Maintenance-Manual-PT-Series.pdf
+[sanitize] bombas-de-paletas-deslizantes-serie-pt :: documento_pdf_2.nombre_visible
+  PT Series.pdf
+  -> PT-Series.pdf
+[stem] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: imagen_filename
+  Bombas de paletas deslizantes modelos 521 y 1021.png
+  -> Bombas-de-paletas-deslizantes-modelos-521-y-1021.jpg
+[sanitize] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: documento_pdf_1.nombre_visible
+  Brochure General CORKEN.pdf
+  -> Brochure-General-CORKEN.pdf
+[fuzzy-stem] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: documento_pdf_2.nombre_visible
+  Installation, Operation & Maintenance Manual (Models 51; 521 y 1021).pdf
+  -> Installation-Operation-Maintenance-Manual-Models-51_-521-y-1021.pdf
+[fuzzy-stem] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: documento_pdf_3.nombre_visible
+  Repair Kits and Spare Parts (Models 51; 521 y 1021).pdf
+  -> Repair-Kits-and-Spare-Parts-Models-51_-521-y-1021.pdf
+[fuzzy-stem] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: documento_pdf_4.nombre_visible
+  Parts Details (Models 51; 521 y 1021).pdf
+  -> Parts-Details-Models-51_-521-y-1021.pdf
+[stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: imagen_filename
+  Serie C.png
+  -> Serie-C.jpg
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_1.nombre_visible
+  Brochure General CORKEN.pdf
+  -> Brochure-General-CORKEN.pdf
+[fuzzy-stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_2.nombre_visible
+  Installation, Operation & Maintenance Manual (Models 10; 12; 13; 14; 16; 17; 18 and 19).pdf
+  -> Installation-Operation-Maintenance-Manual-Models-10_-12_-13_-14_-16_-17_-18-and-19.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_3.nombre_visible
+  Serie GLP.pdf
+  -> Serie-GLP.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_4.nombre_visible
+  Multi-Purpose Turbine Pumps (Models DL-18 and DL-19).pdf
+  -> Multi-Purpose-Turbine-Pumps-Models-DL-18-and-DL-19.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_5.nombre_visible
+  LPG Series.pdf
+  -> LPG-Series.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_6.nombre_visible
+  Bombas de turbina (Modelo 16 y 17).pdf
+  -> Bombas-de-turbina-Modelo-16-y-17.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_7.nombre_visible
+  Turbine Pumps (Models 16 and 17).pdf
+  -> Turbine-Pumps-Models-16-and-17.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_8.nombre_visible
+  Manual de instalación, uso y mantenimiento (Modelos 060, 075 y 150).pdf
+  -> Manual-de-instalacion-uso-y-mantenimiento-Modelos-060-075-y-150.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_9.nombre_visible
+  Instrucciones de sustitución de juntas (Modelos 060, 075 y 150).pdf
+  -> Instrucciones-de-sustitucion-de-juntas-Modelos-060-075-y-150.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_10.nombre_visible
+  Detalles de las piezas (Modelos 060, 075 y 150).pdf
+  -> Detalles-de-las-piezas-Modelos-060-075-y-150.pdf
+[fuzzy-stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_11.nombre_visible
+  Installation, Operation & Maintenance Manual (Models 060; 075 and 150).pdf
+  -> Installation-Operation-Maintenance-Manual-Models-060_-075-and-150.pdf
+[fuzzy-stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_12.nombre_visible
+  Seal Replacement Instructions (Models 060; 075 and 150).pdf
+  -> Seal-Replacement-Instructions-Models-060_-075-and-150.pdf
+[fuzzy-stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_13.nombre_visible
+  Parts Details (Models 060; 075 and 150).pdf
+  -> Parts-Details-Models-060_-075-and-150.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_14.nombre_visible
+  Autogas Series (Models 075 and 150).pdf
+  -> Autogas-Series-Models-075-and-150.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_15.nombre_visible
+  060 Autogas Pump.pdf
+  -> 060-Autogas-Pump.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_16.nombre_visible
+  075 Autogas Pump.pdf
+  -> 075-Autogas-Pump.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_17.nombre_visible
+  Industrial Coro-Flo Pumps.pdf
+  -> Industrial-Coro-Flo-Pumps.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_18.nombre_visible
+  HDP075 Autogas Pump.pdf
+  -> HDP075-Autogas-Pump.pdf
+[sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_19.nombre_visible
+  HDP150 Autogas Pump.pdf
+  -> HDP150-Autogas-Pump.pdf
+[stem] condensate-commander-pump :: imagen_filename
+  Condensate Commander Pump.png
+  -> Condensate-Commander-Pump.jpg
+[sanitize] condensate-commander-pump :: documento_pdf_1.nombre_visible
+  General SPENCE Brochure 2 .pdf
+  -> General-SPENCE-Brochure-2-.pdf
+[sanitize] condensate-commander-pump :: documento_pdf_2.nombre_visible
+  Bulletin (Spence Condensate Commander Pump).pdf
+  -> Bulletin-Spence-Condensate-Commander-Pump.pdf
+[sanitize] condensate-commander-pump :: documento_pdf_3.nombre_visible
+  Steam traps and steam specialty.pdf
+  -> Steam-traps-and-steam-specialty.pdf
+[sanitize] condensate-commander-pump :: documento_pdf_4.nombre_visible
+  Instruction Manual (Condensate Commander).pdf
+  -> Instruction-Manual-Condensate-Commander.pdf
+[stem] compresores-reciprocantes-verticales :: imagen_filename
+  Compresores Reciprocantes Verticales .png
+  -> Compresores-Reciprocantes-Verticales-.jpg
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_1.nombre_visible
+  Brochure General CORKEN.pdf
+  -> Brochure-General-CORKEN.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_2.nombre_visible
+  Manual de Instalación, Operación y Mantenimiento (Compresores Estilo Sencillo Para Transferencia de Líquido y Recuperación de Vapor).pdf
+  -> Manual-de-Instalacion-Operacion-y-Mantenimiento-Compresores-Estilo-Sencillo-Para-Transferencia-de-Liquido-y-Recuperacion-de-Vapor.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_3.nombre_visible
+  Serie GLP.pdf
+  -> Serie-GLP.pdf
+[fuzzy-stem] compresores-reciprocantes-verticales :: documento_pdf_4.nombre_visible
+  Juegos de Partes de Reparación (Modelos 91; 291; 491; 691 y D891).pdf
+  -> Juegos-de-Partes-de-Reparacion-Modelos-91_-291_-491_-691-y-D891.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_5.nombre_visible
+  LPG Series.pdf
+  -> LPG-Series.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_6.nombre_visible
+  Installation, Operation & Maintenance Manual (Plain Style Compressors for Liquid Transfer-Vapor Recovery).pdf
+  -> Installation-Operation-Maintenance-Manual-Plain-Style-Compressors-for-Liquid-Transfer-Vapor-Recovery.pdf
+[fuzzy-stem] compresores-reciprocantes-verticales :: documento_pdf_7.nombre_visible
+  Repair Kits (Models 91; 291; 491; 691 y D891).pdf
+  -> Repair-Kits-Models-91_-291_-491_-691-y-D891.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_8.nombre_visible
+  Installation, Operation & Maintenance Manual (D and T-Style Double-Acting Gas Compressors All Models 791 and 891).pdf
+  -> Installation-Operation-Maintenance-Manual-D-and-T-Style-Double-Acting-Gas-Compressors-All-Models-791-and-891.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_9.nombre_visible
+  Important Instructions - Gas Compressors.pdf
+  -> Important-Instructions-Gas-Compressors.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_10.nombre_visible
+  I Series.pdf
+  -> I-Series.pdf
+[sanitize] compresores-reciprocantes-verticales :: documento_pdf_11.nombre_visible
+  T791 & T891 (T-Style) Industrial Compressors.pdf
+  -> T791-T891-T-Style-Industrial-Compressors.pdf
+[stem] compresores-reciprocantes-horizontales :: imagen_filename
+  Compresores Reciprocantes Horizontales.png
+  -> Compresores-Reciprocantes-Horizontales.jpg
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_1.nombre_visible
+  Brochure General CORKEN.pdf
+  -> Brochure-General-CORKEN.pdf
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_2.nombre_visible
+  Industrial Compressors (Models HG601, HG602, THG601, and THG602 Series).pdf
+  -> Industrial-Compressors-Models-HG601-HG602-THG601-and-THG602-Series.pdf
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_3.nombre_visible
+  Serie GLP.pdf
+  -> Serie-GLP.pdf
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_4.nombre_visible
+  Installation, Operation & Maintenance Manual (Models HG601, HG602, THG601 & THG602 Series).pdf
+  -> Installation-Operation-Maintenance-Manual-Models-HG601-HG602-THG601-THG602-Series.pdf
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_5.nombre_visible
+  LPG Series.pdf
+  -> LPG-Series.pdf
+[sanitize] compresores-reciprocantes-horizontales :: documento_pdf_6.nombre_visible
+  I Series.pdf
+  -> I-Series.pdf
+[stem] serie-cp :: imagen_filename
+  Serie CP.png
+  -> Serie-CP.jpg
+[sanitize] serie-cp :: documento_pdf_1.nombre_visible
+  General CASH Brochure 1.pdf
+  -> General-CASH-Brochure-1.pdf
+[sanitize] serie-cp :: documento_pdf_2.nombre_visible
+  CP Series Compressor Pilot Valves.pdf
+  -> CP-Series-Compressor-Pilot-Valves.pdf
+[sanitize] serie-cp :: documento_pdf_3.nombre_visible
+  Air Service.pdf
+  -> Air-Service.pdf
+[sanitize] serie-cp :: documento_pdf_4.nombre_visible
+  General CASH Brochure 2.pdf
+  -> General-CASH-Brochure-2.pdf
+[sanitize] serie-cp :: documento_pdf_5.nombre_visible
+  Schematic (Cash Valve Type CP Rotary Screw Compressor Pilot Valve).pdf
+  -> Schematic-Cash-Valve-Type-CP-Rotary-Screw-Compressor-Pilot-Valve.pdf
+[sanitize] serie-cp :: documento_pdf_6.nombre_visible
+  Vacuum Regulators.pdf
+  -> Vacuum-Regulators.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: imagen_filename
+  Series EZH y EZHSO Fisher.jpg
+  -> Series-EZH-y-EZHSO-Fisher.jpg
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_1.nombre_visible
+  Brochure General FISHER 2.pdf
+  -> Brochure-General-FISHER-2.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_2.nombre_visible
+  Reguladores de presión (Tipo EZH y EZHSO).pdf
+  -> Reguladores-de-presion-Tipo-EZH-y-EZHSO.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_3.nombre_visible
+  Soluciones de refino.pdf
+  -> Soluciones-de-refino.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_4.nombre_visible
+  Pressure regulators (Type EZH and EZHO).pdf
+  -> Pressure-regulators-Type-EZH-and-EZHO.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_5.nombre_visible
+  Refining solutions.pdf
+  -> Refining-solutions.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_6.nombre_visible
+  Bulletin 71.2 (EZH and EZHSO Series Pressure Reducing Regulators).pdf
+  -> Bulletin-71.2-EZH-and-EZHSO-Series-Pressure-Reducing-Regulators.pdf
+[sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_7.nombre_visible
+  Application Guide Industrial Regulators.pdf
+  -> Application-Guide-Industrial-Regulators.pdf
+
+--- Unresolved (first 60) ---
+[serie-fl-item-15] documento_pdf_7.nombre_visible: Instruction Manual (Type FL) Año 2024.pdf
+[serie-fl-item-15] documento_pdf_9.nombre_visible: Instruction Manual (Type FL) Año 2025.pdf
+[tipo-ezr-item-67] documento_pdf_6.nombre_visible: Instruction Manual (Type EZR Relief) Año 2019.pdf
+[tipo-ezr-item-67] documento_pdf_7.nombre_visible: Instruction Manual (Type EZR Relief) Año 2024.pdf
+[serie-fl-item-69] documento_pdf_3.nombre_visible: Instruction Manual (Type FL) Año 2019.pdf
+[serie-fl-item-69] documento_pdf_4.nombre_visible: Instruction Manual (Type FL) Año 2024 - 2.pdf
+[tipo-ezr-item-84] documento_pdf_6.nombre_visible: Instruction Manual (Type EZR Relief) Año 2019.pdf
+[tipo-ezr-item-84] documento_pdf_7.nombre_visible: Instruction Manual (Type EZR Relief) Año 2024.pdf
+[serie-fl-item-86] documento_pdf_3.nombre_visible: Instruction Manual (Type FL) Año 2019.pdf
+[serie-fl-item-86] documento_pdf_4.nombre_visible: Instruction Manual (Type FL) Año 2024 - 2.pdf
+[modelos-337] documento_pdf_2.nombre_visible: Important Product Safety Notice.pdf
+[serie-9300-y-9300h-item-117] documento_pdf_10.nombre_visible: Proven Results - Emerson’s High-Capacity Valves Cut Costs and Enhance Reliability for LNG Facility Overpressure Protection.pdf
+[omni-trim] documento_pdf_5.nombre_visible: Instrucciones de Instalación, Mantenimiento y Ajuste (Serie BP).pdf
+[omni-trim] documento_pdf_8.nombre_visible: Instrucciones de Instalación y Manteniento (Series 800 y 900).pdf
+[serie-2010b/2020b-item-127] imagen_filename: 2010B.png
+[serie-800-so-800-pso-y-900-so-item-133] documento_pdf_1.nombre_visible: Instruction Manual (800 and 900 Series).pdf
+[serie-800-so-800-pso-y-900-so-item-133] documento_pdf_3.nombre_visible: Instruction Manual (ES-800 and ES-900 Series).pdf
+[serie-es-805-so-es-805-pso-es-905-so-y-es-905-pso-item-134] documento_pdf_1.nombre_visible: Instruction Manual (ES-805 and ES-905 Series).pdf
+[serie-850-y-950-(952-952-953)-item-135] documento_pdf_1.nombre_visible: Instruction Manual (Serie 850 y 950).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-136] documento_pdf_1.nombre_visible: Manual de Instrucciones (Serie ES-850 y ES-950).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-136] documento_pdf_3.nombre_visible: Instruccion Manual - North America Only (Enardo ES-850 y Enardo ES-950 Series).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-136] documento_pdf_4.nombre_visible: Instruccion Manual (ES-850 y ES-950 Series).pdf
+[serie-860-y-960-item-137] documento_pdf_1.nombre_visible: Instruction Manual (860 and 960 Series).pdf
+[modelo-2000] documento_pdf_1.nombre_visible: Instruction Manual (2000 and 2500 Series).pdf
+[modelo-2500-item-140] documento_pdf_1.nombre_visible: Instruction Manual (2000 and 2500 Series).pdf
+[modelos-215v] documento_pdf_2.nombre_visible: Important Product Safety Notice.pdf
+[serie-9300-y-9300h-item-146] documento_pdf_10.nombre_visible: Proven Results - Emerson’s High-Capacity Valves Cut Costs and Enhance Reliability for LNG Facility Overpressure Protection.pdf
+[serie-2010b/2020b-item-149] imagen_filename: 2010B.png
+[serie-800-so-800-pso-y-900-so-item-153] documento_pdf_1.nombre_visible: Instruction Manual (800 and 900 Series).pdf
+[serie-800-so-800-pso-y-900-so-item-153] documento_pdf_3.nombre_visible: Instruction Manual (ES-800 and ES-900 Series).pdf
+[serie-es-805-so-es-805-pso-es-905-so-y-es-905-pso-item-154] documento_pdf_1.nombre_visible: Instruction Manual (ES-805 and ES-905 Series).pdf
+[serie-850-y-950-(952-952-953)-item-155] documento_pdf_1.nombre_visible: Instruction Manual (Serie 850 y 950).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-156] documento_pdf_1.nombre_visible: Manual de Instrucciones (Serie ES-850 y ES-950).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-156] documento_pdf_3.nombre_visible: Instruccion Manual - North America Only (Enardo ES-850 y Enardo ES-950 Series).pdf
+[serie-es-850-y-es-950-(es-951-952-953)-item-156] documento_pdf_4.nombre_visible: Instruccion Manual (ES-850 y ES-950 Series).pdf
+[serie-860-y-960-item-157] documento_pdf_1.nombre_visible: Instruction Manual (860 and 960 Series).pdf
+[modelo-2500-item-158] documento_pdf_1.nombre_visible: Instruction Manual (2000 and 2500 Series).pdf
+[tipo-y693] documento_pdf_4.nombre_visible: Installation Guide (Type Y693) Año 2002.pdf
+[tipo-y693] documento_pdf_6.nombre_visible: Installation Guide (Type Y693) Año 2015.pdf
+[lcr.iq] imagen_filename: LCR.iQ.png
+[lcr.iq] documento_pdf_1.nombre_visible: LCR.iQ.pdf
+[serie-fvfa] documento_pdf_1.nombre_visible: Instruction Manual (FVFA Series).pdf
+[serie-7] documento_pdf_1.nombre_visible: Instruction Manual (7 Series) Year 2015.pdf
+[serie-7] documento_pdf_3.nombre_visible: Instruction Manual (7 Series) Year 2020.pdf
+[serie-7] documento_pdf_5.nombre_visible: Instruction Manual (7 Series) Year 2022.pdf
+[serie-dfa] documento_pdf_1.nombre_visible: Instruction Manual (DFA Series) Year 2020.pdf
+[serie-dfa] documento_pdf_5.nombre_visible: Instruction Manual (DFA Series) Year 2021.pdf

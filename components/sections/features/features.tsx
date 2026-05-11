@@ -101,7 +101,7 @@ export function Features({
         aria-hidden
       >
         <Image
-          src="/assets/images/general-industry.webp"
+          src="/assets/images/revision-procesos.webp"
           alt=""
           fill
           className="scale-105 object-cover object-center blur-[2px]"

@@ -9,6 +9,7 @@ import { useQuoteCart } from "@/contexts/quote-cart-context";
 import { getProductBySlug } from "@/lib/products-data";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 export function QuoteCartSidebar() {
   const router = useRouter();
@@ -86,7 +87,7 @@ export function QuoteCartSidebar() {
               const p = getProductBySlug(line.slug);
               const title = p?.modelo ?? line.slug;
               const marca = p?.marca;
-              const img = p?.imagen ?? "/assets/config/placeholder-image.png";
+              const img = p?.imagen ?? PRODUCT_IMAGE_FALLBACK;
               return (
                 <div
                   key={line.slug}

@@ -9,7 +9,13 @@ import {
   getAllStrategicBrandSlugs,
   STRATEGIC_PARTNERS_CLOSING,
 } from "@/lib/strategic-brands";
-import { siteConfig } from "@/lib/seo-config";
+import { JsonLdScripts } from "@/components/json-ld-scripts";
+import {
+  generateBreadcrumbSchema,
+  getMarcaStructuredSchemas,
+  siteConfig,
+} from "@/lib/seo-config";
+import { generateDynamicMetadata } from "@/lib/seo-metadata";
 import { CertificadosPdfDownloads } from "@/components/sections/recursos/certificados-pdf-downloads";
 import {
   MARCAS_CERTIFICADOS_DOWNLOAD_GATE_SLUG,
@@ -37,19 +43,16 @@ export async function generateMetadata({ params }: BrandPageProps): Promise<Meta
   }
   const title = `${brand.name} | ${siteConfig.name}`;
   const description = truncateMeta(brand.shortDescription, 160);
-  const canonical = `${siteConfig.url}/marcas/${slug}/`;
-  return {
+  const logo = brand.logo?.trim();
+  const ogImage =
+    logo?.startsWith("/") ? logo : "/assets/images/bombas-de-agua.webp";
+
+  return generateDynamicMetadata(`/marcas/${slug}/`, {
     title,
     description,
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "website",
-      siteName: siteConfig.name,
-    },
-  };
+    image: ogImage,
+    openGraphType: "website",
+  });
 }
 
 export default async function MarcaPage({ params }: BrandPageProps) {
@@ -58,14 +61,32 @@ export default async function MarcaPage({ params }: BrandPageProps) {
   if (!brand) notFound();
 
   const displayTitle = brand.line ? `${brand.name} · ${brand.line}` : brand.name;
+  const pageUrl = `${siteConfig.url}/marcas/${slug}/`;
 
   return (
     <>
+      <JsonLdScripts
+        pathname={`/marcas/${slug}/`}
+        includeBreadcrumb={false}
+        extra={[
+          generateBreadcrumbSchema([
+            { name: "Inicio", url: siteConfig.url },
+            { name: "Marcas", url: `${siteConfig.url}/marcas/` },
+            { name: brand.name, url: pageUrl },
+          ]),
+          ...getMarcaStructuredSchemas({
+            name: brand.name,
+            logo: brand.logo,
+            pageUrl,
+            description: brand.shortDescription,
+          }),
+        ]}
+      />
       <PagesHero
         title={brand.name}
         subtitle={brand.line}
         description={brand.shortDescription}
-        image="/assets/images/refinery.webp"
+        image="/assets/images/bombas-de-agua.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
           { label: "Marcas", href: "/marcas/" },

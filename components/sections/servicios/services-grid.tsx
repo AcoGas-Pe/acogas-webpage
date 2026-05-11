@@ -55,7 +55,7 @@ export function ServicesGrid({ className }: ServicesGridProps) {
         aria-hidden
       >
         <Image
-          src="/assets/images/isotipo-fondo.png"
+          src="/assets/images/isotipo-fondo.webp"
           alt=""
           fill
           className="object-contain object-right-top"
@@ -102,7 +102,7 @@ export function ServicesGrid({ className }: ServicesGridProps) {
 function ServiceCard({ service }: { service: ReturnType<typeof getAllServices>[number] }) {
   const bullets = CARD_BULLETS[service.slug] ?? [];
   const ctaHref = productosUrlForServicioSlug(service.slug);
-  const img = service.heroImage ?? "/assets/images/refinery.webp";
+  const img = service.heroImage ?? "/assets/images/revision-refineria.webp";
 
   return (
     <article className="card-base group flex h-full flex-col overflow-hidden hover:-translate-y-0.5">

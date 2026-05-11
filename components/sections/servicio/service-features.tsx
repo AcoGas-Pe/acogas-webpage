@@ -1,8 +1,6 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import { Service } from "@/domain/service";
-import { CheckCircle2 } from "lucide-react";
+import type { Service } from "@/domain/service";
+import { getFeatureIcon } from "@/lib/section-icons";
 
 interface ServiceFeaturesProps {
   service: Service;
@@ -11,34 +9,48 @@ interface ServiceFeaturesProps {
 
 export function ServiceFeatures({ service, className }: ServiceFeaturesProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
+    <section
+      className={cn(
+        "section border-y border-border/60 bg-background py-14 sm:py-16 md:py-20",
+        className,
+      )}
+    >
       <div className="container">
-        <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+          <p className="text-xs font-bold uppercase tracking-[0.15em] text-accent sm:text-sm">
             Características
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            Lo que ofrecemos en {service.shortTitle}
+          <h2 className="mt-2 text-2xl font-bold uppercase tracking-[0.08em] text-foreground sm:text-3xl md:text-[2rem]">
+            Alcance del servicio
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            Lo que ofrecemos en <span className="font-semibold text-foreground">{service.shortTitle}</span>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {service.features.map((feature, index) => (
-            <div
-              key={index}
-              className="card-base p-6 flex gap-4 hover:-translate-y-0.5 transition-transform"
-            >
-              <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+          {service.features.map((feature, index) => {
+            const Icon = getFeatureIcon(feature.title ?? "", index);
+            return (
+              <div
+                key={feature.title ?? index}
+                className={cn(
+                  "flex flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm",
+                  "transition hover:border-primary/25 hover:shadow-md",
+                )}
+              >
+                <div className="mb-4 flex justify-center sm:justify-start">
+                  <Icon className="h-8 w-8 text-accent" strokeWidth={1.5} aria-hidden />
+                </div>
+                <h3 className="text-center text-sm font-bold uppercase tracking-wide text-primary sm:text-left sm:text-base">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 text-justify text-sm leading-relaxed text-muted-foreground sm:text-start">
                   {feature.description}
                 </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

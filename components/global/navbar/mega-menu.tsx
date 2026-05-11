@@ -27,7 +27,7 @@ function ColumnBlock({
     return (
       <div className={cn("space-y-4 min-w-0 !col-span-2", hideTitle && "pt-8")}>
         {!hideTitle && (
-          <p className="text-xs font-semibold text-primary-light uppercase tracking-wider pb-2 border-b border-border">
+          <p className="text-xs font-semibold text-primary uppercase tracking-wider pb-2 border-b border-border">
             {column.title}
           </p>
         )}
@@ -48,7 +48,7 @@ function ColumnBlock({
           href={column.href ?? ""}
           className="flex pb-2 border-b border-border"
         >
-          <span className="text-xs font-semibold text-primary-light uppercase tracking-wider">
+          <span className="text-xs font-semibold text-primary uppercase tracking-wider">
             {column.title}
           </span>
         </Link>
@@ -88,7 +88,7 @@ function CategoryBlock({ category }: { category: NavMenuCategory }) {
     <div className="space-y-1 min-w-0">
       <Link
         href={category.href}
-        className="text-sm font-semibold text-foreground hover:text-primary-light hover:bg-primary/10 rounded-md px-1 block break-words"
+        className="text-sm font-semibold text-foreground hover:text-primary hover:bg-primary/10 rounded-md px-1 block break-words"
       >
         {category.label}
       </Link>
@@ -97,7 +97,7 @@ function CategoryBlock({ category }: { category: NavMenuCategory }) {
           <Link
             href={sec.href}
             key={i}
-            className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary-light hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
+            className="text-xs font-medium text-muted-foreground tracking-wider hover:text-primary hover:bg-primary/10 rounded-md p-0.5 px-1 break-words"
           >
             {sec.title}
           </Link>
@@ -134,7 +134,7 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
   return (
     <div
       className={cn(
-        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-[#ececec] border border-border rounded-lg shadow-xl",
+        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-card border border-border rounded-lg shadow-xl",
         "transition-all duration-200 ease-out",
         isOpen
           ? "opacity-100 visible translate-y-0"

@@ -15,10 +15,11 @@
   --light-foreground: 210 15% 11%;
   --background-light: 210 20% 96%;
 
-  /* Primary brand blue ~#1A4B8F */
+  /* Primary brand blue ~#1A4B8F (216 71% 33%) */
   --primary: 216 71% 33%;
   --primary-foreground: 0 0% 100%;
-  --primary-light: 216 65% 42%;
+  /* Darker than legacy 42% — was washing out nav/menus and hover fills */
+  --primary-light: 216 71% 26%;
   --primary-muted: 216 38% 92%;
 
   --secondary: 210 15% 94%;
@@ -30,7 +31,7 @@
   --accent-muted: 356 85% 38%;
 
   --muted: 210 15% 92%;
-  --muted-foreground: 0 0% 53%;
+  --muted-foreground: 210 12% 42%;
   --muted-light: 210 15% 88%;
 
   --card: 0 0% 100%;
