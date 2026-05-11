@@ -113,6 +113,13 @@ export interface ReguladorInfo {
   rangoOperacion?: string;
 }
 
+/** Clase de archivo en el hub de certificados (filtros UX). Opcional por compatibilidad. */
+export type CertificadoDocumentoTipo =
+  | "certificado"
+  | "garantia"
+  | "respaldo_comercial"
+  | "otro";
+
 export interface CatalogoDocs {
   categoria: string;
   url: string;
@@ -120,6 +127,8 @@ export interface CatalogoDocs {
   nombre: string;
   /** Optional note: page range or "Todo" for full document */
   paginas?: string;
+  /** En recursos/certificados: certificado oficial, garantía, respaldo comercial u otro (p. ej. Excel). */
+  tipo?: CertificadoDocumentoTipo;
 }
 
 /**

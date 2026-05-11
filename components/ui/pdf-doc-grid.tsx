@@ -2,12 +2,24 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { CatalogoDocs } from "@/domain/product";
-import { Download } from "lucide-react";
+import { Download, FileSpreadsheet } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const CERT_DOC_TIPO_LABEL: Partial<Record<string, string>> = {
+  garantia: "Garantía",
+  respaldo_comercial: "Respaldo comercial",
+  otro: "Otro",
+};
 
 function absoluteDocUrl(url: string): string {
   if (typeof window === "undefined") return url;
   return new URL(url, window.location.origin).href;
+}
+
+/** Vista embebida con iframe solo para PDF; Excel u otros fueron descarga directa sin preview */
+export function docUrlSupportsPdfEmbed(url: string): boolean {
+  const path = url.split(/[?#]/)[0]?.toLowerCase() ?? "";
+  return path.endsWith(".pdf");
 }
 
 /**
@@ -64,6 +76,7 @@ export function PdfDocListWithPreview({
 
   const selected = docs[Math.min(selectedIndex, docs.length - 1)];
   const safeIdx = Math.min(selectedIndex, docs.length - 1);
+  const selectedIsPdf = docUrlSupportsPdfEmbed(selected.url);
 
   return (
     <div className="flex flex-col gap-6 xl:flex-row xl:gap-8">
@@ -114,13 +127,23 @@ export function PdfDocListWithPreview({
         className="min-h-[min(50vh,360px)] min-w-0 flex-1 overflow-hidden rounded-lg border border-border bg-muted xl:min-h-[520px]"
         aria-label={previewAriaLabel}
       >
-        <iframe
-          key={selected.url}
-          title={`Vista previa: ${selected.nombre}`}
-          src={pdfPreviewPageOneSrc(selected.url)}
-          className="h-full min-h-[min(50vh,360px)] w-full border-0 bg-muted xl:min-h-[520px]"
-          loading="lazy"
-        />
+        {selectedIsPdf ? (
+          <iframe
+            key={selected.url}
+            title={`Vista previa: ${selected.nombre}`}
+            src={pdfPreviewPageOneSrc(selected.url)}
+            className="h-full min-h-[min(50vh,360px)] w-full border-0 bg-muted xl:min-h-[520px]"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full min-h-[min(50vh,360px)] flex-col items-center justify-center gap-4 p-8 text-center text-muted-foreground xl:min-h-[520px]">
+            <FileSpreadsheet className="size-14 opacity-70" aria-hidden />
+            <p className="max-w-xs text-sm">
+              Este archivo no es PDF; no hay vista previa integrada.
+              Podés descargarlo con el ícono de descarga junto al nombre del listado.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -159,11 +182,18 @@ export function PdfDocGrid({ docs, onDocSelect }: PdfDocGridProps) {
                 <span className="block truncate text-foreground transition-colors group-hover/btn:text-primary">
                   {doc.nombre}
                 </span>
-                {doc.paginas && (
-                  <span className="mt-1 inline-block rounded bg-secondary/50 px-2 py-0.5 text-xs text-muted-foreground">
-                    {doc.paginas}
-                  </span>
-                )}
+                <span className="mt-1 flex flex-wrap items-center gap-1">
+                  {doc.paginas ? (
+                    <span className="inline-block rounded bg-secondary/50 px-2 py-0.5 text-xs text-muted-foreground">
+                      {doc.paginas}
+                    </span>
+                  ) : null}
+                  {doc.tipo && doc.tipo !== "certificado" ? (
+                    <span className="inline-block rounded border border-border bg-primary/8 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                      {CERT_DOC_TIPO_LABEL[doc.tipo] ?? doc.tipo}
+                    </span>
+                  ) : null}
+                </span>
               </span>
               <Download
                 className="size-4 shrink-0 text-muted-foreground transition-colors group-hover/btn:text-primary"
@@ -184,15 +214,22 @@ export function PdfDocGrid({ docs, onDocSelect }: PdfDocGridProps) {
                 <p className="mb-2 line-clamp-5 wrap-break-word text-xs font-medium leading-snug text-foreground">
                   {doc.nombre}
                 </p>
-                <div className="relative h-60 w-full overflow-hidden rounded border border-border bg-muted">
-                  <iframe
-                    title={`Vista previa (pág. 1): ${doc.nombre}`}
-                    src={pdfPreviewPageOneSrc(doc.url)}
-                    className="pointer-events-none absolute left-0 top-0 h-[calc(100%+1.25rem)] w-[calc(100%+1.25rem)] max-w-none border-0 bg-muted"
-                    loading="lazy"
-                    tabIndex={-1}
-                  />
-                </div>
+                {docUrlSupportsPdfEmbed(doc.url) ? (
+                  <div className="relative h-60 w-full overflow-hidden rounded border border-border bg-muted">
+                    <iframe
+                      title={`Vista previa (pág. 1): ${doc.nombre}`}
+                      src={pdfPreviewPageOneSrc(doc.url)}
+                      className="pointer-events-none absolute left-0 top-0 h-[calc(100%+1.25rem)] w-[calc(100%+1.25rem)] max-w-none border-0 bg-muted"
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                  </div>
+                ) : (
+                  <div className="flex h-40 flex-col items-center justify-center gap-2 rounded border border-dashed border-border bg-muted/50 px-3 text-center text-xs text-muted-foreground">
+                    <FileSpreadsheet className="size-8 opacity-60" aria-hidden />
+                    <span>Sin vista previa · descargar archivo</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
