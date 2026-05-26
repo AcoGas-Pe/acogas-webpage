@@ -134,7 +134,7 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
   return (
     <div
       className={cn(
-        "fixed left-1/2 -translate-x-1/2 top-16 z-50 bg-card border border-border rounded-lg shadow-xl",
+        "fixed left-1/2 mt-3 -translate-x-1/2 top-16 z-50 bg-card border border-border rounded-lg shadow-xl",
         "transition-all duration-200 ease-out",
         isOpen
           ? "opacity-100 visible translate-y-0"

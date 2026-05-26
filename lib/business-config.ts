@@ -674,7 +674,7 @@ export interface Product {
     state: "Lima",
     zip: "15023",
     areaCode: "51",
-    phone: ["998345895", "998345014"],
+    phone: ["994296627"],
     email: ["acogas@acogas.pe", "ventas@acogas.pe"],
     addressVisibility: "VISIBLE", // SAB (Service Area Business)
   };

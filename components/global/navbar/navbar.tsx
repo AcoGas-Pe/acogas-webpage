@@ -104,133 +104,136 @@ export function Navbar() {
   }, []);
 
   return (
-    <div
-      className={cn(
-        "w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
-        isAtTop
-          ? "bg-transparent border-transparent"
-          : "bg-navbar-background border-b border-border ",
-      )}
-    >
-      <div className="px-4 py-3 w-full flex items-center justify-center">
-        <nav className="flex flex-row items-center justify-between w-full max-w-7xl">
-          {/* Logo */}
-          <Link href="/" className="shrink-0">
-            <Image
-              src="/assets/config/logo.png"
-              alt="Acogas Logo"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </Link>
+    <>
+      <div
+        className={cn(
+          "w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+          isAtTop
+            ? "bg-black/10 shadow-lg backdrop-blur-sm  border-transparent"
+            : "bg-navbar-background border-b border-border ",
+        )}
+      >
+        <div className="px-4 py-6 w-full flex items-center justify-center">
+          <nav className="flex flex-row items-center justify-between w-full max-w-7xl">
+            {/* Logo */}
+            <Link href="/" className="shrink-0">
+              <Image
+                src="/assets/config/logo.png"
+                alt="Acogas Logo"
+                width={120}
+                height={40}
+                className="h-full w-auto"
+              />
+            </Link>
 
-          {/* Desktop Navigation Items */}
-          <ul className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <li
-                key={item.href}
-                className="relative"
-                onMouseEnter={() =>
-                  item.menuKey && handleMouseEnter(item.menuKey)
-                }
-                onMouseLeave={handleMouseLeave}
-              >
-                {item.type === "trigger" && item.menuKey ? (
-                  <>
-                    <NavTrigger
-                      isAtTop={isAtTop}
-                      label={item.label}
-                      isActive={activeMenu === item.menuKey}
-                      onMouseEnter={() => {}}
-                    />
-                    {/* Mega Menu positioned relative to trigger */}
-                    <div onMouseEnter={handleMenuMouseEnter}>
-                      <MegaMenu
-                        config={NAV_MENUS[item.menuKey]}
-                        isOpen={activeMenu === item.menuKey}
+            {/* Desktop Navigation Items */}
+            <ul className="hidden md:flex items-center gap-1">
+              {NAV_ITEMS.map((item) => (
+                <li
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() =>
+                    item.menuKey && handleMouseEnter(item.menuKey)
+                  }
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {item.type === "trigger" && item.menuKey ? (
+                    <>
+                      <NavTrigger
+                        isAtTop={isAtTop}
+                        label={item.label}
+                        isActive={activeMenu === item.menuKey}
+                        onMouseEnter={() => { }}
                       />
-                    </div>
-                  </>
-                ) : (
-                  <NavItem
-                    label={item.label}
-                    href={item.href}
-                    isAtTop={isAtTop}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
+                      {/* Mega Menu positioned relative to trigger */}
+                      <div onMouseEnter={handleMenuMouseEnter}>
+                        <MegaMenu
+                          config={NAV_MENUS[item.menuKey]}
+                          isOpen={activeMenu === item.menuKey}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <NavItem
+                      label={item.label}
+                      href={item.href}
+                      isAtTop={isAtTop}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
 
-          {/* Desktop CTA */}
-          <div
-            className={cn(
-              "hidden md:flex flex-row gap-2 items-center",
-              isAtTop ? "text-foreground font-semibold" : "text-white",
-            )}
-          >
-            {contactPopup ? (
-              <Button
-                variant="ghost"
-                className="w-full capitalize px-2 gap-2"
-                onClick={() => contactPopup.open()}
-              >
-                <MessageCircle className="w-4 h-4" />
-                Contactanos
-              </Button>
-            ) : (
-              <Button
-                variant="ghost"
-                href="/contacto/"
-                className="w-full capitalize px-2 gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Contactanos
-              </Button>
-            )}
-            <Button
-              variant="secondary"
-              type="button"
-              className="relative w-full p-2 min-h-10 min-w-10"
-              aria-label="Abrir cotización"
-              title="Cotización"
-              onClick={() => quoteCart.open()}
+            {/* Desktop CTA */}
+            <div
+              className={cn(
+                "hidden md:flex flex-row gap-2 items-center",
+                isAtTop ? "text-white font-semibold" : "text-white",
+              )}
             >
-              <svg
-                className={cn(
-                  "w-8 h-8 shrink-0",
-                )}
-                aria-hidden="true"
-                focusable="false"
-              >
-                <use href="/assets/icons/gear-cart.svg#icon" />
-              </svg>
-              {quoteCart.totalQuantity > 0 ? (
-                <span className="absolute -top-0.5 -right-0.5 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold leading-none text-primary-foreground">
-                  {quoteCart.totalQuantity > 99
-                    ? "99+"
-                    : quoteCart.totalQuantity}
-                </span>
-              ) : null}
-            </Button>
-          </div>
+              {contactPopup ? (
+                <Button
+                  variant="ghost"
+                  className={cn("w-full text-md capitalize px-2 gap-2 hover:bg-primary-light/80 hover:text-white",
+                    isAtTop ? "text-white" : "hover:bg-white/10")}
 
-          {/* Mobile trigger */}
-          <button
-            type="button"
-            className={cn(
-              "md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md transition-colors",
-              isAtTop
-                ? "hover:bg-muted text-foreground"
-                : "hover:bg-white/10 text-white",
-            )}
-            onClick={openMobile}
-            aria-label="Abrir menú"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-        </nav>
+                  onClick={() => contactPopup.open()}
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  Contactanos
+                </Button>
+              ) : (
+                <Button
+                  variant="ghost"
+                  href="/contacto/"
+                  className={cn("w-full capitalize px-2 gap-2 hover:bg-primary-light/80 hover:text-white",
+                    isAtTop ? "text-white" : "hover:bg-white/10")}
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  Contactanos
+                </Button>
+              )}
+              <Button
+                variant="secondary"
+                type="button"
+                className={cn("relative w-full px-2 py-1 min-h-10 min-w-10 hover:bg-primary-light/80 hover:text-white",
+                  isAtTop ? "hover:bg-primary-light/80 text-white bg-transparent" : "hover:bg-white/10")}
+                aria-label="Abrir cotización"
+                title="Cotización"
+                onClick={() => quoteCart.open()}
+              >
+                <svg
+                  className={cn(
+                    "w-8 h-8 shrink-0",
+                  )}
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="/assets/icons/gear-cart.svg#icon" />
+                </svg>
+                {quoteCart.totalQuantity > 0 ? (
+                  <span className="absolute -top-0.5 -right-0.5 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold leading-none text-primary-foreground">
+                    {quoteCart.totalQuantity > 99
+                      ? "99+"
+                      : quoteCart.totalQuantity}
+                  </span>
+                ) : null}
+              </Button>
+            </div>
+
+            {/* Mobile trigger */}
+            <button
+              type="button"
+              className={cn(
+                "md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md transition-colors hover:bg-white/10 text-white",
+              )}
+              onClick={openMobile}
+              aria-label="Abrir menú"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </nav>
+        </div>
       </div>
 
       {/* Mobile Sidebar */}
@@ -373,43 +376,43 @@ export function Navbar() {
                               <div className="space-y-4">
                                 {col.categories
                                   ? col.categories.map((cat, ci) => (
-                                      <div key={ci} className="space-y-2">
-                                        <Link
-                                          href={cat.href}
-                                          onClick={closeMobile}
-                                          className="block text-sm font-semibold text-primary hover:underline"
-                                        >
-                                          {cat.label}
-                                        </Link>
-                                        {cat.sections.map((sec, si) => (
-                                          <Link
-                                            key={si}
-                                            href={sec.href}
-                                            onClick={closeMobile}
-                                            className="block pl-2 text-xs font-medium text-white/60 hover:text-primary hover:underline"
-                                          >
-                                            {sec.title}
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    ))
-                                  : (col.items ?? []).map((link, li) => (
+                                    <div key={ci} className="space-y-2">
                                       <Link
-                                        key={li}
-                                        href={link.href}
+                                        href={cat.href}
                                         onClick={closeMobile}
-                                        className="block px-3 py-2 rounded-md hover:bg-muted text-sm text-white/90 hover:text-foreground"
+                                        className="block text-sm font-semibold text-primary hover:underline"
                                       >
-                                        <div className="font-medium">
-                                          {link.label}
-                                        </div>
-                                        {link.description && (
-                                          <div className="text-xs text-muted-foreground">
-                                            {link.description}
-                                          </div>
-                                        )}
+                                        {cat.label}
                                       </Link>
-                                    ))}
+                                      {cat.sections.map((sec, si) => (
+                                        <Link
+                                          key={si}
+                                          href={sec.href}
+                                          onClick={closeMobile}
+                                          className="block pl-2 text-xs font-medium text-white/60 hover:text-primary hover:underline"
+                                        >
+                                          {sec.title}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  ))
+                                  : (col.items ?? []).map((link, li) => (
+                                    <Link
+                                      key={li}
+                                      href={link.href}
+                                      onClick={closeMobile}
+                                      className="block px-3 py-2 rounded-md hover:bg-muted text-sm text-white/90 hover:text-foreground"
+                                    >
+                                      <div className="font-medium">
+                                        {link.label}
+                                      </div>
+                                      {link.description && (
+                                        <div className="text-xs text-muted-foreground">
+                                          {link.description}
+                                        </div>
+                                      )}
+                                    </Link>
+                                  ))}
                               </div>
                             </div>
                           ))}
@@ -485,6 +488,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

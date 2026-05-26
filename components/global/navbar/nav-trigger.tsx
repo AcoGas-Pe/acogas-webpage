@@ -21,14 +21,14 @@ export function NavTrigger({
       type="button"
       onMouseEnter={onMouseEnter}
       className={cn(
-        "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors",
+        "inline-flex text-md items-center gap-1 px-3 py-2 font-medium transition-colors",
         "focus:outline-none font-semibold",
         isActive
           ? isAtTop
-            ? "text-primary bg-primary/12 rounded-sm"
+            ? "text-white/80 bg-primary-light/80 rounded-sm"
             : "text-white bg-white/15 rounded-sm"
           : isAtTop
-            ? "text-foreground hover:text-primary"
+            ? "text-white hover:text-red-500"
             : "text-white/90 hover:text-white",
       )}
     >
