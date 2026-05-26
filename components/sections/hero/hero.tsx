@@ -44,8 +44,8 @@ export function Hero({
         <div className="absolute inset-0 w-full h-full">
           <Slideshow />
           {/* overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-black/40 via-primary/40 to-black/40" aria-hidden />
-        </div>
+          <div className="absolute inset-0 bg-linear-to-r from-white/60 via-white/40 to-black/40" aria-hidden />
+          </div>
       )}
       <div className="container max-w-7xl flex items-start justify-start mx-auto px-4 py-16 z-10">
         <div className=" text-left">
@@ -56,12 +56,12 @@ export function Hero({
             </p>
           )}
 
-          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-semibold text-primary !tracking-wider [font-family:var(--font-hero)]">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-bold text-primary !tracking-wider [font-family:var(--font-hero)] drop-shadow-[0_3px_20px_rgba(255,255,255,0.35)]">
             {title}
           </h1>
 
           {description && (
-            <p className="text-sm opacity-80 sm:text-base text-white max-w-2xl leading-relaxed mt-3">
+            <p className="text-sm opacity-80 sm:text-base font-semibold text-foreground max-w-2xl leading-relaxed mt-3">
               {description}
             </p>
           )}

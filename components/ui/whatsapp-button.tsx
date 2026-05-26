@@ -114,7 +114,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
 
   const buttonContent = (
     <>
-      <span className="hidden sm:flex flex-row items-center gap-2 p-1 cursor-pointer">
+      <span className="hidden sm:flex flex-row items-center gap-2 p-1 cursor-pointer ">
         <Image
           src="/assets/images/whatsapp.svg"
           alt="WhatsApp"
@@ -122,6 +122,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           height={40}
           className="w-12 h-12"
         />
+        <span className="bg-green-500/50 rounded-full w-full h-full absolute top-0 left-0 animate-ping"></span>
       </span>
       <span className="sm:hidden flex items-center justify-center">
         <Image
@@ -151,7 +152,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           className={cn(
             "fixed bottom-6 right-6 z-40",
             "bg-primary text-primary-foreground hover:bg-primary/90",
-            "rounded-full w-20px h-20px sm:w-auto sm:h-auto sm:rounded-lg sm:px-1 sm:py-1",
+            "rounded-full w-20px h-20px sm:w-auto sm:h-auto sm:px-2 sm:py-2",
             "shadow-lg hover:shadow-xl",
             "transition-all duration-200 ease-in-out",
             "animate-in slide-in-from-bottom-2 fade-in duration-300",
