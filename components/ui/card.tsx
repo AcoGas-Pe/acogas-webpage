@@ -7,10 +7,7 @@ const Card = React.forwardRef<
 >(({ className, as: Comp = "div", ...props }, ref) => (
   <Comp
     ref={ref}
-    className={cn(
-      "card-base rounded-md overflow-hidden",
-      className
-    )}
+    className={cn("card-base overflow-hidden rounded-2xl", className)}
     {...props}
   />
 ));

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { getAllServices } from "@/lib/services-data";
 import { productosUrlForServicioSlug } from "@/lib/servicios-product-catalog";
+import { getFeatureIcon } from "@/lib/section-icons";
 
 interface ServicesGridProps {
   className?: string;
@@ -46,7 +47,7 @@ export function ServicesGrid({ className }: ServicesGridProps) {
   return (
     <section
       className={cn(
-        "relative overflow-hidden border-t border-border bg-background py-16 sm:py-20 md:py-24",
+        "relative overflow-hidden border-t border-border/40 bg-background-alt py-16 sm:py-20 md:py-24",
         className,
       )}
     >
@@ -103,17 +104,22 @@ function ServiceCard({ service }: { service: ReturnType<typeof getAllServices>[n
   const bullets = CARD_BULLETS[service.slug] ?? [];
   const ctaHref = productosUrlForServicioSlug(service.slug);
   const img = service.heroImage ?? "/assets/images/revision-refineria.webp";
+  const ServiceIcon = getFeatureIcon(service.title, 0);
 
   return (
-    <article className="card-base group flex h-full flex-col overflow-hidden hover:-translate-y-0.5">
+    <article className="card-base group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-card hover:-translate-y-0.5">
       <div className="relative aspect-[16/10] w-full bg-muted">
         <Image
           src={img}
           alt=""
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+        <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 bg-white/90 text-primary shadow-sm">
+          <ServiceIcon className="h-5 w-5" aria-hidden />
+        </div>
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <div>

@@ -17,7 +17,7 @@ export function IndustriaFaq({ industry, className }: IndustriaFaqProps) {
   return (
     <section
       className={cn(
-        "section border-t border-border/60 bg-background-alt py-16 sm:py-20 md:py-24",
+        "section border-t border-border/40 bg-background-alt py-16 sm:py-20 md:py-24",
         className,
       )}
       aria-labelledby={`faq-industria-${industry.slug}`}
@@ -42,9 +42,9 @@ export function IndustriaFaq({ industry, className }: IndustriaFaqProps) {
           <ServiceFaqAccordion items={items} />
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-primary/[0.08] via-card to-card shadow-sm sm:mt-12">
+        <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-[1.75rem] border border-primary/15 bg-linear-to-br from-primary/[0.08] via-card to-card shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)] sm:mt-12">
           <div className="flex flex-col items-center gap-5 p-6 text-center sm:p-8 md:p-10">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-primary/25 bg-primary/10">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/15 bg-primary/[0.07]">
               <Compass
                 className="h-7 w-7 text-accent"
                 strokeWidth={1.5}

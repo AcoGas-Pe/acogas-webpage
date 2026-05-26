@@ -11,7 +11,7 @@ export function ServiceFeatures({ service, className }: ServiceFeaturesProps) {
   return (
     <section
       className={cn(
-        "section border-y border-border/60 bg-background py-14 sm:py-16 md:py-20",
+        "section border-y border-border/40 bg-background py-14 sm:py-16 md:py-20",
         className,
       )}
     >
@@ -35,12 +35,14 @@ export function ServiceFeatures({ service, className }: ServiceFeaturesProps) {
               <div
                 key={feature.title ?? index}
                 className={cn(
-                  "flex flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm",
-                  "transition hover:border-primary/25 hover:shadow-md",
+                  "flex flex-col rounded-[1.35rem] border border-border/50 bg-card p-6 text-left shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]",
+                  "transition hover:border-primary/20 hover:shadow-[0_22px_50px_-34px_hsl(var(--primary)_/_0.42)]",
                 )}
               >
                 <div className="mb-4 flex justify-center sm:justify-start">
-                  <Icon className="h-8 w-8 text-accent" strokeWidth={1.5} aria-hidden />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary/15 bg-primary/[0.07]">
+                    <Icon className="h-6 w-6 text-accent" strokeWidth={1.5} aria-hidden />
+                  </div>
                 </div>
                 <h3 className="text-center text-sm font-bold uppercase tracking-wide text-primary sm:text-left sm:text-base">
                   {feature.title}

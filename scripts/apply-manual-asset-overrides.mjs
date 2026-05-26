@@ -51,7 +51,7 @@ const OVERRIDES = [
 		"Instrucciones de Instalación y Manteniento (Series 800 y 900).pdf",
 		"Instrucciones-de-Instalacion-y-Mantenimiento-Series-800-y-900-OMNI-TRIM.pdf",
 	],
-	["2010B.png", "Serie-2010B.jpg"],
+	["2010B.png", "Serie-2010B.webp"],
 	[
 		"Instruction Manual (800 and 900 Series).pdf",
 		"Instruction-Manual-North-America-Only-800-and-900-Series.pdf",
@@ -96,7 +96,7 @@ const OVERRIDES = [
 		"Installation Guide (Type Y693) Año 2015.pdf",
 		"Installation-Guide-Type-Y693-Year-2015.pdf",
 	],
-	["LCR.iQ.png", "LCR.iQ_.jpg"],
+	["LCR.iQ.png", "LCR.iQ_.webp"],
 	["LCR.iQ.pdf", "LCR.iQ_.pdf"],
 	[
 		"Instruction Manual (FVFA Series).pdf",

@@ -49,8 +49,8 @@ export function IndustriesSolutionsBento() {
 
         <div
           className={cn(
-            "rounded-xl border border-primary/12 bg-card p-5 shadow-[0_2px_16px_-2px_rgb(0_0_0_/_0.1),0_1px_4px_-1px_rgb(0_0_0_/_0.05)]",
-            "ring-1 ring-black/[0.04] sm:p-6 md:p-7",
+            "rounded-2xl border border-primary/10 bg-card p-5 shadow-[0_20px_48px_-36px_hsl(var(--primary)_/_0.38)]",
+            "ring-1 ring-primary/[0.04] sm:p-6 md:p-7",
           )}
         >
           <div className="grid gap-7 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
@@ -116,7 +116,7 @@ export function IndustriesSolutionsBento() {
                   key={ind.slug}
                   href={ind.url}
                   className={cn(
-                    "group relative flex aspect-[4/3] min-h-[76px] items-center justify-center overflow-hidden rounded-md sm:min-h-[88px] md:aspect-[16/11] md:min-h-[84px]",
+                    "group relative flex aspect-[4/3] min-h-[76px] items-center justify-center overflow-hidden rounded-xl shadow-[0_16px_34px_-30px_hsl(var(--primary)_/_0.32)] sm:min-h-[88px] md:aspect-[16/11] md:min-h-[84px]",
                     !bgImage && "border border-border bg-muted/50",
                   )}
                 >

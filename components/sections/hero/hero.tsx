@@ -38,37 +38,39 @@ export function Hero({
   image = "/assets/images/refinery.webp",
 }: HeroProps) {
   return (
-    <section className={cn("section relative min-h-[80dvh] pt-16 flex items-end md:items-center justify-center bg-background pb-12 md:pb-16", className)}>
+    <section className={cn("section relative min-h-[80dvh] pt-20 flex items-end md:items-center justify-center bg-background pb-12 md:pb-16", className)}>
       {/* Background image + overlay */}
       {image && (
         <div className="absolute inset-0 w-full h-full">
           <Slideshow />
           {/* overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-white/60 via-white/40 to-black/40" aria-hidden />
-          </div>
+          <div className="absolute inset-0 bg-linear-to-r from-white/92 via-white/62 to-black/38" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_22%_52%,rgba(255,255,255,0.82)_0%,rgba(255,255,255,0.62)_32%,rgba(255,255,255,0.20)_54%,transparent_72%),linear-gradient(to_bottom,rgba(7,19,38,0.28),transparent_30%,rgba(7,19,38,0.18))]" aria-hidden />
+        </div>
       )}
-      <div className="container max-w-7xl flex items-start justify-start mx-auto px-4 py-16 z-10">
-        <div className=" text-left">
+      <div className="container max-w-7xl flex items-start flex-col justify-start mx-auto px-4 py-16 z-10">
+        <div className="max-w-3xl text-left">
           {/* Subtitle */}
           {subtitle && (
-            <p className="text-sm font-semibold uppercase tracking-[0.5rem] text-accent mb-4">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35rem] text-accent drop-shadow-sm sm:tracking-[0.5rem]">
               {subtitle}
             </p>
           )}
 
-          <h1 className="text-2xl md:text-3xl lg:text-4xl max-w-2xl font-bold text-primary !tracking-wider [font-family:var(--font-hero)] drop-shadow-[0_3px_20px_rgba(255,255,255,0.35)]">
+          <h1 className="max-w-2xl text-2xl font-bold text-primary !tracking-wider [font-family:var(--font-hero)] drop-shadow-[0_3px_24px_rgba(255,255,255,0.80)] md:text-3xl lg:text-4xl">
             {title}
           </h1>
 
           {description && (
-            <p className="text-sm opacity-80 sm:text-base font-semibold text-foreground max-w-2xl leading-relaxed mt-3">
+            <p className="mt-3 max-w-2xl text-sm font-semibold leading-relaxed text-foreground/90 sm:text-base">
               {description}
             </p>
           )}
 
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 justify-start items-stretch sm:items-center pt-8">
+        </div>
+          <div className="flex flex-row flex-wrap items-center justify-start gap-3 pt-8 sm:gap-4">
             {primaryAction && (
-              <Button href={primaryAction.href} size="lg" className="w-full sm:w-auto min-h-12 justify-center">
+              <Button href={primaryAction.href} size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
                 {primaryAction.href.startsWith("tel:") && (
                   <Phone className="mr-2 w-4 h-4 shrink-0" aria-hidden />
                 )}
@@ -76,18 +78,17 @@ export function Hero({
               </Button>
             )}
             {secondaryAction && (
-              <Button href={secondaryAction.href} variant="secondary" size="lg" className="w-full sm:w-auto min-h-12 justify-center">
+              <Button href={secondaryAction.href} variant="secondary" size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
                 <ClipboardCheck className="mr-2 w-4 h-4 shrink-0" />
                 {secondaryAction.label}
               </Button>
             )}
             {tertiaryAction && (
-              <Button href={tertiaryAction.href} variant="outline" size="lg" className="w-full sm:w-auto min-h-12 justify-center">
+              <Button href={tertiaryAction.href} variant="outline" size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
                 {tertiaryAction.label}
               </Button>
             )}
           </div>
-        </div>
       </div>
     </section>
   );

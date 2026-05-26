@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Product } from "@/domain/product";
 import { useQuoteCart } from "@/contexts/quote-cart-context";
-import { getProductBySlug } from "@/lib/products-data";
 import { MAX_QTY_PER_LINE } from "@/lib/quote-cart-storage";
 import {
   buildQuoteWhatsappMessage,
@@ -13,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const MIN_SEARCH_LEN = 2;
 
@@ -20,14 +20,204 @@ interface CotizarQuoteFlowProps {
   products: Product[];
 }
 
+function toggleInArray(arr: string[], value: string): string[] {
+  return arr.includes(value) ? arr.filter((x) => x !== value) : [...arr, value];
+}
+
+type QuoteGuidedFilterKey = "marca" | "macroCategoria" | "categoria";
+
+const quoteFilterLabels: Record<QuoteGuidedFilterKey, string> = {
+  marca: "Marca",
+  macroCategoria: "Macrocategoría",
+  categoria: "Categoría",
+};
+
+function productValueForQuoteFilter(
+  product: Product,
+  key: QuoteGuidedFilterKey,
+): string {
+  return product[key]?.trim() ?? "";
+}
+
+function productMatchesQuoteSelection(
+  product: Product,
+  selected: Record<QuoteGuidedFilterKey, string[]>,
+  exceptKey?: QuoteGuidedFilterKey,
+): boolean {
+  const keys: QuoteGuidedFilterKey[] = [
+    "marca",
+    "macroCategoria",
+    "categoria",
+  ];
+
+  return keys.every((key) => {
+    if (key === exceptKey || selected[key].length === 0) return true;
+    return selected[key].includes(productValueForQuoteFilter(product, key));
+  });
+}
+
+function uniqueSorted(values: Array<string | undefined>): string[] {
+  return [...new Set(values.map((value) => value?.trim()).filter(Boolean))]
+    .filter((value): value is string => Boolean(value))
+    .sort((a, b) => a.localeCompare(b, "es"));
+}
+
+function QuoteFilterCheckboxSection({
+  filterKey,
+  values,
+  selected,
+  products,
+  onToggle,
+  initialVisible = 8,
+}: {
+  filterKey: QuoteGuidedFilterKey;
+  values: string[];
+  selected: Record<QuoteGuidedFilterKey, string[]>;
+  products: Product[];
+  onToggle: (value: string) => void;
+  initialVisible?: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const selectedValues = selected[filterKey];
+  const options = values.map((value) => {
+    const checked = selectedValues.includes(value);
+    const matchesOtherFilters = products.some(
+      (product) =>
+        productValueForQuoteFilter(product, filterKey) === value &&
+        productMatchesQuoteSelection(product, selected, filterKey),
+    );
+    return {
+      value,
+      checked,
+      enabled: checked || (matchesOtherFilters && selectedValues.length === 0),
+    };
+  });
+  const checkedOptions = options.filter((option) => option.checked);
+  const enabledOptions = options.filter(
+    (option) => option.enabled && !option.checked,
+  );
+  const disabledOptions = options.filter((option) => !option.enabled);
+  const primaryOptions =
+    selectedValues.length > 0
+      ? checkedOptions
+      : enabledOptions.slice(0, initialVisible);
+  const extraOptions =
+    selectedValues.length > 0
+      ? [...enabledOptions, ...disabledOptions]
+      : [...enabledOptions.slice(initialVisible), ...disabledOptions];
+
+  const renderOption = ({ value, enabled, checked }: (typeof options)[number]) => {
+    const disabled = !enabled && !checked;
+    const id = `quote-${filterKey}-${value}`.replace(
+      /[^a-zA-Z0-9_-]/g,
+      "_",
+    );
+    return (
+      <li
+        key={`quote-${filterKey}-${value}-${checked ? "on" : "off"}-${enabled ? "enabled" : "disabled"}`}
+        className="animate-soft-fade-in"
+      >
+        <label
+          htmlFor={id}
+          className={cn(
+            "flex cursor-pointer items-start gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors hover:bg-muted/80",
+            checked && "bg-primary/8 text-primary",
+            disabled &&
+              "cursor-not-allowed text-muted-foreground/55 hover:bg-transparent",
+          )}
+        >
+          <input
+            id={id}
+            type="checkbox"
+            className="mt-0.5 rounded border-border"
+            checked={checked}
+            disabled={disabled}
+            onChange={() => onToggle(value)}
+          />
+          <span className="leading-snug">
+            {value}
+            {disabled ? (
+              <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
+                No disponible
+              </span>
+            ) : null}
+          </span>
+        </label>
+      </li>
+    );
+  };
+
+  return (
+    <div className="rounded-2xl border border-border bg-card p-3 text-sm font-semibold text-foreground shadow-sm">
+      <span className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+        {quoteFilterLabels[filterKey]}
+      </span>
+      <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 xl:grid-cols-1">
+        {primaryOptions.map(renderOption)}
+      </ul>
+      {extraOptions.length > 0 ? (
+        <>
+          <div
+            className={cn(
+              "grid overflow-hidden transition-all duration-300 ease-out",
+              expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+            )}
+          >
+            <ul className="min-h-0 grid grid-cols-1 gap-1.5 pt-1.5 sm:grid-cols-2 xl:grid-cols-1">
+              {extraOptions.map(renderOption)}
+            </ul>
+          </div>
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            className="mt-3 text-xs font-bold uppercase tracking-wide text-primary transition-colors hover:text-primary-light"
+          >
+            {expanded ? "Ver menos" : `Ver más (${extraOptions.length})`}
+          </button>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
 export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
   const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Record<QuoteGuidedFilterKey, string[]>>({
+    marca: [],
+    macroCategoria: [],
+    categoria: [],
+  });
   const { lines, addProduct, totalQuantity } = useQuoteCart();
+
+  const productsBySlug = useMemo(
+    () => new Map(products.map((product) => [product.slug, product])),
+    [products],
+  );
+
+  const marcas = useMemo(
+    () => uniqueSorted(products.map((product) => product.marca)),
+    [products],
+  );
+  const macroCategorias = useMemo(
+    () => uniqueSorted(products.map((product) => product.macroCategoria)),
+    [products],
+  );
+  const categorias = useMemo(
+    () => uniqueSorted(products.map((product) => product.categoria)),
+    [products],
+  );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (q.length < MIN_SEARCH_LEN) return [];
+    const hasHierarchyFilter = Object.values(selected).some(
+      (values) => values.length > 0,
+    );
+    if (q.length < MIN_SEARCH_LEN && !hasHierarchyFilter) return [];
     return products.filter((p) => {
+      if (!productMatchesQuoteSelection(p, selected)) {
+        return false;
+      }
+      if (q.length < MIN_SEARCH_LEN) return true;
       const hay = [
         p.modelo,
         p.marca,
@@ -35,13 +225,20 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
         p.descripcion,
         p.submodelo,
         p.grupoEmpresarial,
+        p.macroCategoria,
+        p.categoria,
       ]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
       return hay.includes(q);
     });
-  }, [products, query]);
+  }, [products, query, selected]);
+
+  const resultAnimationKey = useMemo(
+    () => `${query.trim()}\0${JSON.stringify(selected)}`,
+    [query, selected],
+  );
 
   const trimmed = query.trim();
   const searching = trimmed.length >= MIN_SEARCH_LEN;
@@ -49,7 +246,7 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
   const sendWhatsapp = () => {
     if (lines.length === 0) return;
     const items = lines.map((line) => {
-      const p = getProductBySlug(line.slug);
+      const p = productsBySlug.get(line.slug);
       return {
         slug: line.slug,
         modelo: p?.modelo ?? line.slug,
@@ -63,9 +260,13 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
 
   let listEmptyMessage: string | null = null;
   if (trimmed.length === 0) {
-    listEmptyMessage =
-      "Escriba al menos dos letras para buscar en el catálogo. No mostramos todo el listado para mantener la página ágil y ordenada.";
-  } else if (trimmed.length < MIN_SEARCH_LEN) {
+    listEmptyMessage = Object.values(selected).some((values) => values.length > 0)
+      ? null
+      : "Escriba al menos dos letras o seleccione una marca, macrocategoría o categoría.";
+  } else if (
+    trimmed.length < MIN_SEARCH_LEN &&
+    !Object.values(selected).some((values) => values.length > 0)
+  ) {
     listEmptyMessage = `Siga escribiendo: faltan ${MIN_SEARCH_LEN - trimmed.length} carácter${MIN_SEARCH_LEN - trimmed.length === 1 ? "" : "es"}.`;
   } else if (filtered.length === 0) {
     listEmptyMessage =
@@ -75,14 +276,54 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
   return (
     <section className="section border-y border-border bg-muted/30 py-16 sm:py-20 md:py-24">
       <div className="container mx-auto max-w-4xl space-y-8 px-4">
-        <div>
+        <div className="rounded-[1.5rem] border border-border bg-background p-5 shadow-sm">
           <h2 className="mb-2 text-xl font-semibold text-foreground">
             Buscar productos
           </h2>
           <p className="mb-4 text-sm text-muted-foreground">
-            Por nombre de modelo o marca. Solo se listan coincidencias dentro de un recuadro con
-            scroll si hay muchos resultados.
+            Filtre primero por macrocategoría y luego por categoría hija. La
+            búsqueda por modelo o marca queda acotada a esa jerarquía.
           </p>
+          <div className="mb-4 grid gap-3 lg:grid-cols-3">
+            <QuoteFilterCheckboxSection
+              filterKey="marca"
+              values={marcas}
+              selected={selected}
+              products={products}
+              onToggle={(value) =>
+                setSelected((prev) => ({
+                  ...prev,
+                  marca: toggleInArray(prev.marca, value),
+                }))
+              }
+            />
+            <QuoteFilterCheckboxSection
+              filterKey="macroCategoria"
+              values={macroCategorias}
+              selected={selected}
+              products={products}
+              initialVisible={6}
+              onToggle={(value) =>
+                setSelected((prev) => ({
+                  ...prev,
+                  macroCategoria: toggleInArray(prev.macroCategoria, value),
+                }))
+              }
+            />
+            <QuoteFilterCheckboxSection
+              filterKey="categoria"
+              values={categorias}
+              selected={selected}
+              products={products}
+              initialVisible={8}
+              onToggle={(value) =>
+                setSelected((prev) => ({
+                  ...prev,
+                  categoria: toggleInArray(prev.categoria, value),
+                }))
+              }
+            />
+          </div>
           <label htmlFor="cotizar-search" className="sr-only">
             Buscar producto
           </label>
@@ -91,7 +332,7 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ej. Fisher, modelo, marca…"
+            placeholder="Ej. Fisher, modelo, marca..."
             autoComplete="off"
             className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
@@ -102,7 +343,7 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
           ) : null}
         </div>
 
-        <div className="rounded-xl border border-border bg-background shadow-sm">
+        <div className="rounded-[1.5rem] border border-border bg-background shadow-sm">
           <div
             className="max-h-[min(28rem,50dvh)] min-h-[8rem] overflow-y-auto overscroll-y-contain"
             aria-label="Resultados de búsqueda de productos"
@@ -114,8 +355,14 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
             ) : (
               <ul className="divide-y divide-border" role="list">
                 {filtered.map((product) => (
-                  <li key={product.slug}>
-                    <ProductQuoteCompactRow product={product} onAdd={(qty) => addProduct(product.slug, qty)} />
+                  <li
+                    key={`${product.slug}-${resultAnimationKey}`}
+                    className="animate-soft-fade-in"
+                  >
+                    <ProductQuoteCompactRow
+                      product={product}
+                      onAdd={(qty) => addProduct(product.slug, qty)}
+                    />
                   </li>
                 ))}
               </ul>
@@ -123,7 +370,7 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
           </div>
         </div>
 
-        <div className="space-y-5 rounded-xl border border-border bg-background p-6 shadow-sm">
+        <div className="space-y-5 rounded-[1.5rem] border border-border bg-background p-6 shadow-sm">
           <div>
             <h3 className="text-lg font-semibold">Enviar cotización</h3>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -140,7 +387,12 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
               </p>
               <ul className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-muted/20">
                 {lines.map((line) => (
-                  <QuoteSendPreviewRow key={line.slug} slug={line.slug} quantity={line.quantity} />
+                  <QuoteSendPreviewRow
+                    key={line.slug}
+                    product={productsBySlug.get(line.slug)}
+                    slug={line.slug}
+                    quantity={line.quantity}
+                  />
                 ))}
               </ul>
             </div>
@@ -171,16 +423,17 @@ export function CotizarQuoteFlow({ products }: CotizarQuoteFlowProps) {
 }
 
 function QuoteSendPreviewRow({
+  product,
   slug,
   quantity,
 }: {
+  product?: Product;
   slug: string;
   quantity: number;
 }) {
-  const p = getProductBySlug(slug);
-  const img = p?.imagen ?? PRODUCT_IMAGE_FALLBACK;
-  const title = p?.modelo ?? slug;
-  const marca = p?.marca;
+  const img = product?.imagen ?? PRODUCT_IMAGE_FALLBACK;
+  const title = product?.modelo ?? slug;
+  const marca = product?.marca;
 
   return (
     <li className="flex items-center gap-3 p-3 sm:gap-4 sm:p-4">
@@ -192,7 +445,7 @@ function QuoteSendPreviewRow({
           src={img}
           alt={title}
           fill
-          className="object-cover"
+          className="object-contain p-1"
           sizes="64px"
         />
       </Link>
@@ -230,7 +483,10 @@ function ProductQuoteCompactRow({
   };
 
   const title = product.modelo?.trim() || product.slug;
-  const subtitle = product.marca?.trim();
+  const subtitle = [product.marca, product.categoria]
+    .map((value) => value?.trim())
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <div className="flex flex-col gap-3 px-3 py-3.5 transition-colors hover:bg-muted/35 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-4">

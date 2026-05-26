@@ -280,14 +280,14 @@ function RelacionadosBlock({
             <li key={p.slug}>
               <Link
                 href={`/productos/${p.slug}/`}
-                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-sm transition-shadow hover:shadow-lg"
               >
-                <div className="relative aspect-[4/3] w-full bg-muted">
+                <div className="relative aspect-[4/3] w-full bg-white">
                   <Image
                     src={img}
                     alt={title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03]"
                     sizes="(max-width:640px) 100vw, 33vw"
                   />
                 </div>

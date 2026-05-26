@@ -61,6 +61,8 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   // Bot detection and human verification - optimized for performance
   useEffect(() => {
     if (isBot()) {
+      // Hide the entry point for bots before registering interaction listeners.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(false);
       return;
     }
@@ -114,24 +116,25 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
 
   const buttonContent = (
     <>
-      <span className="hidden sm:flex flex-row items-center gap-2 p-1 cursor-pointer ">
+      <span className="relative hidden cursor-pointer flex-row items-center gap-2 sm:flex">
         <Image
           src="/assets/images/whatsapp.svg"
           alt="WhatsApp"
-          width={40}
-          height={40}
-          className="w-12 h-12"
+          width={56}
+          height={56}
+          className="h-14 w-14"
         />
-        <span className="bg-green-500/50 rounded-full w-full h-full absolute top-0 left-0 animate-ping"></span>
+        <span className="absolute inset-0 rounded-full bg-green-500/35 animate-ping"></span>
       </span>
-      <span className="sm:hidden flex items-center justify-center">
+      <span className="relative flex items-center justify-center sm:hidden">
         <Image
           src="/assets/images/whatsapp.svg"
           alt="WhatsApp"
-          width={24}
-          height={24}
-          className="w-6 h-6"
+          width={44}
+          height={44}
+          className="h-11 w-11"
         />
+        <span className="absolute inset-0 rounded-full bg-green-500/35 animate-ping"></span>
       </span>
     </>
   );
@@ -150,19 +153,19 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           ref={buttonRef}
           onClick={handleClick}
           className={cn(
-            "fixed bottom-6 right-6 z-40",
+            "fixed bottom-5 right-5 z-40 sm:bottom-6 sm:right-6",
             "bg-primary text-primary-foreground hover:bg-primary/90",
-            "rounded-full w-20px h-20px sm:w-auto sm:h-auto sm:px-2 sm:py-2",
-            "shadow-lg hover:shadow-xl",
+            "h-16 w-16 rounded-full p-2 sm:h-[4.75rem] sm:w-[4.75rem]",
+            "shadow-[0_16px_45px_rgba(22,163,74,0.32)] hover:shadow-[0_20px_55px_rgba(22,163,74,0.42)]",
             "transition-all duration-200 ease-in-out",
             "animate-in slide-in-from-bottom-2 fade-in duration-300",
-            "border-0",
+            "border border-white/70",
             "font-medium",
             className,
           )}
           size={size}
           aria-label="Contactanos en WhatsApp"
-          title="Chat with us on WhatsApp"
+          title="Contactanos en WhatsApp"
         >
           {buttonContent}
         </Button>

@@ -1,15 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { CatalogoDocs } from "@/domain/product";
 import { DownloadGateModal } from "@/components/ui/download-gate-modal";
 import { PdfDocGrid } from "@/components/ui/pdf-doc-grid";
 import { isProductDownloadGateSatisfied } from "@/lib/download-gate-storage";
 import { triggerFileDownload } from "@/lib/trigger-file-download";
-import {
-  CERTIFICADOS_MARCA_TAB_ORDER,
-  certificadosMarcaDocs,
-} from "@/lib/certificados-pdfs-data";
 import {
   NORMATIVAS_DOWNLOAD_GATE_SLUG,
   normativasInternacionalesSueltos,
@@ -42,18 +38,6 @@ function peDocsForTab(id: PeTabId): CatalogoDocs[] {
   }
 }
 
-const CERT_TAB_SET = new Set<string>(CERTIFICADOS_MARCA_TAB_ORDER);
-
-function groupDocsByMarca(docs: CatalogoDocs[]) {
-  const groups = new Map<string, CatalogoDocs[]>();
-  for (const doc of docs) {
-    const list = groups.get(doc.categoria) ?? [];
-    list.push(doc);
-    groups.set(doc.categoria, list);
-  }
-  return groups;
-}
-
 export interface NormativasPdfDownloadsProps {
   /** Si es false, descarga directa sin formulario previo */
   requireDownloadGate?: boolean;
@@ -70,41 +54,10 @@ export function NormativasPdfDownloads({
   const [macroTab, setMacroTab] = useState<MacroTab>("peruanas");
   const [peTab, setPeTab] = useState<PeTabId>("resoluciones");
 
-  const certByMarca = useMemo(
-    () => groupDocsByMarca(certificadosMarcaDocs),
-    [],
-  );
-  const certTabs = useMemo(() => {
-    const ordered = CERTIFICADOS_MARCA_TAB_ORDER.filter(
-      (marca) => (certByMarca.get(marca)?.length ?? 0) > 0,
-    );
-    const extra = Array.from(certByMarca.keys())
-      .filter((k) => !CERT_TAB_SET.has(k))
-      .sort((a, b) => a.localeCompare(b, "es"));
-    return [...ordered, ...extra];
-  }, [certByMarca]);
-
-  const [activeCertMarca, setActiveCertMarca] = useState<string>(
-    CERTIFICADOS_MARCA_TAB_ORDER[0] ?? "",
-  );
-  useEffect(() => {
-    setActiveCertMarca((prev) => {
-      if (certTabs.length === 0) return "";
-      if (prev && certTabs.includes(prev)) return prev;
-      return certTabs[0] ?? "";
-    });
-  }, [certTabs]);
-
   const activeDocs = useMemo(() => {
     if (macroTab === "internacionales") return normativasInternacionalesSueltos;
     return peDocsForTab(peTab);
   }, [macroTab, peTab]);
-
-  const activeCertDocs = activeCertMarca
-    ? certByMarca.get(activeCertMarca) ?? []
-    : [];
-
-  const hasCertificados = certificadosMarcaDocs.length > 0;
 
   const handleDocSelect = useCallback(
     async (doc: CatalogoDocs) => {
@@ -123,7 +76,7 @@ export function NormativasPdfDownloads({
   const hasOtras = otrasNormativasDocumentosSueltos.length > 0;
 
   return (
-    <div className="border-b border-border/60 bg-muted/20 py-16 sm:py-20 md:py-24">
+    <div className="border-b border-border/60 bg-background-alt py-12 sm:py-14 md:py-16">
       {requireDownloadGate ? (
         <DownloadGateModal
           open={pendingDownload !== null}
@@ -134,7 +87,7 @@ export function NormativasPdfDownloads({
         />
       ) : null}
 
-      <div className="container space-y-16 sm:space-y-20">
+      <div className="container space-y-10 sm:space-y-12">
         <section aria-labelledby="normativas-web-heading">
           <h2
             id="normativas-web-heading"
@@ -143,7 +96,7 @@ export function NormativasPdfDownloads({
             Normativas para web
           </h2>
 
-          <div className="overflow-visible rounded-lg border border-border bg-card shadow-sm">
+          <div className="overflow-visible rounded-[1.5rem] border border-border bg-card shadow-lg shadow-primary/5">
             <div
               role="tablist"
               aria-label="Alcance normativo"
@@ -191,7 +144,7 @@ export function NormativasPdfDownloads({
               aria-labelledby={
                 macroTab === "peruanas" ? `pe-tab-${peTab}` : "macro-tab-int"
               }
-              className="px-4 py-4 sm:px-8 sm:py-6"
+              className="px-4 py-4 sm:px-6 sm:py-5"
             >
               {macroTab === "internacionales" && (
                 <p className="mb-4 text-sm text-muted-foreground">
@@ -205,59 +158,6 @@ export function NormativasPdfDownloads({
           </div>
         </section>
 
-        {hasCertificados && (
-          <section aria-labelledby="certificados-marca-heading">
-            <h2
-              id="certificados-marca-heading"
-              className="mb-6 text-2xl font-bold text-foreground"
-            >
-              Certificados de marca
-            </h2>
-            <p className="mb-4 max-w-3xl text-sm text-muted-foreground">
-              Certificaciones y respaldos por fabricante. Mismo proceso de
-              descarga que las normativas.
-            </p>
-            <div className="overflow-visible rounded-lg border border-border bg-card shadow-sm">
-              <div
-                role="tablist"
-                aria-label="Marca / fabricante"
-                className="flex flex-wrap border-b border-border bg-muted/30 sm:flex-nowrap"
-              >
-                {certTabs.map((marca) => {
-                  const selected = activeCertMarca === marca;
-                  const slug = marca.replace(/\s+/g, "-");
-                  const tabId = `cert-tab-${slug}`;
-                  return (
-                    <MacroTabButton
-                      key={marca}
-                      selected={selected}
-                      onClick={() => setActiveCertMarca(marca)}
-                      id={tabId}
-                      controlsId="certificados-marca-panel"
-                      label={marca}
-                    />
-                  );
-                })}
-              </div>
-              <div
-                role="tabpanel"
-                id="certificados-marca-panel"
-                aria-labelledby={
-                  activeCertMarca
-                    ? `cert-tab-${activeCertMarca.replace(/\s+/g, "-")}`
-                    : undefined
-                }
-                className="px-4 py-4 sm:px-8 sm:py-6"
-              >
-                <PdfDocGrid
-                  docs={activeCertDocs}
-                  onDocSelect={handleDocSelect}
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
         {hasOtras && (
           <section aria-labelledby="otras-normativas-heading">
             <h2
@@ -266,8 +166,8 @@ export function NormativasPdfDownloads({
             >
               Otras normativas (documentos sueltos)
             </h2>
-            <div className="overflow-visible rounded-lg border border-border bg-card shadow-sm">
-              <div className="px-4 py-4 sm:px-8 sm:py-6">
+            <div className="overflow-visible rounded-[1.5rem] border border-border bg-card shadow-lg shadow-primary/5">
+              <div className="px-4 py-4 sm:px-6 sm:py-5">
                 <PdfDocGrid
                   docs={otrasNormativasDocumentosSueltos}
                   onDocSelect={handleDocSelect}

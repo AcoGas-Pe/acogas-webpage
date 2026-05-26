@@ -33,7 +33,7 @@ export function Coverage({
   return (
     <section
       className={cn(
-        "section border-y border-border/50 bg-background py-11 sm:py-12 md:py-14",
+        "section border-y border-border/40 bg-background-alt py-11 sm:py-12 md:py-14",
         className,
       )}
     >
@@ -57,12 +57,11 @@ export function Coverage({
           <div className="flex flex-col items-center justify-center gap-3 sm:mt-9 sm:gap-4"> 
           <div
             className={cn(
-              "rounded-2xl border-2 border-primary/25 p-3 shadow-sm sm:p-4",
-              "ring-1 ring-primary/10 bg-primary",
+              "rounded-2xl border border-primary/12 bg-primary/95 p-3 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.55)] sm:p-4",
             )}
           >
             <div className="grid min-h-[240px] gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-4 md:min-h-[280px]">
-              <div className="flex flex-col gap-4 rounded-xl bg-white p-4 sm:p-5">
+              <div className="flex flex-col gap-4 rounded-xl border border-white/70 bg-white p-4 shadow-[0_16px_38px_-30px_hsl(var(--primary)_/_0.42)] sm:p-5">
                 <div>
                   <div className="mb-3 flex items-center gap-2.5">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/15 bg-primary/10">
@@ -80,7 +79,7 @@ export function Coverage({
                       <a
                         key={city.name}
                         href={city.href}
-                        className="rounded-md border border-neutral-200/90 bg-primary/10 px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)] transition hover:border-primary/30 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
+                        className="rounded-md border border-border/50 bg-primary/[0.07] px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_10px_24px_-22px_hsl(var(--primary)_/_0.30)] transition hover:border-primary/20 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
                       >
                         {city.name}
                       </a>
@@ -105,7 +104,7 @@ export function Coverage({
                       <a
                         key={city.name}
                         href={city.href}
-                        className="rounded-md border border-neutral-200/90 bg-primary/10 px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)] transition hover:border-primary/30 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
+                        className="rounded-md border border-border/50 bg-primary/[0.07] px-2.5 py-1.5 text-[11px] font-medium text-foreground shadow-[0_10px_24px_-22px_hsl(var(--primary)_/_0.30)] transition hover:border-primary/20 hover:bg-primary/[0.04] sm:px-3 sm:text-xs"
                       >
                         {city.name}
                       </a>

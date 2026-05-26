@@ -175,7 +175,7 @@ console.log("Exact basename (case-insensitive):", exact);
 console.log("After wp-ish sanitize match:", sanit);
 console.log("No match in assets-names.txt:", miss.length);
 console.log(
-	"  → of those, same stem / different extension (e.g. .png vs .jpg):",
+	"  → of those, same stem / different extension (e.g. .png vs .webp):",
 	stemOnly
 );
 console.log(

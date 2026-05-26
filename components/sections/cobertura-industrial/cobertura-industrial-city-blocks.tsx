@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 import type { City } from "@/domain/city";
 import { getCityBySlug } from "@/lib/cities-data";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import {
   Apple,
   Building2,
@@ -48,10 +49,27 @@ const INDUSTRY_ICONS: Record<
   Textil: Shirt,
 };
 
+const INDUSTRY_IMAGES: Record<string, string> = {
+  Manufactura: "/assets/images/industry-plant-industrial-plant.webp",
+  Almacenamiento: "/assets/images/logistics.webp",
+  Portuario: "/assets/images/gasoline-tanks-port-industry.webp",
+  Logística: "/assets/images/logistics.webp",
+  Comercial: "/assets/images/revision-en-planta.webp",
+  Hotelería: "/assets/images/pintura-vajilla.webp",
+  Salud: "/assets/images/tanks-petrochemistry-silos-406908.webp",
+  Alimentos: "/assets/images/beer-brewery-metal-tanks.webp",
+  Agroindustria: "/assets/images/agricultural-silos-building-exterior.webp",
+  Calzado: "/assets/images/textile-products.webp",
+  Minería: "/assets/images/open-pit-mining-commodity.webp",
+  Textil: "/assets/images/textile.webp",
+};
+
 function RegionHeader({ title }: { title: string }) {
   return (
-    <div className="flex items-center gap-2.5">
-      <MapPin className="h-6 w-6 shrink-0 text-accent sm:h-7 sm:w-7" aria-hidden />
+    <div className="flex items-center gap-3">
+      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/15">
+        <MapPin className="h-6 w-6 shrink-0 sm:h-7 sm:w-7" aria-hidden />
+      </span>
       <h2 className="text-lg font-bold uppercase tracking-[0.1em] text-primary sm:text-xl md:text-2xl">
         {title}
       </h2>
@@ -61,7 +79,7 @@ function RegionHeader({ title }: { title: string }) {
 
 function SectoresHeading() {
   return (
-    <div className="space-y-2">
+    <div className="rounded-[1.5rem] border border-border/50 bg-card p-5 shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]">
       <h3 className="text-base font-bold text-accent">Sectores que atendemos</h3>
       <p className="max-w-2xl text-sm text-muted-foreground">{SECTORES_GREY}</p>
     </div>
@@ -83,13 +101,28 @@ function SectorCell({
   description: string;
 }) {
   const Icon = INDUSTRY_ICONS[name] ?? Factory;
+  const image = INDUSTRY_IMAGES[name] ?? "/assets/images/revision-industria.webp";
   return (
-    <div className="flex flex-col gap-2.5">
-      <Icon className="h-9 w-9 shrink-0 text-foreground" strokeWidth={1.35} aria-hidden />
-      <h4 className="text-[11px] font-bold uppercase tracking-wide text-foreground sm:text-xs">
-        {name}
-      </h4>
-      <p className="text-[13px] leading-snug text-foreground/90 sm:text-sm">{description}</p>
+    <div className="card-base group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-card">
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+        <div className="absolute bottom-3 left-3 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/90 text-primary shadow-sm">
+          <Icon className="h-6 w-6 shrink-0" strokeWidth={1.55} aria-hidden />
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col gap-2 p-5">
+        <h4 className="text-[11px] font-bold uppercase tracking-wide text-foreground sm:text-xs">
+          {name}
+        </h4>
+        <p className="text-[13px] leading-snug text-foreground/90 sm:text-sm">{description}</p>
+      </div>
     </div>
   );
 }
@@ -111,7 +144,7 @@ function CityIndustrialArticle({
   return (
     <article
       className={cn(
-        "space-y-8 border-t border-border mt-14 sm:space-y-10 sm:pt-16",
+        "mt-14 space-y-8 rounded-[2rem] border border-border/45 bg-background p-5 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.42)] sm:space-y-10 sm:p-8",
       )}
     >
       <RegionHeader title={city.name} />
@@ -128,7 +161,7 @@ function CityIndustrialArticle({
 
       <div
         className={cn(
-          "grid gap-8 border-t border-border/80 pt-8 sm:gap-10 sm:pt-10",
+          "grid gap-5 sm:gap-6",
           gridCols === "4"
             ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
             : "grid-cols-1 md:grid-cols-3",

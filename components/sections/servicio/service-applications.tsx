@@ -11,7 +11,7 @@ export function ServiceApplications({ service, className }: ServiceApplicationsP
   return (
     <section
       className={cn(
-        "section border-y border-border/60 bg-background py-14 sm:py-16 md:py-20",
+        "section border-y border-border/40 bg-background py-14 sm:py-16 md:py-20",
         className,
       )}
     >
@@ -35,12 +35,12 @@ export function ServiceApplications({ service, className }: ServiceApplicationsP
               <div
                 key={`${app.industry}-${index}`}
                 className={cn(
-                  "flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm",
-                  "transition hover:border-primary/25 hover:shadow-md",
+                  "flex gap-4 rounded-[1.35rem] border border-border/50 bg-card p-5 shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]",
+                  "transition hover:border-primary/20 hover:shadow-[0_22px_50px_-34px_hsl(var(--primary)_/_0.42)]",
                 )}
               >
                 <div className="shrink-0 pt-0.5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/15 bg-primary/[0.07]">
                     <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden />
                   </div>
                 </div>

@@ -46,7 +46,7 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
   return (
     <section className="  flex flex-col py-16 sm:py-20 md:py-24">
       <div
-        className="mb-4 text-sm font-light max-w-7xl container"
+        className="mb-4 text-sm font-light max-w-7xl container pt-20" 
         aria-label="Breadcrumb"
       >
         <ol className="list-none p-0 inline-flex items-center text-muted-foreground">
@@ -64,12 +64,12 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
         </ol>
       </div>
       <div className="container max-w-6xl grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start">
-        <div className="relative min-h-[280px] w-full overflow-hidden rounded-xl border border-border bg-muted lg:sticky lg:top-24 lg:min-h-[min(70vh,520px)]">
+        <div className="relative min-h-[280px] w-full overflow-hidden rounded-[1.5rem] border border-border bg-white shadow-lg shadow-primary/5 lg:sticky lg:top-24 lg:min-h-[min(70vh,520px)]">
           <Image
             src={product.imagen || PRODUCT_IMAGE_FALLBACK}
             alt={product.modelo || "Producto"}
             fill
-            className="object-cover"
+            className="object-contain p-6 sm:p-8"
             sizes="(max-width:1024px) 100vw, 45vw"
             priority
           />

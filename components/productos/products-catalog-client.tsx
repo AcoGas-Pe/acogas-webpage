@@ -38,6 +38,163 @@ function toggleInArray(arr: string[], value: string): string[] {
   return arr.includes(value) ? arr.filter((x) => x !== value) : [...arr, value];
 }
 
+type GuidedFilterKey = "marcas" | "macroCategorias" | "categorias";
+
+const guidedFilterLabels: Record<GuidedFilterKey, string> = {
+  marcas: "Marca",
+  macroCategorias: "Macrocategoría",
+  categorias: "Categoría",
+};
+
+function productValueForFilter(product: Product, key: GuidedFilterKey): string {
+  if (key === "marcas") return product.marca?.trim() ?? "";
+  if (key === "macroCategorias") return product.macroCategoria?.trim() ?? "";
+  return product.categoria?.trim() ?? "";
+}
+
+function productMatchesGuidedFilters(
+  product: Product,
+  filters: CatalogFilters,
+  exceptKey?: GuidedFilterKey,
+): boolean {
+  const guidedKeys: GuidedFilterKey[] = [
+    "marcas",
+    "macroCategorias",
+    "categorias",
+  ];
+
+  for (const key of guidedKeys) {
+    if (key === exceptKey) continue;
+    const selected = filters[key];
+    if (selected.length === 0) continue;
+    if (!selected.includes(productValueForFilter(product, key))) return false;
+  }
+
+  if (
+    filters.tiposBrochure.length > 0 &&
+    !filters.tiposBrochure.includes(product.tipoBrochure?.trim() ?? "")
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+function GuidedFilterCheckboxSection({
+  filterKey,
+  values,
+  filters,
+  products,
+  onToggle,
+  initialVisible = 8,
+}: {
+  filterKey: GuidedFilterKey;
+  values: string[];
+  filters: CatalogFilters;
+  products: Product[];
+  onToggle: (value: string) => void;
+  initialVisible?: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const selectedValues = filters[filterKey];
+  const options = values.map((value) => {
+    const checked = selectedValues.includes(value);
+    const matchesOtherFilters = products.some(
+      (product) =>
+        productValueForFilter(product, filterKey) === value &&
+        productMatchesGuidedFilters(product, filters, filterKey),
+    );
+    return {
+      value,
+      checked,
+      enabled: checked || (matchesOtherFilters && selectedValues.length === 0),
+    };
+  });
+  const checkedOptions = options.filter((option) => option.checked);
+  const enabledOptions = options.filter(
+    (option) => option.enabled && !option.checked,
+  );
+  const disabledOptions = options.filter((option) => !option.enabled);
+  const primaryOptions =
+    selectedValues.length > 0
+      ? checkedOptions
+      : enabledOptions.slice(0, initialVisible);
+  const extraOptions =
+    selectedValues.length > 0
+      ? [...enabledOptions, ...disabledOptions]
+      : [...enabledOptions.slice(initialVisible), ...disabledOptions];
+
+  const renderOption = ({ value, enabled, checked }: (typeof options)[number]) => {
+    const disabled = !enabled && !checked;
+    const id = `${filterKey}-${value}`.replace(/[^a-zA-Z0-9_-]/g, "_");
+    return (
+      <li
+        key={`${filterKey}-${value}-${checked ? "on" : "off"}-${enabled ? "enabled" : "disabled"}`}
+        className="animate-soft-fade-in"
+      >
+        <label
+          htmlFor={id}
+          className={cn(
+            "flex cursor-pointer items-start gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors hover:bg-muted/80",
+            checked && "bg-primary/8 text-primary",
+            disabled &&
+              "cursor-not-allowed text-muted-foreground/55 hover:bg-transparent",
+          )}
+        >
+          <input
+            id={id}
+            type="checkbox"
+            className="mt-0.5 rounded border-border"
+            checked={checked}
+            disabled={disabled}
+            onChange={() => onToggle(value)}
+          />
+          <span className="leading-snug">
+            {value}
+            {disabled ? (
+              <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
+                No disponible
+              </span>
+            ) : null}
+          </span>
+        </label>
+      </li>
+    );
+  };
+
+  return (
+    <div className="rounded-2xl border border-border bg-card p-3 shadow-sm">
+      <span className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground">
+        {guidedFilterLabels[filterKey]}
+      </span>
+      <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-1">
+        {primaryOptions.map(renderOption)}
+      </ul>
+      {extraOptions.length > 0 ? (
+        <>
+          <div
+            className={cn(
+              "grid overflow-hidden transition-all duration-300 ease-out",
+              expanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+            )}
+          >
+            <ul className="min-h-0 grid grid-cols-1 gap-1.5 pt-1.5 sm:grid-cols-2 lg:grid-cols-1">
+              {extraOptions.map(renderOption)}
+            </ul>
+          </div>
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            className="mt-3 text-xs font-bold uppercase tracking-wide text-primary transition-colors hover:text-primary-light"
+          >
+            {expanded ? "Ver menos" : `Ver más (${extraOptions.length})`}
+          </button>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
 function FilterSection({
   sectionId,
   title,
@@ -95,12 +252,14 @@ function FilterSection({
 function FilterPanel({
   facets,
   filters,
+  products,
   setFilters,
   onClear,
   activeFilterCount,
 }: {
   facets: ProductCatalogFacets;
   filters: CatalogFilters;
+  products: Product[];
   setFilters: React.Dispatch<React.SetStateAction<CatalogFilters>>;
   onClear: () => void;
   activeFilterCount: number;
@@ -129,27 +288,28 @@ function FilterPanel({
           </button>
         ) : null}
       </div>
-      <FilterSection
-        sectionId="marca"
-        title="Marca"
+      <GuidedFilterCheckboxSection
+        filterKey="marcas"
         values={facets.marcas}
-        selected={filters.marcas}
-        onToggle={(v) => patch("marcas", v)}
+        filters={filters}
+        products={products}
+        onToggle={(value) => patch("marcas", value)}
       />
-      <FilterSection
-        sectionId="macro"
-        title="Macrocategoría"
+      <GuidedFilterCheckboxSection
+        filterKey="macroCategorias"
         values={facets.macroCategorias}
-        selected={filters.macroCategorias}
-        onToggle={(v) => patch("macroCategorias", v)}
+        filters={filters}
+        products={products}
+        initialVisible={6}
+        onToggle={(value) => patch("macroCategorias", value)}
       />
-      <FilterSection
-        sectionId="cat"
-        title="Categoría"
+      <GuidedFilterCheckboxSection
+        filterKey="categorias"
         values={facets.categorias}
-        selected={filters.categorias}
-        onToggle={(v) => patch("categorias", v)}
-        expandList
+        filters={filters}
+        products={products}
+        initialVisible={8}
+        onToggle={(value) => patch("categorias", value)}
       />
       <FilterSection
         sectionId="brochure"
@@ -305,17 +465,17 @@ function ProductPills({ product }: { product: Product }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {brochure ? (
-        <span className="inline-flex max-w-full items-center rounded-full bg-primary/12 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary truncate">
+        <span className="inline-flex max-w-full items-center rounded-lg bg-primary/12 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary truncate">
           {brochure}
         </span>
       ) : null}
       {marca ? (
-        <span className="inline-flex max-w-full items-center rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
+        <span className="inline-flex max-w-full items-center rounded-lg border border-border bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
           {marca}
         </span>
       ) : null}
       {grupo ? (
-        <span className="inline-flex max-w-full items-center rounded-full border border-border bg-muted/30 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
+        <span className="inline-flex max-w-full items-center rounded-lg border border-border bg-muted/30 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
           {grupo}
         </span>
       ) : null}
@@ -360,6 +520,8 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
     }
     if (filterSearchPrevRef.current !== filterSearchKey) {
       filterSearchPrevRef.current = filterSearchKey;
+      // Reset pagination when the user changes filters/search.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCatalogPage(1);
     }
   }, [filterSearchKey]);
@@ -368,6 +530,8 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
   const safePage = Math.min(catalogPage, totalPages);
 
   useEffect(() => {
+    // Keep the visible page inside bounds when filters reduce result count.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (catalogPage !== safePage) setCatalogPage(safePage);
   }, [catalogPage, safePage]);
 
@@ -403,6 +567,8 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
     const fromUrl = catalogFiltersFromSearchParams(
       new URLSearchParams(queryKey),
     );
+    // Sync filter UI with direct links from the navigation/query string.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFilters(fromUrl ?? emptyCatalogFilters());
   }, [queryKey]);
 
@@ -425,6 +591,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
               <FilterPanel
                 facets={facets}
                 filters={filters}
+                products={products}
                 setFilters={setFilters}
                 onClear={clearFilters}
                 activeFilterCount={activeFilterCount}
@@ -438,7 +605,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
                 <SlidersHorizontal className="h-4 w-4 shrink-0" />
                 Filtros
                 {activeFilterCount > 0 ? (
-                  <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
+                  <span className="rounded-md bg-primary px-2 py-0.5 text-xs text-primary-foreground">
                     {activeFilterCount}
                   </span>
                 ) : null}
@@ -450,6 +617,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
                 <FilterPanel
                   facets={facets}
                   filters={filters}
+                  products={products}
                   setFilters={setFilters}
                   onClear={clearFilters}
                   activeFilterCount={activeFilterCount}
@@ -508,7 +676,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
                     role="listbox"
                   >
                     {suggestions.map((s) => (
-                      <li key={s.slug} role="option">
+                      <li key={s.slug} role="option" aria-selected={false}>
                         <button
                           type="button"
                           className="flex w-full flex-col items-start gap-0.5 px-3 py-2 text-left text-sm hover:bg-muted"
@@ -598,7 +766,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
             ) : view === "grid" ? (
               <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                 {paginated.map((p) => (
-                  <li key={p.slug}>
+                  <li key={`${p.slug}-${filterSearchKey}`} className="animate-soft-fade-in">
                     <ProductCardGrid product={p} />
                   </li>
                 ))}
@@ -606,7 +774,7 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
             ) : (
               <ul className="flex flex-col gap-3">
                 {paginated.map((p) => (
-                  <li key={p.slug}>
+                  <li key={`${p.slug}-${filterSearchKey}`} className="animate-soft-fade-in">
                     <ProductCardList product={p} />
                   </li>
                 ))}
@@ -633,14 +801,14 @@ function ProductCardGrid({ product }: { product: Product }) {
   return (
     <Link
       href={`/productos/${product.slug}/`}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-sm transition-shadow hover:shadow-xl"
     >
-      <div className="relative aspect-square w-full bg-muted">
+      <div className="relative aspect-square w-full bg-white">
         <Image
           src={img}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03]"
           sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 33vw"
         />
       </div>
@@ -660,14 +828,14 @@ function ProductCardList({ product }: { product: Product }) {
   return (
     <Link
       href={`/productos/${product.slug}/`}
-      className="group flex gap-4 overflow-hidden rounded-xl border border-border bg-card p-3 shadow-sm transition-shadow hover:shadow-md sm:p-4"
+      className="group flex gap-4 overflow-hidden rounded-[1.5rem] border border-border bg-card p-3 shadow-sm transition-shadow hover:shadow-xl sm:p-4"
     >
-      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-muted sm:h-28 sm:w-28">
+      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-white ring-1 ring-border/60 sm:h-28 sm:w-28">
         <Image
           src={img}
           alt={title}
           fill
-          className="object-cover"
+          className="object-contain p-2"
           sizes="112px"
         />
       </div>

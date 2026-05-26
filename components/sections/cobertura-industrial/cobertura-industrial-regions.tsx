@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getPhoneDisplay, GOOGLE_MAPS } from "@/lib/business-config";
 import { getAllCities } from "@/lib/cities-data";
+import Image from "next/image";
 import {
   Clock,
   Factory,
@@ -39,30 +40,47 @@ interface SectorTileProps {
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   label: string;
   description: string;
+  image: string;
 }
 
-function SectorTile({ icon: Icon, label, description }: SectorTileProps) {
+function SectorTile({ icon: Icon, label, description, image }: SectorTileProps) {
   return (
-    <div className="flex flex-col gap-2.5">
-      <Icon
-        className="h-9 w-9 shrink-0 text-foreground"
-        strokeWidth={1.35}
-        aria-hidden
-      />
-      <h4 className="text-[11px] font-bold uppercase tracking-wide text-foreground sm:text-xs">
-        {label}
-      </h4>
-      <p className="text-[13px] leading-snug text-foreground/90 sm:text-sm">
-        {description}
-      </p>
+    <div className="card-base group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-card">
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <Image
+          src={image}
+          alt={label}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+        <div className="absolute bottom-3 left-3 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/90 text-primary shadow-sm">
+          <Icon
+            className="h-6 w-6 shrink-0"
+            strokeWidth={1.55}
+            aria-hidden
+          />
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col gap-2 p-5">
+        <h4 className="text-[11px] font-bold uppercase tracking-wide text-foreground sm:text-xs">
+          {label}
+        </h4>
+        <p className="text-[13px] leading-snug text-foreground/90 sm:text-sm">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
 
 function RegionHeader({ title }: { title: string }) {
   return (
-    <div className="flex items-center gap-2.5">
-      <MapPin className="h-6 w-6 shrink-0 text-accent sm:h-7 sm:w-7" aria-hidden />
+    <div className="flex items-center gap-3">
+      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/15">
+        <MapPin className="h-6 w-6 shrink-0 sm:h-7 sm:w-7" aria-hidden />
+      </span>
       <h2 className="text-lg font-bold uppercase tracking-[0.1em] text-primary sm:text-xl md:text-2xl">
         {title}
       </h2>
@@ -72,7 +90,12 @@ function RegionHeader({ title }: { title: string }) {
 
 function SectoresBlock({ className }: { className?: string }) {
   return (
-    <div className={cn("space-y-2", className)}>
+    <div
+      className={cn(
+        "rounded-[1.5rem] border border-border/50 bg-card p-5 shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]",
+        className,
+      )}
+    >
       <h3 className="text-base font-bold text-accent">Sectores que atendemos</h3>
       <p className="max-w-2xl text-sm text-muted-foreground">{SECTORS_INTRO_GREY}</p>
     </div>
@@ -124,23 +147,27 @@ const limaSectorTiles: SectorTileProps[] = [
     label: "Manufactura",
     description:
       "Plantas industriales en Ate, Santa Anita y Lurigancho.",
+    image: "/assets/images/industry-plant-industrial-plant.webp",
   },
   {
     icon: Package,
     label: "Alimentos y bebidas",
     description:
       "Industria alimentaria en Lima Norte y Lima Sur.",
+    image: "/assets/images/beer-brewery-metal-tanks.webp",
   },
   {
     icon: Shirt,
     label: "Textil",
     description: "Sector textil en Gamarra y zonas industriales.",
+    image: "/assets/images/textile.webp",
   },
   {
     icon: Pill,
     label: "Farmacéutica",
     description:
       "Laboratorios y plantas farmacéuticas.",
+    image: "/assets/images/tanks-petrochemistry-silos-406908.webp",
   },
 ];
 
@@ -150,12 +177,14 @@ const lurinSectorTiles: SectorTileProps[] = [
     label: "Manufactura",
     description:
       "Plantas industriales del corredor sur.",
+    image: "/assets/images/industry-plant-industrial-plant.webp",
   },
   {
     icon: Warehouse,
     label: "Logística",
     description:
       "Centros de distribución y almacenes.",
+    image: "/assets/images/logistics.webp",
   },
 ];
 
@@ -168,8 +197,8 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
   const phoneDisplay = getPhoneDisplay();
 
   return (
-    <section className={cn("section bg-background", className)}>
-      <div className="container max-w-5xl py-14 sm:py-16 md:py-16">
+    <section className={cn("section bg-background-alt", className)}>
+      <div className="container max-w-6xl py-14 sm:py-16 md:py-16">
         <CoberturaCitySelector
           id="selector-ciudad-cobertura"
           cities={CITY_NAV_ITEMS}
@@ -193,13 +222,13 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
 
           <SectoresBlock />
 
-          <div className="grid grid-cols-1 gap-8 border-t border-border/80 pt-8 sm:gap-10 sm:pt-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {limaSectorTiles.map((t) => (
               <SectorTile key={t.label} {...t} />
             ))}
           </div>
 
-          <div className="rounded-2xl border border-border bg-muted/40 p-4 sm:p-5 md:p-6">
+          <div className="rounded-[2rem] border border-border/45 bg-background p-4 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.42)] sm:p-5 md:p-6">
             <div className="mb-6 text-center">
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
                 Ubicación
@@ -210,12 +239,12 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
             </div>
 
             <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-6">
-              <div className="rounded-xl border border-border bg-card p-5 shadow-sm sm:p-6">
+              <div className="rounded-[1.5rem] border border-border/50 bg-card p-5 shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)] sm:p-6">
                 <h4 className="text-base font-bold text-primary sm:text-lg">
                   Servicio técnico en Lima
                 </h4>
 
-                <div className="mt-6 space-y-4 border-b border-border pb-6">
+                <div className="mt-6 space-y-4 border-b border-border/50 pb-6">
                   <InfoRow
                     icon={MapPin}
                     label="Cobertura"
@@ -262,7 +291,7 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
                     size="lg"
                     className="min-h-12 flex-1 justify-center uppercase tracking-wide sm:min-w-[12rem]"
                   >
-                    Solicitar visita en Limas
+                    Solicitar visita en Lima
                   </Button>
                 </div>
               </div>
@@ -270,7 +299,7 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
               <iframe
                 title="Mapa cobertura Lima — ACOGAS"
                 src={googleMapsEmbedSrc()}
-                className="min-h-[280px] w-full rounded-xl border border-border/80 bg-white sm:min-h-[320px] lg:min-h-full"
+                className="min-h-[280px] w-full rounded-[1.5rem] border border-border/45 bg-white shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)] sm:min-h-[320px] lg:min-h-full"
                 height={360}
                 style={{ border: 0 }}
                 allowFullScreen
@@ -282,7 +311,7 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
         </article>
 
         {/* Lurín */}
-        <article className="mt-16 space-y-8 border-t border-border pt-16 sm:mt-20 sm:space-y-10 sm:pt-20">
+        <article className="mt-16 space-y-8 rounded-[2rem] border border-border/45 bg-background p-5 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.42)] sm:mt-20 sm:space-y-10 sm:p-8">
           <RegionHeader title="Lurín" />
 
           <p className="text-sm font-bold text-foreground sm:text-base">
@@ -293,7 +322,7 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
 
           <SectoresBlock />
 
-          <div className="grid grid-cols-1 gap-8 border-t border-border/80 pt-8 sm:grid-cols-2 sm:gap-10 sm:pt-10 md:max-w-3xl">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 md:max-w-3xl">
             {lurinSectorTiles.map((t) => (
               <SectorTile key={t.label} {...t} />
             ))}
@@ -320,7 +349,7 @@ export function CoberturaIndustrialRegions({ className }: CoberturaIndustrialReg
 
         <CoberturaIndustrialCityBlocks />
 
-        <div className="mt-14 border-t border-border pt-12 sm:mt-16 sm:pt-14">
+        <div className="mt-14 border-t border-border/45 pt-12 sm:mt-16 sm:pt-14">
           <p className="mb-5 text-center text-sm font-semibold text-foreground">
             ¿Tu planta está en otra ciudad?
           </p>

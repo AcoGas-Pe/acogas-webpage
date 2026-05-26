@@ -45,7 +45,7 @@ export function CoberturaCitySelector({
     <div
       id={id}
       className={cn(
-        "rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:flex-wrap sm:items-end sm:gap-4 md:p-5",
+        "rounded-2xl border border-border/50 bg-card p-4 shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)] sm:flex sm:flex-wrap sm:items-end sm:gap-4 md:p-5",
         className,
       )}
     >
@@ -76,7 +76,7 @@ export function CoberturaCitySelector({
             onSelect(slug);
           }}
           className={cn(
-            "focus-visible:border-ring focus-visible:ring-ring/35 h-12 w-full cursor-pointer appearance-none rounded-md border-2 border-border bg-background px-4 pr-10 text-sm font-medium text-foreground shadow-[0_1px_2px_rgb(0_0_0_/_0.04)] outline-none transition",
+            "focus-visible:border-ring focus-visible:ring-ring/35 h-12 w-full cursor-pointer appearance-none rounded-lg border border-border/60 bg-background px-4 pr-10 text-sm font-medium text-foreground shadow-[0_10px_24px_-22px_hsl(var(--primary)_/_0.30)] outline-none transition",
             "focus-visible:ring-[3px]",
             "disabled:opacity-60",
           )}

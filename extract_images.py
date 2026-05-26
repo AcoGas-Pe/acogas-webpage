@@ -25,9 +25,9 @@ def sanitize_filename(filename: str) -> str:
     - Replace multiple consecutive hyphens with single hyphen
     - Remove leading/trailing hyphens
     
-    Example: "My Image File!.jpg" -> "my-image-file.jpg"
+    Example: "My Image File!.webp" -> "my-image-file.webp"
     Example: "Photo@2024#Special.png" -> "photo2024special.png"
-    Example: "Image  Name___Test.jpg" -> "image-name-test.jpg"
+    Example: "Image  Name___Test.webp" -> "image-name-test.webp"
     
     Args:
         filename: Original filename
@@ -73,7 +73,7 @@ def find_image_files(directories: List[str]) -> List[Path]:
     Returns:
         List of Path objects for found images
     """
-    image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.webp', '*.JPG', '*.JPEG', '*.PNG', '*.GIF', '*.WEBP']
+    image_extensions = ['*.webp', '*.jpeg', '*.png', '*.gif', '*.webp', '*.webp', '*.JPEG', '*.PNG', '*.GIF', '*.WEBP']
     all_images = []
     
     for directory in directories:

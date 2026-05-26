@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PRODUCT_INDUSTRIES } from "@/lib/business-config";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Utensils,
   Fish,
@@ -22,6 +24,7 @@ interface Industry {
   slug: string;
   url: string;
   description?: string;
+  image?: string;
   icon: React.ComponentType<{ className?: string }>;
 }
 
@@ -55,7 +58,7 @@ export function Industries({
   className,
 }: IndustriesProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-white text-foreground", className)}>
+    <section className={cn("section bg-background-alt py-16 text-foreground sm:py-20 md:py-24", className)}>
       <div className="container">
         <div className="text-center mb-10 sm:mb-14">
           {subtitle && (
@@ -71,22 +74,36 @@ export function Industries({
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {industries.map((industry) => {
             const Icon = industry.icon;
             return (
-              <a
+              <Link
                 key={industry.slug}
                 href={industry.url}
-                className="card-base group p-5 sm:p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1"
+                className="card-base group flex min-h-[160px] flex-col overflow-hidden rounded-[1.5rem] bg-card text-left hover:-translate-y-1"
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                <div className="relative aspect-[4/3] bg-muted">
+                  {industry.image ? (
+                    <Image
+                      src={industry.image}
+                      alt={industry.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                    />
+                  ) : null}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                  <div className="absolute bottom-3 left-3 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/90 text-primary shadow-sm">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
                 </div>
-                <h3 className="text-xs sm:text-sm font-bold text-foreground leading-tight">
-                  {industry.name}
-                </h3>
-              </a>
+                <div className="p-4">
+                  <h3 className="text-xs font-bold leading-tight text-foreground sm:text-sm">
+                    {industry.name}
+                  </h3>
+                </div>
+              </Link>
             );
           })}
         </div>

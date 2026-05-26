@@ -79,7 +79,7 @@ function StarRating({ rating = 5 }: { rating?: number }) {
         <Star
           key={i}
           className={cn(
-            "w-4 h-4",
+            "h-5 w-5 drop-shadow-sm",
             i < rating
               ? "fill-amber-400 text-amber-400"
               : "fill-muted text-muted"
@@ -94,11 +94,11 @@ function StarRating({ rating = 5 }: { rating?: number }) {
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="card-base relative p-5 sm:p-6 flex flex-col h-full min-h-[220px] w-[300px] sm:w-[340px]">
+    <div className="card-base relative flex h-full min-h-[240px] w-[310px] flex-col rounded-[1.75rem] bg-card p-5 sm:w-[360px] sm:p-6">
       {/* Header with avatar and info */}
       <div className="flex items-start gap-3 mb-4">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center shrink-0 ring-2 ring-primary/10">
-          <span className="text-sm font-bold text-primary">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-accent/15 ring-2 ring-primary/10">
+          <span className="text-base font-bold text-primary">
             {testimonial.name.charAt(0).toUpperCase()}
           </span>
         </div>
@@ -108,7 +108,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           </p>
           <div className="flex items-center gap-2 flex-wrap">
             {testimonial.isLocalGuide && (
-              <span className="text-[10px] font-medium text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded">
+              <span className="rounded-md bg-primary/8 px-2 py-0.5 text-[10px] font-semibold text-primary">
                 Guía Local
               </span>
             )}
@@ -119,7 +119,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             )}
           </div>
         </div>
-        <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
+        <Image src="/assets/images/google-logo.webp" alt="Google" width={28} height={28} className="h-7 w-7 shrink-0" />
       </div>
 
       {/* Star rating */}
@@ -128,7 +128,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </div>
 
       {/* Content */}
-      <blockquote className="text-sm text-foreground/80 leading-relaxed flex-1">
+      <blockquote className="flex-1 text-sm leading-relaxed text-foreground/82">
         &ldquo;{testimonial.content}&rdquo;
       </blockquote>
     </div>
@@ -137,19 +137,19 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export function Testimonials({
   title = "Testimonios de nuestros clientes",
-  subtitle = "Satisfacion garantizada",
+  subtitle = "Satisfacción garantizada",
   testimonials = defaultTestimonials,
   className,
 }: TestimonialsProps) {
   return (
     <section
-      className={cn("section py-16 sm:py-20 md:py-24 bg-muted/30", className)}
+      className={cn("section bg-background-alt py-16 sm:py-20 md:py-24", className)}
     >
       <div className="container mb-10 sm:mb-14">
         <div className="text-center">
           {subtitle && (
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-5 h-5 shrink-0" />
+              <Image src="/assets/images/google-logo.webp" alt="Google" width={28} height={28} className="h-7 w-7 shrink-0" />
               <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent">
                 {subtitle}
               </p>
@@ -158,7 +158,7 @@ export function Testimonials({
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
             {title}
           </h2>
-          <p className="mt-3 text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Más de cincuenta años ofreciendo soluciones confiables y eficientes en gases industriales a clientes satisfechos en todo el Perú.
           </p>
         </div>
@@ -170,7 +170,7 @@ export function Testimonials({
         direction="left"
         pauseOnHover={true}
         gap="gap-4 sm:gap-6"
-        className="py-4"
+        className="py-5"
       >
         {testimonials.map((testimonial, index) => (
           <InfiniteCarouselItem key={index}>
@@ -186,9 +186,9 @@ export function Testimonials({
             href="https://maps.app.goo.gl/J2kVQba4oCjYXBuE7"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/8 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="w-4 h-4 shrink-0" />
+            <Image src="/assets/images/google-logo.webp" alt="Google" width={20} height={20} className="h-5 w-5 shrink-0" />
             Ver todas las reseñas en Google
             <svg
               className="w-4 h-4"

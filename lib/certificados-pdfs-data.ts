@@ -18,16 +18,16 @@ export const CERTIFICADO_BRAND_SLUGS = ["fisher", "tartarini", "spence"] as cons
 export const CERTIFICADOS_MARCA_TAB_ORDER = [
   "Cavagna",
   "Corken",
-  "Emerson",
   "Fisher",
   "Spence",
   "Tartarini",
+  "Acogas",
 ] as const;
 
 const m = {
   cavagna: "Cavagna",
   corken: "Corken",
-  emerson: "Emerson",
+  emerson: "Acogas",
   fisher: "Fisher",
   spence: "Spence",
   tartarini: "Tartarini",
@@ -128,14 +128,14 @@ export const certificadosMarcaDocs: CatalogoDocs[] = [
   {
     categoria: m.emerson,
     tipo: "respaldo_comercial",
-    nombre: "Emerson — Respaldo comercial Acogas (1)",
+    nombre: "Acogas — Respaldo comercial Emerson (1)",
     url: assetDoc("certificados", "EMERSON RESPALDO COMERCIAL 1 ACOGAS.pdf"),
     paginas: "PDF · Respaldo",
   },
   {
     categoria: m.emerson,
     tipo: "respaldo_comercial",
-    nombre: "Emerson — Respaldo comercial Acogas (2)",
+    nombre: "Acogas — Respaldo comercial Emerson (2)",
     url: assetDoc("certificados", "EMERSON RESPALDO COMERCIAL 2 ACOGAS.pdf"),
     paginas: "PDF · Respaldo",
   },
@@ -143,7 +143,7 @@ export const certificadosMarcaDocs: CatalogoDocs[] = [
     categoria: m.emerson,
     tipo: "certificado",
     nombre:
-      "FROMEX — Certificado SPA Emerson México (vigencia hasta ago. 2027)",
+      "Acogas — Certificado SPA Emerson México (vigencia hasta ago. 2027)",
     url: assetDoc(
       "certificados",
       "CERT-0121215_SPA_FROMEX S.A. EMERSON DE C.V_ Vigencia hasta 09-Agosto-2027.pdf",

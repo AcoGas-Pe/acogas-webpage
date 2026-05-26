@@ -44,14 +44,15 @@ export function PagesHero({
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50" aria-hidden />
+          <div className="absolute inset-0 bg-linear-to-t from-background via-background/78 to-background/40" aria-hidden />
+          <div className="absolute inset-0 bg-linear-to-r from-background/90 via-background/45 to-transparent" aria-hidden />
         </div>
       )}
       {!image && (
         <div className="absolute inset-0 bg-gradient-to-br from-background-alt to-background" aria-hidden />
       )}
 
-      <div className="container relative z-10 pb-10 sm:pb-14 pt-28 sm:pt-32">
+      <div className="container relative z-10 pb-10 pt-28 sm:pb-14 sm:pt-32">
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-4">
             <ol className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
@@ -75,14 +76,14 @@ export function PagesHero({
         )}
 
         {subtitle && (
-          <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-3">
+          <span className="mb-3 inline-block text-xs font-bold uppercase tracking-[0.18em] text-accent sm:text-sm">
             {subtitle}
           </span>
         )}
 
         <h1
           className={cn(
-            "text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight max-w-3xl [font-family:var(--font-hero)]",
+            "max-w-3xl text-3xl font-bold leading-tight tracking-tight text-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.45)] [font-family:var(--font-hero)] sm:text-4xl md:text-5xl",
             titleClassName,
           )}
         >
@@ -90,7 +91,7 @@ export function PagesHero({
         </h1>
 
         {description && (
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
+          <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-foreground/80 sm:mt-4 sm:text-base md:text-lg">
             {description}
           </p>
         )}

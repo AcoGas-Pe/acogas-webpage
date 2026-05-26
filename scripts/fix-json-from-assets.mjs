@@ -91,7 +91,7 @@ function isDerivativeBasename(b) {
 	return (
 		/-\d+x\d+\.(jpg|jpeg|png|gif|webp)$/i.test(b) ||
 		/-pdf-\d+x\d+/i.test(b) ||
-		/-pdf\.jpg$/i.test(b)
+		/-pdf\.webp$/i.test(b)
 	);
 }
 
@@ -152,7 +152,7 @@ function pickFromStemGroup(refBase, group) {
 		return sameExt[0];
 	}
 
-	const prefOrder = want === ".pdf" ? [".pdf", ".PDF"] : [".png", ".jpg", ".jpeg", ".webp", ".gif", ".pdf"];
+	const prefOrder = want === ".pdf" ? [".pdf", ".PDF"] : [".png", ".webp", ".jpeg", ".webp", ".gif", ".pdf"];
 	for (const ext of prefOrder) {
 		const hit = pool.find((b) => extLc(b) === ext.toLowerCase());
 		if (hit) return hit;

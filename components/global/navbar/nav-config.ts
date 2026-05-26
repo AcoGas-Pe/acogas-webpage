@@ -127,11 +127,6 @@ export const NAV_MENUS = {
             description: "Conócenos en detalle",
           },
           {
-            label: "Soluciones",
-            href: "/productos/",
-            description: "Líneas de solución por energía y proceso",
-          },
-          {
             label: "Trayectoria",
             href: "/nosotros#trayectoria",
             description: "Nuestro recorrido a lo largo de los años",

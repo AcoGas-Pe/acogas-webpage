@@ -68,6 +68,8 @@ export function CertificadosPdfDownloads({
   useEffect(() => {
     if (singleBrandDocs !== null) return;
     if (certTabs.length === 0) {
+      // Sync the controlled tab when the available certificate set changes.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveMarcaTab("");
       return;
     }
@@ -96,22 +98,17 @@ export function CertificadosPdfDownloads({
     "all",
   );
 
-  useEffect(() => {
-    setTipoFilter("all");
-  }, [activeMarcaTab, singleBrandDocs]);
-
-  useEffect(() => {
-    if (tipoFilter !== "all" && !tiposPresentes.includes(tipoFilter)) {
-      setTipoFilter("all");
-    }
-  }, [tipoFilter, tiposPresentes]);
+  const activeTipoFilter =
+    tipoFilter !== "all" && tiposPresentes.includes(tipoFilter)
+      ? tipoFilter
+      : "all";
 
   const activeDocs = useMemo(() => {
-    if (tipoFilter === "all") return docsOfActiveMarca;
+    if (activeTipoFilter === "all") return docsOfActiveMarca;
     return docsOfActiveMarca.filter(
-      (d) => resolveCertificadoTipo(d) === tipoFilter,
+      (d) => resolveCertificadoTipo(d) === activeTipoFilter,
     );
-  }, [docsOfActiveMarca, tipoFilter]);
+  }, [activeTipoFilter, docsOfActiveMarca]);
 
   const handleDocSelect = useCallback(
     async (doc: CatalogoDocs) => {
@@ -138,7 +135,7 @@ export function CertificadosPdfDownloads({
 
   return (
     <section
-      className="border-b border-border/60 bg-muted/20 py-16 sm:py-20 md:py-24"
+      className="border-b border-border/60 bg-background-alt py-12 sm:py-14 md:py-16"
       aria-labelledby="certificados-downloads-heading"
     >
       {requireDownloadGate ? (
@@ -164,7 +161,7 @@ export function CertificadosPdfDownloads({
           </p>
         ) : null}
 
-        <div className="overflow-visible rounded-lg border border-border bg-card shadow-sm">
+        <div className="overflow-visible rounded-[1.5rem] border border-border bg-card shadow-lg shadow-primary/5">
           {showMarcaTabs && (
             <div
               role="tablist"
@@ -188,7 +185,7 @@ export function CertificadosPdfDownloads({
                       "relative min-w-0 shrink-0 px-3 py-3 text-center text-xs font-semibold uppercase tracking-wide transition-colors sm:px-4 sm:py-3.5 sm:text-sm",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                       selected
-                        ? "z-1 border-b-2 border-primary bg-card text-primary -mb-px"
+                    ? "z-1 border-b-2 border-primary bg-card text-primary -mb-px"
                         : "border-b-2 border-transparent text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                     )}
                   >
@@ -201,7 +198,7 @@ export function CertificadosPdfDownloads({
 
           {tiposPresentes.length > 0 ? (
             <div
-              className="flex flex-wrap gap-2 border-b border-border bg-muted/15 px-4 py-3 sm:px-6"
+              className="flex flex-wrap gap-2 border-b border-border bg-muted/15 px-4 py-2.5 sm:px-6"
               role="group"
               aria-label="Tipo de documento"
             >
@@ -209,8 +206,8 @@ export function CertificadosPdfDownloads({
                 type="button"
                 onClick={() => setTipoFilter("all")}
                 className={cn(
-                  "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors sm:text-sm",
-                  tipoFilter === "all"
+                  "rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors sm:text-sm",
+                  activeTipoFilter === "all"
                     ? "border-primary bg-primary/12 text-primary"
                     : "border-border bg-background text-muted-foreground hover:border-primary/30 hover:text-foreground",
                 )}
@@ -223,8 +220,8 @@ export function CertificadosPdfDownloads({
                   type="button"
                   onClick={() => setTipoFilter(t)}
                   className={cn(
-                    "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors sm:text-sm",
-                    tipoFilter === t
+                    "rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors sm:text-sm",
+                    activeTipoFilter === t
                       ? "border-primary bg-primary/12 text-primary"
                       : "border-border bg-background text-muted-foreground hover:border-primary/30 hover:text-foreground",
                   )}
@@ -247,7 +244,7 @@ export function CertificadosPdfDownloads({
                 ? tabSlug(activeMarcaTab)
                 : undefined
             }
-            className="px-4 py-4 sm:px-8 sm:py-6"
+            className="px-4 py-4 sm:px-6 sm:py-5"
           >
             <PdfDocGrid docs={activeDocs} onDocSelect={handleDocSelect} />
           </div>

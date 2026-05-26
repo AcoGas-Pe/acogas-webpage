@@ -63,6 +63,8 @@ export function PdfDocListWithPreview({
 
   /** Otra lista de documentos (p. ej. otro tab u otro producto): reiniciar selección */
   useEffect(() => {
+    // Reset preview selection when changing tabs/products.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedIndex(0);
   }, [docsFingerprint]);
 
@@ -162,7 +164,7 @@ export function PdfDocGrid({ docs, onDocSelect }: PdfDocGridProps) {
   }
 
   return (
-    <ul className="grid h-[50dvh] grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid max-h-[min(42dvh,26rem)] grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3">
       {docs.map((doc, index) => (
         <li
           key={`${doc.categoria}-${doc.url}-${index}`}
@@ -176,7 +178,7 @@ export function PdfDocGrid({ docs, onDocSelect }: PdfDocGridProps) {
             <button
               type="button"
               onClick={() => onDocSelect(doc)}
-              className="group/btn flex w-full cursor-pointer items-start gap-3 rounded-md border border-transparent p-3 text-left transition-colors duration-200 hover:border-border hover:bg-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="group/btn flex w-full cursor-pointer items-start gap-3 rounded-xl border border-border/60 bg-background/70 p-3 text-left shadow-sm transition-colors duration-200 hover:border-primary/20 hover:bg-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-foreground transition-colors group-hover/btn:text-primary">

@@ -32,11 +32,11 @@ export function ServiceBenefits({ service, className }: ServiceBenefitsProps) {
               <div
                 key={benefit.title ?? index}
                 className={cn(
-                  "flex flex-col rounded-xl border border-border bg-card p-6 text-center shadow-sm",
-                  "transition hover:border-primary/25 hover:shadow-md",
+                  "flex flex-col rounded-[1.35rem] border border-border/50 bg-card p-6 text-center shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]",
+                  "transition hover:border-primary/20 hover:shadow-[0_22px_50px_-34px_hsl(var(--primary)_/_0.42)]",
                 )}
               >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/15 bg-primary/[0.07]">
                   <Icon className="h-7 w-7 text-accent" strokeWidth={1.5} aria-hidden />
                 </div>
                 <h3 className="text-sm font-bold uppercase tracking-wide text-primary sm:text-base">

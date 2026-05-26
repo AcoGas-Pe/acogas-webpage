@@ -788,8 +788,8 @@ def generate_service_in_city_json(business_data):
                     "metaDescription": f"Professional {service_name} in {city_name}, {state}. Custom solutions for local needs. Free consultation.",
                     "keywords": f"{service_name} {city_name} {state}, {city_name} services, {primary_keyword.lower()} {city_name}",
                 },
-                "featuredImage": "/images/service-in-city/placeholder.jpg",
-                "gallery": ["/images/service-in-city/placeholder.jpg"] * 3,
+                "featuredImage": "/images/service-in-city/placeholder.webp",
+                "gallery": ["/images/service-in-city/placeholder.webp"] * 3,
             })
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump({"serviceInCity": service_in_city_entries}, f, indent=2)
@@ -1746,7 +1746,7 @@ def generate_seo_config(business_data):
 def sanitize_filename(filename: str) -> str:
     """
     Sanitize filename by removing spaces and special characters.
-    Example: "My Image File!.jpg" -> "my-image-file.jpg"
+    Example: "My Image File!.webp" -> "my-image-file.webp"
     """
     name, ext = os.path.splitext(filename)
     name = name.lower()
@@ -1758,7 +1758,7 @@ def sanitize_filename(filename: str) -> str:
 
 def find_image_files(directories: List[str]) -> List[Path]:
     """Find all image files (jpg, jpeg, png, gif) in specified directories."""
-    image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.JPG', '*.JPEG', '*.PNG', '*.GIF']
+    image_extensions = ['*.webp', '*.jpeg', '*.png', '*.gif', '*.webp', '*.JPEG', '*.PNG', '*.GIF']
     all_images = []
     
     for directory in directories:

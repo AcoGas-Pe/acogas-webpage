@@ -7,7 +7,7 @@ Still unresolved references: 47
 --- Sample corrections (first 80) ---
 [stem] bombas-de-paletas-deslizantes-serie-z :: imagen_filename
   Serie Z.png
-  -> Serie-Z.jpg
+  -> Serie-Z.webp
 [sanitize] bombas-de-paletas-deslizantes-serie-z :: documento_pdf_1.nombre_visible
   Installation, Operation & Maintenance Manual (Z-Series).pdf
   -> Installation-Operation-Maintenance-Manual-Z-Series.pdf
@@ -46,7 +46,7 @@ Still unresolved references: 47
   -> Z-Series.pdf
 [stem] bombas-de-paletas-deslizantes-serie-pt :: imagen_filename
   Serie PT.png
-  -> Serie-PT.jpg
+  -> Serie-PT.webp
 [sanitize] bombas-de-paletas-deslizantes-serie-pt :: documento_pdf_1.nombre_visible
   Installation, Operation & Maintenance Manual (PT-Series).pdf
   -> Installation-Operation-Maintenance-Manual-PT-Series.pdf
@@ -55,7 +55,7 @@ Still unresolved references: 47
   -> PT-Series.pdf
 [stem] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: imagen_filename
   Bombas de paletas deslizantes modelos 521 y 1021.png
-  -> Bombas-de-paletas-deslizantes-modelos-521-y-1021.jpg
+  -> Bombas-de-paletas-deslizantes-modelos-521-y-1021.webp
 [sanitize] bombas-de-paletas-deslizantes-modelos-521-y-1021 :: documento_pdf_1.nombre_visible
   Brochure General CORKEN.pdf
   -> Brochure-General-CORKEN.pdf
@@ -70,7 +70,7 @@ Still unresolved references: 47
   -> Parts-Details-Models-51_-521-y-1021.pdf
 [stem] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: imagen_filename
   Serie C.png
-  -> Serie-C.jpg
+  -> Serie-C.webp
 [sanitize] bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff :: documento_pdf_1.nombre_visible
   Brochure General CORKEN.pdf
   -> Brochure-General-CORKEN.pdf
@@ -130,7 +130,7 @@ Still unresolved references: 47
   -> HDP150-Autogas-Pump.pdf
 [stem] condensate-commander-pump :: imagen_filename
   Condensate Commander Pump.png
-  -> Condensate-Commander-Pump.jpg
+  -> Condensate-Commander-Pump.webp
 [sanitize] condensate-commander-pump :: documento_pdf_1.nombre_visible
   General SPENCE Brochure 2 .pdf
   -> General-SPENCE-Brochure-2-.pdf
@@ -145,7 +145,7 @@ Still unresolved references: 47
   -> Instruction-Manual-Condensate-Commander.pdf
 [stem] compresores-reciprocantes-verticales :: imagen_filename
   Compresores Reciprocantes Verticales .png
-  -> Compresores-Reciprocantes-Verticales-.jpg
+  -> Compresores-Reciprocantes-Verticales-.webp
 [sanitize] compresores-reciprocantes-verticales :: documento_pdf_1.nombre_visible
   Brochure General CORKEN.pdf
   -> Brochure-General-CORKEN.pdf
@@ -181,7 +181,7 @@ Still unresolved references: 47
   -> T791-T891-T-Style-Industrial-Compressors.pdf
 [stem] compresores-reciprocantes-horizontales :: imagen_filename
   Compresores Reciprocantes Horizontales.png
-  -> Compresores-Reciprocantes-Horizontales.jpg
+  -> Compresores-Reciprocantes-Horizontales.webp
 [sanitize] compresores-reciprocantes-horizontales :: documento_pdf_1.nombre_visible
   Brochure General CORKEN.pdf
   -> Brochure-General-CORKEN.pdf
@@ -202,7 +202,7 @@ Still unresolved references: 47
   -> I-Series.pdf
 [stem] serie-cp :: imagen_filename
   Serie CP.png
-  -> Serie-CP.jpg
+  -> Serie-CP.webp
 [sanitize] serie-cp :: documento_pdf_1.nombre_visible
   General CASH Brochure 1.pdf
   -> General-CASH-Brochure-1.pdf
@@ -222,8 +222,8 @@ Still unresolved references: 47
   Vacuum Regulators.pdf
   -> Vacuum-Regulators.pdf
 [sanitize] series-ezh-y-ezhso-item-9 :: imagen_filename
-  Series EZH y EZHSO Fisher.jpg
-  -> Series-EZH-y-EZHSO-Fisher.jpg
+  Series EZH y EZHSO Fisher.webp
+  -> Series-EZH-y-EZHSO-Fisher.webp
 [sanitize] series-ezh-y-ezhso-item-9 :: documento_pdf_1.nombre_visible
   Brochure General FISHER 2.pdf
   -> Brochure-General-FISHER-2.pdf

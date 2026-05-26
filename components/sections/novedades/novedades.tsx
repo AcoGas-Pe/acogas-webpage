@@ -11,7 +11,7 @@ interface NovedadesProps {
 export function Novedades({ className }: NovedadesProps) {
   return (
     <section
-      className={cn("section py-16 sm:py-20 md:py-24 bg-background", className)}
+      className={cn("section bg-background py-16 sm:py-20 md:py-24", className)}
       aria-label="Novedades"
     >
       <div className="container">
@@ -27,7 +27,7 @@ export function Novedades({ className }: NovedadesProps) {
           </p>
         </div>
         {/* Placeholder for CMS-driven blog grid ,  keep empty for the moment */}
-        <div className="min-h-[200px] flex items-center justify-center rounded-lg border border-dashed border-border bg-muted/20">
+        <div className="flex min-h-[200px] items-center justify-center rounded-2xl border border-dashed border-border/55 bg-card shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]">
           <p className="text-sm text-muted-foreground">
             Contenido en preparación
           </p>

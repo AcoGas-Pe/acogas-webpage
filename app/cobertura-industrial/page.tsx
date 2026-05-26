@@ -36,7 +36,7 @@ export default function CoberturaIndustrialPage() {
 
       <CoberturaIndustrialRegions />
 
-      <section className="section border-y border-border/60 bg-muted/25 py-12 sm:py-14">
+      <section className="section border-y border-border/40 bg-background py-12 sm:py-14">
         <div className="container">
           <div className="mx-auto">
             <h2 className="text-lg font-bold text-foreground sm:text-xl">
@@ -58,7 +58,7 @@ export default function CoberturaIndustrialPage() {
                 <Link
                   key={city.slug}
                   href={`/cobertura-industrial/${city.slug}/`}
-                  className="group flex items-start gap-3 rounded-xl border border-border bg-card px-5 py-4 transition hover:border-primary/35 hover:bg-primary/[0.04]"
+                  className="group flex items-start gap-3 rounded-xl border border-border/50 bg-card px-5 py-4 shadow-[0_16px_34px_-30px_hsl(var(--primary)_/_0.34)] transition hover:border-primary/18 hover:bg-primary/[0.035]"
                 >
                   <MapPin
                     className="mt-0.5 h-5 w-5 shrink-0 text-accent"
@@ -94,7 +94,7 @@ export default function CoberturaIndustrialPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="glass-panel backdrop-blur-xs rounded-lg p-6 text-center">
+              <div className="glass-panel rounded-2xl p-6 text-center backdrop-blur-xs">
                 <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-sm border border-primary/20 bg-primary/10">
                   <span className="text-2xl font-bold text-white/80">50+</span>
                 </div>
@@ -106,7 +106,7 @@ export default function CoberturaIndustrialPage() {
                 </p>
               </div>
 
-              <div className="glass-panel backdrop-blur-xs rounded-lg p-6 text-center">
+              <div className="glass-panel rounded-2xl p-6 text-center backdrop-blur-xs">
                 <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-sm border border-primary/20 bg-primary/10">
                   <span className="text-2xl font-bold text-white/80">24/7</span>
                 </div>
@@ -118,7 +118,7 @@ export default function CoberturaIndustrialPage() {
                 </p>
               </div>
 
-              <div className="glass-panel backdrop-blur-xs rounded-lg p-6 text-center">
+              <div className="glass-panel rounded-2xl p-6 text-center backdrop-blur-xs">
                 <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-sm border border-primary/20 bg-primary/10">
                   <span className="text-2xl font-bold text-white/80">100%</span>
                 </div>

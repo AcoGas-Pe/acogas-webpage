@@ -13,7 +13,7 @@
     {
       "slug": "bombas-de-paletas-deslizantes-serie-z",
       "title": "Bombas de Paletas Deslizantes Serie Z (Z2000; Z3200; Z3500; Z4200 y Z4500)",
-      "imagen_filename": "Serie-Z.jpg",
+      "imagen_filename": "Serie-Z.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -195,7 +195,7 @@
     {
       "slug": "bombas-de-paletas-deslizantes-serie-pt",
       "title": "Bombas de Paletas Deslizantes Serie PT (PT20; PT25 y PT30)",
-      "imagen_filename": "Serie-PT.jpg",
+      "imagen_filename": "Serie-PT.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -377,7 +377,7 @@
     {
       "slug": "bombas-de-paletas-deslizantes-modelos-521-y-1021",
       "title": "Bombas de paletas deslizantes Modelos 521 y 1021",
-      "imagen_filename": "Bombas-de-paletas-deslizantes-modelos-521-y-1021.jpg",
+      "imagen_filename": "Bombas-de-paletas-deslizantes-modelos-521-y-1021.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -559,7 +559,7 @@
     {
       "slug": "bombas-de-turbina-regenerativa-series-c-dl-dld-dlf-f-fd-y-ff",
       "title": "Bombas de Turbina Regenerativa Series C; DL; DLD; DLF; F; FD y FF (Modelos 10; 12; 13; 14; 16; 17; 075 y 150)",
-      "imagen_filename": "Serie-C.jpg",
+      "imagen_filename": "Serie-C.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -741,7 +741,7 @@
     {
       "slug": "condensate-commander-pump",
       "title": "Condensate Commander Pump",
-      "imagen_filename": "Condensate-Commander-Pump.jpg",
+      "imagen_filename": "Condensate-Commander-Pump.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -923,7 +923,7 @@
     {
       "slug": "compresores-reciprocantes-verticales",
       "title": "Compresores Reciprocantes Verticales (Modelos 91; 291; 491; 691 y D891)",
-      "imagen_filename": "Compresores-Reciprocantes-Verticales-.jpg",
+      "imagen_filename": "Compresores-Reciprocantes-Verticales-.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -1105,7 +1105,7 @@
     {
       "slug": "compresores-reciprocantes-horizontales",
       "title": "Compresores Reciprocantes Horizontales (HG600 y THG600)",
-      "imagen_filename": "Compresores-Reciprocantes-Horizontales.jpg",
+      "imagen_filename": "Compresores-Reciprocantes-Horizontales.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -1287,7 +1287,7 @@
     {
       "slug": "serie-cp",
       "title": "Serie CP",
-      "imagen_filename": "Serie-CP.jpg",
+      "imagen_filename": "Serie-CP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Equipo de bombeo y compresión",
@@ -1469,7 +1469,7 @@
     {
       "slug": "series-ezh-y-ezhso-item-9",
       "title": "Series EZH y EZHSO",
-      "imagen_filename": "Series-EZH-y-EZHSO-Fisher.jpg",
+      "imagen_filename": "Series-EZH-y-EZHSO-Fisher.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -1651,7 +1651,7 @@
     {
       "slug": "serie-67d",
       "title": "Serie 67D",
-      "imagen_filename": "Serie-67D.jpg",
+      "imagen_filename": "Serie-67D.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -1833,7 +1833,7 @@
     {
       "slug": "serie-627",
       "title": "Serie 627",
-      "imagen_filename": "Serie-627.jpg",
+      "imagen_filename": "Serie-627.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2015,7 +2015,7 @@
     {
       "slug": "tipo-1098-egr-y-1098h-egr",
       "title": "Tipo 1098-EGR y 1098H-EGR",
-      "imagen_filename": "Tipos-1098-EGR-y-1098H-EGR-Fisher.jpg",
+      "imagen_filename": "Tipos-1098-EGR-y-1098H-EGR-Fisher.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2197,7 +2197,7 @@
     {
       "slug": "tipo-99",
       "title": "Tipo 99",
-      "imagen_filename": "Tipo-99.jpg",
+      "imagen_filename": "Tipo-99.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2379,7 +2379,7 @@
     {
       "slug": "tipo-ezr-item-14",
       "title": "Tipo EZR",
-      "imagen_filename": "Regulador-reductor-de-presion-serie-Fisher™-EZR-1.jpg",
+      "imagen_filename": "Regulador-reductor-de-presion-serie-Fisher™-EZR-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2561,7 +2561,7 @@
     {
       "slug": "serie-fl-item-15",
       "title": "Serie FL",
-      "imagen_filename": "Serie-FL.jpg",
+      "imagen_filename": "Serie-FL.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2743,7 +2743,7 @@
     {
       "slug": "serie-r622-item-16",
       "title": "Serie R622",
-      "imagen_filename": "Regulador-reductor-de-presion-tipo-R622-Fisher™.jpg",
+      "imagen_filename": "Regulador-reductor-de-presion-tipo-R622-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -2925,7 +2925,7 @@
     {
       "slug": "serie-299h",
       "title": "Serie 299H",
-      "imagen_filename": "Serie-299H.jpg",
+      "imagen_filename": "Serie-299H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -3107,7 +3107,7 @@
     {
       "slug": "serie-133",
       "title": "Serie 133",
-      "imagen_filename": "Serie-133.jpg",
+      "imagen_filename": "Serie-133.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -3289,7 +3289,7 @@
     {
       "slug": "serie-912",
       "title": "Serie 912",
-      "imagen_filename": "Reguladores-reductores-de-presion-serie-912-de-Fisher™-912-LP-Gas.jpg",
+      "imagen_filename": "Reguladores-reductores-de-presion-serie-912-de-Fisher™-912-LP-Gas.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -3471,7 +3471,7 @@
     {
       "slug": "serie-67c",
       "title": "Serie 67C",
-      "imagen_filename": "Reguladores-de-alta-presion-serie-67C-LP-Gas-Fisher.jpg",
+      "imagen_filename": "Reguladores-de-alta-presion-serie-67C-LP-Gas-Fisher.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -3653,7 +3653,7 @@
     {
       "slug": "serie-1301",
       "title": "Serie 1301 (1301F y 1301G)",
-      "imagen_filename": "Serie-1301-1301F-y-1301G.jpg",
+      "imagen_filename": "Serie-1301-1301F-y-1301G.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4017,7 +4017,7 @@
     {
       "slug": "jumbo-para-cilindros-item-23",
       "title": "Jumbo para Cilindros (Tipo 895)",
-      "imagen_filename": "Jumbo-para-Cilindros-Tipo-895.jpg",
+      "imagen_filename": "Jumbo-para-Cilindros-Tipo-895.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4199,7 +4199,7 @@
     {
       "slug": "serie-94",
       "title": "Serie 94",
-      "imagen_filename": "Serie-94.jpg",
+      "imagen_filename": "Serie-94.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4381,7 +4381,7 @@
     {
       "slug": "serie-64",
       "title": "Serie 64",
-      "imagen_filename": "Serie-64.jpg",
+      "imagen_filename": "Serie-64.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4563,7 +4563,7 @@
     {
       "slug": "serie-csb400",
       "title": "Serie CSB400",
-      "imagen_filename": "Serie-CSB400.jpg",
+      "imagen_filename": "Serie-CSB400.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4745,7 +4745,7 @@
     {
       "slug": "serie-csb600",
       "title": "Serie CSB600",
-      "imagen_filename": "Serie-CSB600.jpg",
+      "imagen_filename": "Serie-CSB600.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -4927,7 +4927,7 @@
     {
       "slug": "serie-csb700",
       "title": "Serie CSB700",
-      "imagen_filename": "Serie-CSB700.jpg",
+      "imagen_filename": "Serie-CSB700.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -5109,7 +5109,7 @@
     {
       "slug": "serie-cs200",
       "title": "Serie CS200",
-      "imagen_filename": "Serie-CS200.jpg",
+      "imagen_filename": "Serie-CS200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -5291,7 +5291,7 @@
     {
       "slug": "serie-cs400",
       "title": "Serie CS400",
-      "imagen_filename": "Serie-CS400.jpg",
+      "imagen_filename": "Serie-CS400.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -5473,7 +5473,7 @@
     {
       "slug": "serie-cs800",
       "title": "Serie CS800",
-      "imagen_filename": "Serie-CS800.jpg",
+      "imagen_filename": "Serie-CS800.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -5655,7 +5655,7 @@
     {
       "slug": "tipo-b-nv",
       "title": "Tipo B NV",
-      "imagen_filename": "Tipo-B-NV.jpg",
+      "imagen_filename": "Tipo-B-NV.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -5837,7 +5837,7 @@
     {
       "slug": "serie-r",
       "title": "Serie R",
-      "imagen_filename": "Serie-R-R_70.jpg",
+      "imagen_filename": "Serie-R-R_70.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6019,7 +6019,7 @@
     {
       "slug": "serie-cronos",
       "title": "Serie Cronos",
-      "imagen_filename": "Serie-Cronos.jpg",
+      "imagen_filename": "Serie-Cronos.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6201,7 +6201,7 @@
     {
       "slug": "tipo-971",
       "title": "Tipo 971",
-      "imagen_filename": "Tipo-971.jpg",
+      "imagen_filename": "Tipo-971.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6383,7 +6383,7 @@
     {
       "slug": "serie-mf-y-mn",
       "title": "Serie MF y MN",
-      "imagen_filename": "Serie-MF-y-MN.jpg",
+      "imagen_filename": "Serie-MF-y-MN.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6565,7 +6565,7 @@
     {
       "slug": "serie-a",
       "title": "Serie A (A-16; A-31; A-31S; A-32;  A-36; A-360; A-361 A-365 y A-401)",
-      "imagen_filename": "Serie-A.jpg",
+      "imagen_filename": "Serie-A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6747,7 +6747,7 @@
     {
       "slug": "serie-b",
       "title": "Serie B (B; B-95 y BBC)",
-      "imagen_filename": "Serie-B.jpg",
+      "imagen_filename": "Serie-B.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -6929,7 +6929,7 @@
     {
       "slug": "tipo-g-60",
       "title": "Tipo G-60",
-      "imagen_filename": "Tipo-G-60.jpg",
+      "imagen_filename": "Tipo-G-60.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -7111,7 +7111,7 @@
     {
       "slug": "serie-e-55",
       "title": "Serie E-55",
-      "imagen_filename": "Serie-E-55.jpg",
+      "imagen_filename": "Serie-E-55.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -7475,7 +7475,7 @@
     {
       "slug": "serie-a/140",
       "title": "Serie A/140",
-      "imagen_filename": "Serie-A_140.jpg",
+      "imagen_filename": "Serie-A_140.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -7657,7 +7657,7 @@
     {
       "slug": "serie-b/240",
       "title": "Serie B/240",
-      "imagen_filename": "Serie-B_240.jpg",
+      "imagen_filename": "Serie-B_240.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -7839,7 +7839,7 @@
     {
       "slug": "serie-rp",
       "title": "Serie RP",
-      "imagen_filename": "Serie-RP.jpg",
+      "imagen_filename": "Serie-RP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8021,7 +8021,7 @@
     {
       "slug": "tipo-d",
       "title": "Tipo D",
-      "imagen_filename": "Serie-D-Valvula-reductora-de-presion.jpg",
+      "imagen_filename": "Serie-D-Valvula-reductora-de-presion.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8203,7 +8203,7 @@
     {
       "slug": "tipo-d50a",
       "title": "Tipo D50A",
-      "imagen_filename": "Tipo-D50A.jpg",
+      "imagen_filename": "Tipo-D50A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8385,7 +8385,7 @@
     {
       "slug": "serie-ls",
       "title": "Serie LS",
-      "imagen_filename": "Serie-LS.jpg",
+      "imagen_filename": "Serie-LS.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8567,7 +8567,7 @@
     {
       "slug": "quick-on",
       "title": "Quick-on (Tipo 634)",
-      "imagen_filename": "Quick-on-Tipo-634.jpg",
+      "imagen_filename": "Quick-on-Tipo-634.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8749,7 +8749,7 @@
     {
       "slug": "jumbo-para-cilindros-item-49",
       "title": "Jumbo para Cilindros (Tipo 682)",
-      "imagen_filename": "Jumbo-para-Cilindros-Tipo-682.jpg",
+      "imagen_filename": "Jumbo-para-Cilindros-Tipo-682.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -8931,7 +8931,7 @@
     {
       "slug": "pol",
       "title": "POL (Tipo 694)",
-      "imagen_filename": "POL-Tipo-694.jpg",
+      "imagen_filename": "POL-Tipo-694.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -9113,7 +9113,7 @@
     {
       "slug": "tipo-sr5",
       "title": "Tipo SR5",
-      "imagen_filename": "Tipo-SR5.jpg",
+      "imagen_filename": "Tipo-SR5.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -9295,7 +9295,7 @@
     {
       "slug": "serie-49",
       "title": "Serie 49",
-      "imagen_filename": "Serie-49.jpg",
+      "imagen_filename": "Serie-49.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -9477,7 +9477,7 @@
     {
       "slug": "serie-mr95",
       "title": "Serie MR95",
-      "imagen_filename": "Serie-MR95.jpg",
+      "imagen_filename": "Serie-MR95.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -9659,7 +9659,7 @@
     {
       "slug": "serie-ls200",
       "title": "Serie LS200",
-      "imagen_filename": "Serie-LS200-1.jpg",
+      "imagen_filename": "Serie-LS200-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -9841,7 +9841,7 @@
     {
       "slug": "serie-180",
       "title": "Serie 180",
-      "imagen_filename": "Serie-180.jpg",
+      "imagen_filename": "Serie-180.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10023,7 +10023,7 @@
     {
       "slug": "tipo-et124/134-item-57",
       "title": "Tipo ET124/134",
-      "imagen_filename": "ET124_134.jpg",
+      "imagen_filename": "ET124_134.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10205,7 +10205,7 @@
     {
       "slug": "tipo-984hp-y-988hp",
       "title": "Tipo 984HP y 988HP",
-      "imagen_filename": "Tipo-984HP.jpg",
+      "imagen_filename": "Tipo-984HP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10387,7 +10387,7 @@
     {
       "slug": "tipo-914",
       "title": "Tipo 914",
-      "imagen_filename": "Tipo-914.jpg",
+      "imagen_filename": "Tipo-914.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10569,7 +10569,7 @@
     {
       "slug": "serie-r622-item-60",
       "title": "Serie R622",
-      "imagen_filename": "Reguladores-de-la-primera-etapa-tipo-R622H-Fisher™.jpg",
+      "imagen_filename": "Reguladores-de-la-primera-etapa-tipo-R622H-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10751,7 +10751,7 @@
     {
       "slug": "serie-r632a",
       "title": "Serie R632A",
-      "imagen_filename": "Tipo-R632A.jpg",
+      "imagen_filename": "Tipo-R632A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -10933,7 +10933,7 @@
     {
       "slug": "serie-r222",
       "title": "Serie R222",
-      "imagen_filename": "R222H.jpg",
+      "imagen_filename": "R222H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -11115,7 +11115,7 @@
     {
       "slug": "tipo-753",
       "title": "Tipo 753",
-      "imagen_filename": "Tipo-753.jpg",
+      "imagen_filename": "Tipo-753.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -11297,7 +11297,7 @@
     {
       "slug": "tipo-988lp",
       "title": "Tipo 988LP",
-      "imagen_filename": "Tipo-988LP.jpg",
+      "imagen_filename": "Tipo-988LP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -11479,7 +11479,7 @@
     {
       "slug": "tipo-752",
       "title": "TIpo 752",
-      "imagen_filename": "Tipo-752-1.jpg",
+      "imagen_filename": "Tipo-752-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -11661,7 +11661,7 @@
     {
       "slug": "tipo-755",
       "title": "Tipo 755",
-      "imagen_filename": "Tipo-755.jpg",
+      "imagen_filename": "Tipo-755.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -11843,7 +11843,7 @@
     {
       "slug": "tipo-ezr-item-67",
       "title": "Tipo EZR",
-      "imagen_filename": "Regulador-de-contrapresion-o-valvula-de-alivio-tipo-EZR-Fisher™.jpg",
+      "imagen_filename": "Regulador-de-contrapresion-o-valvula-de-alivio-tipo-EZR-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -12025,7 +12025,7 @@
     {
       "slug": "series-ezh-y-ezhso-item-68",
       "title": "Series EZH y EZHSO",
-      "imagen_filename": "Tipo-EZH-Relief.jpg",
+      "imagen_filename": "Tipo-EZH-Relief.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -12389,7 +12389,7 @@
     {
       "slug": "serie-63eg-item-70",
       "title": "Serie 63EG",
-      "imagen_filename": "Serie-63EG.jpg",
+      "imagen_filename": "Serie-63EG.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -12571,7 +12571,7 @@
     {
       "slug": "serie-mr98-item-71",
       "title": "Serie MR98",
-      "imagen_filename": "MR98H.jpg",
+      "imagen_filename": "MR98H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -12753,7 +12753,7 @@
     {
       "slug": "tipo-mr108",
       "title": "Tipo MR108",
-      "imagen_filename": "Tipo-MR108-1.jpg",
+      "imagen_filename": "Tipo-MR108-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -12935,7 +12935,7 @@
     {
       "slug": "tipo-sr8",
       "title": "Tipo SR8",
-      "imagen_filename": "Tipo-SR8.jpg",
+      "imagen_filename": "Tipo-SR8.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -13117,7 +13117,7 @@
     {
       "slug": "serie-fr",
       "title": "Serie FR (FR; FR-6 ;FR-10; FRM y FRM2)",
-      "imagen_filename": "Serie-FR.jpg",
+      "imagen_filename": "Serie-FR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -13299,7 +13299,7 @@
     {
       "slug": "serie-k-item-75",
       "title": "Serie K ( K-5; K-10 y K-15)",
-      "imagen_filename": "Serie-K-CASH.jpg",
+      "imagen_filename": "Serie-K-CASH.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -13481,7 +13481,7 @@
     {
       "slug": "tipo-kp",
       "title": "Tipo KP",
-      "imagen_filename": "Tipo-KP.jpg",
+      "imagen_filename": "Tipo-KP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Regulación y control de presión",
@@ -13663,7 +13663,7 @@
     {
       "slug": "serie-1805",
       "title": "Serie 1805",
-      "imagen_filename": "Serie-1805.jpg",
+      "imagen_filename": "Serie-1805.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -13845,7 +13845,7 @@
     {
       "slug": "serie-v",
       "title": "Serie V (V/50, V/60 y V/20-2)",
-      "imagen_filename": "Serie-V.jpg",
+      "imagen_filename": "Serie-V.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -14027,7 +14027,7 @@
     {
       "slug": "serie-630",
       "title": "Serie 630",
-      "imagen_filename": "Serie-630.jpg",
+      "imagen_filename": "Serie-630.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -14209,7 +14209,7 @@
     {
       "slug": "serie-h722-y-h733",
       "title": "Serie H722 y H733",
-      "imagen_filename": "Serie-H722-y-H733.jpg",
+      "imagen_filename": "Serie-H722-y-H733.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -14573,7 +14573,7 @@
     {
       "slug": "tipo-63eglp",
       "title": "Tipo 63EGLP",
-      "imagen_filename": "Tipo-63EGLP.jpg",
+      "imagen_filename": "Tipo-63EGLP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -14937,7 +14937,7 @@
     {
       "slug": "tipo-ezr-item-84",
       "title": "Tipo EZR",
-      "imagen_filename": "Regulador-de-contrapresion-o-valvula-de-alivio-tipo-EZR-Fisher™.jpg",
+      "imagen_filename": "Regulador-de-contrapresion-o-valvula-de-alivio-tipo-EZR-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -15119,7 +15119,7 @@
     {
       "slug": "series-ezh-y-ezhso-item-85",
       "title": "Series EZH y EZHSO",
-      "imagen_filename": "Tipo-EZH-Relief.jpg",
+      "imagen_filename": "Tipo-EZH-Relief.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -15483,7 +15483,7 @@
     {
       "slug": "serie-63eg-item-87",
       "title": "Serie 63EG",
-      "imagen_filename": "Serie-63EG.jpg",
+      "imagen_filename": "Serie-63EG.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -15665,7 +15665,7 @@
     {
       "slug": "serie-mr98-item-88",
       "title": "Serie MR98",
-      "imagen_filename": "MR98H.jpg",
+      "imagen_filename": "MR98H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -15847,7 +15847,7 @@
     {
       "slug": "tipo-289",
       "title": "Tipo 289",
-      "imagen_filename": "Valvulas-de-alivio-o-reguladores-de-contrapresion-serie-289-Fisher™.jpg",
+      "imagen_filename": "Valvulas-de-alivio-o-reguladores-de-contrapresion-serie-289-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16029,7 +16029,7 @@
     {
       "slug": "serie-vs-fl-y-vs-fl-fr",
       "title": "Serie VS-FL y VS-FL-FR",
-      "imagen_filename": "Serie-VS-FL-y-VS-FL-FR.jpg",
+      "imagen_filename": "Serie-VS-FL-y-VS-FL-FR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16211,7 +16211,7 @@
     {
       "slug": "modelos-1-y-2",
       "title": "Modelos 1 y 2",
-      "imagen_filename": "Modelos-1-y-2.jpg",
+      "imagen_filename": "Modelos-1-y-2.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16393,7 +16393,7 @@
     {
       "slug": "modelos-19-20-y-200",
       "title": "Modelos 19; 20 y 200",
-      "imagen_filename": "Modelos-19_-20-y-200.jpg",
+      "imagen_filename": "Modelos-19_-20-y-200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16575,7 +16575,7 @@
     {
       "slug": "modelo-30",
       "title": "Modelo 30",
-      "imagen_filename": "Modelo-30.jpg",
+      "imagen_filename": "Modelo-30.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16757,7 +16757,7 @@
     {
       "slug": "modelos-40r-y-40l",
       "title": "Modelos 40R y 40L",
-      "imagen_filename": "Modelos-40R-y-40L.jpg",
+      "imagen_filename": "Modelos-40R-y-40L.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -16939,7 +16939,7 @@
     {
       "slug": "modelos-71s-171-171p-y-171s",
       "title": "Modelos 71S, 171, 171P y 171S",
-      "imagen_filename": "Modelos-71S-171-171P-y-171S.jpg",
+      "imagen_filename": "Modelos-71S-171-171P-y-171S.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -17121,7 +17121,7 @@
     {
       "slug": "modelos-91-218-y-228",
       "title": "Modelos 91; 218 y 228",
-      "imagen_filename": "Modelo-91.jpg",
+      "imagen_filename": "Modelo-91.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -17303,7 +17303,7 @@
     {
       "slug": "modelo-140",
       "title": "Modelo 140",
-      "imagen_filename": "Modelo-140.jpg",
+      "imagen_filename": "Modelo-140.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -17485,7 +17485,7 @@
     {
       "slug": "modelos-189-363-y-389",
       "title": "Modelos 189; 363 y 389",
-      "imagen_filename": "Modelos-189_-363-y-389.jpg",
+      "imagen_filename": "Modelos-189_-363-y-389.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -17667,7 +17667,7 @@
     {
       "slug": "modelos-337",
       "title": "Modelos 337",
-      "imagen_filename": "Modelo-337.jpg",
+      "imagen_filename": "Modelo-337.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -17849,7 +17849,7 @@
     {
       "slug": "modelo-338",
       "title": "Modelo 338",
-      "imagen_filename": "Modelo-338.jpg",
+      "imagen_filename": "Modelo-338.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18031,7 +18031,7 @@
     {
       "slug": "modelos-230-330-330s-y-333s",
       "title": "Modelos 230; 330; 330S y 333S",
-      "imagen_filename": "Modelos-230_-330_-330S-y-333S.jpg",
+      "imagen_filename": "Modelos-230_-330_-330S-y-333S.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18213,7 +18213,7 @@
     {
       "slug": "modelos-264-265-266-y-267",
       "title": "Modelos 264; 265; 266 y 267",
-      "imagen_filename": "Modelos-264_-265_-266-y-267.jpg",
+      "imagen_filename": "Modelos-264_-265_-266-y-267.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18395,7 +18395,7 @@
     {
       "slug": "modelo-300-y-600",
       "title": "Modelo 300 y 600",
-      "imagen_filename": "Modelos-300-y-600.jpg",
+      "imagen_filename": "Modelos-300-y-600.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18577,7 +18577,7 @@
     {
       "slug": "modelo-537",
       "title": "Modelo 537",
-      "imagen_filename": "Modelo-537.jpg",
+      "imagen_filename": "Modelo-537.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18759,7 +18759,7 @@
     {
       "slug": "modelo-541-542-y-548",
       "title": "Modelo 541; 542 y 548",
-      "imagen_filename": "Modelos-541_-542-y-548.jpg",
+      "imagen_filename": "Modelos-541_-542-y-548.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -18941,7 +18941,7 @@
     {
       "slug": "serie-900",
       "title": "Serie 900",
-      "imagen_filename": "Serie-900.jpg",
+      "imagen_filename": "Serie-900.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -19123,7 +19123,7 @@
     {
       "slug": "modelo-930",
       "title": "Modelo 930",
-      "imagen_filename": "Modelo-930.jpg",
+      "imagen_filename": "Modelo-930.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -19305,7 +19305,7 @@
     {
       "slug": "serie-6000",
       "title": "Serie 6000",
-      "imagen_filename": "Serie-6000.jpg",
+      "imagen_filename": "Serie-6000.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -19487,7 +19487,7 @@
     {
       "slug": "modelos-6252-y-6254",
       "title": "Modelos 6252 y 6254",
-      "imagen_filename": "Modelos-6252-y-6254.jpg",
+      "imagen_filename": "Modelos-6252-y-6254.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -19669,7 +19669,7 @@
     {
       "slug": "modelo-716",
       "title": "Modelo 716",
-      "imagen_filename": "Modelo-716.jpg",
+      "imagen_filename": "Modelo-716.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -19851,7 +19851,7 @@
     {
       "slug": "modelo-716h",
       "title": "Modelo 716H",
-      "imagen_filename": "Modelo-716H.jpg",
+      "imagen_filename": "Modelo-716H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20033,7 +20033,7 @@
     {
       "slug": "modelo-756",
       "title": "Modelo 756",
-      "imagen_filename": "Modelo-756.jpg",
+      "imagen_filename": "Modelo-756.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20215,7 +20215,7 @@
     {
       "slug": "serie-60-y-80",
       "title": "Serie 60 y 80",
-      "imagen_filename": "Serie-60.jpg",
+      "imagen_filename": "Serie-60.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20397,7 +20397,7 @@
     {
       "slug": "serie-200-400-500-700-y-800",
       "title": "Serie 200; 400; 500; 700 y 800",
-      "imagen_filename": "Serie-200.jpg",
+      "imagen_filename": "Serie-200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20579,7 +20579,7 @@
     {
       "slug": "serie-5200",
       "title": "Serie 5200",
-      "imagen_filename": "Serie-5200.jpg",
+      "imagen_filename": "Serie-5200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20761,7 +20761,7 @@
     {
       "slug": "serie-lcp",
       "title": "Serie LCP",
-      "imagen_filename": "Serie-LCP.jpg",
+      "imagen_filename": "Serie-LCP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -20943,7 +20943,7 @@
     {
       "slug": "serie-9300-y-9300h-item-117",
       "title": "Serie 9300 y 9300H",
-      "imagen_filename": "Serie-9300.jpg",
+      "imagen_filename": "Serie-9300.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -21125,7 +21125,7 @@
     {
       "slug": "serie-9200-item-118",
       "title": "Serie 9200",
-      "imagen_filename": "Serie-9200.jpg",
+      "imagen_filename": "Serie-9200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -21307,7 +21307,7 @@
     {
       "slug": "tipo-93",
       "title": "Tipo 93",
-      "imagen_filename": "Tipo-93.jpg",
+      "imagen_filename": "Tipo-93.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -21489,7 +21489,7 @@
     {
       "slug": "serie-mlcp",
       "title": "Serie MLCP",
-      "imagen_filename": "Serie-MLCP.jpg",
+      "imagen_filename": "Serie-MLCP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -21671,7 +21671,7 @@
     {
       "slug": "serie-j",
       "title": "Serie J (Estilo JOS-E and JBS-E)",
-      "imagen_filename": "Serie-J-1.jpg",
+      "imagen_filename": "Serie-J-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -21853,7 +21853,7 @@
     {
       "slug": "serie-jb-y-jpva",
       "title": "Serie JB (Estilo JB-TD) y JPVA",
-      "imagen_filename": "Serie-JB-y-JPVA.jpg",
+      "imagen_filename": "Serie-JB-y-JPVA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -22035,7 +22035,7 @@
     {
       "slug": "omni-trim",
       "title": "OMNI -TRIM (Serie 900; 800 y BP)",
-      "imagen_filename": "OMINI-TRIM.jpg",
+      "imagen_filename": "OMINI-TRIM.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -22217,7 +22217,7 @@
     {
       "slug": "serie-82",
       "title": "Serie 82",
-      "imagen_filename": "Serie-82.jpg",
+      "imagen_filename": "Serie-82.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -22399,7 +22399,7 @@
     {
       "slug": "serie-h",
       "title": "Serie H (HE ISOFLEX; HCI ISOFLEX; HSJ; HSL y HCA ISOFLEX)",
-      "imagen_filename": "Serie-H.jpg",
+      "imagen_filename": "Serie-H.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -22581,7 +22581,7 @@
     {
       "slug": "estilo-pvr-item-126",
       "title": "Estilo PVR",
-      "imagen_filename": "Estilo-PVR.jpg",
+      "imagen_filename": "Estilo-PVR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -23127,7 +23127,7 @@
     {
       "slug": "serie-7100b",
       "title": "Serie 7100B",
-      "imagen_filename": "Serie-7100B.jpg",
+      "imagen_filename": "Serie-7100B.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -23309,7 +23309,7 @@
     {
       "slug": "serie-2440/2450-item-130",
       "title": "Serie 2440/2450",
-      "imagen_filename": "Serie-2440_2450.jpg",
+      "imagen_filename": "Serie-2440_2450.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -23491,7 +23491,7 @@
     {
       "slug": "serie-711",
       "title": "Serie 711",
-      "imagen_filename": "Serie-711.jpg",
+      "imagen_filename": "Serie-711.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -23673,7 +23673,7 @@
     {
       "slug": "serie-4210a",
       "title": "Serie 4210A",
-      "imagen_filename": "Serie-4210A.jpg",
+      "imagen_filename": "Serie-4210A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -23855,7 +23855,7 @@
     {
       "slug": "serie-800-so-800-pso-y-900-so-item-133",
       "title": "Serie 800-SO; 800-PSO y 900-SO",
-      "imagen_filename": "Serie-800-SO.jpg",
+      "imagen_filename": "Serie-800-SO.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24037,7 +24037,7 @@
     {
       "slug": "serie-es-805-so-es-805-pso-es-905-so-y-es-905-pso-item-134",
       "title": "Serie ES-805-SO; ES-805-PSO; ES-905-SO y ES-905-PSO",
-      "imagen_filename": "Serie-ES-805-SO.jpg",
+      "imagen_filename": "Serie-ES-805-SO.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24219,7 +24219,7 @@
     {
       "slug": "serie-850-y-950-(952-952-953)-item-135",
       "title": "Serie 850 (851) y 950 (952; 952; 953)",
-      "imagen_filename": "Serie-850.jpg",
+      "imagen_filename": "Serie-850.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24401,7 +24401,7 @@
     {
       "slug": "serie-es-850-y-es-950-(es-951-952-953)-item-136",
       "title": "Serie ES-850 (ES-851) y ES-950 (ES-951; 952; 953)",
-      "imagen_filename": "Serie-Es-850.jpg",
+      "imagen_filename": "Serie-Es-850.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24583,7 +24583,7 @@
     {
       "slug": "serie-860-y-960-item-137",
       "title": "Serie 860 y 960",
-      "imagen_filename": "Serie-860.jpg",
+      "imagen_filename": "Serie-860.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24765,7 +24765,7 @@
     {
       "slug": "modelo-2000",
       "title": "Modelo 2000",
-      "imagen_filename": "Modelo-2000-1.jpg",
+      "imagen_filename": "Modelo-2000-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -24947,7 +24947,7 @@
     {
       "slug": "modelo-2100",
       "title": "Modelo 2100",
-      "imagen_filename": "Serie-2100.jpg",
+      "imagen_filename": "Serie-2100.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -25129,7 +25129,7 @@
     {
       "slug": "modelo-2500-item-140",
       "title": "Modelo 2500",
-      "imagen_filename": "Modelo-2500.jpg",
+      "imagen_filename": "Modelo-2500.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -25311,7 +25311,7 @@
     {
       "slug": "tipo-c-776",
       "title": "Tipo C-776",
-      "imagen_filename": "TIpo-C-776.jpg",
+      "imagen_filename": "TIpo-C-776.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -25493,7 +25493,7 @@
     {
       "slug": "serie-t205-item-142",
       "title": "Serie T205",
-      "imagen_filename": "Disyuntores-de-vacio-serie-T205VB-de-Fisher™.jpg",
+      "imagen_filename": "Disyuntores-de-vacio-serie-T205VB-de-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -25675,7 +25675,7 @@
     {
       "slug": "serie-t208-item-143",
       "title": "Serie T208",
-      "imagen_filename": "Regulador-de-vacio-Fisher™-Serie-T208VR.jpg",
+      "imagen_filename": "Regulador-de-vacio-Fisher™-Serie-T208VR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -25857,7 +25857,7 @@
     {
       "slug": "serie-d-51-y-d-52",
       "title": "Serie D-51 y D-52",
-      "imagen_filename": "Serie-D-51-y-D-52.jpg",
+      "imagen_filename": "Serie-D-51-y-D-52.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -26039,7 +26039,7 @@
     {
       "slug": "modelos-215v",
       "title": "Modelos 215V",
-      "imagen_filename": "Modelo-215V.jpg",
+      "imagen_filename": "Modelo-215V.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -26221,7 +26221,7 @@
     {
       "slug": "serie-9300-y-9300h-item-146",
       "title": "Serie 9300 y 9300H",
-      "imagen_filename": "Serie-9300.jpg",
+      "imagen_filename": "Serie-9300.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -26403,7 +26403,7 @@
     {
       "slug": "serie-9200-item-147",
       "title": "Serie 9200",
-      "imagen_filename": "Serie-9200.jpg",
+      "imagen_filename": "Serie-9200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -26585,7 +26585,7 @@
     {
       "slug": "estilo-pvr-item-148",
       "title": "Estilo PVR",
-      "imagen_filename": "Estilo-PVR.jpg",
+      "imagen_filename": "Estilo-PVR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -27131,7 +27131,7 @@
     {
       "slug": "serie-2440/2450-item-151",
       "title": "Serie 2440/2450",
-      "imagen_filename": "Serie-2440_2450.jpg",
+      "imagen_filename": "Serie-2440_2450.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -27313,7 +27313,7 @@
     {
       "slug": "serie-4110a/3610/3660",
       "title": "Serie 4110A/3610/3660",
-      "imagen_filename": "Serie-4110A_3610_3660.jpg",
+      "imagen_filename": "Serie-4110A_3610_3660.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -27495,7 +27495,7 @@
     {
       "slug": "serie-800-so-800-pso-y-900-so-item-153",
       "title": "Serie 800-SO; 800-PSO y 900-SO",
-      "imagen_filename": "Serie-800-SO.jpg",
+      "imagen_filename": "Serie-800-SO.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -27677,7 +27677,7 @@
     {
       "slug": "serie-es-805-so-es-805-pso-es-905-so-y-es-905-pso-item-154",
       "title": "Serie ES-805-SO; ES-805-PSO; ES-905-SO y ES-905-PSO",
-      "imagen_filename": "Serie-ES-805-SO.jpg",
+      "imagen_filename": "Serie-ES-805-SO.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -27859,7 +27859,7 @@
     {
       "slug": "serie-850-y-950-(952-952-953)-item-155",
       "title": "Serie 850 (851) y 950 (952; 952; 953)",
-      "imagen_filename": "Serie-850.jpg",
+      "imagen_filename": "Serie-850.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -28041,7 +28041,7 @@
     {
       "slug": "serie-es-850-y-es-950-(es-951-952-953)-item-156",
       "title": "Serie ES-850 (ES-851) y ES-950 (ES-951; 952; 953)",
-      "imagen_filename": "Serie-Es-850.jpg",
+      "imagen_filename": "Serie-Es-850.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -28223,7 +28223,7 @@
     {
       "slug": "serie-860-y-960-item-157",
       "title": "Serie 860 y 960",
-      "imagen_filename": "Serie-860.jpg",
+      "imagen_filename": "Serie-860.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -28405,7 +28405,7 @@
     {
       "slug": "modelo-2500-item-158",
       "title": "Modelo 2500",
-      "imagen_filename": "Modelo-2500.jpg",
+      "imagen_filename": "Modelo-2500.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -28587,7 +28587,7 @@
     {
       "slug": "serie-a-31vr",
       "title": "Serie A-31VR",
-      "imagen_filename": "Serie-A-31VR.jpg",
+      "imagen_filename": "Serie-A-31VR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -28769,7 +28769,7 @@
     {
       "slug": "tipo-ose",
       "title": "Tipo OSE",
-      "imagen_filename": "Tipo-OSE.jpg",
+      "imagen_filename": "Tipo-OSE.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -29133,7 +29133,7 @@
     {
       "slug": "serie-bm7",
       "title": "Serie BM7",
-      "imagen_filename": "Serie-BM7.jpg",
+      "imagen_filename": "Serie-BM7.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -29497,7 +29497,7 @@
     {
       "slug": "tipo-n551",
       "title": "Tipo N551",
-      "imagen_filename": "Tipo-N551-Valvula-cerrada.jpg",
+      "imagen_filename": "Tipo-N551-Valvula-cerrada.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -29679,7 +29679,7 @@
     {
       "slug": "serie-f",
       "title": "Serie F (F138; F202; F170; F100; F101; F102; F105; F106; F107; F130; F131; F132; F133; F134; F135; F190; F191; F194; F195; F198 y F199 )",
-      "imagen_filename": "Serie-F.jpg",
+      "imagen_filename": "Serie-F.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -29861,7 +29861,7 @@
     {
       "slug": "tipo-vs100",
       "title": "Tipo VS100",
-      "imagen_filename": "Tipo-VS100-1.jpg",
+      "imagen_filename": "Tipo-VS100-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Seguridad, Alivio y Vacío",
@@ -30043,7 +30043,7 @@
     {
       "slug": "serie-ace95",
       "title": "Serie ACE95",
-      "imagen_filename": "Valvula-ACE95-de-inertizacion-de-tanques-ahorradora-de-vapor-Fisher™.jpg",
+      "imagen_filename": "Valvula-ACE95-de-inertizacion-de-tanques-ahorradora-de-vapor-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -30225,7 +30225,7 @@
     {
       "slug": "serie-t205-item-168",
       "title": "Serie T205",
-      "imagen_filename": "Reguladores-de-inertizacion-de-tanques-serie-T205-de-Fisher™.jpg",
+      "imagen_filename": "Reguladores-de-inertizacion-de-tanques-serie-T205-de-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -30407,7 +30407,7 @@
     {
       "slug": "tipo-1190",
       "title": "Tipo 1190",
-      "imagen_filename": "Tipo-1190.jpg",
+      "imagen_filename": "Tipo-1190.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -30589,7 +30589,7 @@
     {
       "slug": "serie-y690a",
       "title": "Serie Y690A",
-      "imagen_filename": "Serie-Y690A.jpg",
+      "imagen_filename": "Serie-Y690A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -30771,7 +30771,7 @@
     {
       "slug": "tipo-y693",
       "title": "Tipo Y693",
-      "imagen_filename": "Tipo-Y693.jpg",
+      "imagen_filename": "Tipo-Y693.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -30953,7 +30953,7 @@
     {
       "slug": "tipo-1290",
       "title": "Tipo 1290",
-      "imagen_filename": "Tipo-1290.jpg",
+      "imagen_filename": "Tipo-1290.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -31135,7 +31135,7 @@
     {
       "slug": "serie-t208-item-173",
       "title": "Serie T208",
-      "imagen_filename": "Reguladores-de-recuperacion-de-vapor-de-inertizacion-de-tanques-serie-T208-Fisher™.jpg",
+      "imagen_filename": "Reguladores-de-recuperacion-de-vapor-de-inertizacion-de-tanques-serie-T208-Fisher™.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -31317,7 +31317,7 @@
     {
       "slug": "tipo-y695a",
       "title": "Tipo Y695A",
-      "imagen_filename": "Tipo-Y695A.jpg",
+      "imagen_filename": "Tipo-Y695A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Inertización, Recuperación de vapor y Tanques",
@@ -31499,7 +31499,7 @@
     {
       "slug": "tipo-et14",
       "title": "Tipo ET14",
-      "imagen_filename": "ET14.jpg",
+      "imagen_filename": "ET14.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -31681,7 +31681,7 @@
     {
       "slug": "serie-2000",
       "title": "Serie 2000",
-      "imagen_filename": "Serie-2000.jpg",
+      "imagen_filename": "Serie-2000.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -31863,7 +31863,7 @@
     {
       "slug": "tipo-et124/134-item-177",
       "title": "Tipo ET124/134",
-      "imagen_filename": "ET124_134.jpg",
+      "imagen_filename": "ET124_134.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32045,7 +32045,7 @@
     {
       "slug": "tipo-t61",
       "title": "Tipo T61",
-      "imagen_filename": "Tipo-T61.jpg",
+      "imagen_filename": "Tipo-T61.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32227,7 +32227,7 @@
     {
       "slug": "serie-nft",
       "title": "Serie NFT (NFT250 y NFT650)",
-      "imagen_filename": "Serie-NFT.jpg",
+      "imagen_filename": "Serie-NFT.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32409,7 +32409,7 @@
     {
       "slug": "serie-fte",
       "title": "Serie FTE",
-      "imagen_filename": "Serie-FTE.jpg",
+      "imagen_filename": "Serie-FTE.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32591,7 +32591,7 @@
     {
       "slug": "serie-ftn",
       "title": "Serie FTN",
-      "imagen_filename": "Serie-FTN.jpg",
+      "imagen_filename": "Serie-FTN.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32773,7 +32773,7 @@
     {
       "slug": "serie-dura-flo",
       "title": "Serie Dura-Flo",
-      "imagen_filename": "Serie-Dura-Flo.jpg",
+      "imagen_filename": "Serie-Dura-Flo.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -32955,7 +32955,7 @@
     {
       "slug": "serie-ntd600",
       "title": "Serie NTD600",
-      "imagen_filename": "Serie-NTD600.jpg",
+      "imagen_filename": "Serie-NTD600.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -33137,7 +33137,7 @@
     {
       "slug": "tipo-dfa",
       "title": "Tipo DFA",
-      "imagen_filename": "Tipo-DFA.jpg",
+      "imagen_filename": "Tipo-DFA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -33319,7 +33319,7 @@
     {
       "slug": "tipo-dua",
       "title": "Tipo DUA",
-      "imagen_filename": "Tipo-DUA.jpg",
+      "imagen_filename": "Tipo-DUA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -33501,7 +33501,7 @@
     {
       "slug": "eliminator-series",
       "title": "Eliminator Series",
-      "imagen_filename": "Eliminator-Series.jpg",
+      "imagen_filename": "Eliminator-Series.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Temperatura y Vapor",
@@ -33683,7 +33683,7 @@
     {
       "slug": "válvulas-bypass",
       "title": "Válvulas Bypass (Modelos B166B; ZV200 y B177)",
-      "imagen_filename": "Modelo-B166B-.jpg",
+      "imagen_filename": "Modelo-B166B-.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -34411,7 +34411,7 @@
     {
       "slug": "tipo-e",
       "title": "Tipo E",
-      "imagen_filename": "Tipo-E.jpg",
+      "imagen_filename": "Tipo-E.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -34593,7 +34593,7 @@
     {
       "slug": "tipo-e2",
       "title": "Tipo E2",
-      "imagen_filename": "Tipo-E2.jpg",
+      "imagen_filename": "Tipo-E2.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -34775,7 +34775,7 @@
     {
       "slug": "tipo-e5",
       "title": "Tipo E5",
-      "imagen_filename": "Tipo-E5.jpg",
+      "imagen_filename": "Tipo-E5.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -34957,7 +34957,7 @@
     {
       "slug": "serie-k-item-194",
       "title": "Serie K",
-      "imagen_filename": "Serie-K.jpg",
+      "imagen_filename": "Serie-K.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -35139,7 +35139,7 @@
     {
       "slug": "tipo-j",
       "title": "Tipo J",
-      "imagen_filename": "Tipo-J.jpg",
+      "imagen_filename": "Tipo-J.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -35321,7 +35321,7 @@
     {
       "slug": "tipo-d-53",
       "title": "Tipo D-53",
-      "imagen_filename": "Tipo-D-53.jpg",
+      "imagen_filename": "Tipo-D-53.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -35503,7 +35503,7 @@
     {
       "slug": "serie-fa-fag-y-fg",
       "title": "Serie FA, FAG y FG",
-      "imagen_filename": "Tipo-FA.jpg",
+      "imagen_filename": "Tipo-FA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -35685,7 +35685,7 @@
     {
       "slug": "tipo-sr-srs-y-stp",
       "title": "Tipo SR, SRS y STP",
-      "imagen_filename": "Tipo-SR.jpg",
+      "imagen_filename": "Tipo-SR.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -35867,7 +35867,7 @@
     {
       "slug": "noise-reduction--throttling-orifice-plates-(tops))",
       "title": "Noise Reduction (Noise Suppressor; Muffling Orifice Plates (MOPS);  Throttling Orifice Plates (TOPS))",
-      "imagen_filename": "Noise-Suppressor.jpg",
+      "imagen_filename": "Noise-Suppressor.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Control de Flujo, Filtración y Ruido",
@@ -36049,7 +36049,7 @@
     {
       "slug": "sistemas-especializados-item-200",
       "title": "Sistemas especializados (Propane Miser)",
-      "imagen_filename": "Propane-Mister.jpg",
+      "imagen_filename": "Propane-Mister.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -36231,7 +36231,7 @@
     {
       "slug": "sistemas-especializados-item-201",
       "title": "Sistemas especializados (The E91)",
-      "imagen_filename": "The-E91.jpg",
+      "imagen_filename": "The-E91.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -36413,7 +36413,7 @@
     {
       "slug": "skids",
       "title": "Skids",
-      "imagen_filename": "Skids.jpg",
+      "imagen_filename": "Skids.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -36595,7 +36595,7 @@
     {
       "slug": "serie-ol",
       "title": "Serie OL",
-      "imagen_filename": "Serie-OL.jpg",
+      "imagen_filename": "Serie-OL.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -36777,7 +36777,7 @@
     {
       "slug": "tipo-dosaodor-d",
       "title": "Tipo Dosaodor-D",
-      "imagen_filename": "Tipo-Dosaodor-D.jpg",
+      "imagen_filename": "Tipo-Dosaodor-D.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -36959,7 +36959,7 @@
     {
       "slug": "tipo-dosaodor-do200",
       "title": "Tipo Dosaodor DO200",
-      "imagen_filename": "Tipo-Dosaodor-DO200.jpg",
+      "imagen_filename": "Tipo-Dosaodor-DO200.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -37141,7 +37141,7 @@
     {
       "slug": "tipo-raf",
       "title": "Tipo RAF",
-      "imagen_filename": "Tipo-RAF.jpg",
+      "imagen_filename": "Tipo-RAF.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -37323,7 +37323,7 @@
     {
       "slug": "serie-pbe",
       "title": "Serie PBE (PBE-1AM; PBE -2 y PBE-5)",
-      "imagen_filename": "Serie-PBE.jpg",
+      "imagen_filename": "Serie-PBE.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Sistemas, Estaciones y Soluciones Integrales",
@@ -37505,7 +37505,7 @@
     {
       "slug": "serie-v/31-2-e",
       "title": "Serie V/31-2-E",
-      "imagen_filename": "Serie-V_31-2-E.jpg",
+      "imagen_filename": "Serie-V_31-2-E.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Automatización, Medición y Control",
@@ -37687,7 +37687,7 @@
     {
       "slug": "serie-ps-y-pe",
       "title": "Serie PS y PE",
-      "imagen_filename": "Serie-PS-y-RE.jpg",
+      "imagen_filename": "Serie-PS-y-RE.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Automatización, Medición y Control",
@@ -37869,7 +37869,7 @@
     {
       "slug": "serie-prx",
       "title": "Serie PRX",
-      "imagen_filename": "Serie-PRX.jpg",
+      "imagen_filename": "Serie-PRX.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Automatización, Medición y Control",
@@ -38051,7 +38051,7 @@
     {
       "slug": "tipo-a",
       "title": "Tipo A",
-      "imagen_filename": "Tipo-A.jpg",
+      "imagen_filename": "Tipo-A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Automatización, Medición y Control",
@@ -39143,7 +39143,7 @@
     {
       "slug": "lcr-ii",
       "title": "LCR-II",
-      "imagen_filename": "LCR-II.jpg",
+      "imagen_filename": "LCR-II.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Automatización, Medición y Control",
@@ -39325,7 +39325,7 @@
     {
       "slug": "tipo-924n",
       "title": "Tipo 924N",
-      "imagen_filename": "Tipo-924N.jpg",
+      "imagen_filename": "Tipo-924N.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -39507,7 +39507,7 @@
     {
       "slug": "tipo-524ac",
       "title": "TIpo 524AC",
-      "imagen_filename": "Tipo-524AC.jpg",
+      "imagen_filename": "Tipo-524AC.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -39689,7 +39689,7 @@
     {
       "slug": "tipo-528b",
       "title": "TIpo 528B",
-      "imagen_filename": "Tipo-528B.jpg",
+      "imagen_filename": "Tipo-528B.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -39871,7 +39871,7 @@
     {
       "slug": "oara-tipo-90",
       "title": "OARA-Tipo 90",
-      "imagen_filename": "OARA-Tipo-90.jpg",
+      "imagen_filename": "OARA-Tipo-90.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -40053,7 +40053,7 @@
     {
       "slug": "oara-tipo-95",
       "title": "OARA Tipo 95",
-      "imagen_filename": "OARA-Tipo-95.jpg",
+      "imagen_filename": "OARA-Tipo-95.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -40235,7 +40235,7 @@
     {
       "slug": "oara-tipo-96-97-y-98",
       "title": "OARA Tipo 96; 97 y 98",
-      "imagen_filename": "OARA-Tipo-96.jpg",
+      "imagen_filename": "OARA-Tipo-96.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -40417,7 +40417,7 @@
     {
       "slug": "válvulas-manuales-pol",
       "title": "Válvulas Manuales POL (80.0005; 61.0350; 80.0002; 80.0011; 80.0010; 80.4018; 61.0909; 61.0700; 80.5001; 61.0783)",
-      "imagen_filename": "80.0005.jpg",
+      "imagen_filename": "80.0005.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -40599,7 +40599,7 @@
     {
       "slug": "válvulas-automáticas-jumbo",
       "title": "Válvulas Automáticas Jumbo (66.008; 66.0033; 66.0012; 66.0010; 66.0246; 61.0q35k; 66.0034; 66.0022; 66.0003; 66.0026; 66.0002)",
-      "imagen_filename": "66.0008.jpg",
+      "imagen_filename": "66.0008.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -40963,7 +40963,7 @@
     {
       "slug": "válvulas-de-multi-servicio",
       "title": "Válvulas de Multi-Servicio (67.1054; 67.0805)",
-      "imagen_filename": "Valvulas-de-Multi-Servicio.jpg",
+      "imagen_filename": "Valvulas-de-Multi-Servicio.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -41145,7 +41145,7 @@
     {
       "slug": "multiválvula-420",
       "title": "Multiválvula 420",
-      "imagen_filename": "Multivalvula-420.jpg",
+      "imagen_filename": "Multivalvula-420.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -41327,7 +41327,7 @@
     {
       "slug": "multi-válvula-para-tanques-subterráneos",
       "title": "Multi-Válvula para Tanques Subterráneos (67.1070)",
-      "imagen_filename": "Multi-Valvula-para-Tanques-Subterraneos.jpg",
+      "imagen_filename": "Multi-Valvula-para-Tanques-Subterraneos.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -41691,7 +41691,7 @@
     {
       "slug": "válvula-multi-servicio-compacta",
       "title": "Válvula Multi-Servicio Compacta (67.1069)",
-      "imagen_filename": "Valvula-Multi-Servicio-Compacta.jpg",
+      "imagen_filename": "Valvula-Multi-Servicio-Compacta.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -41873,7 +41873,7 @@
     {
       "slug": "válvulas-de-llenado",
       "title": "Válvulas de Llenado (66.1122; 66.1232)",
-      "imagen_filename": "Valvula-de-llenado-66.1122.jpg",
+      "imagen_filename": "Valvula-de-llenado-66.1122.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -42055,7 +42055,7 @@
     {
       "slug": "válvula-de-llenado-con-corte-manual",
       "title": "Válvula de llenado con corte manual (66.1261; 66.1262)",
-      "imagen_filename": "Valvula-de-llenado-con-corte-manual-66.1261.jpg",
+      "imagen_filename": "Valvula-de-llenado-con-corte-manual-66.1261.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -42237,7 +42237,7 @@
     {
       "slug": "válvulas-de-llenado-con-dispositivo-de-prevención-de-sobrellenado-opd",
       "title": "Válvulas de llenado con dispositivo de prevención de sobrellenado OPD (66.1115; 66.1154; 66.1157)",
-      "imagen_filename": "Valvulas-de-llenado-con-dispositivo-de-prevencion-de-sobrellenado-OPD-66.1115.jpg",
+      "imagen_filename": "Valvulas-de-llenado-con-dispositivo-de-prevencion-de-sobrellenado-OPD-66.1115.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -42419,7 +42419,7 @@
     {
       "slug": "válvulas-externas-de-alivio-de-presión",
       "title": "Válvulas Externas de Alivio de Presión (Serie PV)",
-      "imagen_filename": "PV-19_-PV-24-y-PV-29.jpg",
+      "imagen_filename": "PV-19_-PV-24-y-PV-29.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -42601,7 +42601,7 @@
     {
       "slug": "tipo-n480-y-n481",
       "title": "Tipo N480 y N481",
-      "imagen_filename": "Tipo-N480-y-N481.jpg",
+      "imagen_filename": "Tipo-N480-y-N481.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -42965,7 +42965,7 @@
     {
       "slug": "válvulas-bridadas",
       "title": "Válvulas Bridadas",
-      "imagen_filename": "Valvulas-Bridadas-de-3.jpg",
+      "imagen_filename": "Valvulas-Bridadas-de-3.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -43147,7 +43147,7 @@
     {
       "slug": "serie-c407-10",
       "title": "Serie C407-10",
-      "imagen_filename": "Serie-C407-10.jpg",
+      "imagen_filename": "Serie-C407-10.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -43329,7 +43329,7 @@
     {
       "slug": "serie-c471-y-c477",
       "title": "Serie C471 y C477",
-      "imagen_filename": "Serie-C471-y-C477.jpg",
+      "imagen_filename": "Serie-C471-y-C477.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -43693,7 +43693,7 @@
     {
       "slug": "tipo-c404-32-c404a-32-y-c404m-32",
       "title": "Tipo C404-32; C404A-32 y C404M-32",
-      "imagen_filename": "Tipo-C404-32.jpg",
+      "imagen_filename": "Tipo-C404-32.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -43875,7 +43875,7 @@
     {
       "slug": "adaptadores-euro-/-acme",
       "title": "Adaptadores EURO / ACME (16.0320; 16.0331)",
-      "imagen_filename": "Adaptadores-EURO-_-ACME-16.0320.jpg",
+      "imagen_filename": "Adaptadores-EURO-_-ACME-16.0320.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44057,7 +44057,7 @@
     {
       "slug": "serie-il",
       "title": "Serie IL",
-      "imagen_filename": "Serie-IL.jpg",
+      "imagen_filename": "Serie-IL.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44239,7 +44239,7 @@
     {
       "slug": "serie-8800-y-9900",
       "title": "Serie 8800 y 9900",
-      "imagen_filename": "Serie-8800.jpg",
+      "imagen_filename": "Serie-8800.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44421,7 +44421,7 @@
     {
       "slug": "serie-fvfa",
       "title": "Serie FVFA",
-      "imagen_filename": "Serie-FVFA.jpg",
+      "imagen_filename": "Serie-FVFA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44603,7 +44603,7 @@
     {
       "slug": "serie-7",
       "title": "Serie 7",
-      "imagen_filename": "Serie-7-1.jpg",
+      "imagen_filename": "Serie-7-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44785,7 +44785,7 @@
     {
       "slug": "serie-8",
       "title": "Serie 8",
-      "imagen_filename": "Serie-8.jpg",
+      "imagen_filename": "Serie-8.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -44967,7 +44967,7 @@
     {
       "slug": "serie-dfa",
       "title": "Serie DFA",
-      "imagen_filename": "Serie-DFA-1.jpg",
+      "imagen_filename": "Serie-DFA-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Autogas y Aplicaciones Especiales",
@@ -45513,7 +45513,7 @@
     {
       "slug": "serie-tav",
       "title": "Serie TAV",
-      "imagen_filename": "Serie-TVA.jpg",
+      "imagen_filename": "Serie-TVA.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -45695,7 +45695,7 @@
     {
       "slug": "actuadores-neumáticos-para-válvulas-internas",
       "title": "Actuadores Neumáticos para Válvulas Internas",
-      "imagen_filename": "Actuadores-Neumaticos-para-Valvulas-Internas.jpg",
+      "imagen_filename": "Actuadores-Neumaticos-para-Valvulas-Internas.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -45877,7 +45877,7 @@
     {
       "slug": "serie-p600",
       "title": "Serie P600 (P639A; P614A; P623; P613 y P389)",
-      "imagen_filename": "Tipo-P639A.jpg",
+      "imagen_filename": "Tipo-P639A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -46059,7 +46059,7 @@
     {
       "slug": "tipo-p650",
       "title": "Tipo P650",
-      "imagen_filename": "Tipo-P650.jpg",
+      "imagen_filename": "Tipo-P650.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -46241,7 +46241,7 @@
     {
       "slug": "series-p163a-y-p164",
       "title": "Series P163A y P164 (P164; P164B y P164C)",
-      "imagen_filename": "Tipo-P163A.jpg",
+      "imagen_filename": "Tipo-P163A.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -46423,7 +46423,7 @@
     {
       "slug": "serie-j31",
       "title": "Serie J31",
-      "imagen_filename": "Serie-J31.jpg",
+      "imagen_filename": "Serie-J31.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -46787,7 +46787,7 @@
     {
       "slug": "acopladores-de-llenado-acme-hembras",
       "title": "Acopladores de llenado ACME hembras (M111; M112 y M130)",
-      "imagen_filename": "Acopladores-de-llenado-ACME-hembras-1.jpg",
+      "imagen_filename": "Acopladores-de-llenado-ACME-hembras-1.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -47151,7 +47151,7 @@
     {
       "slug": "tipo-p120b",
       "title": "TIpo P120B",
-      "imagen_filename": "Tipo-P120B.jpg",
+      "imagen_filename": "Tipo-P120B.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -47333,7 +47333,7 @@
     {
       "slug": "tipo-p520l",
       "title": "Tipo P520L",
-      "imagen_filename": "Tipo-P520L.jpg",
+      "imagen_filename": "Tipo-P520L.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -47515,7 +47515,7 @@
     {
       "slug": "tipo-n201",
       "title": "Tipo N201",
-      "imagen_filename": "Tipo-N201.jpg",
+      "imagen_filename": "Tipo-N201.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -47697,7 +47697,7 @@
     {
       "slug": "serie-p313-y-p340",
       "title": "Serie P313 y P340",
-      "imagen_filename": "P313.jpg",
+      "imagen_filename": "P313.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -47879,7 +47879,7 @@
     {
       "slug": "manómetro",
       "title": "Manómetro",
-      "imagen_filename": "Manometro.jpg",
+      "imagen_filename": "Manometro.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48061,7 +48061,7 @@
     {
       "slug": "pigtails",
       "title": "Pigtails",
-      "imagen_filename": "Pigtails.jpg",
+      "imagen_filename": "Pigtails.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48243,7 +48243,7 @@
     {
       "slug": "manguera-de-baja-presión",
       "title": "Manguera de Baja Presión (Tipo 501LP)",
-      "imagen_filename": "Manguera-de-Baja-Presion-Tipo-501LP.jpg",
+      "imagen_filename": "Manguera-de-Baja-Presion-Tipo-501LP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48425,7 +48425,7 @@
     {
       "slug": "manguera-de-alta-presión",
       "title": "Manguera de Alta Presión (Tipo 501HP)",
-      "imagen_filename": "Manguera-de-Alta-Presion-Tipo-501HP.jpg",
+      "imagen_filename": "Manguera-de-Alta-Presion-Tipo-501HP.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48607,7 +48607,7 @@
     {
       "slug": "modelo-0299",
       "title": "Modelo 0299",
-      "imagen_filename": "Modelo-299.jpg",
+      "imagen_filename": "Modelo-299.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48789,7 +48789,7 @@
     {
       "slug": "discos-de-ruptura",
       "title": "Discos de ruptura (Tipo NT/NR; NTG/NRG; CS; GR; MN/MO; RBH;/RBF; LRB/LRF;SRBH, RBX; GRB)",
-      "imagen_filename": "Discos-de-ruptura.jpg",
+      "imagen_filename": "Discos-de-ruptura.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -48971,7 +48971,7 @@
     {
       "slug": "paneles-de-ventilación-para-explosiones",
       "title": "Paneles de ventilación para explosiones (CSP; TSP)",
-      "imagen_filename": "Paneles-de-ventilacion-para-explosiones.jpg",
+      "imagen_filename": "Paneles-de-ventilacion-para-explosiones.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -49153,7 +49153,7 @@
     {
       "slug": "serie-7000",
       "title": "Serie 7000",
-      "imagen_filename": "Serie-7000.jpg",
+      "imagen_filename": "Serie-7000.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -49335,7 +49335,7 @@
     {
       "slug": "serie-221",
       "title": "Serie 221",
-      "imagen_filename": "Serie-221.jpg",
+      "imagen_filename": "Serie-221.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -49517,7 +49517,7 @@
     {
       "slug": "serie-42",
       "title": "Serie 42",
-      "imagen_filename": "Serie-42.jpg",
+      "imagen_filename": "Serie-42.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -49699,7 +49699,7 @@
     {
       "slug": "serie-4310",
       "title": "Serie 4310",
-      "imagen_filename": "Serie-4310.jpg",
+      "imagen_filename": "Serie-4310.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -49881,7 +49881,7 @@
     {
       "slug": "serie-220",
       "title": "Serie 220",
-      "imagen_filename": "Serie-220.jpg",
+      "imagen_filename": "Serie-220.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -50063,7 +50063,7 @@
     {
       "slug": "modelo-4000-y-4100",
       "title": "Modelo 4000 y 4100",
-      "imagen_filename": "Modelo-4000.jpg",
+      "imagen_filename": "Modelo-4000.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -50427,7 +50427,7 @@
     {
       "slug": "modelo-1000",
       "title": "Modelo 1000",
-      "imagen_filename": "Modelo-1000.jpg",
+      "imagen_filename": "Modelo-1000.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -50609,7 +50609,7 @@
     {
       "slug": "serie-660",
       "title": "Serie 660",
-      "imagen_filename": "Modelo-660.jpg",
+      "imagen_filename": "Modelo-660.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -50791,7 +50791,7 @@
     {
       "slug": "serie-es-660",
       "title": "Serie ES-660",
-      "imagen_filename": "Serie-Es-850.jpg",
+      "imagen_filename": "Serie-Es-850.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -50973,7 +50973,7 @@
     {
       "slug": "serie-es-665",
       "title": "Serie ES-665",
-      "imagen_filename": "Modelo-Es-665.jpg",
+      "imagen_filename": "Modelo-Es-665.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",
@@ -51155,7 +51155,7 @@
     {
       "slug": "senseiq",
       "title": "SENSEiQ",
-      "imagen_filename": "SENSEiQ.jpg",
+      "imagen_filename": "SENSEiQ.webp",
       "acf": {
         "clasificacion": {
           "macro_categoria": "Accesorios y otros componentes",

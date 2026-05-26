@@ -12,7 +12,7 @@ interface CityMapProps {
 
 export function CityMap({ city, className }: CityMapProps) {
   return (
-    <section className={cn("section py-16 sm:py-20 md:py-24 bg-background-alt", className)}>
+    <section className={cn("section bg-background py-16 sm:py-20 md:py-24", className)}>
       <div className="container">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-accent mb-2">
@@ -23,8 +23,8 @@ export function CityMap({ city, className }: CityMapProps) {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="card-base p-6 sm:p-8 flex flex-col justify-between">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="card-base flex flex-col justify-between rounded-[1.5rem] bg-card p-6 sm:p-8">
             <div>
               <h3 className="text-lg font-bold text-foreground mb-4">
                 Servicio Técnico en {city.name}
@@ -72,7 +72,7 @@ export function CityMap({ city, className }: CityMapProps) {
           </div>
 
           {city.mapEmbedUrl && (
-            <div className="rounded-lg overflow-hidden border border-border min-h-[350px]">
+            <div className="min-h-[350px] overflow-hidden rounded-[1.5rem] border border-border/45 bg-white shadow-[0_18px_44px_-34px_hsl(var(--primary)_/_0.34)]">
               <iframe
                 src={city.mapEmbedUrl}
                 width="100%"

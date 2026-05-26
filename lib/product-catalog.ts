@@ -59,6 +59,25 @@ export function buildCatalogFacets(products: Product[]): ProductCatalogFacets {
   };
 }
 
+export function buildCategoriasByMacro(products: Product[]): Map<string, string[]> {
+  const groups = new Map<string, Set<string>>();
+  for (const product of products) {
+    const macro = product.macroCategoria?.trim();
+    const category = product.categoria?.trim();
+    if (!macro || !category) continue;
+    const set = groups.get(macro) ?? new Set<string>();
+    set.add(category);
+    groups.set(macro, set);
+  }
+
+  return new Map(
+    [...groups.entries()].map(([macro, categories]) => [
+      macro,
+      uniqSorted(categories),
+    ]),
+  );
+}
+
 export type CatalogFilters = {
   marcas: string[];
   macroCategorias: string[];

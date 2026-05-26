@@ -19,8 +19,8 @@ export function NavItem({ label, href, isActive, isAtTop = true }: NavItemProps)
         "inline-flex items-center px-3 py-2 text-sm font-medium transition-colors focus:outline-none",
         isAtTop
           ? isActive
-            ? "text-primary"
-            : "text-primary hover:text-[hsl(var(--primary-light))]"
+            ? "text-white"
+            : "text-white/90 hover:text-white"
           : isActive
             ? "text-white"
             : "text-white/90 hover:text-white",

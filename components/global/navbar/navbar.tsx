@@ -107,10 +107,10 @@ export function Navbar() {
     <>
       <div
         className={cn(
-          "w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+          "w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isAtTop
-            ? "bg-black/10 shadow-lg backdrop-blur-sm  border-transparent"
-            : "bg-navbar-background border-b border-border ",
+            ? "border-b border-white/10 bg-navbar-background/20 shadow-[0_14px_45px_rgba(3,10,24,0.30)] backdrop-blur-xl"
+            : "bg-navbar-background border-b border-border shadow-lg",
         )}
       >
         <div className="px-4 py-6 w-full flex items-center justify-center">
@@ -209,10 +209,10 @@ export function Navbar() {
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <use href="/assets/icons/gear-cart.svg#icon" />
+                  <use href="/assets/icons/gear-cart.svg" />
                 </svg>
                 {quoteCart.totalQuantity > 0 ? (
-                  <span className="absolute -top-0.5 -right-0.5 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold leading-none text-primary-foreground">
+                  <span className="absolute -top-0.5 -right-0.5 min-w-[1.125rem] h-[1.125rem] px-0.5 flex items-center justify-center bg-primary text-[10px] font-bold leading-none text-primary-foreground">
                     {quoteCart.totalQuantity > 99
                       ? "99+"
                       : quoteCart.totalQuantity}
@@ -473,7 +473,7 @@ export function Navbar() {
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <use href="/assets/icons/gear-cart.svg#icon" />
+                  <use href="/assets/icons/gear-cart.svg" />
                 </svg>
                 Cotizar
                 {quoteCart.totalQuantity > 0 ? (

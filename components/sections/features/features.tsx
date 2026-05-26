@@ -60,13 +60,13 @@ function FeatureCard({ feature }: { feature: Feature }) {
   return (
     <div
       className={cn(
-        "flex h-full flex-col rounded-[3px] border border-white/[0.08]",
+        "flex h-full flex-col rounded-2xl border border-white/[0.08]",
         "bg-[rgba(40,40,40,0.72)] px-6 pb-7 pt-6 shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.05)] transition duration-300",
         "hover:border-white/14 hover:bg-[rgba(40,40,40,0.8)] sm:px-7 sm:pb-[1.75rem] sm:pt-[1.35rem]",
       )}
     >
       {feature.highlight && (
-        <span className="mb-5 inline-flex w-fit rounded-full bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--accent))] sm:text-[11px] sm:tracking-[0.12em]">
+        <span className="mb-5 inline-flex w-fit rounded-lg bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--accent))] sm:text-[11px] sm:tracking-[0.12em]">
           {feature.highlight}
         </span>
       )}
