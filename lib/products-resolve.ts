@@ -16,7 +16,19 @@ import {
 } from "@/lib/wordpress/products-debug-log";
 
 function useWordPressProducts(): boolean {
-  return isTruthyEnvFlag("true");
+  const isProductionBuild =
+    process.env.NEXT_PHASE === "phase-production-build" ||
+    process.env.npm_lifecycle_event === "build";
+
+  if (isProductionBuild && !isTruthyEnvFlag(process.env.USE_WORDPRESS_PRODUCTS_DURING_BUILD)) {
+    return false;
+  }
+
+  if (process.env.USE_WORDPRESS_PRODUCTS !== undefined) {
+    return isTruthyEnvFlag(process.env.USE_WORDPRESS_PRODUCTS);
+  }
+
+  return true;
 }
 
 /** Catálogo unificado: WordPress si está activado y responde; si no, JSON estático. */
