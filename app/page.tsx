@@ -15,6 +15,7 @@ import { CONTACT, formatPhoneTel } from "@/lib/business-config";
 import { PRIMARY_SLOGAN, TECH_COMMERCIAL_SLOGAN } from "@/lib/strategic-brands";
 
 export const metadata: Metadata = generateMetadataFromConfig("/");
+export const revalidate = 300;
 
 export default function Home() {
   return (

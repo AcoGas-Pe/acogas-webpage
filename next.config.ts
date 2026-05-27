@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
       // Hub recursos técnicos → página de recursos (hasta exista índice dedicado)
       { source: "/recursos-tecnicos", destination: "/recursos/", permanent: false },
       { source: "/recursos-tecnicos/", destination: "/recursos/", permanent: false },
+      // Blog consolidado bajo /blog/
+      { source: "/recursos-tecnicos/blog", destination: "/blog/", permanent: true },
+      { source: "/recursos-tecnicos/blog/", destination: "/blog/", permanent: true },
+      { source: "/novedades", destination: "/blog/", permanent: true },
+      { source: "/novedades/", destination: "/blog/", permanent: true },
       // Normativas bajo recursos técnicos
       { source: "/normativas", destination: "/recursos-tecnicos/normativas/", permanent: true },
       { source: "/normativas/", destination: "/recursos-tecnicos/normativas/", permanent: true },

@@ -144,7 +144,7 @@ export const NAV_MENUS = {
         items: [
           {
             label: "Blog Técnico",
-            href: "/recursos-tecnicos/blog/",
+            href: "/blog/",
             description: "Artículos y novedades técnicas",
           },
           {

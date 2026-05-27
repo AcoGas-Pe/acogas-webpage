@@ -348,6 +348,44 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ],
   },
 
+  "/blog/": {
+    title: `Blog técnico | ${BUSINESS_INFO.name}`,
+    description:
+      "Artículos técnicos, novedades y criterios de aplicación para GLP, gas natural, vapor y procesos industriales.",
+    keywords: [
+      "blog técnico",
+      "GLP",
+      "gas natural",
+      "vapor",
+      "procesos industriales",
+      "seguridad industrial",
+      "acogas",
+    ],
+    canonical: `${siteConfig.url}/blog/`,
+    ogImage: "/assets/images/industry-plant-industrial-plant.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Blog técnico | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Artículos técnicos y novedades para decisiones industriales.",
+    linkedinImage: "/assets/images/industry-plant-industrial-plant.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Blog técnico | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Criterios técnicos para GLP, gas natural, vapor y procesos industriales.",
+    socialImage: "/assets/images/industry-plant-industrial-plant.webp",
+    articleSection: "Blog",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      { name: "Blog", url: `${siteConfig.url}/blog/` },
+    ],
+  },
+
   "/cobertura-industrial/": {
     title: `Cobertura industrial | ${BUSINESS_INFO.name}`,
     description:
