@@ -163,7 +163,7 @@ export const resolveAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
       if (batches >= MAX_BATCHES) break;
       batches += 1;
 
-      const data = await wpGraphqlFetch<WpBlogResponse>(BLOG_QUERY, {
+      const data: WpBlogResponse = await wpGraphqlFetch<WpBlogResponse>(BLOG_QUERY, {
         first: 50,
         after,
       });
