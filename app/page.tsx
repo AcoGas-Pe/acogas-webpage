@@ -38,7 +38,6 @@ export default function Home() {
           label: "Solicitar diagnóstico",
           href: "/contacto?tipo=diagnostico",
         }}
-        noBackground
       />
       <Clients />
       <StatsBar />

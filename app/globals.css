@@ -3,7 +3,8 @@
 /*
   Light theme + brand tokens (#1A4B8F blue, #E30613 red, neutrals).
   Section audit (image vs solid):
-  - Image + overlay/scrim: hero, hero-carousel, pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
+  - Image + overlay/scrim: hero-carousel, pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
+  - Hero homepage: split layout (solid text panel + media panel, no scrim on video).
   - Solid surfaces: most sections (bg-background / bg-background-alt), clients strip, cards, HubSpot form.
 */
 
@@ -217,6 +218,47 @@ h6 {
   to {
     transform: translateX(-50%);
   }
+}
+
+@keyframes hero-keyword-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+/* Homepage hero: text panel + mirrored diagonal edge + keyword stripe */
+.hero-split__text-panel {
+  background-color: hsl(var(--background));
+  box-shadow: 8px 0 40px -12px hsl(var(--primary) / 0.14);
+}
+
+@media (min-width: 1024px) {
+  /* Mirrored diagonal: narrow at top-right, wide at bottom-right */
+  .hero-split__text-panel {
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+  }
+
+  .hero-split__keyword-stripe-wrap {
+    /* ~midpoint of mirrored diagonal (88%→100% of 58% panel width) */
+    left: 55%;
+    transform: translateX(-50%) skewX(11deg);
+  }
+}
+
+.hero-split__keyword-stripe {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary-light)) 45%,
+    hsl(var(--accent)) 100%
+  );
+}
+
+.hero-split__keyword-track {
+  animation: hero-keyword-scroll 22s linear infinite;
 }
 
 @keyframes soft-fade-in {

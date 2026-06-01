@@ -107,13 +107,10 @@ export function Navbar() {
     <>
       <div
         className={cn(
-          "w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isAtTop
-            ? "border-b border-white/10 bg-navbar-background/20 shadow-[0_14px_45px_rgba(3,10,24,0.30)] backdrop-blur-xl"
-            : "bg-navbar-background border-b border-border shadow-lg",
+          "w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navbar-background border-b border-border shadow-lg",
         )}
       >
-        <div className="px-4 py-6 w-full flex items-center justify-center">
+        <div className="px-4 py-3  w-full flex items-center justify-center">
           <nav className="flex flex-row items-center justify-between w-full max-w-7xl">
             {/* Logo */}
             <Link href="/" className="shrink-0">

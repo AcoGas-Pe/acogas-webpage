@@ -1,12 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ClipboardCheck, Phone } from "lucide-react";
+import Image from "next/image";
 import { Slideshow } from "./slideshow";
 
 interface HeroAction {
   label: string;
   href: string;
 }
+
+const DEFAULT_KEYWORDS = [
+  "GLP",
+  "Gas natural",
+  "Vapor",
+  "Regulación",
+  "Control",
+  "Ingeniería",
+  "Procesos industriales",
+  "Energía",
+];
 
 interface HeroProps {
   title?: string;
@@ -16,7 +28,10 @@ interface HeroProps {
   secondaryAction?: HeroAction;
   tertiaryAction?: HeroAction;
   className?: string;
+  /** Static image on the right panel instead of the video slideshow */
   image?: string;
+  /** Keywords repeated on the diagonal stripe between text and media */
+  keywords?: string[];
   /** If true, hero has no full-bleed background (carousel is rendered below separately) */
   noBackground?: boolean;
 }
@@ -35,60 +50,155 @@ export function Hero({
   },
   tertiaryAction,
   className,
-  image = "/assets/images/refinery.webp",
+  image,
+  keywords = DEFAULT_KEYWORDS,
+  noBackground = false,
 }: HeroProps) {
+  const showMedia = !noBackground;
+  const stripeItems = [...keywords, ...keywords];
+
   return (
-    <section className={cn("section relative min-h-[80dvh] pt-20 flex items-end md:items-center justify-center bg-background pb-12 md:pb-16", className)}>
-      {/* Background image + overlay */}
-      {image && (
-        <div className="absolute inset-0 w-full h-full">
-          <Slideshow />
-          {/* overlay */}
-          <div className="absolute inset-0 bg-linear-to-r from-white/92 via-white/62 to-black/38" aria-hidden />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_22%_52%,rgba(255,255,255,0.82)_0%,rgba(255,255,255,0.62)_32%,rgba(255,255,255,0.20)_54%,transparent_72%),linear-gradient(to_bottom,rgba(7,19,38,0.28),transparent_30%,rgba(7,19,38,0.18))]" aria-hidden />
-        </div>
+    <section
+      className={cn(
+        "section relative min-h-[80dvh] w-full overflow-hidden bg-background pt-20",
+        className,
       )}
-      <div className="container max-w-7xl flex items-start flex-col justify-start mx-auto px-4 py-16 z-10">
-        <div className="max-w-3xl text-left">
-          {/* Subtitle */}
-          {subtitle && (
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.35rem] text-accent drop-shadow-sm sm:tracking-[0.5rem]">
-              {subtitle}
-            </p>
-          )}
-
-          <h1 className="max-w-2xl text-2xl font-bold text-primary !tracking-wider [font-family:var(--font-hero)] drop-shadow-[0_3px_24px_rgba(255,255,255,0.80)] md:text-3xl lg:text-4xl">
-            {title}
-          </h1>
-
-          {description && (
-            <p className="mt-3 max-w-2xl text-sm font-semibold leading-relaxed text-foreground/90 sm:text-base">
-              {description}
-            </p>
-          )}
-
-        </div>
-          <div className="flex flex-row flex-wrap items-center justify-start gap-3 pt-8 sm:gap-4">
-            {primaryAction && (
-              <Button href={primaryAction.href} size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
-                {primaryAction.href.startsWith("tel:") && (
-                  <Phone className="mr-2 w-4 h-4 shrink-0" aria-hidden />
-                )}
-                {primaryAction.label}
-              </Button>
-            )}
-            {secondaryAction && (
-              <Button href={secondaryAction.href} variant="secondary" size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
-                <ClipboardCheck className="mr-2 w-4 h-4 shrink-0" />
-                {secondaryAction.label}
-              </Button>
-            )}
-            {tertiaryAction && (
-              <Button href={tertiaryAction.href} variant="outline" size="lg" className="min-h-12 w-auto justify-center whitespace-nowrap">
-                {tertiaryAction.label}
-              </Button>
+    >
+      <div className="relative min-h-[calc(80dvh-5rem)] w-full">
+        {/* Media — behind text panel and diagonal */}
+        {showMedia && (
+          <div className="relative z-0 min-h-[42dvh] w-full lg:absolute lg:inset-0 lg:min-h-0">
+            {image ? (
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+            ) : (
+              <Slideshow className="absolute inset-0" />
             )}
           </div>
+        )}
+
+        {/* Solid diagonal panel — above video */}
+        {showMedia && (
+          <div
+            className="hero-split__text-panel pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[58%] lg:block"
+            aria-hidden
+          />
+        )}
+
+        {/* Keyword stripe on the diagonal seam */}
+        {showMedia && (
+          <div
+            className="hero-split__keyword-stripe-wrap pointer-events-none absolute top-0 bottom-0 z-20 hidden w-9 overflow-hidden lg:block"
+            aria-hidden
+          >
+            <div className="hero-split__keyword-stripe flex h-full w-full flex-col items-center justify-start py-3 shadow-lg">
+              <div className="hero-split__keyword-track flex min-h-[200%] flex-col items-center gap-5">
+                {stripeItems.map((word, index) => (
+                  <span
+                    key={`${word}-${index}`}
+                    className="rotate-180 text-[0.58rem] font-bold uppercase tracking-[0.22em] text-primary-foreground [writing-mode:vertical-rl]"
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Text content — above panel and stripe */}
+        <div
+          className={cn(
+            "relative z-30 flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-14 lg:py-16",
+            showMedia
+              ? "lg:max-w-[54%] lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-8"
+              : "container mx-auto max-w-7xl",
+          )}
+        >
+          {/* Mobile / no-media: full-width solid backing */}
+          {showMedia && (
+            <div
+              className="hero-split__text-panel pointer-events-none absolute inset-0 bg-background lg:hidden"
+              aria-hidden
+            />
+          )}
+
+          <div className="relative max-w-xl">
+            {subtitle && (
+              <p className="mb-4 text-sm font-bold uppercase tracking-[0.35rem] text-accent sm:tracking-[0.5rem]">
+                {subtitle}
+              </p>
+            )}
+
+            <h1 className="max-w-2xl text-2xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-3xl lg:text-4xl">
+              {title}
+            </h1>
+
+            {description && (
+              <p className="mt-3 max-w-2xl text-sm font-semibold leading-relaxed text-foreground/90 sm:text-base">
+                {description}
+              </p>
+            )}
+
+            <div className="flex flex-row flex-wrap items-center justify-start gap-3 pt-8 sm:gap-4">
+              {primaryAction && (
+                <Button
+                  href={primaryAction.href}
+                  size="lg"
+                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                >
+                  {primaryAction.href.startsWith("tel:") && (
+                    <Phone className="mr-2 h-4 w-4 shrink-0" aria-hidden />
+                  )}
+                  {primaryAction.label}
+                </Button>
+              )}
+              {secondaryAction && (
+                <Button
+                  href={secondaryAction.href}
+                  variant="secondary"
+                  size="lg"
+                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                >
+                  <ClipboardCheck className="mr-2 h-4 w-4 shrink-0" />
+                  {secondaryAction.label}
+                </Button>
+              )}
+              {tertiaryAction && (
+                <Button
+                  href={tertiaryAction.href}
+                  variant="outline"
+                  size="lg"
+                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                >
+                  {tertiaryAction.label}
+                </Button>
+              )}
+            </div>
+
+            {showMedia && (
+              <ul
+                className="mt-8 flex flex-wrap gap-2 lg:hidden"
+                aria-label="Especialidades"
+              >
+                {keywords.map((word) => (
+                  <li
+                    key={word}
+                    className="rounded-full border border-primary/15 bg-primary-muted/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-primary"
+                  >
+                    {word}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 type Slide = { type: "image"; src: string } | { type: "video"; src: string };
 
@@ -12,7 +13,11 @@ const slides: Slide[] = [
 const FADE_DURATION_MS = 2000;
 const SLIDE_INTERVAL_MS = 6000;
 
-export function Slideshow() {
+interface SlideshowProps {
+  className?: string;
+}
+
+export function Slideshow({ className }: SlideshowProps) {
   const [active, setActive] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -38,7 +43,7 @@ export function Slideshow() {
   }, [active]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden z-0">
+    <div className={cn("relative h-full w-full overflow-hidden", className)}>
       {slides.map((slide, idx) => {
         const isActive = idx === active;
         const style = {
