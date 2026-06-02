@@ -8,6 +8,7 @@ import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = generateMetadataFromConfig("/cotizar/");
 
 export default async function CotizarPage() {

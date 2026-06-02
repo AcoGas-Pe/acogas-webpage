@@ -1,5 +1,7 @@
+import { unstable_cache } from "next/cache";
 import { cache } from "react";
 import type { Product } from "@/domain/product";
+import { getWordPressRevalidateSeconds } from "@/lib/wordpress/cache-revalidate";
 import { wpGraphqlFetch } from "@/lib/wordpress/graphql/client";
 import {
   buildSolucionesProductosPagedQuery,
@@ -17,8 +19,7 @@ type ConnectionPayload = {
   } | null;
 };
 
-/** Lista de productos desde WPGraphQL (varias peticiones si el servidor limita `first`). */
-export const getWordPressProducts = cache(async (): Promise<Product[]> => {
+async function fetchWordPressProductsFromApi(): Promise<Product[]> {
   const root = getWpProductsGraphqlRootField();
   const query = buildSolucionesProductosPagedQuery();
   const pageSize = getGraphqlProductsPageSize();
@@ -57,4 +58,18 @@ export const getWordPressProducts = cache(async (): Promise<Product[]> => {
   );
 
   return products;
-});
+}
+
+const getCachedWordPressProducts = unstable_cache(
+  fetchWordPressProductsFromApi,
+  ["wordpress-soluciones-productos"],
+  {
+    revalidate: getWordPressRevalidateSeconds(),
+    tags: ["wordpress-products"],
+  },
+);
+
+/** Lista de productos desde WPGraphQL (cacheada; varias peticiones GraphQL si hay paginación). */
+export const getWordPressProducts = cache(async (): Promise<Product[]> =>
+  getCachedWordPressProducts(),
+);

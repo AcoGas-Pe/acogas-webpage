@@ -1,7 +1,12 @@
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
+import { getWordPressRevalidateSeconds } from "@/lib/wordpress/cache-revalidate";
 import { wpGraphqlFetch } from "@/lib/wordpress/graphql/client";
-import { isTruthyEnvFlag, isWpProductsDebugEnabled } from "@/lib/wordpress/products-debug-log";
+import {
+  isTruthyEnvFlag,
+  isWpProductsDebugEnabled,
+} from "@/lib/wordpress/products-debug-log";
 
 export interface BlogPost {
   slug: string;
@@ -88,6 +93,17 @@ function blogFetchError(error: unknown): void {
   }
 }
 
+function blogInfo(...args: unknown[]): void {
+  if (process.env.NODE_ENV === "development" || isWpProductsDebugEnabled()) {
+    console.log("[WP blog]", ...args);
+  }
+}
+
+function blogVerbose(...args: unknown[]): void {
+  if (!isWpProductsDebugEnabled()) return;
+  console.log("[WP blog][debug]", ...args);
+}
+
 function stripHtml(value: string): string {
   return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }
@@ -131,8 +147,13 @@ function splitCategories(value?: string | null): string[] {
 
 function mapBlogNode(node: WpBlogNode): BlogPost | null {
   const content = node.blogsAcogas?.postContent?.trim() ?? "";
-  const title = node.title?.trim() || extractMarkdownTitle(content) || "Artículo Acogas";
-  const slug = node.slug?.trim() || fallbackSlug(title);
+  const slug = node.slug?.trim() || fallbackSlug(node.title?.trim() || extractMarkdownTitle(content) || "articulo-acogas");
+  const wpTitle = node.title?.trim();
+  const title =
+    extractMarkdownTitle(content) ||
+    (wpTitle && wpTitle !== slug ? wpTitle : null) ||
+    wpTitle ||
+    "Artículo Acogas";
   if (!slug || !content) return null;
 
   return {
@@ -150,48 +171,76 @@ function mapBlogNode(node: WpBlogNode): BlogPost | null {
   };
 }
 
+async function fetchWordPressBlogPostsFromApi(): Promise<BlogPost[]> {
+  const allNodes: WpBlogNode[] = [];
+  let after: string | null = null;
+  let batches = 0;
+  const MAX_BATCHES = 20;
+
+  for (;;) {
+    if (batches >= MAX_BATCHES) break;
+    batches += 1;
+
+    const data: WpBlogResponse = await wpGraphqlFetch<WpBlogResponse>(BLOG_QUERY, {
+      first: 50,
+      after,
+    });
+    const conn = data.blogsDeAcogas;
+    const nodes = conn?.nodes ?? [];
+    allNodes.push(...nodes);
+
+    const pageInfo = conn?.pageInfo;
+    const hasNextPage = Boolean(pageInfo?.hasNextPage && nodes.length > 0);
+    const nextCursor = pageInfo?.endCursor ?? null;
+    if (!hasNextPage || !nextCursor) break;
+    after = nextCursor;
+  }
+
+  blogVerbose(
+    `Campo "blogsDeAcogas": ${allNodes.length} nodos en ${batches} petición(es) (hasta 50 por petición)`,
+  );
+
+  const posts = allNodes
+    .map(mapBlogNode)
+    .filter((post): post is BlogPost => Boolean(post))
+    .sort((a, b) => {
+      const left = a.date ? new Date(a.date).getTime() : 0;
+      const right = b.date ? new Date(b.date).getTime() : 0;
+      return right - left;
+    });
+
+  blogVerbose(`→ ${posts.length} artículos tras map (nodos sin postContent se omiten)`);
+  if (posts.length > 0) {
+    blogInfo(`Origen: WordPress · ${posts.length} artículo(s) · RootQuery.blogsDeAcogas(…)`);
+  } else if (allNodes.length > 0) {
+    console.warn(
+      "[WP blog] WordPress devolvió nodos pero 0 artículos tras mapear. ¿postContent vacío en todos?",
+    );
+  } else {
+    blogInfo("Origen: WordPress · 0 artículos publicados en blogsDeAcogas.");
+  }
+
+  return posts;
+}
+
+const getCachedWordPressBlogPosts = unstable_cache(
+  fetchWordPressBlogPostsFromApi,
+  ["wordpress-blog-posts"],
+  {
+    revalidate: getWordPressRevalidateSeconds(),
+    tags: ["wordpress-blog"],
+  },
+);
+
 export const resolveAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
   if (!useWordPressBlog()) return [];
 
   try {
-    const allNodes: WpBlogNode[] = [];
-    let after: string | null = null;
-    let batches = 0;
-    const MAX_BATCHES = 20;
-
-    for (;;) {
-      if (batches >= MAX_BATCHES) break;
-      batches += 1;
-
-      const data: WpBlogResponse = await wpGraphqlFetch<WpBlogResponse>(BLOG_QUERY, {
-        first: 50,
-        after,
-      });
-      const conn = data.blogsDeAcogas;
-      const nodes = conn?.nodes ?? [];
-      allNodes.push(...nodes);
-
-      const pageInfo = conn?.pageInfo;
-      const hasNextPage = Boolean(pageInfo?.hasNextPage && nodes.length > 0);
-      const nextCursor = pageInfo?.endCursor ?? null;
-      if (!hasNextPage || !nextCursor) break;
-      after = nextCursor;
-    }
-
-    const posts = allNodes
-      .map(mapBlogNode)
-      .filter((post): post is BlogPost => Boolean(post))
-      .sort((a, b) => {
-        const left = a.date ? new Date(a.date).getTime() : 0;
-        const right = b.date ? new Date(b.date).getTime() : 0;
-        return right - left;
-      });
-
-    return posts;
+    return await getCachedWordPressBlogPosts();
   } catch (error) {
     blogFetchError(error);
     console.warn(
-      "No se pudo leer el blog desde WordPress; se mostrará el blog vacío. Mensaje:",
+      "[WP blog] No se pudo leer WordPress; se mostrará el blog vacío. Mensaje:",
       error instanceof Error ? error.message : String(error),
     );
     return [];

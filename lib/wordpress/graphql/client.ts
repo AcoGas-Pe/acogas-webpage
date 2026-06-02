@@ -7,8 +7,10 @@
  * Si el endpoint es privado, usa WORDPRESS_GRAPHQL_SECRET o Application Password según tu WPGraphQL/JWT setup.
  *
  * Depuración: WORDPRESS_PRODUCTS_DEBUG=1 amplía el detalle de errores GraphQL en consola del servidor.
+ * Cache: WORDPRESS_REVALIDATE_SECONDS (default 300) en fetch GraphQL y unstable_cache.
  */
 
+import { getWordPressRevalidateSeconds } from "@/lib/wordpress/cache-revalidate";
 import {
   isWpProductsDebugEnabled,
   wpProductsVerbose,
@@ -43,7 +45,7 @@ export async function wpGraphqlFetch<T>(
     method: "POST",
     headers,
     body: JSON.stringify({ query, variables }),
-    next: { revalidate: 60 },
+    next: { revalidate: getWordPressRevalidateSeconds() },
   });
 
   const json = (await res.json()) as { data?: T; errors?: { message: string }[] };

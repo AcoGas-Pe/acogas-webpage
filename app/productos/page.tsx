@@ -7,6 +7,8 @@ import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import type { Metadata } from "next";
 
+/** Render bajo demanda (evita HTML del build con JSON estático); datos WP cacheados vía unstable_cache. */
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = generateMetadataFromConfig("/productos/");
 
 export default async function ProductosPage() {
