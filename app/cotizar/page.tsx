@@ -1,5 +1,7 @@
 import { PagesHero } from "@/components/sections/hero/pages-hero";
+import { CatalogSummariesHydrate } from "@/components/productos/catalog-summaries-hydrate";
 import { CotizarQuoteFlow } from "@/components/cotizar/cotizar-quote-flow";
+import { toProductSummaries } from "@/lib/products-summary";
 import { Button } from "@/components/ui/button";
 import { CONTACT, formatPhoneTel } from "@/lib/business-config";
 import { resolveAllProducts } from "@/lib/products-resolve";
@@ -7,8 +9,7 @@ import { Metadata } from "next";
 import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import Link from "next/link";
-
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 export const metadata: Metadata = generateMetadataFromConfig("/cotizar/");
 
 export default async function CotizarPage() {
@@ -17,6 +18,10 @@ export default async function CotizarPage() {
 
   return (
     <>
+      <CatalogSummariesHydrate
+        summaries={toProductSummaries(products)}
+        persistFullCatalog
+      />
       <JsonLdScripts pathname="/cotizar/" />
       <PagesHero
         title="Solicitar cotizacion"

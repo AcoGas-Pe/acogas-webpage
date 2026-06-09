@@ -1,17 +1,18 @@
 import { resolveAllProducts } from "@/lib/products-resolve";
+import { toProductSummaries } from "@/lib/products-summary";
+import { getWordPressRevalidateSeconds } from "@/lib/wordpress/cache-revalidate";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+/** Alineado al cache de WordPress (default 5 min). */
+export const revalidate = 300;
 
-/** Resumen ligero para carrito de cotización y cliente (WP con fallback estático). */
+/** Resumen ligero para carrito (solo si el cliente no tiene datos SSR/cache). */
 export async function GET() {
-  const products = await resolveAllProducts();
-  const summary = products.map((p) => ({
-    slug: p.slug,
-    modelo: p.modelo,
-    marca: p.marca,
-    imagen: p.imagen,
-    macroCategoria: p.macroCategoria,
-  }));
-  return NextResponse.json(summary);
+  const summary = toProductSummaries(await resolveAllProducts());
+
+  return NextResponse.json(summary, {
+    headers: {
+      "Cache-Control": `public, s-maxage=${getWordPressRevalidateSeconds()}, stale-while-revalidate=${getWordPressRevalidateSeconds() * 2}`,
+    },
+  });
 }

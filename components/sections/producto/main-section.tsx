@@ -4,8 +4,10 @@ import type { Product } from "@/domain/product";
 import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuoteCart } from "@/contexts/quote-cart-context";
+import { useProductsCatalog } from "@/contexts/products-catalog-context";
+import { toProductSummary } from "@/lib/products-summary";
 
 interface ProductsMainSectionProps {
   product: Product;
@@ -18,6 +20,11 @@ interface BreadcrumbItem {
 
 export function ProductsMainSection({ product }: ProductsMainSectionProps) {
   const { addProduct, open: openQuoteCart } = useQuoteCart();
+  const { hydrateSummaries } = useProductsCatalog();
+
+  useEffect(() => {
+    hydrateSummaries([toProductSummary(product)]);
+  }, [product, hydrateSummaries]);
   const breadcrumbs: BreadcrumbItem[] = [
     { label: "Productos", href: "/productos/" },
     ...(product.marca

@@ -1,7 +1,12 @@
 /** Segundos de cache para respuestas WordPress (Data Cache + unstable_cache). Default: 5 min. */
 export function getWordPressRevalidateSeconds(): number {
+  return WORDPRESS_REVALIDATE_SECONDS;
+}
+
+/** Constante para `export const revalidate` (Next exige valor estatico en segment config). */
+export const WORDPRESS_REVALIDATE_SECONDS = (() => {
   const raw = process.env.WORDPRESS_REVALIDATE_SECONDS?.trim();
   if (!raw) return 300;
   const parsed = Number(raw);
   return Number.isFinite(parsed) && parsed >= 0 ? Math.floor(parsed) : 300;
-}
+})();

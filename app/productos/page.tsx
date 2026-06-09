@@ -1,22 +1,25 @@
 import { Suspense } from "react";
 import { PagesHero } from "@/components/sections/hero/pages-hero";
+import { CatalogSummariesHydrate } from "@/components/productos/catalog-summaries-hydrate";
 import { ProductsCatalogClient } from "@/components/productos/products-catalog-client";
 import { buildCatalogFacets } from "@/lib/product-catalog";
 import { resolveAllProducts } from "@/lib/products-resolve";
+import { toProductSummaries } from "@/lib/products-summary";
 import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
 import type { Metadata } from "next";
-
-/** Render bajo demanda (evita HTML del build con JSON estático); datos WP cacheados vía unstable_cache. */
-export const dynamic = "force-dynamic";
+/** ISR: HTML revalida en sync con cache WordPress (default 5 min). */
+export const revalidate = 300;
 export const metadata: Metadata = generateMetadataFromConfig("/productos/");
 
 export default async function ProductosPage() {
   const products = await resolveAllProducts();
   const facets = buildCatalogFacets(products);
+  const summaries = toProductSummaries(products);
 
   return (
     <>
+      <CatalogSummariesHydrate summaries={summaries} persistFullCatalog />
       <JsonLdScripts pathname="/productos/" />
       <PagesHero
         title="Productos"

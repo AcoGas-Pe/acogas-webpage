@@ -13,7 +13,7 @@ import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 export function QuoteCartSidebar() {
   const router = useRouter();
-  const { getProduct } = useProductsCatalog();
+  const { getProduct, ensureLoaded } = useProductsCatalog();
   const { lines, isOpen, close, setLineQuantity, removeLine, totalQuantity } =
     useQuoteCart();
 
@@ -34,6 +34,11 @@ export function QuoteCartSidebar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, close]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    void ensureLoaded();
+  }, [isOpen, ensureLoaded]);
 
   return (
     <div

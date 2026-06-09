@@ -4,60 +4,101 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { getStaticProductBySlug } from "@/lib/products-resolve";
+import {
+  readProductsSummaryBrowserCache,
+  writeProductsSummaryBrowserCache,
+  type ProductSummary,
+} from "@/lib/products-summary-cache";
 
-export type ProductSummary = {
-  slug: string;
-  modelo?: string;
-  marca?: string;
-  imagen?: string;
-  macroCategoria?: string;
-};
+export type { ProductSummary };
 
 interface ProductsCatalogContextValue {
   getProduct: (slug: string) => ProductSummary | undefined;
   loaded: boolean;
+  /** Fusiona resúmenes (p. ej. desde SSR de /productos o ficha de producto). */
+  hydrateSummaries: (list: ProductSummary[]) => void;
+  /** Carga catálogo completo solo si hace falta (carrito, etc.). */
+  ensureLoaded: () => Promise<void>;
 }
 
 const ProductsCatalogContext = createContext<ProductsCatalogContextValue | null>(
   null,
 );
 
+function summariesToMap(list: ProductSummary[]): Map<string, ProductSummary> {
+  return new Map(list.map((p) => [p.slug, p]));
+}
+
 export function ProductsCatalogProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [bySlug, setBySlug] = useState<Map<string, ProductSummary>>(new Map());
-  const [loaded, setLoaded] = useState(false);
+  const [bySlug, setBySlug] = useState<Map<string, ProductSummary>>(() => {
+    const cached = readProductsSummaryBrowserCache();
+    return cached?.length ? summariesToMap(cached) : new Map();
+  });
+  const [loaded, setLoaded] = useState(() => {
+    const cached = readProductsSummaryBrowserCache();
+    return Boolean(cached?.length);
+  });
+  const fetchPromiseRef = useRef<Promise<void> | null>(null);
+  const bySlugRef = useRef(bySlug);
+  bySlugRef.current = bySlug;
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/products")
+  const hydrateSummaries = useCallback((list: ProductSummary[]) => {
+    if (list.length === 0) return;
+    setBySlug((prev) => {
+      const next = new Map(prev);
+      for (const item of list) next.set(item.slug, item);
+      return next;
+    });
+    setLoaded(true);
+  }, []);
+
+  const ensureLoaded = useCallback(async () => {
+    if (bySlugRef.current.size > 0) return;
+
+    const cached = readProductsSummaryBrowserCache();
+    if (cached?.length) {
+      setBySlug(summariesToMap(cached));
+      setLoaded(true);
+      return;
+    }
+
+    if (fetchPromiseRef.current) {
+      await fetchPromiseRef.current;
+      return;
+    }
+
+    fetchPromiseRef.current = fetch("/api/products")
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((list: ProductSummary[]) => {
-        if (cancelled) return;
-        setBySlug(new Map(list.map((p) => [p.slug, p])));
+        if (list.length > 0) {
+          writeProductsSummaryBrowserCache(list);
+          setBySlug(summariesToMap(list));
+        }
+        setLoaded(true);
       })
       .catch(() => {
-        /* fallback estático vía getProduct */
+        setLoaded(true);
       })
       .finally(() => {
-        if (!cancelled) setLoaded(true);
+        fetchPromiseRef.current = null;
       });
-    return () => {
-      cancelled = true;
-    };
+
+    await fetchPromiseRef.current;
   }, []);
 
   const getProduct = useCallback(
     (slug: string): ProductSummary | undefined => {
-      const fromApi = bySlug.get(slug);
-      if (fromApi) return fromApi;
+      const fromMap = bySlug.get(slug);
+      if (fromMap) return fromMap;
       const staticP = getStaticProductBySlug(slug);
       if (!staticP) return undefined;
       return {
@@ -71,7 +112,10 @@ export function ProductsCatalogProvider({
     [bySlug],
   );
 
-  const value = useMemo(() => ({ getProduct, loaded }), [getProduct, loaded]);
+  const value = useMemo(
+    () => ({ getProduct, loaded, hydrateSummaries, ensureLoaded }),
+    [getProduct, loaded, hydrateSummaries, ensureLoaded],
+  );
 
   return (
     <ProductsCatalogContext.Provider value={value}>
@@ -83,7 +127,9 @@ export function ProductsCatalogProvider({
 export function useProductsCatalog(): ProductsCatalogContextValue {
   const ctx = useContext(ProductsCatalogContext);
   if (!ctx) {
-    throw new Error("useProductsCatalog must be used within ProductsCatalogProvider");
+    throw new Error(
+      "useProductsCatalog must be used within ProductsCatalogProvider",
+    );
   }
   return ctx;
 }
