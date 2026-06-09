@@ -28,11 +28,7 @@ function appendFilterParams(
         ? "macro"
         : key === "categorias"
           ? "cat"
-          : key === "tiposBrochure"
-            ? "brochure"
-            : key === "fluidos"
-              ? "fluido"
-              : null;
+          : null;
   if (!qKey) return;
   for (const v of values) {
     if (v.trim()) params.append(qKey, v.trim());

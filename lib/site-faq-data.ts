@@ -33,9 +33,4 @@ export const SITE_FAQ_ITEMS: SiteFaqItem[] = [
     answer:
       "Sí, brindamos capacitación al personal de planta sobre operación, mantenimiento y seguridad de los equipos que suministramos. También organizamos seminarios técnicos periódicos.",
   },
-  {
-    question: "¿Atienden fuera de Lima?",
-    answer:
-      "Sí. Tenemos cobertura en las principales zonas industriales del país; coordine visita o soporte según su ubicación desde Contacto o Cobertura industrial.",
-  },
 ];

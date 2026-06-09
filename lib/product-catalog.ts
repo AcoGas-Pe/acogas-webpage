@@ -82,16 +82,12 @@ export type CatalogFilters = {
   marcas: string[];
   macroCategorias: string[];
   categorias: string[];
-  tiposBrochure: string[];
-  fluidos: string[];
 };
 
 export const emptyCatalogFilters = (): CatalogFilters => ({
   marcas: [],
   macroCategorias: [],
   categorias: [],
-  tiposBrochure: [],
-  fluidos: [],
 });
 
 function matchesField(selected: string[], value: string | undefined): boolean {
@@ -108,10 +104,7 @@ export function filterProductsByFacets(
     if (!matchesField(filters.marcas, p.marca)) return false;
     if (!matchesField(filters.macroCategorias, p.macroCategoria)) return false;
     if (!matchesField(filters.categorias, p.categoria)) return false;
-    if (!matchesField(filters.tiposBrochure, p.tipoBrochure)) return false;
-    if (filters.fluidos.length === 0) return true;
-    const set = new Set((p.fluidosYGases ?? []).map((f) => f.valor?.trim()).filter(Boolean));
-    return filters.fluidos.some((f) => set.has(f));
+    return true;
   });
 }
 
@@ -141,22 +134,24 @@ export function catalogFiltersFromSearchParams(
   const marcas = sp.getAll("marca").filter(Boolean);
   const macroCategorias = sp.getAll("macro").filter(Boolean);
   const categorias = sp.getAll("cat").filter(Boolean);
-  const tiposBrochure = sp.getAll("brochure").filter(Boolean);
-  const fluidos = sp.getAll("fluido").filter(Boolean);
-  const total =
-    marcas.length +
-    macroCategorias.length +
-    categorias.length +
-    tiposBrochure.length +
-    fluidos.length;
+  const total = marcas.length + macroCategorias.length + categorias.length;
   if (total === 0) return null;
   return {
     marcas,
     macroCategorias,
     categorias,
-    tiposBrochure,
-    fluidos,
   };
+}
+
+/** Serializa filtros activos a query params SEO-friendly (`/productos/?marca=&macro=&cat=`). */
+export function catalogFiltersToSearchParams(
+  filters: CatalogFilters,
+): URLSearchParams {
+  const params = new URLSearchParams();
+  for (const value of filters.marcas) params.append("marca", value);
+  for (const value of filters.macroCategorias) params.append("macro", value);
+  for (const value of filters.categorias) params.append("cat", value);
+  return params;
 }
 
 export function filterAndSearchProducts(

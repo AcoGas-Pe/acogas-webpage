@@ -674,9 +674,9 @@ export interface Product {
     state: "Lima",
     zip: "15023",
     areaCode: "51",
-    phone: ["994296627"],
+    phone: ["998345895"],
     email: ["acogas@acogas.pe", "ventas@acogas.pe"],
-    addressVisibility: "VISIBLE", // SAB (Service Area Business)
+    addressVisibility: "VISIBLE",
   };
 
   
@@ -684,11 +684,11 @@ export interface Product {
   // BUSINESS HOURS
   // ==========================================
   export const BUSINESS_HOURS: BusinessHours = {
-    weekdays: "8:00 AM - 10:00 PM",
-    weekends: "8:00 AM - 10:00 PM",
+    weekdays: "9:00 a.m. - 5:00 p.m.",
+    weekends: "Cerrado",
   };
   
-  // Helper to format business hours for schema
+  // Helper to format business hours for schema (alineado a Google Business Profile)
   export const BUSINESS_HOURS_SCHEMA = "Lu-Vi 09:00-17:00";
   
   // ==========================================
@@ -698,8 +698,8 @@ export interface Product {
     shortLink: "https://maps.app.goo.gl/MNin6HcLspbfDdz96",
     fullUrl: "https://www.google.com/maps/place/ACOGAS+%7C+Soluciones+Industriales+para+GLP,+GN+y+Vapor/@-12.1022724,-76.9731357,819m/data=!3m1!1e3!4m6!3m5!1s0x9105c94ed03b03db:0x2d69082002bce007!8m2!3d-12.1022777!4d-76.9705608!16s%2Fg%2F11bztdf6yf!5m1!1e3?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D",
     embedCode: `<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3565.889710174995!2d-76.9731357!3d-12.1022724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e1!3m2!1ses!2spe!4v1769615451800!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
-    latitude: "29.8338937",
-    longitude: "-95.5032244",
+    latitude: "-12.1022777",
+    longitude: "-76.9705608",
   };
   
   // ==========================================
@@ -718,166 +718,6 @@ export interface Product {
   export const ACTIVE_SOCIAL_MEDIA = Object.entries(SOCIAL_MEDIA)
     .filter(([_, url]) => url)
     .reduce((acc, [key, url]) => ({ ...acc, [key]: url }), {}) as SocialMedia;
-  
-  // ==========================================
-  // BLOG TOPICS
-  // ==========================================
-  export const BLOG_TOPICS = [
-    "Garage Door Maintenance Tips",
-    "Garage Door Safety",
-    "Choosing the Right Garage Door",
-    "Garage Door Opener Installation",
-    "Emergency Garage Door Repair"
-  ] as const;
-  
-  // ==========================================
-  // META INFORMATION
-  // ==========================================
-  export const META = {
-    title: "Oak Forest Garage Doors - Expert Garage Door Services in Houston, TX",
-    description: "Professional garage door installation, repair, and maintenance in Houston, TX and surrounding areas. Expert technicians, quality service, and customer satisfaction guaranteed. Contact us today for a free consultation!",
-    keywords: "garage door services, garage door repair, garage door installation, Houston TX, garage door opener, emergency garage door repair",
-  } as const;
-  
-  // ==========================================
-  // ABOUT PAGE CONTENT
-  // ==========================================
-  export interface AboutStat {
-    value: number;
-    suffix: string;
-    label: string;
-  }
-  
-  export interface AboutValue {
-    title: string;
-    description: string;
-  }
-  
-  export interface AboutHeader {
-    badgeText: string;
-    title: string;
-    titleHighlight: string;
-    description: string;
-    primaryButtonText: string;
-    secondaryButtonText: string;
-    secondaryButtonLink: string;
-    awardCardTitle: string;
-    awardCardDescription: string;
-    headerImage: string;
-    headerImageAlt: string;
-  }
-  
-  export interface AboutStory {
-    title: string;
-    paragraph1: string;
-    paragraph2: string;
-    paragraph3: string;
-    image: string;
-    imageAlt: string;
-  }
-  
-  export interface AboutMissionValues {
-    title: string;
-    description: string;
-    values: AboutValue[];
-  }
-  
-  export interface AboutPageHeader {
-    title: string;
-    description: string;
-    badges: string[];
-  }
-  
-  export const ABOUT_HEADER: AboutHeader = {
-    badgeText: "About Oak Forest Garage Doors",
-    title: "Professional Garage Door Services with",
-    titleHighlight: "Expert Solutions",
-    description: "The truth is, we&apos;ve been providing professional garage door services for over a decade, and the thing is, our passion shows in every project we complete. Besides our expert installations, we specialize in repairs and maintenance that keep your garage doors operating smoothly for years.",
-    primaryButtonText: "Get Free Consultation",
-    secondaryButtonText: "View Our Work",
-    secondaryButtonLink: "/project-gallery",
-    awardCardTitle: "Award-Winning Service",
-    awardCardDescription: "Recognized for excellence in Houston, Sugar Land, Katy, Cypress, and surrounding areas",
-    headerImage: "/assets/images/revision-refineria.webp",
-    headerImageAlt: "Professional garage door installation team at work",
-  };
-  
-  export const ABOUT_STATS: AboutStat[] = [
-    { value: 150, suffix: "+", label: "Projects Completed" },
-    { value: 1200, suffix: "+", label: "Happy Clients" },
-    { value: 10, suffix: "+", label: "Years Experience" },
-    { value: 98, suffix: "%", label: "Satisfaction Rate" }
-  ];
-  
-  export const ABOUT_STORY: AboutStory = {
-    title: "Our Story",
-    paragraph1: "Oak Forest Garage Doors was founded with a simple mission: to provide reliable, professional garage door services that enhance our clients&apos; properties and increase their value.",
-    paragraph2: "With over 10 years of experience, we&apos;ve built our reputation on quality craftsmanship, expert installations, and exceptional customer service. Our team of certified professionals brings expertise in installation, repair, maintenance, and comprehensive support services.",
-    paragraph3: "We&apos;re proud to serve Houston, Sugar Land, Katy, Cypress, The Woodlands, and surrounding communities, providing solutions that are reliable, secure, and built to last.",
-    image: "/assets/images/portfolio/oak-forest-garage-doors-18.webp",
-    imageAlt: "Oak Forest Garage Doors team at work",
-  };
-  
-  export const ABOUT_MISSION_VALUES: AboutMissionValues = {
-    title: "Our Mission & Values",
-    description: "We&apos;re committed to creating sustainable, beautiful garage door solutions while providing exceptional service to our community.",
-    values: [
-    { title: "Quality Craftsmanship", description: "We use premium materials and proven techniques to ensure every project meets our high standards." },
-    { title: "Expert Team", description: "Our certified professionals bring years of experience and specialized knowledge to every project." },
-    { title: "Local Expertise", description: "We understand local climate and conditions, ensuring your garage doors thrive year-round." }
-    ],
-  };
-  
-  export const ABOUT_PAGE_HEADER: AboutPageHeader = {
-    title: "About Oak Forest Garage Doors",
-    description: "Because we want you to know us",
-    badges: [
-      "Local Expertise",
-      "Free Consultation",
-      "Satisfaction Guaranteed"
-    ],
-  };
-  
-  // ==========================================
-  // SERVICES PAGE CONTENT
-  // ==========================================
-  export interface ServicesPageHeader {
-    title: string;
-    subtitle: string;
-    description: string;
-  }
-  
-  export interface ServicesPageIntroduction {
-    title: string;
-    paragraph: string;
-  }
-  
-  export interface ServicesPageSections {
-    coreServicesTitle: string;
-    specializedServicesTitle: string;
-  }
-  
-  export interface ServicesPageContent {
-    header: ServicesPageHeader;
-    introduction: ServicesPageIntroduction;
-    sections: ServicesPageSections;
-  }
-  
-  export const SERVICES_PAGE_CONTENT: ServicesPageContent = {
-    header: {
-      title: "Oak Forest Garage Doors: Professional Garage Door Services Services",
-      subtitle: "Get to know our services",
-      description: "Complete solutions for installation, repair, maintenance, and replacement",
-    },
-    introduction: {
-      title: "Comprehensive Garage Door Services Solutions",
-      paragraph: "We&apos;re your one-stop shop for all garage door needs. From brand new installations to emergency repairs, routine maintenance to complete replacements, our expert team delivers professional service you can trust. Besides our extensive experience, the thing is, we treat every project with the care and attention it deserves.",
-    },
-    sections: {
-      coreServicesTitle: "Core Services",
-      specializedServicesTitle: "Specialized Services",
-    },
-  };
   
   // ==========================================
   // HELPER FUNCTIONS
@@ -911,9 +751,8 @@ export interface Product {
    */
   export const getCompanyLinks = () => [
     { name: "Nosotros", href: "/nosotros/" },
-    { name: "Soluciones", href: "/soluciones/" },
+    { name: "Soluciones", href: "/productos/" },
     { name: "Contacto", href: "/contacto/" },
-    { name: "Productos", href: "/productos/" },
     { name: "Marcas", href: "/marcas/" },
     { name: "Preguntas frecuentes", href: "/preguntas-frecuentes/" },
   ];
@@ -1060,12 +899,6 @@ export const getPhoneDisplay = (): string => formatPhoneDisplay(CONTACT.phone[0]
     return LOCATIONS.some(loc => loc.city.toLowerCase() === city.toLowerCase());
   };
   */
-  export const getMetaInfo = () => ({
-    title: META.title,
-    description: META.description,
-    keywords: META.keywords,
-  });
-  export const getBlogTopics = (): readonly string[] => BLOG_TOPICS;
   export const getCopyright = (): string => `© ${new Date().getFullYear()} ${BUSINESS_INFO.name}. All rights reserved.`;
   export const getBusinessCategories = () => BUSINESS_CATEGORIES;
   export const getBusinessDescription = (): string => {

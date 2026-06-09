@@ -21,7 +21,7 @@ export default async function ProductosPage() {
       <PagesHero
         title="Productos"
         subtitle="Catálogo industrial"
-        description="Filtre por marca, categoría, tipo de brochure y fluido. Busque por nombre y cambie entre vista en cuadrícula o en lista."
+        description="Filtre por marca, macrocategoria y categoria. Busque por nombre y cambie entre vista en cuadricula o en lista."
         image="/assets/images/alimentos.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },

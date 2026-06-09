@@ -135,14 +135,23 @@ convierte la energía en operación segura.
               servicios según su proceso
               </p>
 
-              <Button
-                variant="outline"
-                href="/nosotros#propuesta-valor"
-                size="sm"
-                className="mt-6 min-h-10 w-fit !border-white bg-transparent px-6 text-[11px] font-bold uppercase tracking-[0.18em] !text-white hover:!border-white hover:bg-white/12 hover:!text-white"
-              >
-                Conócenos
-              </Button>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button
+                  variant="outline"
+                  href="/productos/"
+                  size="sm"
+                  className="min-h-10 w-fit !border-white bg-transparent px-6 text-[11px] font-bold uppercase tracking-[0.18em] !text-white hover:!border-white hover:bg-white/12 hover:!text-white"
+                >
+                  Ver productos
+                </Button>
+                <Button
+                  href="/cotizar/"
+                  size="sm"
+                  className="min-h-10 w-fit px-6 text-[11px] font-bold uppercase tracking-[0.18em]"
+                >
+                  Cotizar
+                </Button>
+              </div>
             </header>
             {topRow.map((feature) => (
               <FeatureCard key={feature.title} feature={feature} />

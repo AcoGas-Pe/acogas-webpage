@@ -3,6 +3,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+/** aBlackLives no incluye diacriticos; normaliza titulos del H1. */
+function heroDisplayTitle(text: string): string {
+  return text.normalize("NFD").replace(/\p{M}/gu, "");
+}
+
 interface PagesHeroProps {
   title?: string;
   subtitle?: string;
@@ -87,7 +92,7 @@ export function PagesHero({
             titleClassName,
           )}
         >
-          {title}
+          {heroDisplayTitle(title)}
         </h1>
 
         {description && (

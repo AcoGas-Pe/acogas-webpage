@@ -6,13 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { X, Trash2 } from "lucide-react";
 import { useQuoteCart } from "@/contexts/quote-cart-context";
-import { getProductBySlug } from "@/lib/products-data";
+import { useProductsCatalog } from "@/contexts/products-catalog-context";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 export function QuoteCartSidebar() {
   const router = useRouter();
+  const { getProduct } = useProductsCatalog();
   const { lines, isOpen, close, setLineQuantity, removeLine, totalQuantity } =
     useQuoteCart();
 
@@ -84,7 +85,7 @@ export function QuoteCartSidebar() {
             </p>
           ) : (
             lines.map((line) => {
-              const p = getProductBySlug(line.slug);
+              const p = getProduct(line.slug);
               const title = p?.modelo ?? line.slug;
               const marca = p?.marca;
               const img = p?.imagen ?? PRODUCT_IMAGE_FALLBACK;

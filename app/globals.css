@@ -3,7 +3,7 @@
 /*
   Light theme + brand tokens (#1A4B8F blue, #E30613 red, neutrals).
   Section audit (image vs solid):
-  - Image + overlay/scrim: hero-carousel, pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
+  - Image + overlay/scrim: pages-hero, services (left column), cta, industries-solutions-bento (industry tiles), navbar mega-menu, contact-popup backdrop.
   - Hero homepage: split layout (solid text panel + media panel, no scrim on video).
   - Solid surfaces: most sections (bg-background / bg-background-alt), clients strip, cards, HubSpot form.
 */

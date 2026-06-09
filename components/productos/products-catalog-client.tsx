@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,10 +20,12 @@ import {
   type ProductCatalogFacets,
   buildSearchSuggestions,
   catalogFiltersFromSearchParams,
+  catalogFiltersToSearchParams,
   emptyCatalogFilters,
   filterAndSearchProducts,
 } from "@/lib/product-catalog";
 import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
+import { MacroCategoryIcon } from "@/lib/macro-category-icon";
 
 const PRODUCTS_PER_PAGE = 9;
 
@@ -68,13 +70,6 @@ function productMatchesGuidedFilters(
     const selected = filters[key];
     if (selected.length === 0) continue;
     if (!selected.includes(productValueForFilter(product, key))) return false;
-  }
-
-  if (
-    filters.tiposBrochure.length > 0 &&
-    !filters.tiposBrochure.includes(product.tipoBrochure?.trim() ?? "")
-  ) {
-    return false;
   }
 
   return true;
@@ -149,13 +144,21 @@ function GuidedFilterCheckboxSection({
             disabled={disabled}
             onChange={() => onToggle(value)}
           />
-          <span className="leading-snug">
-            {value}
-            {disabled ? (
-              <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
-                No disponible
-              </span>
+          <span className="flex min-w-0 flex-1 items-start gap-2 leading-snug">
+            {filterKey === "macroCategorias" ? (
+              <MacroCategoryIcon
+                macro={value}
+                className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+              />
             ) : null}
+            <span className="min-w-0">
+              {value}
+              {disabled ? (
+                <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
+                  No disponible
+                </span>
+              ) : null}
+            </span>
           </span>
         </label>
       </li>
@@ -191,60 +194,6 @@ function GuidedFilterCheckboxSection({
           </button>
         </>
       ) : null}
-    </div>
-  );
-}
-
-function FilterSection({
-  sectionId,
-  title,
-  values,
-  selected,
-  onToggle,
-  expandList = false,
-}: {
-  sectionId: string;
-  title: string;
-  values: string[];
-  selected: string[];
-  onToggle: (v: string) => void;
-  /** Sin límite de altura ni scroll interno */
-  expandList?: boolean;
-}) {
-  if (values.length === 0) return null;
-  return (
-    <div className="rounded-lg border border-border bg-card p-3 shadow-sm">
-      <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
-        {title}
-      </h3>
-      <ul
-        className={cn(
-          "space-y-1.5 pr-1",
-          expandList ? "" : "max-h-48 overflow-y-auto",
-        )}
-      >
-        {values.map((v) => {
-          const id = `${sectionId}-${v}`.replace(/[^a-zA-Z0-9_-]/g, "_");
-          const checked = selected.includes(v);
-          return (
-            <li key={v}>
-              <label
-                htmlFor={id}
-                className="flex cursor-pointer items-start gap-2 rounded-md px-1 py-0.5 text-sm hover:bg-muted/80"
-              >
-                <input
-                  id={id}
-                  type="checkbox"
-                  className="mt-0.5 rounded border-border"
-                  checked={checked}
-                  onChange={() => onToggle(v)}
-                />
-                <span className="leading-snug text-foreground">{v}</span>
-              </label>
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 }
@@ -311,14 +260,6 @@ function FilterPanel({
         initialVisible={8}
         onToggle={(value) => patch("categorias", value)}
       />
-      <FilterSection
-        sectionId="brochure"
-        title="Tipo de brochure"
-        values={facets.tiposBrochure}
-        selected={filters.tiposBrochure}
-        onToggle={(v) => patch("tiposBrochure", v)}
-      />
-      
     </div>
   );
 }
@@ -459,33 +400,21 @@ function CatalogPaginationMini({
 }
 
 function ProductPills({ product }: { product: Product }) {
-  const brochure = product.tipoBrochure?.trim();
   const marca = product.marca?.trim();
-  const grupo = product.grupoEmpresarial?.trim();
+  if (!marca) return null;
   return (
-    <div className="flex flex-wrap gap-1.5">
-      {brochure ? (
-        <span className="inline-flex max-w-full items-center rounded-lg bg-primary/12 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary truncate">
-          {brochure}
-        </span>
-      ) : null}
-      {marca ? (
-        <span className="inline-flex max-w-full items-center rounded-lg border border-border bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
-          {marca}
-        </span>
-      ) : null}
-      {grupo ? (
-        <span className="inline-flex max-w-full items-center rounded-lg border border-border bg-muted/30 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
-          {grupo}
-        </span>
-      ) : null}
-    </div>
+    <span className="inline-flex max-w-full items-center rounded-lg border border-border bg-muted/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground truncate">
+      {marca}
+    </span>
   );
 }
 
 export function ProductsCatalogClient({ products, facets }: ProductsCatalogClientProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const queryKey = searchParams.toString();
+  const syncingFromUrlRef = useRef(false);
   const [filters, setFilters] = useState<CatalogFilters>(emptyCatalogFilters());
   const [search, setSearch] = useState("");
   const [view, setView] = useState<ViewMode>("grid");
@@ -495,13 +424,13 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
   const [catalogPage, setCatalogPage] = useState(1);
   const filterSearchPrevRef = useRef<string | null>(null);
 
-  const activeFilterCount = useMemo(() => {
-    let n = 0;
-    (Object.keys(filters) as (keyof CatalogFilters)[]).forEach((k) => {
-      n += filters[k].length;
-    });
-    return n;
-  }, [filters]);
+  const activeFilterCount = useMemo(
+    () =>
+      filters.marcas.length +
+      filters.macroCategorias.length +
+      filters.categorias.length,
+    [filters],
+  );
 
   const filtered = useMemo(
     () => filterAndSearchProducts(products, filters, search),
@@ -562,15 +491,31 @@ export function ProductsCatalogClient({ products, facets }: ProductsCatalogClien
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
 
-  /** Cada cambio de query (navbar, enlaces internos) vuelve a sincronizar el sidebar */
+  /** Cada cambio de query (mega menú, enlaces internos) sincroniza el sidebar */
   useEffect(() => {
     const fromUrl = catalogFiltersFromSearchParams(
       new URLSearchParams(queryKey),
     );
+    syncingFromUrlRef.current = true;
     // Sync filter UI with direct links from the navigation/query string.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setFilters(fromUrl ?? emptyCatalogFilters());
   }, [queryKey]);
+
+  /** Filtros del usuario → URL (canonical sigue siendo /productos/) */
+  useEffect(() => {
+    if (syncingFromUrlRef.current) {
+      syncingFromUrlRef.current = false;
+      return;
+    }
+    const params = catalogFiltersToSearchParams(filters);
+    const qs = params.toString();
+    const next = qs ? `${pathname}?${qs}` : pathname;
+    const current = queryKey ? `${pathname}?${queryKey}` : pathname;
+    if (next !== current) {
+      router.replace(next, { scroll: false });
+    }
+  }, [filters, pathname, queryKey, router]);
 
   const clearFilters = useCallback(() => {
     setFilters(emptyCatalogFilters());
@@ -813,9 +758,16 @@ function ProductCardGrid({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <h2 className="line-clamp-2 text-base font-semibold leading-snug text-foreground group-hover:text-primary">
-          {title}
-        </h2>
+        <div className="flex items-start gap-2">
+          <h2 className="line-clamp-2 flex-1 text-base font-semibold leading-snug text-foreground group-hover:text-primary">
+            {title}
+          </h2>
+          <MacroCategoryIcon
+            macro={product.macroCategoria}
+            className="mt-0.5 h-4 w-4"
+            title={product.macroCategoria}
+          />
+        </div>
         <ProductPills product={product} />
       </div>
     </Link>
@@ -840,9 +792,16 @@ function ProductCardList({ product }: { product: Product }) {
         />
       </div>
       <div className="min-w-0 flex-1 py-0.5">
-        <h2 className="text-base font-semibold leading-snug text-foreground group-hover:text-primary sm:text-lg">
-          {title}
-        </h2>
+        <div className="flex items-start gap-2">
+          <h2 className="flex-1 text-base font-semibold leading-snug text-foreground group-hover:text-primary sm:text-lg">
+            {title}
+          </h2>
+          <MacroCategoryIcon
+            macro={product.macroCategoria}
+            className="mt-1 h-4 w-4"
+            title={product.macroCategoria}
+          />
+        </div>
         <div className="mt-2">
           <ProductPills product={product} />
         </div>

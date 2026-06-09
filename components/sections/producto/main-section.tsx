@@ -33,15 +33,9 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
       href: `/productos/${product.slug}/`,
     },
   ];
-  const [prodCount, setProdCount] = useState(0);
+  const [prodCount, setProdCount] = useState(1);
   const handleProdCount = (count: number) => {
-    setProdCount(count);
-    if (count < 0) {
-      setProdCount(0);
-    }
-    if (count > 10) {
-      setProdCount(10);
-    }
+    setProdCount(Math.min(10, Math.max(1, count)));
   };
   return (
     <section className="  flex flex-col py-16 sm:py-20 md:py-24">
@@ -113,49 +107,52 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
               </li>
             ))}
           </ul>
-          <div className="mt-2 flex flex-row flex-wrap gap-2">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="inline-flex items-center rounded-lg border border-border bg-muted/30">
+              <button
+                type="button"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:bg-muted rounded-l-lg"
+                onClick={() => handleProdCount(prodCount - 1)}
+                aria-label="Disminuir cantidad"
+              >
+                −
+              </button>
+              <span className="min-w-[2.5rem] px-2 text-center text-sm font-semibold tabular-nums">
+                {prodCount}
+              </span>
+              <button
+                type="button"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:bg-muted rounded-r-lg"
+                onClick={() => handleProdCount(prodCount + 1)}
+                aria-label="Aumentar cantidad"
+              >
+                +
+              </button>
+            </div>
             <Button
               variant="default"
               type="button"
               size="sm"
-              className="w-full sm:w-fit min-h-10"
+              className="w-full sm:w-auto min-h-10"
+              onClick={() => {
+                addProduct(product.slug, prodCount);
+                openQuoteCart();
+              }}
+            >
+              Agregar a cotizacion
+            </Button>
+            <Button
+              variant="outline"
+              type="button"
+              size="sm"
+              className="w-full sm:w-auto min-h-10"
               onClick={() => {
                 document
                   .getElementById("descargas-catalogo")
                   ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
             >
-              Ver documentación
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              type="button"
-              className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={() => {
-                const qty = Math.max(1, prodCount);
-                addProduct(product.slug, qty);
-                openQuoteCart();
-              }}
-            >
-              Agregar a cotización ({prodCount})
-            </Button>
-            
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleProdCount(prodCount - 1)}
-              className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              -
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => handleProdCount(prodCount + 1)}
-              className="w-full sm:w-fit min-h-10 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              +
+              Ver documentacion
             </Button>
           </div>
           

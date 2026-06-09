@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { MacroCategoryIcon } from "@/lib/macro-category-icon";
 
 const MIN_SEARCH_LEN = 2;
 
@@ -134,13 +135,21 @@ function QuoteFilterCheckboxSection({
             disabled={disabled}
             onChange={() => onToggle(value)}
           />
-          <span className="leading-snug">
-            {value}
-            {disabled ? (
-              <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
-                No disponible
-              </span>
+          <span className="flex min-w-0 flex-1 items-start gap-2 leading-snug">
+            {filterKey === "macroCategoria" ? (
+              <MacroCategoryIcon
+                macro={value}
+                className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+              />
             ) : null}
+            <span className="min-w-0">
+              {value}
+              {disabled ? (
+                <span className="mt-0.5 block text-[10px] font-medium uppercase tracking-wide">
+                  No disponible
+                </span>
+              ) : null}
+            </span>
           </span>
         </label>
       </li>

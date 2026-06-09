@@ -15,15 +15,47 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { hrefProductosPorSolucion } from "@/lib/soluciones-navegacion-catalogo";
 
 const solutions = [
-  { title: "GLP", icon: Gauge },
-  { title: "Gas natural", icon: Flame },
-  { title: "Vapor", icon: Wind },
-  { title: "Combustibles líquidos", icon: Fuel },
-  { title: "Control de procesos", icon: CogIcon },
-  { title: "Almacenamiento seguro", icon: Shield },
-  { title: "Transferencia de fluidos", icon: Truck },
+  {
+    title: "GLP",
+    icon: Gauge,
+    href: hrefProductosPorSolucion("Autogas y Aplicaciones Especiales"),
+  },
+  {
+    title: "Gas natural",
+    icon: Flame,
+    href: hrefProductosPorSolucion("Regulación y control de presión"),
+  },
+  {
+    title: "Vapor",
+    icon: Wind,
+    href: hrefProductosPorSolucion("Control de Temperatura y Vapor"),
+  },
+  {
+    title: "Combustibles liquidos",
+    icon: Fuel,
+    href: hrefProductosPorSolucion(
+      "Automatización, Medición y Control",
+      "Válvulas de Control y Flujo",
+    ),
+  },
+  {
+    title: "Control de procesos",
+    icon: CogIcon,
+    href: hrefProductosPorSolucion("Automatización, Medición y Control"),
+  },
+  {
+    title: "Almacenamiento seguro",
+    icon: Shield,
+    href: hrefProductosPorSolucion("Seguridad, Alivio y Vacío"),
+  },
+  {
+    title: "Transferencia de fluidos",
+    icon: Truck,
+    href: hrefProductosPorSolucion("Equipo de bombeo y compresión"),
+  },
 ] as const;
 
 /** Tarjeta alcance (dos columnas) + rejilla de industrias con fotografía */
@@ -65,10 +97,10 @@ export function IndustriesSolutionsBento() {
                 proceso.
               </p>
               <Link
-                href="/soluciones/"
+                href="/productos/"
                 className="group mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold uppercase tracking-wide text-foreground underline-offset-4 transition-colors hover:text-primary"
               >
-                Explorar soluciones
+                Ver productos
                 <ArrowRight
                   className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
                   aria-hidden
@@ -80,17 +112,22 @@ export function IndustriesSolutionsBento() {
               {solutions.map((sol) => {
                 const Icon = sol.icon;
                 return (
-                  <li key={sol.title} className="flex items-center gap-2.5 sm:gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center text-primary sm:h-9 sm:w-9">
-                      <Icon
-                        className="h-[1.375rem] w-[1.375rem] sm:h-6 sm:w-6"
-                        aria-hidden
-                        strokeWidth={1.75}
-                      />
-                    </span>
-                    <span className="text-[11px] font-semibold uppercase leading-tight tracking-wide text-foreground sm:text-xs">
-                      {sol.title}
-                    </span>
+                  <li key={sol.title}>
+                    <Link
+                      href={sol.href}
+                      className="group/sol flex items-center gap-2.5 rounded-lg px-1 py-1 transition-colors hover:bg-primary/5 sm:gap-3"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center text-primary sm:h-9 sm:w-9">
+                        <Icon
+                          className="h-[1.375rem] w-[1.375rem] transition-transform group-hover/sol:scale-105 sm:h-6 sm:w-6"
+                          aria-hidden
+                          strokeWidth={1.75}
+                        />
+                      </span>
+                      <span className="text-[11px] font-semibold uppercase leading-tight tracking-wide text-foreground group-hover/sol:text-primary sm:text-xs">
+                        {sol.title}
+                      </span>
+                    </Link>
                   </li>
                 );
               })}

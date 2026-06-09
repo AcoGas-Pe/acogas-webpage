@@ -208,7 +208,7 @@ export function Footer() {
             <h3 className="font-semibold text-white/80 mb-4">Empresa</h3>
             <ul className="space-y-2">
               {companyLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.name}>
                   <Link
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"

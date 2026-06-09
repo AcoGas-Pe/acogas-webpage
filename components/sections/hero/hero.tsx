@@ -9,6 +9,10 @@ interface HeroAction {
   href: string;
 }
 
+function heroDisplayTitle(text: string): string {
+  return text.normalize("NFD").replace(/\p{M}/gu, "");
+}
+
 const DEFAULT_KEYWORDS = [
   "GLP",
   "Gas natural",
@@ -64,10 +68,15 @@ export function Hero({
         className,
       )}
     >
-      <div className="relative min-h-[calc(80dvh-5rem)] w-full">
-        {/* Media — behind text panel and diagonal */}
+      <div
+        className={cn(
+          "relative min-h-[calc(80dvh-5rem)] w-full",
+          showMedia && "flex flex-col lg:block",
+        )}
+      >
+        {/* Mobile: video arriba, texto abajo. Desktop: split diagonal */}
         {showMedia && (
-          <div className="relative z-0 min-h-[42dvh] w-full lg:absolute lg:inset-0 lg:min-h-0">
+          <div className="relative z-0 min-h-[38dvh] w-full shrink-0 sm:min-h-[42dvh] lg:absolute lg:inset-0 lg:min-h-0">
             {image ? (
               <Image
                 src={image}
@@ -83,7 +92,6 @@ export function Hero({
           </div>
         )}
 
-        {/* Solid diagonal panel — above video */}
         {showMedia && (
           <div
             className="hero-split__text-panel pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-[58%] lg:block"
@@ -91,7 +99,6 @@ export function Hero({
           />
         )}
 
-        {/* Keyword stripe on the diagonal seam */}
         {showMedia && (
           <div
             className="hero-split__keyword-stripe-wrap pointer-events-none absolute top-0 bottom-0 z-20 hidden w-9 overflow-hidden lg:block"
@@ -102,7 +109,7 @@ export function Hero({
                 {stripeItems.map((word, index) => (
                   <span
                     key={`${word}-${index}`}
-                    className="rotate-180 text-[0.58rem] font-bold uppercase tracking-[0.22em] text-primary-foreground [writing-mode:vertical-rl]"
+                    className="text-[0.58rem] font-bold uppercase tracking-[0.22em] text-primary-foreground [writing-mode:vertical-lr]"
                   >
                     {word}
                   </span>
@@ -112,23 +119,14 @@ export function Hero({
           </div>
         )}
 
-        {/* Text content — above panel and stripe */}
         <div
           className={cn(
-            "relative z-30 flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-14 lg:py-16",
+            "relative z-30 flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-12 lg:py-16",
             showMedia
-              ? "lg:max-w-[54%] lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-8"
+              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[54%] lg:bg-transparent lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-8"
               : "container mx-auto max-w-7xl",
           )}
         >
-          {/* Mobile / no-media: full-width solid backing */}
-          {showMedia && (
-            <div
-              className="hero-split__text-panel pointer-events-none absolute inset-0 bg-background lg:hidden"
-              aria-hidden
-            />
-          )}
-
           <div className="relative max-w-xl">
             {subtitle && (
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.35rem] text-accent sm:tracking-[0.5rem]">
@@ -137,7 +135,7 @@ export function Hero({
             )}
 
             <h1 className="max-w-2xl text-2xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-3xl lg:text-4xl">
-              {title}
+              {heroDisplayTitle(title)}
             </h1>
 
             {description && (
@@ -146,7 +144,8 @@ export function Hero({
               </p>
             )}
 
-            <div className="flex flex-row flex-wrap items-center justify-start gap-3 pt-8 sm:gap-4">
+              <div className="flex flex-col gap-2">
+            <div className="flex flex-row items-center justify-start gap-3 pt-8 sm:gap-4">
               {primaryAction && (
                 <Button
                   href={primaryAction.href}
@@ -159,6 +158,17 @@ export function Hero({
                   {primaryAction.label}
                 </Button>
               )}
+              {tertiaryAction && (
+                <Button
+                  href={tertiaryAction.href}
+                  variant="outline"
+                  size="lg"
+                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                >
+                  {tertiaryAction.label}
+                </Button>
+              )}
+              </div>
               {secondaryAction && (
                 <Button
                   href={secondaryAction.href}
@@ -170,16 +180,7 @@ export function Hero({
                   {secondaryAction.label}
                 </Button>
               )}
-              {tertiaryAction && (
-                <Button
-                  href={tertiaryAction.href}
-                  variant="outline"
-                  size="lg"
-                  className="min-h-12 w-auto justify-center whitespace-nowrap"
-                >
-                  {tertiaryAction.label}
-                </Button>
-              )}
+              
             </div>
 
             {showMedia && (

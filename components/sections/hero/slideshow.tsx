@@ -1,17 +1,21 @@
 "use client";
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+
+import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-type Slide = { type: "image"; src: string } | { type: "video"; src: string };
+type VideoSlide = {
+  type: "video";
+  src: string;
+  /** Segundo en que inicia el crossfade hacia el siguiente clip */
+  fadeOutAt: number;
+};
 
-const slides: Slide[] = [
-  { type: "video", src: "/assets/videos/acogas-video-2.mp4" },
-  { type: "video", src: "/assets/videos/acogas-video-1.mp4" },
+const SLIDES: VideoSlide[] = [
+  { type: "video", src: "/assets/videos/acogas-video-2.mp4", fadeOutAt: 14 },
+  { type: "video", src: "/assets/videos/acogas-video-1.mp4", fadeOutAt: 8 },
 ];
 
-const FADE_DURATION_MS = 2000;
-const SLIDE_INTERVAL_MS = 6000;
+const CROSSFADE_MS = 1000;
 
 interface SlideshowProps {
   className?: string;
@@ -19,70 +23,81 @@ interface SlideshowProps {
 
 export function Slideshow({ className }: SlideshowProps) {
   const [active, setActive] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [incoming, setIncoming] = useState<number | null>(null);
+  const [blend, setBlend] = useState(0);
+  const transitioningRef = useRef(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, SLIDE_INTERVAL_MS);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+  const startCrossfade = useCallback((from: number) => {
+    if (transitioningRef.current) return;
+    transitioningRef.current = true;
+    const to = (from + 1) % SLIDES.length;
+    const nextVideo = videoRefs.current[to];
+    if (nextVideo) {
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
+    }
+    setIncoming(to);
+    setBlend(0);
+    requestAnimationFrame(() => setBlend(1));
+    window.setTimeout(() => {
+      setActive(to);
+      setIncoming(null);
+      setBlend(0);
+      transitioningRef.current = false;
+    }, CROSSFADE_MS);
   }, []);
 
   useEffect(() => {
-    videoRefs.current.forEach((video, idx) => {
-      if (!video) return;
-      if (idx === active) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
+    const video = videoRefs.current[active];
+    if (!video) return;
+
+    const onTimeUpdate = () => {
+      const slide = SLIDES[active];
+      if (
+        !transitioningRef.current &&
+        video.currentTime >= slide.fadeOutAt
+      ) {
+        startCrossfade(active);
       }
-    });
-  }, [active]);
+    };
+
+    video.currentTime = 0;
+    video.play().catch(() => {});
+    video.addEventListener("timeupdate", onTimeUpdate);
+    return () => video.removeEventListener("timeupdate", onTimeUpdate);
+  }, [active, startCrossfade]);
 
   return (
     <div className={cn("relative h-full w-full overflow-hidden", className)}>
-      {slides.map((slide, idx) => {
+      {SLIDES.map((slide, idx) => {
         const isActive = idx === active;
-        const style = {
-          opacity: isActive ? 1 : 0,
-          zIndex: isActive ? 10 : 0,
-          pointerEvents: isActive ? "auto" as const : "none" as const,
-          transition: `opacity ${FADE_DURATION_MS}ms ease-in-out`,
-        };
-
-        if (slide.type === "video") {
-          return (
-            <video
-              key={idx}
-              ref={(el) => { videoRefs.current[idx] = el; }}
-              src={slide.src}
-              className="absolute inset-0 h-full w-full object-cover"
-              aria-hidden={!isActive}
-              style={style}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            />
-          );
-        }
+        const isIncoming = idx === incoming;
+        let opacity = 0;
+        if (isIncoming) opacity = blend;
+        else if (isActive && incoming === null) opacity = 1;
+        else if (isActive && incoming !== null) opacity = 1 - blend;
 
         return (
-          <Image
-            width={100000}
-            height={100000}
-            key={idx}
+          <video
+            key={slide.src}
+            ref={(el) => {
+              videoRefs.current[idx] = el;
+            }}
             src={slide.src}
-            alt={`Slide ${idx + 1}`}
-            className="absolute inset-0 h-full w-full size-full object-cover"
-            aria-hidden={!isActive}
-            style={style}
-            sizes="100vw"
-            priority={idx === 0}
-            loading={idx === 0 ? "eager" : "lazy"}
+            className="absolute inset-0 h-full w-full object-cover"
+            aria-hidden={opacity < 0.5}
+            style={{
+              opacity,
+              zIndex: isIncoming ? 12 : isActive ? 10 : 0,
+              transition:
+                incoming !== null
+                  ? `opacity ${CROSSFADE_MS}ms ease-in-out`
+                  : undefined,
+            }}
+            muted
+            playsInline
+            preload="metadata"
           />
         );
       })}

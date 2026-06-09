@@ -1,6 +1,6 @@
 import { Hero } from "@/components/sections/hero/hero";
-import { HeroCarousel } from "@/components/sections/hero/hero-carousel";
 import { StatsBar } from "@/components/sections/stats-bar/stats-bar";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { IndustriesSolutionsBento } from "@/components/sections/industries-solutions/industries-solutions-bento";
 import { Features } from "@/components/sections/features/features";
 import { Clients } from "@/components/sections/clients/clients";
@@ -39,14 +39,30 @@ export default function Home() {
           href: "/contacto?tipo=diagnostico",
         }}
       />
-      <Clients />
-      <StatsBar />
-      <IndustriesSolutionsBento />
-      <Features />
-      <Coverage />
-      <CTA />
-      <Testimonials />
-      <Novedades />
+      <ScrollReveal>
+        <Clients />
+      </ScrollReveal>
+      <ScrollReveal delayMs={60}>
+        <StatsBar />
+      </ScrollReveal>
+      <ScrollReveal delayMs={80}>
+        <IndustriesSolutionsBento />
+      </ScrollReveal>
+      <ScrollReveal delayMs={100}>
+        <Features />
+      </ScrollReveal>
+      <ScrollReveal delayMs={120}>
+        <Coverage />
+      </ScrollReveal>
+      <ScrollReveal delayMs={140}>
+        <CTA />
+      </ScrollReveal>
+      <ScrollReveal delayMs={160}>
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal delayMs={180}>
+        <Novedades />
+      </ScrollReveal>
     </>
   );
 }

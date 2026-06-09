@@ -47,7 +47,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     <>
       <JsonLdScripts pathname="/blog/" />
       <PagesHero
-        title="Blog técnico"
+        title="Blog tecnico"
         subtitle="Novedades"
         description="Artículos técnicos, novedades y criterios de aplicación para GLP, gas natural, vapor y procesos industriales."
         image="/assets/images/industry-plant-industrial-plant.webp"

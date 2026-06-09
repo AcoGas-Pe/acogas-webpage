@@ -8,6 +8,7 @@ import Script from "next/script";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { ContactPopupProvider } from "@/contexts/contact-popup-context";
 import { QuoteCartProvider } from "@/contexts/quote-cart-context";
+import { ProductsCatalogProvider } from "@/contexts/products-catalog-context";
 import { ContactPopup } from "@/components/ui/contact-popup";
 import { QuoteCartSidebar } from "@/components/global/quote-cart-sidebar";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/assets/config/favicon.ico" sizes="any" />
@@ -55,18 +56,20 @@ export default function RootLayout({
         className={`${montserrat.variable} ${heroFont.variable} antialiased flex flex-col`}
       >
         <ContactPopupProvider>
-          <QuoteCartProvider>
-            <Navbar />
-            {children}
-            <Footer />
-            <ContactPopup />
-            <QuoteCartSidebar />
-          </QuoteCartProvider>
+          <ProductsCatalogProvider>
+            <QuoteCartProvider>
+              <Navbar />
+              {children}
+              <Footer />
+              <ContactPopup />
+              <QuoteCartSidebar />
+            </QuoteCartProvider>
+          </ProductsCatalogProvider>
         </ContactPopupProvider>
 
         <WhatsAppButton
             phoneNumber="+51998345895"
-            message="Hola, necesito información sobre sus servicios. ¿Pueden ayudarme?"
+            message="Hola, me interesa una cotizacion o asesoria tecnica en equipos industriales (GLP, gas natural o vapor). ¿Pueden orientarme segun mi aplicacion?"
             variant="floating"
             size="lg"
             showOnMobile={true}

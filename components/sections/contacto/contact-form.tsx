@@ -4,6 +4,13 @@ import { cn } from "@/lib/utils";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { CTA } from "../cta/cta";
+import {
+  BUSINESS_HOURS,
+  CONTACT,
+  formatPhoneDisplay,
+  formatPhoneTel,
+} from "@/lib/business-config";
+
 interface ContactFormProps {
   className?: string;
 }
@@ -22,25 +29,25 @@ const REGISTER_FORM_ID =
 const contactInfo = [
   {
     icon: Phone,
-    label: "Teléfono",
-    value: "+51 (01) 234-5678",
-    href: "tel:+5101234567",
+    label: "Telefono",
+    value: formatPhoneDisplay(CONTACT.phone[0]),
+    href: `tel:${formatPhoneTel(CONTACT.phone[0])}`,
   },
   {
     icon: Mail,
     label: "Email",
-    value: "contacto@acogas.com.pe",
-    href: "mailto:contacto@acogas.com.pe",
+    value: CONTACT.email[0],
+    href: `mailto:${CONTACT.email[0]}`,
   },
   {
     icon: MapPin,
-    label: "Dirección",
-    value: "Lima, Perú",
+    label: "Direccion",
+    value: `${CONTACT.city}, ${CONTACT.state}`,
   },
   {
     icon: Clock,
     label: "Horario",
-    value: "Lun - Vie: 8:00 - 18:00",
+    value: `Lun - Vie: ${BUSINESS_HOURS.weekdays}`,
   },
 ];
 
