@@ -13,6 +13,8 @@ import { ContactPopup } from "@/components/ui/contact-popup";
 import { QuoteCartSidebar } from "@/components/global/quote-cart-sidebar";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
 import { siteConfig } from "@/lib/seo-config";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 
 const heroFont = localFont({
   src: [
@@ -29,7 +31,8 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-RNZ4CVYSPT";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -47,14 +50,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/assets/config/favicon.ico" sizes="any" />
       </head>
       <body
         className={`${montserrat.variable} ${heroFont.variable} antialiased flex flex-col`}
+        suppressHydrationWarning
       >
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
         <ContactPopupProvider>
           <ProductsCatalogProvider>
             <QuoteCartProvider>
@@ -74,23 +79,7 @@ export default function RootLayout({
             size="lg"
             showOnMobile={true}
             showOnDesktop={true}
-          />        {/* Google Analytics 4 */}
-        {GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
+          />
 
         {/* HubSpot Embed Code - Tracking (//js.hs-scripts.com/50826545.js) */}
         <Script
