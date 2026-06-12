@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { City } from "@/domain/city";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { formatPhoneDisplay, formatPhoneTel } from "@/lib/business-config";
 
 interface CityMapProps {
   city: City;
@@ -11,6 +12,9 @@ interface CityMapProps {
 }
 
 export function CityMap({ city, className }: CityMapProps) {
+  const phoneDisplay = city.phone ? formatPhoneDisplay(city.phone) : null;
+  const phoneTel = city.phone ? formatPhoneTel(city.phone) : null;
+
   return (
     <section className={cn("section bg-background py-16 sm:py-20 md:py-24", className)}>
       <div className="container">
@@ -31,13 +35,23 @@ export function CityMap({ city, className }: CityMapProps) {
               </h3>
               
               <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Cobertura</p>
-                    <p className="text-sm text-muted-foreground">{city.region}</p>
+                {city.address ? (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Dirección</p>
+                      <p className="text-sm text-muted-foreground">{city.address}</p>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Cobertura</p>
+                      <p className="text-sm text-muted-foreground">{city.region}</p>
+                    </div>
+                  </div>
+                )}
                 
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -49,13 +63,20 @@ export function CityMap({ city, className }: CityMapProps) {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-foreground">Contacto</p>
-                    <p className="text-sm text-muted-foreground">+51 1 349 4500</p>
+                {phoneDisplay && phoneTel ? (
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Contacto</p>
+                      <a
+                        href={`tel:${phoneTel}`}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {phoneDisplay}
+                      </a>
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
 
               {city.features.map((feature, index) => (

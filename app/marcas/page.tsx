@@ -53,7 +53,7 @@ export default function MarcasPage() {
                     {brand.logo ? (
                       <Image
                         src={brand.logo}
-                        alt=""
+                        alt={`Logo ${brand.name}`}
                         width={120}
                         height={48}
                         className={

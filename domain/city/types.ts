@@ -50,6 +50,10 @@ export interface City {
   industries: CityIndustry[];
   testimonials: CityTestimonial[];
   mapEmbedUrl?: string;
+  /** Dirección física de la sede o punto de atención */
+  address?: string;
+  /** Teléfono de contacto local (solo dígitos o con prefijo +51) */
+  phone?: string;
   metaTitle: string;
   metaDescription: string;
 }

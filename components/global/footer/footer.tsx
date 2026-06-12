@@ -4,6 +4,7 @@ import {
   BUSINESS_INFO,
   CONTACT,
   SOCIAL_MEDIA,
+  LIMA_OFFICE_PHONES,
   getCompanyLinks,
   getLegalLinks,
   formatPhoneTel,
@@ -78,8 +79,8 @@ const getContactEmails = (): string[] => {
   return CONTACT.email ? CONTACT.email : [];
 };
 
-const getContactPhones = (): string[] => {
-  return CONTACT.phone ? CONTACT.phone : [];
+const getContactPhones = (): Array<{ label?: string; phone: string }> => {
+  return LIMA_OFFICE_PHONES.map(({ label, phone }) => ({ label, phone }));
 };
 
 export function Footer() {
@@ -134,8 +135,8 @@ export function Footer() {
                 Llámanos:
               </div>{" "}
               {/* Phone(s) */}
-              <div className="flex flex-row gap-2 flex-wrap">
-                {phones.map((phone, index) => (
+              <div className="flex flex-row gap-x-4 gap-y-2 flex-wrap">
+                {phones.map(({ label, phone }, index) => (
                   <div
                     key={`phone-${index}`}
                     className="flex items-center gap-2"
@@ -144,6 +145,7 @@ export function Footer() {
                       href={`tel:${formatPhoneTel(phone)}`}
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
+                      {label ? `${label}: ` : ""}
                       {formatPhoneDisplay(phone)}
                     </a>
                   </div>

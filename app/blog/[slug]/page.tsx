@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="absolute inset-0" aria-hidden>
               <Image
                 src={post.image}
-                alt=""
+                alt={post.imageAlt ?? post.title}
                 fill
                 priority
                 className="object-contain p-6 opacity-15"

@@ -7,8 +7,10 @@ export type QuoteWhatsappItem = {
   quantity: number;
 };
 
+import { WHATSAPP_QUOTE_DIGITS } from "@/lib/business-config";
+
 /** Digits only, no + (wa.me format) */
-export const WHATSAPP_QUOTE_PHONE_DIGITS = "51998345895";
+export const WHATSAPP_QUOTE_PHONE_DIGITS = WHATSAPP_QUOTE_DIGITS;
 
 export function productPageAbsoluteUrl(slug: string): string {
   const base = siteConfig.url.replace(/\/$/, "");

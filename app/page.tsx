@@ -25,18 +25,20 @@ export default function Home() {
       <Hero
         title="Ingenieria aplicada a GLP, gas natural, vapor y procesos industriales."
         subtitle="Control y Criterio"
-        description={`${PRIMARY_SLOGAN} Más de cincuenta años acompañando a la industria peruana con criterio técnico, marcas de referencia mundial y presencia en campo.`}
+        description={`${PRIMARY_SLOGAN} Más de cincuenta años acompañando a la industria peruana con criterio técnico, marcas de referencia mundial y presencia en campo. Integramos equipos, ingeniería y soporte técnico para decisiones seguras en planta.`}
         primaryAction={{
           label: "Llamar ahora",
           href: `tel:${formatPhoneTel(CONTACT.phone[0])}`,
         }}
         secondaryAction={{
-          label: "Programar visita técnica",
+          label: "Agendar visita tecnica",
           href: "/contacto?tipo=visita",
+          variant: "secondary",
         }}
         tertiaryAction={{
-          label: "Solicitar diagnóstico",
-          href: "/contacto?tipo=diagnostico",
+          label: "Catalogos",
+          href: "/productos/",
+          variant: "destructive",
         }}
       />
       <ScrollReveal>

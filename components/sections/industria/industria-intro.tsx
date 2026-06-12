@@ -21,7 +21,7 @@ export function IndustriaIntro({ industry, className }: IndustriaIntroProps) {
             {industry.image ? (
               <Image
                 src={industry.image}
-                alt=""
+                alt={industry.name ? `Sector ${industry.name}` : "Sector industrial"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 40vw"

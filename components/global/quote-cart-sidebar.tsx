@@ -104,7 +104,13 @@ export function QuoteCartSidebar() {
                     onClick={close}
                     className="relative h-16 w-16 shrink-0 overflow-hidden rounded-md bg-muted"
                   >
-                    <Image src={img} alt="" fill className="object-cover" sizes="64px" />
+                    <Image
+                      src={img}
+                      alt={[marca, title].filter(Boolean).join(" — ") || title}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
+                    />
                   </Link>
                   <div className="min-w-0 flex-1">
                     <Link

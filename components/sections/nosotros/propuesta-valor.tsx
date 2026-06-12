@@ -93,7 +93,7 @@ export function PropuestaValor() {
                   <div className="relative aspect-[16/10] bg-muted">
                     <Image
                       src={value.image}
-                      alt=""
+                      alt={`${value.title} — propuesta de valor ACOGAS`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -129,7 +129,7 @@ export function PropuestaValor() {
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
           <Image
             src="/assets/images/revision-refineria-2.webp"
-            alt=""
+            alt="Fondo industrial — revisión en refinería"
             fill
             className="object-cover opacity-25"
             sizes="100vw"

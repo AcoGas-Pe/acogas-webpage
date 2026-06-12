@@ -13,6 +13,7 @@ import { ContactPopup } from "@/components/ui/contact-popup";
 import { QuoteCartSidebar } from "@/components/global/quote-cart-sidebar";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
 import { siteConfig } from "@/lib/seo-config";
+import { WHATSAPP_MAIN_DIGITS } from "@/lib/business-config";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 
@@ -36,7 +37,7 @@ const GA_MEASUREMENT_ID =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "Acogas | Soluciones Industriales en GLP, Gas Natural y Vapor",
+  title: "ACOGAS | Soluciones Industriales para GLP, GN y Vapor",
   description:
     "Más de 50 años desarrollando soluciones industriales seguras y eficientes. Marcas líderes: Emerson, Corken, Cavagna, Liquid Controls. Solicite su visita técnica.",
   ...(isSiteIndexingDisabled() && {
@@ -73,7 +74,7 @@ export default function RootLayout({
         </ContactPopupProvider>
 
         <WhatsAppButton
-            phoneNumber="+51998345895"
+            phoneNumber={`+${WHATSAPP_MAIN_DIGITS}`}
             message="Hola, me interesa una cotizacion o asesoria tecnica en equipos industriales (GLP, gas natural o vapor). ¿Pueden orientarme segun mi aplicacion?"
             variant="floating"
             size="lg"

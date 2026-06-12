@@ -65,7 +65,7 @@ export function CTA({
     >
       <Image
         src="/assets/images/planta-nuclear.webp"
-        alt=""
+        alt="Planta industrial con equipos de procesos y energía"
         width={1920}
         height={1080}
         className="absolute inset-0 h-full w-full object-cover"

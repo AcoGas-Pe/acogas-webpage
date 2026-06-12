@@ -14,7 +14,7 @@ export function Trayectoria() {
               <div className="relative aspect-[16/9] bg-muted">
                 <Image
                   src="/assets/images/industry-plant-industrial-plant.webp"
-                  alt=""
+                  alt="Planta industrial — trayectoria ACOGAS"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -49,7 +49,7 @@ export function Trayectoria() {
               <div className="relative aspect-[16/9] bg-muted">
                 <Image
                   src="/assets/images/regulacion-presion.webp"
-                  alt=""
+                  alt="Regulación de presión industrial — trayectoria ACOGAS"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

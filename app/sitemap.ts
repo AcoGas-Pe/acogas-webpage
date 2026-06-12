@@ -1,79 +1,82 @@
-import { MetadataRoute } from 'next';
-import { PRODUCT_INDUSTRY_URLS } from '@/lib/business-config';
-import { seoConfigs, siteConfig } from '@/lib/seo-config';
-import { isSiteIndexingDisabled } from '@/lib/site-indexing';
-/*
-import { getAllPosts } from '@/lib/blog-utils';
-import { getAllThingsToDoPages } from '@/lib/things-to-do-utils';
-import servicesData from '@/data/services.json';
-import { getCityUrls } from '@/lib/city-utils';
-*/
+import type { MetadataRoute } from "next";
+import { CORE_SERVICE_URLS, PRODUCT_INDUSTRY_URLS } from "@/lib/business-config";
+import { resolveAllBlogSlugs } from "@/lib/blog-resolve";
+import { getAllCitySlugs } from "@/lib/cities-data";
+import { resolveAllProductSlugs } from "@/lib/products-resolve";
+import { seoConfigs, siteConfig } from "@/lib/seo-config";
+import { isSiteIndexingDisabled } from "@/lib/site-indexing";
+import { getAllStrategicBrandSlugs } from "@/lib/strategic-brands";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function staticRoutes(baseUrl: string): MetadataRoute.Sitemap {
+  return Object.entries(seoConfigs).map(([path]) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: path === "/" ? 1.0 : 0.8,
+  }));
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (isSiteIndexingDisabled()) {
     return [];
   }
 
-  const baseUrl = siteConfig.url;
+  const baseUrl = siteConfig.url.replace(/\/$/, "");
 
-  const routes = Object.entries(seoConfigs).map(([path]) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: path === '/' ? 1.0 : 0.8,
-  }));
-/*
-  // Add blog post routes from markdown files in content/posts
-  // This automatically includes all published posts
-  const allPosts = getAllPosts();
-  const blogPostRoutes = allPosts.map((post) => {
-    // Ensure URL has trailing slash
-    let postUrl = post.permalink || `/${post.slug}/`;
-    // Remove leading slash if present (baseUrl already has it or we'll add it)
-    postUrl = postUrl.startsWith('/') ? postUrl : `/${postUrl}`;
-    // Ensure trailing slash
-    postUrl = postUrl.endsWith('/') ? postUrl : `${postUrl}/`;
-    
-    return {
-      url: `${baseUrl}${postUrl}`,
-      lastModified: new Date(post.publishedAt || post.date),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    };
-  });
-*/
-/*
-  // Add service routes
-  const serviceRoutes = servicesData.services.map((service) => ({
-    url: `${baseUrl}/${service.slug}/`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: service.isCore ? 0.9 : 0.7,
-  }));
-
-  // Add things-to-do pages
-  const thingsToDoPages = getAllThingsToDoPages();
-  const thingsToDoRoutes: MetadataRoute.Sitemap = thingsToDoPages.map((page) => {
-    const publishedDate = new Date(page.date || new Date());
-    return {
-      url: `${baseUrl}/${page.slug}/`,
-      lastModified: publishedDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    };
-  });
-
-  // Add city routes using centralized city utilities
-  const cityRoutes = getCityUrls(baseUrl);
-
-  return [...routes, ...blogPostRoutes, ...serviceRoutes, ...thingsToDoRoutes, ...cityRoutes];
-*/
   const industryRoutes: MetadataRoute.Sitemap = PRODUCT_INDUSTRY_URLS.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
+    changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
 
-  return [...routes, ...industryRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = CORE_SERVICE_URLS.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  const cityRoutes: MetadataRoute.Sitemap = getAllCitySlugs().map((slug) => ({
+    url: `${baseUrl}/cobertura-industrial/${slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const brandRoutes: MetadataRoute.Sitemap = getAllStrategicBrandSlugs().map((slug) => ({
+    url: `${baseUrl}/marcas/${slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  const [productSlugs, blogSlugs] = await Promise.all([
+    resolveAllProductSlugs(),
+    resolveAllBlogSlugs(),
+  ]);
+
+  const productRoutes: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
+    url: `${baseUrl}/productos/${slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.55,
+  }));
+
+  return [
+    ...staticRoutes(baseUrl),
+    ...serviceRoutes,
+    ...industryRoutes,
+    ...cityRoutes,
+    ...brandRoutes,
+    ...productRoutes,
+    ...blogRoutes,
+  ];
 }

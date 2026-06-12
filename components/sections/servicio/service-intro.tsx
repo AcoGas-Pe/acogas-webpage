@@ -20,7 +20,7 @@ export function ServiceIntro({ service, className }: ServiceIntroProps) {
           <div className="relative min-h-[220px] bg-muted md:min-h-full">
             <Image
               src={service.heroImage ?? "/assets/images/revision-refineria.webp"}
-              alt=""
+              alt={`Servicio ${service.title}`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 40vw"

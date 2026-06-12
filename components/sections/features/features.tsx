@@ -70,9 +70,9 @@ function FeatureCard({ feature }: { feature: Feature }) {
           {feature.highlight}
         </span>
       )}
-      <h3 className="text-[0.96875rem] font-bold leading-snug text-white sm:text-base">
+      <p className="text-[0.96875rem] font-bold leading-snug text-white sm:text-base">
         {feature.title}
-      </h3>
+      </p>
       <p className="mt-2.5 flex-1 text-[0.8125rem] font-normal leading-relaxed text-white/90 sm:text-sm">
         {feature.description}
       </p>
@@ -102,7 +102,7 @@ export function Features({
       >
         <Image
           src="/assets/images/revision-procesos.webp"
-          alt=""
+          alt="Ingenieros revisando procesos industriales en planta"
           fill
           className="scale-105 object-cover object-center blur-[2px]"
           sizes="100vw"

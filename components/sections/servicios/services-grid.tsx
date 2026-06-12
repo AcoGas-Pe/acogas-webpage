@@ -57,7 +57,7 @@ export function ServicesGrid({ className }: ServicesGridProps) {
       >
         <Image
           src="/assets/images/isotipo-fondo.webp"
-          alt=""
+          alt="Isotipo decorativo ACOGAS"
           fill
           className="object-contain object-right-top"
           sizes="(max-width: 768px) 80vw, 28rem"
@@ -111,7 +111,7 @@ function ServiceCard({ service }: { service: ReturnType<typeof getAllServices>[n
       <div className="relative aspect-[16/10] w-full bg-muted">
         <Image
           src={img}
-          alt=""
+          alt={`Servicio ${service.title} — imagen ilustrativa`}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"

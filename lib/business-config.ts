@@ -118,7 +118,7 @@ export interface Product {
     logoUrl: "/assets/config/logo.png",
     tagline:
       "Ingeniería que respalda decisiones industriales. Soluciones en GLP, Gas Natural, Vapor y procesos industriales.",
-    primaryKeyword: "Productos para la Industria, Gas y Energía",
+    primaryKeyword: "Soluciones Industriales para GLP, GN y Vapor",
     ctaText: "Solicitar visita técnica especializada",
   } as const;
   
@@ -678,6 +678,19 @@ export interface Product {
     email: ["acogas@acogas.pe", "ventas@acogas.pe"],
     addressVisibility: "VISIBLE",
   };
+
+  /** Teléfonos de las 3 sedes en Lima Metropolitana (footer). */
+  export const LIMA_OFFICE_PHONES = [
+    { label: "Surco", phone: "998345895" },
+    { label: "Lima Sur", phone: "953191488" },
+    { label: "Callao", phone: "999011090" },
+  ] as const;
+
+  /** WhatsApp flotante y contacto general (sede principal Surco). */
+  export const WHATSAPP_MAIN_DIGITS = "51998345895";
+
+  /** WhatsApp de cotización (Marcos). */
+  export const WHATSAPP_QUOTE_DIGITS = "51994296627";
 
   
   // ==========================================

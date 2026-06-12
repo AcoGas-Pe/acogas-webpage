@@ -150,8 +150,8 @@ export const OG_IMAGE_DEFAULTS = {
 
 export const seoConfigs: Record<string, SEOConfig> = {
   "/": {
-    title: `${BUSINESS_INFO.name} | ${BUSINESS_INFO.primaryKeyword}`,
-    description: `Soluciones industriales seguras y eficientes en GLP, Gas Natural, Vapor y Procesos Especiales. Marcas líderes (Emerson, Corken, Cavagna y Liquid Controls). ${BUSINESS_INFO.ctaText}`,
+    title: "ACOGAS | Soluciones Industriales para GLP, GN y Vapor",
+    description: `Soluciones industriales seguras y eficientes en GLP, gas natural y vapor. Marcas líderes (Emerson, Corken, Cavagna, Liquid Controls). ${BUSINESS_INFO.ctaText}`,
     keywords: [
       BUSINESS_INFO.primaryKeyword.toLowerCase(),
       "acogas",

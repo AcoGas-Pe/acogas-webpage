@@ -4,6 +4,6 @@
  * appear in search results again.
  */
 export function isSiteIndexingDisabled(): boolean {
-  const v = "true".toLowerCase();
+  const v = "false".toLowerCase();
   return v === "1" || v === "true" || v === "yes" || v === "on";
 }

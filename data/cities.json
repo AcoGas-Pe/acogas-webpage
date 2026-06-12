@@ -35,6 +35,8 @@
         { "name": "María Torres", "company": "Textiles San Martín", "quote": "El servicio técnico es excepcional, siempre responden cuando los necesitamos.", "rating": 5 }
       ],
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e0!3m2!1ses!2spe!4v1773358132766!5m2!1ses!2spe",
+      "address": "Av. La Encalada 1471, Santiago de Surco 15023, Lima",
+      "phone": "998345895",
       "metaTitle": "Soluciones Industriales en Lima | ACOGAS - GLP, Gas Natural y Vapor",
       "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Lima Metropolitana. Más de 50 años de experiencia con soporte técnico presencial."
     },
@@ -71,7 +73,9 @@
       "testimonials": [
         { "name": "Roberto Chávez", "company": "Operaciones Portuarias SAC", "quote": "ACOGAS conoce las necesidades específicas del sector portuario.", "rating": 5 }
       ],
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "mapEmbedUrl": "https://maps.google.com/maps?q=Av.+Oscar+R.+Benavides+5443,+Callao+07006,+Peru&output=embed",
+      "address": "Av. Óscar R. Benavides 5443, Callao 07006, Perú",
+      "phone": "999011090",
       "metaTitle": "Soluciones Industriales en Callao | ACOGAS - GLP, Gas Natural y Vapor",
       "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en el Callao. Experiencia en zona portuaria con soporte técnico especializado."
     },
@@ -108,7 +112,9 @@
       "testimonials": [
         { "name": "Ana García", "company": "Industrias del Sur", "quote": "Excelente soporte técnico para nuestra nueva planta en Lurín.", "rating": 5 }
       ],
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "mapEmbedUrl": "https://maps.google.com/maps?q=Zona+industrial+Lima+Sur,+Peru&output=embed",
+      "address": "Cobertura en Lima Sur y corredor industrial del sur de Lima",
+      "phone": "953191488",
       "metaTitle": "Soluciones Industriales en Lurín | ACOGAS - GLP, Gas Natural y Vapor",
       "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en Lurín. Soporte técnico especializado para el corredor industrial del sur de Lima."
     },
@@ -145,7 +151,9 @@
       "testimonials": [
         { "name": "Luis Fernández", "company": "Centro Empresarial Sur", "quote": "Profesionalismo y calidad en cada servicio.", "rating": 5 }
       ],
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS!5e0!3m2!1ses!2spe",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1442211064373!2d-76.97313572536497!3d-12.102277688138837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c94ed03b03db%3A0x2d69082002bce007!2sACOGAS%20%7C%20Soluciones%20Industriales%20para%20GLP%2C%20GN%20y%20Vapor!5e0!3m2!1ses!2spe!4v1773358132766!5m2!1ses!2spe",
+      "address": "Av. La Encalada 1471, Santiago de Surco 15023, Lima",
+      "phone": "998345895",
       "metaTitle": "Soluciones Industriales en Santiago de Surco | ACOGAS",
       "metaDescription": "Soluciones industriales de GLP, Gas Natural y Vapor en Santiago de Surco. Servicio técnico especializado para el sector corporativo."
     },
@@ -183,7 +191,9 @@
         { "name": "Pedro Quispe", "company": "Minera del Sur", "quote": "ACOGAS entiende las necesidades del sector minero.", "rating": 5 },
         { "name": "Carmen Delgado", "company": "Agroindustrias Arequipa", "quote": "Servicio confiable y equipos de primera calidad.", "rating": 5 }
       ],
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244088.55498526826!2d-71.63198867578125!3d-16.398821950000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a3f0ad8c4d3%3A0x2b2f6e08f0e6c0a!2sArequipa!5e0!3m2!1ses!2spe",
+      "mapEmbedUrl": "https://maps.google.com/maps?q=Urb+Los+Andenes+A2,+Cayma,+Arequipa,+Peru&output=embed",
+      "address": "Urb. Los Andenes A2, Cayma, Arequipa",
+      "phone": "998345014",
       "metaTitle": "Soluciones Industriales en Arequipa | ACOGAS - GLP, Gas Natural y Vapor",
       "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Arequipa. Soporte técnico para minería, manufactura y agroindustria."
     },
@@ -220,7 +230,9 @@
       "testimonials": [
         { "name": "Jorge Sánchez", "company": "Agroindustrias del Norte", "quote": "Equipos de calidad y servicio técnico confiable.", "rating": 5 }
       ],
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252230.02061988697!2d-79.1462839453125!3d-8.111897999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d6f8c7dd417%3A0x7f6e4f2db7d631be!2sTrujillo!5e0!3m2!1ses!2spe",
+      "mapEmbedUrl": "https://maps.google.com/maps?q=Av.+Santa+1104,+Urb.+El+Molino,+Trujillo,+Peru&output=embed",
+      "address": "Av. Santa 1104, Urb. El Molino, Trujillo",
+      "phone": "981226943",
       "metaTitle": "Soluciones Industriales en Trujillo | ACOGAS - GLP, Gas Natural y Vapor",
       "metaDescription": "Expertos en soluciones industriales de GLP, Gas Natural y Vapor en Trujillo. Soporte técnico para agroindustria y manufactura en La Libertad."
     }

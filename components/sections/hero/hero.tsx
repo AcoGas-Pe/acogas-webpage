@@ -7,6 +7,7 @@ import { Slideshow } from "./slideshow";
 interface HeroAction {
   label: string;
   href: string;
+  variant?: "default" | "destructive" | "secondary" | "outline";
 }
 
 function heroDisplayTitle(text: string): string {
@@ -64,13 +65,13 @@ export function Hero({
   return (
     <section
       className={cn(
-        "section relative min-h-[80dvh] w-full overflow-hidden bg-background pt-20",
+        "section relative min-h-[88dvh] w-full overflow-hidden bg-background pt-20",
         className,
       )}
     >
       <div
         className={cn(
-          "relative min-h-[calc(80dvh-5rem)] w-full",
+          "relative min-h-[calc(88dvh-5rem)] w-full",
           showMedia && "flex flex-col lg:block",
         )}
       >
@@ -121,25 +122,25 @@ export function Hero({
 
         <div
           className={cn(
-            "relative z-30 flex flex-col justify-center px-4 py-10 sm:px-6 sm:py-12 lg:py-16",
+            "relative z-30 flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-14 lg:py-20",
             showMedia
-              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[54%] lg:bg-transparent lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-8"
+              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[58%] lg:bg-transparent lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-10"
               : "container mx-auto max-w-7xl",
           )}
         >
-          <div className="relative max-w-xl">
+          <div className="relative max-w-2xl">
             {subtitle && (
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.35rem] text-accent sm:tracking-[0.5rem]">
+              <p className="mb-5 text-sm font-bold uppercase tracking-[0.35rem] text-accent sm:text-base sm:tracking-[0.5rem]">
                 {subtitle}
               </p>
             )}
 
-            <h1 className="max-w-2xl text-2xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-3xl lg:text-4xl">
+            <h1 className="max-w-3xl text-3xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-tight">
               {heroDisplayTitle(title)}
             </h1>
 
             {description && (
-              <p className="mt-3 max-w-2xl text-sm font-semibold leading-relaxed text-foreground/90 sm:text-base">
+              <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-foreground/90 sm:text-lg sm:leading-8">
                 {description}
               </p>
             )}
@@ -149,6 +150,7 @@ export function Hero({
               {primaryAction && (
                 <Button
                   href={primaryAction.href}
+                  variant={primaryAction.variant ?? "default"}
                   size="lg"
                   className="min-h-12 w-auto justify-center whitespace-nowrap"
                 >
@@ -161,7 +163,7 @@ export function Hero({
               {tertiaryAction && (
                 <Button
                   href={tertiaryAction.href}
-                  variant="outline"
+                  variant={tertiaryAction.variant ?? "outline"}
                   size="lg"
                   className="min-h-12 w-auto justify-center whitespace-nowrap"
                 >
@@ -172,7 +174,7 @@ export function Hero({
               {secondaryAction && (
                 <Button
                   href={secondaryAction.href}
-                  variant="secondary"
+                  variant={secondaryAction.variant ?? "secondary"}
                   size="lg"
                   className="min-h-12 w-auto justify-center whitespace-nowrap"
                 >

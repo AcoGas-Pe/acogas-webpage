@@ -94,19 +94,13 @@ function StarRating({ rating = 5 }: { rating?: number }) {
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="card-base relative flex h-full min-h-[240px] w-[310px] flex-col rounded-[1.75rem] bg-card p-5 sm:w-[360px] sm:p-6">
-      {/* Header with avatar and info */}
-      <div className="flex items-start gap-3 mb-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-accent/15 ring-2 ring-primary/10">
-          <span className="text-base font-bold text-primary">
-            {testimonial.name.charAt(0).toUpperCase()}
-          </span>
-        </div>
+    <div className="card-base relative flex h-full min-h-[220px] w-[310px] flex-col rounded-[1.75rem] bg-card p-5 sm:w-[360px] sm:p-6">
+      <div className="mb-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-foreground truncate">
             {testimonial.name}
           </p>
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="mt-1 flex items-center gap-2 flex-wrap">
             {testimonial.isLocalGuide && (
               <span className="rounded-md bg-primary/8 px-2 py-0.5 text-[10px] font-semibold text-primary">
                 Guía Local

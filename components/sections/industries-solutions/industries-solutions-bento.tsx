@@ -137,9 +137,9 @@ export function IndustriesSolutionsBento() {
 
         <div className="mt-5">
           <header className="mb-5 text-center sm:mb-6">
-            <h3 className="text-lg font-bold uppercase tracking-[0.08em] text-foreground sm:text-xl">
+            <h4 className="text-lg font-bold uppercase tracking-[0.08em] text-foreground sm:text-xl">
               Industrias
-            </h3>
+            </h4>
             <p className="mt-2 text-sm text-muted-foreground">
               Sectores en los que desarrollamos soluciones específicas.
             </p>
@@ -161,7 +161,7 @@ export function IndustriesSolutionsBento() {
                     <>
                       <Image
                         src={bgImage}
-                        alt=""
+                        alt={`Industria ${ind.name}`}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
