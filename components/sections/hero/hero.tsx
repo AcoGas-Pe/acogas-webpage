@@ -124,7 +124,7 @@ export function Hero({
           className={cn(
             "relative z-30 flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-14 lg:py-20",
             showMedia
-              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[58%] lg:bg-transparent lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-10"
+              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[58%] lg:bg-transparent pl-[15%] lg:pl-[10%]"
               : "container mx-auto max-w-7xl",
           )}
         >
@@ -135,7 +135,7 @@ export function Hero({
               </p>
             )}
 
-            <h1 className="max-w-3xl text-3xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-tight">
+            <h1 className="max-w-4xl text-3xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-tight">
               {heroDisplayTitle(title)}
             </h1>
 
@@ -145,14 +145,14 @@ export function Hero({
               </p>
             )}
 
-              <div className="flex flex-col gap-2">
-            <div className="flex flex-row items-center justify-start gap-3 pt-8 sm:gap-4">
+            <div className="flex flex-col gap-2">
+            <div className="flex flex-row items-center justify-start gap-3 pt-8 w-full sm:gap-4">
               {primaryAction && (
                 <Button
                   href={primaryAction.href}
                   variant={primaryAction.variant ?? "default"}
                   size="lg"
-                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                  className="min-h-12 w-full justify-center whitespace-nowrap"
                 >
                   {primaryAction.href.startsWith("tel:") && (
                     <Phone className="mr-2 h-4 w-4 shrink-0" aria-hidden />
@@ -165,7 +165,7 @@ export function Hero({
                   href={tertiaryAction.href}
                   variant={tertiaryAction.variant ?? "outline"}
                   size="lg"
-                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                  className="min-h-12 w-full justify-center whitespace-nowrap"
                 >
                   {tertiaryAction.label}
                 </Button>
@@ -176,7 +176,7 @@ export function Hero({
                   href={secondaryAction.href}
                   variant={secondaryAction.variant ?? "secondary"}
                   size="lg"
-                  className="min-h-12 w-auto justify-center whitespace-nowrap"
+                  className="min-h-12 w-full justify-center whitespace-nowrap"
                 >
                   <ClipboardCheck className="mr-2 h-4 w-4 shrink-0" />
                   {secondaryAction.label}

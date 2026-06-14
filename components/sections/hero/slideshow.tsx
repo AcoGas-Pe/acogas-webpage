@@ -85,7 +85,7 @@ export function Slideshow({ className }: SlideshowProps) {
               videoRefs.current[idx] = el;
             }}
             src={slide.src}
-            className="absolute inset-0 h-full w-full object-cover object-[58%_center]"
+            className="absolute inset-0 h-full w-full object-cover sm:translate-x-[20%]"
             aria-hidden={opacity < 0.5}
             style={{
               opacity,

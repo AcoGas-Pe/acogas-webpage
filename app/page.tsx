@@ -38,7 +38,7 @@ export default function Home() {
         tertiaryAction={{
           label: "Catalogos",
           href: "/productos/",
-          variant: "destructive",
+          variant: "outline",
         }}
       />
       <ScrollReveal>
