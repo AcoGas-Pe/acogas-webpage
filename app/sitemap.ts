@@ -7,9 +7,17 @@ import { seoConfigs, siteConfig } from "@/lib/seo-config";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
 import { getAllStrategicBrandSlugs } from "@/lib/strategic-brands";
 
+/** Canonical URL for sitemap — no trailing slash except site root (matches 308 routing). */
+function sitemapUrl(baseUrl: string, path: string): string {
+  const origin = baseUrl.replace(/\/$/, "");
+  if (path === "/" || path === "") return `${origin}/`;
+  const pathname = path.startsWith("/") ? path : `/${path}`;
+  return `${origin}${pathname.replace(/\/$/, "")}`;
+}
+
 function staticRoutes(baseUrl: string): MetadataRoute.Sitemap {
   return Object.entries(seoConfigs).map(([path]) => ({
-    url: `${baseUrl}${path}`,
+    url: sitemapUrl(baseUrl, path),
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "/" ? 1.0 : 0.8,
@@ -24,28 +32,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url.replace(/\/$/, "");
 
   const industryRoutes: MetadataRoute.Sitemap = PRODUCT_INDUSTRY_URLS.map((path) => ({
-    url: `${baseUrl}${path}`,
+    url: sitemapUrl(baseUrl, path),
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
 
   const serviceRoutes: MetadataRoute.Sitemap = CORE_SERVICE_URLS.map((path) => ({
-    url: `${baseUrl}${path}`,
+    url: sitemapUrl(baseUrl, path),
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
 
   const cityRoutes: MetadataRoute.Sitemap = getAllCitySlugs().map((slug) => ({
-    url: `${baseUrl}/cobertura-industrial/${slug}/`,
+    url: sitemapUrl(baseUrl, `/cobertura-industrial/${slug}`),
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   const brandRoutes: MetadataRoute.Sitemap = getAllStrategicBrandSlugs().map((slug) => ({
-    url: `${baseUrl}/marcas/${slug}/`,
+    url: sitemapUrl(baseUrl, `/marcas/${slug}`),
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.65,
@@ -57,14 +65,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const productRoutes: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
-    url: `${baseUrl}/productos/${slug}/`,
+    url: sitemapUrl(baseUrl, `/productos/${slug}`),
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}/`,
+    url: sitemapUrl(baseUrl, `/blog/${slug}`),
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.55,

@@ -65,19 +65,19 @@ export function Hero({
   return (
     <section
       className={cn(
-        "section relative min-h-[88dvh] w-full overflow-hidden bg-background pt-20",
+        "section relative w-full overflow-x-hidden bg-background pt-20 lg:min-h-[88dvh]",
         className,
       )}
     >
       <div
         className={cn(
-          "relative min-h-[calc(88dvh-5rem)] w-full",
-          showMedia && "flex flex-col lg:block",
+          "relative w-full",
+          showMedia && "flex flex-col lg:min-h-[calc(88dvh-5rem)] lg:block",
         )}
       >
         {/* Mobile: video arriba, texto abajo. Desktop: split diagonal */}
         {showMedia && (
-          <div className="relative z-0 min-h-[38dvh] w-full shrink-0 sm:min-h-[42dvh] lg:absolute lg:inset-0 lg:min-h-0">
+          <div className="relative z-0 aspect-[16/10] max-h-[min(42dvh,22rem)] w-full shrink-0 sm:max-h-[min(45dvh,26rem)] lg:absolute lg:inset-0 lg:aspect-auto lg:max-h-none lg:min-h-0">
             {image ? (
               <Image
                 src={image}
@@ -122,67 +122,66 @@ export function Hero({
 
         <div
           className={cn(
-            "relative z-30 flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-14 lg:py-20",
+            "relative z-30 flex min-w-0 flex-col justify-center px-4 py-8 sm:px-6 sm:py-10 lg:py-16",
             showMedia
-              ? "bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[58%] lg:bg-transparent pl-[15%] lg:pl-[10%]"
+              ? "w-full bg-background lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[min(58%,44rem)] lg:bg-transparent lg:pl-[max(1rem,calc((100vw-80rem)/2+1rem))] lg:pr-6 xl:max-w-[58%] xl:pr-8"
               : "container mx-auto max-w-7xl",
           )}
         >
-          <div className="relative max-w-2xl">
+          <div className="relative w-full min-w-0 max-w-2xl">
             {subtitle && (
-              <p className="mb-5 text-sm font-bold uppercase tracking-[0.35rem] text-accent sm:text-base sm:tracking-[0.5rem]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent sm:mb-5 sm:text-sm sm:tracking-[0.35rem] md:tracking-[0.45rem]">
                 {subtitle}
               </p>
             )}
 
-            <h1 className="max-w-4xl text-3xl font-bold tracking-wide text-primary [font-family:var(--font-hero)] md:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-tight">
+            <h1 className="max-w-4xl text-balance text-[1.65rem] font-bold leading-[1.15] tracking-wide text-primary [font-family:var(--font-hero)] min-[400px]:text-[1.85rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-tight xl:text-[3.25rem]">
               {heroDisplayTitle(title)}
             </h1>
 
             {description && (
-              <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-foreground/90 sm:text-lg sm:leading-8">
+              <p className="mt-4 max-w-2xl text-sm font-semibold leading-relaxed text-foreground/90 sm:mt-5 sm:text-base sm:leading-7 md:text-lg md:leading-8">
                 {description}
               </p>
             )}
 
-            <div className="flex flex-col gap-2">
-            <div className="flex flex-row items-center justify-start gap-3 pt-8 w-full sm:gap-4">
-              {primaryAction && (
-                <Button
-                  href={primaryAction.href}
-                  variant={primaryAction.variant ?? "default"}
-                  size="lg"
-                  className="min-h-12 w-full justify-center whitespace-nowrap"
-                >
-                  {primaryAction.href.startsWith("tel:") && (
-                    <Phone className="mr-2 h-4 w-4 shrink-0" aria-hidden />
-                  )}
-                  {primaryAction.label}
-                </Button>
-              )}
-              {tertiaryAction && (
-                <Button
-                  href={tertiaryAction.href}
-                  variant={tertiaryAction.variant ?? "outline"}
-                  size="lg"
-                  className="min-h-12 w-full justify-center whitespace-nowrap"
-                >
-                  {tertiaryAction.label}
-                </Button>
-              )}
+            <div className="mt-6 flex w-full min-w-0 flex-col gap-2 sm:mt-8">
+              <div className="grid w-full min-w-0 grid-cols-1 gap-2 min-[420px]:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {primaryAction && (
+                  <Button
+                    href={primaryAction.href}
+                    variant={primaryAction.variant ?? "default"}
+                    size="lg"
+                    className="min-h-11 w-full min-w-0 px-4 text-xs sm:min-h-12 sm:px-6 sm:text-sm"
+                  >
+                    {primaryAction.href.startsWith("tel:") && (
+                      <Phone className="mr-2 h-4 w-4 shrink-0" aria-hidden />
+                    )}
+                    <span className="truncate">{primaryAction.label}</span>
+                  </Button>
+                )}
+                {tertiaryAction && (
+                  <Button
+                    href={tertiaryAction.href}
+                    variant={tertiaryAction.variant ?? "outline"}
+                    size="lg"
+                    className="min-h-11 w-full min-w-0 px-4 text-xs sm:min-h-12 sm:px-6 sm:text-sm"
+                  >
+                    <span className="truncate">{tertiaryAction.label}</span>
+                  </Button>
+                )}
               </div>
               {secondaryAction && (
                 <Button
                   href={secondaryAction.href}
                   variant={secondaryAction.variant ?? "secondary"}
                   size="lg"
-                  className="min-h-12 w-full justify-center whitespace-nowrap"
+                  className="min-h-11 w-full min-w-0 px-4 text-xs sm:min-h-12 sm:px-6 sm:text-sm"
                 >
                   <ClipboardCheck className="mr-2 h-4 w-4 shrink-0" />
-                  {secondaryAction.label}
+                  <span className="truncate">{secondaryAction.label}</span>
                 </Button>
               )}
-              
             </div>
 
             {showMedia && (

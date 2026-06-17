@@ -54,10 +54,10 @@ export function Coverage({
             </p>
           </header>
 
-          <div className="flex flex-col items-center justify-center gap-3 sm:mt-9 sm:gap-4"> 
+          <div className="flex min-w-0 flex-col items-center justify-center gap-3 sm:mt-9 sm:gap-4">
           <div
             className={cn(
-              "rounded-2xl border border-primary/12 bg-primary/95 p-3 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.55)] sm:p-4",
+              "w-full min-w-0 rounded-2xl border border-primary/12 bg-primary/95 p-3 shadow-[0_24px_58px_-38px_hsl(var(--primary)_/_0.55)] sm:p-4",
             )}
           >
             <div className="grid min-h-[240px] gap-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-4 md:min-h-[280px]">
@@ -126,14 +126,22 @@ export function Coverage({
               />
             </div>
           </div>
-          <div className="mt-8 flex flex-row items-center justify-start gap-3 sm:mt-9 sm:gap-4">
-          <Button href="/cobertura-industrial/" size="sm">
-            Encuéntranos cerca de ti
-          </Button>
-          <Button href="/contacto" size="sm">
-            Solicitar visita en mi zona
-          </Button>
-        </div>
+          <div className="flex w-full min-w-0 flex-col items-stretch gap-2 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 lg:justify-start">
+            <Button
+              href="/cobertura-industrial/"
+              size="sm"
+              className="h-auto min-h-10 w-full whitespace-normal px-4 py-2.5 text-center text-[11px] leading-snug sm:w-auto sm:max-w-[15rem] sm:text-xs"
+            >
+              Encuéntranos cerca de ti
+            </Button>
+            <Button
+              href="/contacto"
+              size="sm"
+              className="h-auto min-h-10 w-full whitespace-normal px-4 py-2.5 text-center text-[11px] leading-snug sm:w-auto sm:max-w-[15rem] sm:text-xs"
+            >
+              Solicitar visita en mi zona
+            </Button>
+          </div>
         </div>
         </div>
 

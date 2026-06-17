@@ -81,7 +81,7 @@ export function IndustriesSolutionsBento() {
 
         <div
           className={cn(
-            "rounded-2xl border border-primary/10 bg-card p-5 shadow-[0_20px_48px_-36px_hsl(var(--primary)_/_0.38)]",
+            "overflow-hidden rounded-2xl border border-primary/10 bg-card p-5 shadow-[0_20px_48px_-36px_hsl(var(--primary)_/_0.38)]",
             "ring-1 ring-primary/[0.04] sm:p-6 md:p-7",
           )}
         >
@@ -108,14 +108,14 @@ export function IndustriesSolutionsBento() {
               </Link>
             </div>
 
-            <ul className="grid grid-cols-2 gap-2 sm:gap-2.5 md:border-l md:border-border/80 md:pl-8 lg:pl-9">
+            <ul className="grid min-w-0 grid-cols-1 gap-2 min-[380px]:grid-cols-2 sm:gap-2.5 md:border-l md:border-border/80 md:pl-8 lg:pl-9">
               {solutions.map((sol) => {
                 const Icon = sol.icon;
                 return (
-                  <li key={sol.title}>
+                  <li key={sol.title} className="min-w-0">
                     <Link
                       href={sol.href}
-                      className="group/sol flex items-center gap-2.5 rounded-lg px-1 py-1 transition-colors hover:bg-primary/5 sm:gap-3"
+                      className="group/sol flex min-w-0 items-start gap-2 rounded-lg px-1 py-1.5 transition-colors hover:bg-primary/5 sm:gap-2.5"
                     >
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center text-primary sm:h-9 sm:w-9">
                         <Icon
@@ -124,7 +124,7 @@ export function IndustriesSolutionsBento() {
                           strokeWidth={1.75}
                         />
                       </span>
-                      <span className="text-[11px] font-semibold uppercase leading-tight tracking-wide text-foreground group-hover/sol:text-primary sm:text-xs">
+                      <span className="min-w-0 flex-1 text-balance text-[10px] font-semibold uppercase leading-snug tracking-wide text-foreground group-hover/sol:text-primary sm:text-[11px]">
                         {sol.title}
                       </span>
                     </Link>
