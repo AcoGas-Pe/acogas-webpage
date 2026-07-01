@@ -135,7 +135,7 @@ export function Hero({
               </p>
             )}
 
-            <h1 className="max-w-4xl text-balance text-[1.65rem] font-bold leading-[1.15] tracking-wide text-primary [font-family:var(--font-hero)] min-[400px]:text-[1.85rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-tight xl:text-[3.25rem]">
+            <h1 className="max-w-4xl text-balance text-[1.65rem] font-bold leading-[1.15] tracking-wide text-primary [font-family:var(--font-hero)] min-[400px]:text-[1.85rem] sm:text-3xl md:text-4xl lg:text-[2.15rem] lg:leading-[1.2] xl:text-[2.45rem] 2xl:text-[3rem] 2xl:leading-tight">
               {heroDisplayTitle(title)}
             </h1>
 

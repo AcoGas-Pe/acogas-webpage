@@ -198,9 +198,9 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/55 to-transparent" />
                 <div className="relative z-10 p-4 text-foreground">
-                  <h3 className="text-lg font-bold mb-1 text-primary">
+                  <p className="text-lg font-bold mb-1 text-primary">
                     {config.image.title}
-                  </h3>
+                  </p>
                   {config.image.description && (
                     <p className="text-xs text-muted-foreground line-clamp-2">
                       {config.image.description}

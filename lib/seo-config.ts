@@ -308,6 +308,84 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ],
   },
 
+  "/politica-de-privacidad/": {
+    title: `Política de Privacidad | ${BUSINESS_INFO.name}`,
+    description:
+      "Política de privacidad de Acogas: tratamiento de datos personales, finalidades, derechos del titular y uso de cookies en acogas.pe.",
+    keywords: [
+      "política de privacidad",
+      "protección de datos",
+      "acogas",
+      "datos personales",
+      CONTACT.city.toLowerCase(),
+    ],
+    canonical: `${siteConfig.url}/politica-de-privacidad/`,
+    ogImage: "/assets/images/refinery.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Política de Privacidad | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Información sobre el tratamiento y protección de datos personales.",
+    linkedinImage: "/assets/images/refinery.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Política de Privacidad | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Cómo Acogas recopila, usa y protege sus datos personales.",
+    socialImage: "/assets/images/refinery.webp",
+    articleSection: "Legal",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      {
+        name: "Política de Privacidad",
+        url: `${siteConfig.url}/politica-de-privacidad/`,
+      },
+    ],
+  },
+
+  "/terminos-y-condiciones/": {
+    title: `Términos y Condiciones | ${BUSINESS_INFO.name}`,
+    description:
+      "Términos y condiciones de uso del sitio web de Acogas: propiedad intelectual, limitación de responsabilidad y condiciones comerciales.",
+    keywords: [
+      "términos y condiciones",
+      "uso del sitio",
+      "acogas",
+      "condiciones legales",
+      CONTACT.city.toLowerCase(),
+    ],
+    canonical: `${siteConfig.url}/terminos-y-condiciones/`,
+    ogImage: "/assets/images/refinery.webp",
+    ogType: "website",
+    twitterCard: "summary_large_image",
+    language: "es-PE",
+    geoRegion: "PE-LIM",
+    geoPosition: `${GOOGLE_MAPS.latitude};${GOOGLE_MAPS.longitude}`,
+    geoPlacename: `${CONTACT.city}, ${CONTACT.state}`,
+    linkedinTitle: `Términos y Condiciones | ${BUSINESS_INFO.name}`,
+    linkedinDescription:
+      "Condiciones de uso del sitio web y de la información publicada.",
+    linkedinImage: "/assets/images/refinery.webp",
+    linkedinAuthor: BUSINESS_INFO.name,
+    facebookAppId: siteConfig.social.facebookAppId,
+    socialTitle: `Términos y Condiciones | ${BUSINESS_INFO.name}`,
+    socialDescription:
+      "Condiciones de uso del sitio web de Acogas.",
+    socialImage: "/assets/images/refinery.webp",
+    articleSection: "Legal",
+    breadcrumbs: [
+      { name: "Inicio", url: siteConfig.url },
+      {
+        name: "Términos y Condiciones",
+        url: `${siteConfig.url}/terminos-y-condiciones/`,
+      },
+    ],
+  },
+
   "/recursos/": {
     title: `Recursos técnicos | ${BUSINESS_INFO.name}`,
     description:
