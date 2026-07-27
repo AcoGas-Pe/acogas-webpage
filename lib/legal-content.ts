@@ -1,8 +1,8 @@
 import { BUSINESS_INFO, CONTACT } from "@/lib/business-config";
 
 const companyName = BUSINESS_INFO.name.trim();
-const contactEmail = CONTACT.email[0];
 const websiteUrl = BUSINESS_INFO.websiteUrl;
+const contactPageUrl = `${websiteUrl.replace(/\/$/, "")}/contacto/`;
 
 export const PRIVACY_POLICY_SECTIONS = [
   {
@@ -44,7 +44,7 @@ export const PRIVACY_POLICY_SECTIONS = [
   {
     title: "7. Sus derechos",
     paragraphs: [
-      `Usted puede ejercer sus derechos de acceso, rectificación, cancelación, oposición, portabilidad, limitación del tratamiento y revocación del consentimiento escribiendo a ${contactEmail}. También puede presentar una reclamación ante la autoridad de protección de datos competente en el Perú.`,
+      `Usted puede ejercer sus derechos de acceso, rectificación, cancelación, oposición, portabilidad, limitación del tratamiento y revocación del consentimiento a través de ${contactPageUrl}. También puede presentar una reclamación ante la autoridad de protección de datos competente en el Perú.`,
     ],
   },
   {
@@ -119,7 +119,7 @@ export const TERMS_SECTIONS = [
   {
     title: "10. Contacto",
     paragraphs: [
-      `Para consultas sobre estos Términos puede escribir a ${contactEmail} o comunicarse a través de la página de contacto del Sitio.`,
+      `Para consultas sobre estos Términos puede comunicarse a través de ${contactPageUrl}.`,
     ],
   },
 ] as const;

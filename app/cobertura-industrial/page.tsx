@@ -30,7 +30,7 @@ export default function CoberturaIndustrialPage() {
         image="/assets/images/revision-industria.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
-          { label: "Cobertura Industrial", href: "/cobertura-industrial" },
+          { label: "Cobertura Industrial", href: "/cobertura-industrial/" },
         ]}
       />
 

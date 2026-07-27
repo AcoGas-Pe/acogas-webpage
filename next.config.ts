@@ -16,7 +16,48 @@ function wordPressImageHostPattern(): { protocol: "http" | "https"; hostname: st
   }
 }
 
+/** Old category hubs → `/productos/?macro=…` (must stay in sync with footer-products macros). */
+const legacyCategoryRedirects: {
+  source: string;
+  destination: string;
+  permanent: true;
+}[] = [
+  {
+    source: "/productos/bombas-compresores",
+    destination:
+      "/productos/?macro=Equipo+de+bombeo+y+compresi%C3%B3n",
+  },
+  {
+    source: "/productos/regulacion-control-presion",
+    destination:
+      "/productos/?macro=Regulaci%C3%B3n+y+control+de+presi%C3%B3n",
+  },
+  {
+    source: "/productos/seguridad-alivio-presion",
+    destination: "/productos/?macro=Seguridad%2C+Alivio+y+Vac%C3%ADo",
+  },
+  {
+    source: "/productos/procesos-especiales-multifluidos",
+    destination:
+      "/productos/?macro=Inertizaci%C3%B3n%2C+Recuperaci%C3%B3n+de+vapor+y+Tanques",
+  },
+  {
+    source: "/productos/vapor-procesos-termicos",
+    destination: "/productos/?macro=Control+de+Temperatura+y+Vapor",
+  },
+  {
+    source: "/productos/medicion-control-flujo",
+    destination:
+      "/productos/?macro=Control+de+Flujo%2C+Filtraci%C3%B3n+y+Ruido",
+  },
+].flatMap(({ source, destination }) => [
+  { source, destination, permanent: true as const },
+  { source: `${source}/`, destination, permanent: true as const },
+]);
+
 const nextConfig: NextConfig = {
+  // Match SEO canonicals and internal links that use trailing slashes.
+  trailingSlash: true,
   images: {
     remotePatterns: wordPressImageHostPattern(),
   },
@@ -32,16 +73,16 @@ const nextConfig: NextConfig = {
       // Quiénes somos → Nosotros (consolidar URL)
       { source: "/quienes-somos", destination: "/nosotros/", permanent: true },
       { source: "/quienes-somos/", destination: "/nosotros/", permanent: true },
-      // Old product URLs → hub /productos/ (optimización Search Console, se normaliza con el tiempo)
-      // Nota: no redirigir /productos/:slug para permitir páginas de producto en app/productos/[slug]
+      // Old product URLs → hub /productos/
       { source: "/tienda", destination: "/productos/", permanent: true },
       { source: "/tienda/", destination: "/productos/", permanent: true },
-      // Soluciones = productos (unified label in nav)
-      { source: "/soluciones", destination: "/productos/", permanent: false },
-      { source: "/soluciones/", destination: "/productos/", permanent: false },
-      // Hub recursos técnicos → página de recursos (hasta exista índice dedicado)
-      { source: "/recursos-tecnicos", destination: "/recursos/", permanent: false },
-      { source: "/recursos-tecnicos/", destination: "/recursos/", permanent: false },
+      ...legacyCategoryRedirects,
+      // Soluciones = productos
+      { source: "/soluciones", destination: "/productos/", permanent: true },
+      { source: "/soluciones/", destination: "/productos/", permanent: true },
+      // Hub recursos técnicos → página de recursos
+      { source: "/recursos-tecnicos", destination: "/recursos/", permanent: true },
+      { source: "/recursos-tecnicos/", destination: "/recursos/", permanent: true },
       // Blog consolidado bajo /blog/
       { source: "/recursos-tecnicos/blog", destination: "/blog/", permanent: true },
       { source: "/recursos-tecnicos/blog/", destination: "/blog/", permanent: true },

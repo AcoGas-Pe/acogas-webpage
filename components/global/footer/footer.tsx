@@ -15,6 +15,7 @@ import {
 import { FOOTER_PRODUCT_LINKS } from "@/lib/footer-products";
 import { FOOTER_BRAND_LINKS } from "@/lib/footer-brands";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { MailtoLink } from "@/components/ui/mailto-link";
 import {
   FaFacebook,
   FaInstagram,
@@ -121,12 +122,10 @@ export function Footer() {
                     key={`email-${index}`}
                     className="flex items-center gap-2"
                   >
-                    <a
-                      href={`mailto:${email}`}
+                    <MailtoLink
+                      email={email}
                       className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {email}
-                    </a>
+                    />
                   </div>
                 ))}
               </div>

@@ -46,8 +46,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
-    { label: "Cobertura Industrial", href: "/cobertura-industrial" },
-    { label: city.name, href: `/cobertura-industrial/${city.slug}` },
+    { label: "Cobertura Industrial", href: "/cobertura-industrial/" },
+    { label: city.name, href: `/cobertura-industrial/${city.slug}/` },
   ];
 
   const pageUrl = `${siteConfig.url}/cobertura-industrial/${slug}/`;

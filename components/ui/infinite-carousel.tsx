@@ -70,7 +70,6 @@ export function InfiniteCarousel({
       className={cn("overflow-hidden", className)}
       onMouseEnter={() => pauseOnHover && setIsPaused(false)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
-      aria-hidden
     >
       <div
         className={cn("flex w-max", gap)}
@@ -88,8 +87,9 @@ export function InfiniteCarousel({
               }
         }
       >
+        {/* Primary track stays in the accessibility tree; duplicate is decorative only. */}
         <div className={cn("flex shrink-0", gap)}>{children}</div>
-        <div className={cn("flex shrink-0", gap)} aria-hidden>
+        <div className={cn("flex shrink-0", gap)} aria-hidden inert>
           {children}
         </div>
       </div>

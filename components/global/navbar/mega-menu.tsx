@@ -141,6 +141,8 @@ export function MegaMenu({ config, isOpen }: MegaMenuProps) {
           : "opacity-0 invisible -translate-y-2 pointer-events-none",
         menuWidth,
       )}
+      aria-hidden={!isOpen}
+      {...(!isOpen ? { inert: true } : {})}
     >
       <div className="p-4 md:p-5 max-h-[min(70vh,calc(100svh-5rem))] overflow-y-auto overscroll-contain">
         {stacked ? (

@@ -8,7 +8,7 @@ import { resolveAllProducts } from "@/lib/products-resolve";
 import { Metadata } from "next";
 import { JsonLdScripts } from "@/components/json-ld-scripts";
 import { generateMetadataFromConfig } from "@/lib/seo-metadata";
-import Link from "next/link";
+import { MailtoLink } from "@/components/ui/mailto-link";
 export const revalidate = 300;
 export const metadata: Metadata = generateMetadataFromConfig("/cotizar/");
 
@@ -30,7 +30,7 @@ export default async function CotizarPage() {
         image="/assets/images/pintura-vajilla.webp"
         breadcrumbs={[
           { label: "Inicio", href: "/" },
-          { label: "Cotizar", href: "/cotizar" },
+          { label: "Cotizar", href: "/cotizar/" },
         ]}
       />
       <CotizarQuoteFlow products={products} />
@@ -51,13 +51,15 @@ export default async function CotizarPage() {
           </div>
           <p className="mt-10 text-sm text-muted-foreground">
             Correo:{" "}
-            <Link href={`mailto:${CONTACT.email[1]}`} className="text-primary hover:underline">
-              {CONTACT.email[1]}
-            </Link>
+            <MailtoLink
+              email={CONTACT.email[1]}
+              className="text-primary hover:underline"
+            />
             {" · "}
-            <Link href={`mailto:${CONTACT.email[0]}`} className="text-primary hover:underline">
-              {CONTACT.email[0]}
-            </Link>
+            <MailtoLink
+              email={CONTACT.email[0]}
+              className="text-primary hover:underline"
+            />
           </p>
         </div>
       </section>

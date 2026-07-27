@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, type LucideIcon } from "lucide-react";
 import { CTA } from "../cta/cta";
 import {
   BUSINESS_HOURS,
@@ -10,6 +10,7 @@ import {
   formatPhoneDisplay,
   formatPhoneTel,
 } from "@/lib/business-config";
+import { MailtoLink } from "@/components/ui/mailto-link";
 
 interface ContactFormProps {
   className?: string;
@@ -22,11 +23,23 @@ const HUBSPOT_REGION = "na1";
 /** Contact form - from Forms script: hbspt.forms.create({ portalId, formId, region }) */
 const CONTACT_FORM_ID = "c2e45d2b-814d-4871-9c28-35cef611b42b";
 
-/** Set NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID in .env.local for testing the registration form */
-const REGISTER_FORM_ID =
-  process.env.NEXT_PUBLIC_HUBSPOT_REGISTER_FORM_ID ?? "";
+type ContactInfoItem =
+  | {
+      icon: LucideIcon;
+      label: string;
+      value: string;
+      href?: string;
+      email?: never;
+    }
+  | {
+      icon: LucideIcon;
+      label: string;
+      email: string;
+      value?: never;
+      href?: never;
+    };
 
-const contactInfo = [
+const contactInfo: ContactInfoItem[] = [
   {
     icon: Phone,
     label: "Telefono",
@@ -36,8 +49,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: CONTACT.email[0],
-    href: `mailto:${CONTACT.email[0]}`,
+    email: CONTACT.email[0],
   },
   {
     icon: MapPin,
@@ -75,6 +87,25 @@ export function ContactForm({ className }: ContactFormProps) {
             <div className="space-y-4">
               {contactInfo.map((item) => {
                 const Icon = item.icon;
+                if (item.email) {
+                  return (
+                    <div
+                      key={item.label}
+                      className="card-base card-accent flex items-center gap-4 p-4"
+                    >
+                      <div className="shrink-0 w-10 h-10 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-muted-foreground">{item.label}</p>
+                        <MailtoLink
+                          email={item.email}
+                          className="text-sm font-medium text-foreground truncate hover:text-primary"
+                        />
+                      </div>
+                    </div>
+                  );
+                }
                 const Wrapper = item.href ? "a" : "div";
                 return (
                   <Wrapper

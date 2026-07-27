@@ -26,6 +26,7 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
     hydrateSummaries([toProductSummary(product)]);
   }, [product, hydrateSummaries]);
   const breadcrumbs: BreadcrumbItem[] = [
+    { label: "Inicio", href: "/" },
     { label: "Productos", href: "/productos/" },
     ...(product.marca
       ? [
@@ -50,16 +51,23 @@ export function ProductsMainSection({ product }: ProductsMainSectionProps) {
         className="mb-4 text-sm font-light max-w-7xl container pt-20" 
         aria-label="Breadcrumb"
       >
-        <ol className="list-none p-0 inline-flex items-center text-muted-foreground">
-          {breadcrumbs.map((breadcrumb) => (
-            <li key={breadcrumb.href}>
+        <ol className="list-none p-0 inline-flex flex-wrap items-center text-muted-foreground">
+          {breadcrumbs.map((breadcrumb, index) => (
+            <li key={breadcrumb.href} className="inline-flex items-center">
+              {index > 0 ? (
+                <span className="mx-1 text-gray-400" aria-hidden>
+                  /
+                </span>
+              ) : null}
               <a
                 href={breadcrumb.href}
                 className="hover:text-primary hover:underline transition-colors"
+                aria-current={
+                  index === breadcrumbs.length - 1 ? "page" : undefined
+                }
               >
                 {breadcrumb.label}
               </a>
-              <span className="mx-1 text-gray-400">/</span>
             </li>
           ))}
         </ol>

@@ -7,12 +7,13 @@ import { seoConfigs, siteConfig } from "@/lib/seo-config";
 import { isSiteIndexingDisabled } from "@/lib/site-indexing";
 import { getAllStrategicBrandSlugs } from "@/lib/strategic-brands";
 
-/** Canonical URL for sitemap — no trailing slash except site root (matches 308 routing). */
+/** Canonical URL for sitemap — trailing slash to match `trailingSlash: true` + meta canonicals. */
 function sitemapUrl(baseUrl: string, path: string): string {
   const origin = baseUrl.replace(/\/$/, "");
   if (path === "/" || path === "") return `${origin}/`;
   const pathname = path.startsWith("/") ? path : `/${path}`;
-  return `${origin}${pathname.replace(/\/$/, "")}`;
+  const normalized = pathname.replace(/\/$/, "");
+  return `${origin}${normalized}/`;
 }
 
 function staticRoutes(baseUrl: string): MetadataRoute.Sitemap {

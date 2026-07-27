@@ -137,9 +137,9 @@ export function IndustriesSolutionsBento() {
 
         <div className="mt-5">
           <header className="mb-5 text-center sm:mb-6">
-            <h4 className="text-lg font-bold uppercase tracking-[0.08em] text-foreground sm:text-xl">
+            <h3 className="text-lg font-bold uppercase tracking-[0.08em] text-foreground sm:text-xl">
               Industrias
-            </h4>
+            </h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Sectores en los que desarrollamos soluciones específicas.
             </p>

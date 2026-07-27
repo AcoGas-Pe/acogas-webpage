@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useId, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +13,8 @@ import { PRODUCT_IMAGE_FALLBACK } from "@/lib/default-images";
 
 export function QuoteCartSidebar() {
   const router = useRouter();
+  const titleId = useId();
+  const panelRef = useRef<HTMLElement>(null);
   const { getProduct, ensureLoaded } = useProductsCatalog();
   const { lines, isOpen, close, setLineQuantity, removeLine, totalQuantity } =
     useQuoteCart();
@@ -40,36 +42,38 @@ export function QuoteCartSidebar() {
     void ensureLoaded();
   }, [isOpen, ensureLoaded]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const panel = panelRef.current;
+    const focusable = panel?.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    focusable?.focus();
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
   return (
-    <div
-      className={cn(
-        "fixed inset-0 z-[100] md:z-[100]",
-        isOpen ? "pointer-events-auto" : "pointer-events-none",
-      )}
-      aria-hidden={!isOpen}
-    >
+    <div className="fixed inset-0 z-[100] md:z-[100] pointer-events-auto">
       <button
         type="button"
-        className={cn(
-          "absolute inset-0 bg-black/40 transition-opacity duration-200",
-          isOpen ? "opacity-100" : "opacity-0",
-        )}
+        className="absolute inset-0 bg-black/40 transition-opacity duration-200 opacity-100"
         onClick={close}
         aria-label="Cerrar cotización"
       />
 
       <aside
+        ref={panelRef}
         className={cn(
           "absolute top-0 right-0 h-full w-[min(400px,92vw)] bg-background border-l border-border shadow-xl flex flex-col",
-          "transform transition-transform duration-200 ease-out",
-          isOpen ? "translate-x-0" : "translate-x-full",
+          "transform transition-transform duration-200 ease-out translate-x-0",
         )}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="quote-cart-title"
+        aria-labelledby={titleId}
       >
         <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-          <h2 id="quote-cart-title" className="text-lg font-semibold tracking-tight">
+          <h2 id={titleId} className="text-lg font-semibold tracking-tight">
             Cotización ({totalQuantity})
           </h2>
           <button

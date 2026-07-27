@@ -61,6 +61,14 @@ export default async function ProductoPage({ params }: ProductPageProps) {
           generateBreadcrumbSchema([
             { name: "Inicio", url: siteConfig.url },
             { name: "Productos", url: `${siteConfig.url}/productos/` },
+            ...(product.marca
+              ? [
+                  {
+                    name: product.marca,
+                    url: `${siteConfig.url}/productos/?marca=${encodeURIComponent(product.marca)}`,
+                  },
+                ]
+              : []),
             {
               name: product.modelo ?? slug,
               url: pageUrl,
